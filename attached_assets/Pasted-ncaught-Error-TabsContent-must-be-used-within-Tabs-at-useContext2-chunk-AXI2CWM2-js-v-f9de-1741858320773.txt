@@ -1,0 +1,26 @@
+ncaught Error: `TabsContent` must be used within `Tabs`
+    at useContext2 (chunk-AXI2CWM2.js?v=f9deebfe:34:13)
+    at @radix-ui_react-tabs.js?v=f9deebfe:174:21
+    at renderWithHooks (chunk-RPCDYKBN.js?v=f9deebfe:11548:26)
+    at updateForwardRef (chunk-RPCDYKBN.js?v=f9deebfe:14325:28)
+    at beginWork (chunk-RPCDYKBN.js?v=f9deebfe:15946:22)
+    at HTMLUnknownElement.callCallback2 (chunk-RPCDYKBN.js?v=f9deebfe:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-RPCDYKBN.js?v=f9deebfe:3699:24)
+    at invokeGuardedCallback (chunk-RPCDYKBN.js?v=f9deebfe:3733:39)
+    at beginWork$1 (chunk-RPCDYKBN.js?v=f9deebfe:19765:15)
+    at performUnitOfWork (chunk-RPCDYKBN.js?v=f9deebfe:19198:20)Understand this errorAI
+3hook.js:608 The above error occurred in the <TabsContent> component:
+
+    at https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@radix-ui_react-tabs.js?v=f9deebfe:173:13
+    at _c5 (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/src/components/ui/tabs.tsx:72:12)
+    at div
+    at BlogPage (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/src/pages/blog-page.tsx:27:37)
+    at Route (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=f9deebfe:323:16)
+    at Switch (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=f9deebfe:379:17)
+    at AuthProvider (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/src/hooks/use-auth-fixed.tsx:43:32)
+    at QueryClientProvider (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=f9deebfe:2805:3)
+    at App
+    at ErrorBoundary (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/src/main.tsx?v=gG9Lyl_HH_dDhGVgD0Sin:10:5)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.
+overrideMethod @ hook.js:608Understand this errorAI

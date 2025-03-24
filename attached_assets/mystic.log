@@ -1,0 +1,412 @@
+/~:1 Blocked aria-hidden on an element because its descendant retained focus. The focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor. Consider using the inert attribute instead, which will also prevent focus. For more details, see the aria-hidden section of the WAI-ARIA specification at https://w3c.github.io/aria/#aria-hidden.
+Element with focus: div
+Ancestor with aria-hidden:  <div class=​" useView_view__C2mnv css-1gdmsm6 Surface_surfaceRoot__TeA2u" aria-hidden=​"true" style=​"--useView--gap:​ 4px;​ --borderColor:​ var(--outline-dimmer)​;​ --focusedBorderColor:​ var(--accent-primary-default)​;​ --hoverBorderColor:​ var(--accent-primary-default)​;​">​…​</div>​
+MysticOracle:1 Blocked aria-hidden on an element because its descendant retained focus. The focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor. Consider using the inert attribute instead, which will also prevent focus. For more details, see the aria-hidden section of the WAI-ARIA specification at https://w3c.github.io/aria/#aria-hidden.
+Element with focus: a
+Ancestor with aria-hidden:  <div aria-hidden=​"true" data-popper-reference-hidden=​"false" data-popper-escaped=​"true" data-popper-placement=​"right-start" style=​"position:​ absolute;​ inset:​ 0px auto auto 0px;​ transform:​ translate3d(-9.54545px, 117.273px, 0px)​;​">​…​</div>​
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_app-0bb1957c7ad439b1.js:16 Invalid href 'https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+(anonymous) @ _app-0bb1957c7ad439b1.js:16
+_app-0bb1957c7ad439b1.js:16 Invalid href 'https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+(anonymous) @ _app-0bb1957c7ad439b1.js:16
+a.JZ.<computed> @ _app-0bb1957c7ad439b1.js:1
+d @ main-2c17586e111480f6.js:1
+(anonymous) @ _app-0bb1957c7ad439b1.js:4
+useMemo @ framework-6eb7c4101bad9707.js:1
+t.useMemo @ framework-6eb7c4101bad9707.js:1
+(anonymous) @ _app-0bb1957c7ad439b1.js:4
+ld @ framework-6eb7c4101bad9707.js:1
+ou @ framework-6eb7c4101bad9707.js:1
+i @ framework-6eb7c4101bad9707.js:1
+uI @ framework-6eb7c4101bad9707.js:1
+(anonymous) @ framework-6eb7c4101bad9707.js:1
+uM @ framework-6eb7c4101bad9707.js:1
+uS @ framework-6eb7c4101bad9707.js:1
+C @ framework-6eb7c4101bad9707.js:1
+z @ framework-6eb7c4101bad9707.js:1
+_app-0bb1957c7ad439b1.js:16 Invalid href 'https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+(anonymous) @ _app-0bb1957c7ad439b1.js:16
+a.JZ.<computed> @ _app-0bb1957c7ad439b1.js:1
+d @ main-2c17586e111480f6.js:1
+(anonymous) @ _app-0bb1957c7ad439b1.js:4
+useMemo @ framework-6eb7c4101bad9707.js:1
+t.useMemo @ framework-6eb7c4101bad9707.js:1
+(anonymous) @ _app-0bb1957c7ad439b1.js:4
+ld @ framework-6eb7c4101bad9707.js:1
+ou @ framework-6eb7c4101bad9707.js:1
+i @ framework-6eb7c4101bad9707.js:1
+uI @ framework-6eb7c4101bad9707.js:1
+(anonymous) @ framework-6eb7c4101bad9707.js:1
+uM @ framework-6eb7c4101bad9707.js:1
+uS @ framework-6eb7c4101bad9707.js:1
+C @ framework-6eb7c4101bad9707.js:1
+z @ framework-6eb7c4101bad9707.js:1
+_app-0bb1957c7ad439b1.js:16 Invalid href 'https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+(anonymous) @ _app-0bb1957c7ad439b1.js:16
+a.JZ.<computed> @ _app-0bb1957c7ad439b1.js:1
+d @ main-2c17586e111480f6.js:1
+(anonymous) @ _app-0bb1957c7ad439b1.js:4
+useMemo @ framework-6eb7c4101bad9707.js:1
+t.useMemo @ framework-6eb7c4101bad9707.js:1
+(anonymous) @ _app-0bb1957c7ad439b1.js:4
+ld @ framework-6eb7c4101bad9707.js:1
+ou @ framework-6eb7c4101bad9707.js:1
+i @ framework-6eb7c4101bad9707.js:1
+uI @ framework-6eb7c4101bad9707.js:1
+(anonymous) @ framework-6eb7c4101bad9707.js:1
+uM @ framework-6eb7c4101bad9707.js:1
+uS @ framework-6eb7c4101bad9707.js:1
+C @ framework-6eb7c4101bad9707.js:1
+z @ framework-6eb7c4101bad9707.js:1
+_app-0bb1957c7ad439b1.js:16 Invalid href 'https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+(anonymous) @ _app-0bb1957c7ad439b1.js:16
+a.JZ.<computed> @ _app-0bb1957c7ad439b1.js:1
+d @ main-2c17586e111480f6.js:1
+(anonymous) @ _app-0bb1957c7ad439b1.js:4
+useMemo @ framework-6eb7c4101bad9707.js:1
+t.useMemo @ framework-6eb7c4101bad9707.js:1
+(anonymous) @ _app-0bb1957c7ad439b1.js:4
+ld @ framework-6eb7c4101bad9707.js:1
+ou @ framework-6eb7c4101bad9707.js:1
+i @ framework-6eb7c4101bad9707.js:1
+uI @ framework-6eb7c4101bad9707.js:1
+(anonymous) @ framework-6eb7c4101bad9707.js:1
+uM @ framework-6eb7c4101bad9707.js:1
+uS @ framework-6eb7c4101bad9707.js:1
+C @ framework-6eb7c4101bad9707.js:1
+z @ framework-6eb7c4101bad9707.js:1
+@tanstack_react-query.js:2800 Uncaught Error: No QueryClient set, use QueryClientProvider to set one
+    at useQueryClient (@tanstack_react-query.js:2800:11)
+    at useBaseQuery (@tanstack_react-query.js:2999:18)
+    at useQuery (@tanstack_react-query.js:3068:10)
+    at AuthProvider (use-auth.tsx:83:7)
+    at renderWithHooks (chunk-RPCDYKBN.js:11548:26)
+    at mountIndeterminateComponent (chunk-RPCDYKBN.js:14926:21)
+    at beginWork (chunk-RPCDYKBN.js:15914:22)
+    at HTMLUnknownElement.callCallback2 (chunk-RPCDYKBN.js:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-RPCDYKBN.js:3699:24)
+    at invokeGuardedCallback (chunk-RPCDYKBN.js:3733:39)
+useQueryClient @ VM101 @tanstack_react-query.js:2800
+useBaseQuery @ VM101 @tanstack_react-query.js:2999
+useQuery @ VM101 @tanstack_react-query.js:3068
+AuthProvider @ VM98 use-auth.tsx:83
+renderWithHooks @ VM55 chunk-RPCDYKBN.js:11548
+mountIndeterminateComponent @ VM55 chunk-RPCDYKBN.js:14926
+beginWork @ VM55 chunk-RPCDYKBN.js:15914
+callCallback2 @ VM55 chunk-RPCDYKBN.js:3674
+invokeGuardedCallbackDev @ VM55 chunk-RPCDYKBN.js:3699
+invokeGuardedCallback @ VM55 chunk-RPCDYKBN.js:3733
+beginWork$1 @ VM55 chunk-RPCDYKBN.js:19765
+performUnitOfWork @ VM55 chunk-RPCDYKBN.js:19198
+workLoopSync @ VM55 chunk-RPCDYKBN.js:19137
+renderRootSync @ VM55 chunk-RPCDYKBN.js:19116
+performConcurrentWorkOnRoot @ VM55 chunk-RPCDYKBN.js:18678
+workLoop @ VM55 chunk-RPCDYKBN.js:197
+flushWork @ VM55 chunk-RPCDYKBN.js:176
+performWorkUntilDeadline @ VM55 chunk-RPCDYKBN.js:384
+@tanstack_react-query.js:2800 Uncaught Error: No QueryClient set, use QueryClientProvider to set one
+    at useQueryClient (@tanstack_react-query.js:2800:11)
+    at useBaseQuery (@tanstack_react-query.js:2999:18)
+    at useQuery (@tanstack_react-query.js:3068:10)
+    at AuthProvider (use-auth.tsx:83:7)
+    at renderWithHooks (chunk-RPCDYKBN.js:11548:26)
+    at mountIndeterminateComponent (chunk-RPCDYKBN.js:14926:21)
+    at beginWork (chunk-RPCDYKBN.js:15914:22)
+    at HTMLUnknownElement.callCallback2 (chunk-RPCDYKBN.js:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-RPCDYKBN.js:3699:24)
+    at invokeGuardedCallback (chunk-RPCDYKBN.js:3733:39)
+useQueryClient @ VM101 @tanstack_react-query.js:2800
+useBaseQuery @ VM101 @tanstack_react-query.js:2999
+useQuery @ VM101 @tanstack_react-query.js:3068
+AuthProvider @ VM98 use-auth.tsx:83
+renderWithHooks @ VM55 chunk-RPCDYKBN.js:11548
+mountIndeterminateComponent @ VM55 chunk-RPCDYKBN.js:14926
+beginWork @ VM55 chunk-RPCDYKBN.js:15914
+callCallback2 @ VM55 chunk-RPCDYKBN.js:3674
+invokeGuardedCallbackDev @ VM55 chunk-RPCDYKBN.js:3699
+invokeGuardedCallback @ VM55 chunk-RPCDYKBN.js:3733
+beginWork$1 @ VM55 chunk-RPCDYKBN.js:19765
+performUnitOfWork @ VM55 chunk-RPCDYKBN.js:19198
+workLoopSync @ VM55 chunk-RPCDYKBN.js:19137
+renderRootSync @ VM55 chunk-RPCDYKBN.js:19116
+recoverFromConcurrentError @ VM55 chunk-RPCDYKBN.js:18736
+performConcurrentWorkOnRoot @ VM55 chunk-RPCDYKBN.js:18684
+workLoop @ VM55 chunk-RPCDYKBN.js:197
+flushWork @ VM55 chunk-RPCDYKBN.js:176
+performWorkUntilDeadline @ VM55 chunk-RPCDYKBN.js:384
+eruda.js:2 The above error occurred in the <AuthProvider> component:
+
+    at AuthProvider (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/src/hooks/use-auth.tsx:75:32)
+    at App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+Mt.forEach.n.<computed> @ VM23 eruda.js:2
+logCapturedError @ VM55 chunk-RPCDYKBN.js:14032
+update.callback @ VM55 chunk-RPCDYKBN.js:14052
+callCallback @ VM55 chunk-RPCDYKBN.js:11248
+commitUpdateQueue @ VM55 chunk-RPCDYKBN.js:11265
+commitLayoutEffectOnFiber @ VM55 chunk-RPCDYKBN.js:17093
+commitLayoutMountEffects_complete @ VM55 chunk-RPCDYKBN.js:17980
+commitLayoutEffects_begin @ VM55 chunk-RPCDYKBN.js:17969
+commitLayoutEffects @ VM55 chunk-RPCDYKBN.js:17920
+commitRootImpl @ VM55 chunk-RPCDYKBN.js:19353
+commitRoot @ VM55 chunk-RPCDYKBN.js:19277
+finishConcurrentRender @ VM55 chunk-RPCDYKBN.js:18760
+performConcurrentWorkOnRoot @ VM55 chunk-RPCDYKBN.js:18718
+workLoop @ VM55 chunk-RPCDYKBN.js:197
+flushWork @ VM55 chunk-RPCDYKBN.js:176
+performWorkUntilDeadline @ VM55 chunk-RPCDYKBN.js:384
+chunk-RPCDYKBN.js:19413 Uncaught Error: No QueryClient set, use QueryClientProvider to set one
+    at useQueryClient (@tanstack_react-query.js:2800:11)
+    at useBaseQuery (@tanstack_react-query.js:2999:18)
+    at useQuery (@tanstack_react-query.js:3068:10)
+    at AuthProvider (use-auth.tsx:83:7)
+    at renderWithHooks (chunk-RPCDYKBN.js:11548:26)
+    at mountIndeterminateComponent (chunk-RPCDYKBN.js:14926:21)
+    at beginWork (chunk-RPCDYKBN.js:15914:22)
+    at beginWork$1 (chunk-RPCDYKBN.js:19753:22)
+    at performUnitOfWork (chunk-RPCDYKBN.js:19198:20)
+    at workLoopSync (chunk-RPCDYKBN.js:19137:13)
+useQueryClient @ VM101 @tanstack_react-query.js:2800
+useBaseQuery @ VM101 @tanstack_react-query.js:2999
+useQuery @ VM101 @tanstack_react-query.js:3068
+AuthProvider @ VM98 use-auth.tsx:83
+renderWithHooks @ VM55 chunk-RPCDYKBN.js:11548
+mountIndeterminateComponent @ VM55 chunk-RPCDYKBN.js:14926
+beginWork @ VM55 chunk-RPCDYKBN.js:15914
+beginWork$1 @ VM55 chunk-RPCDYKBN.js:19753
+performUnitOfWork @ VM55 chunk-RPCDYKBN.js:19198
+workLoopSync @ VM55 chunk-RPCDYKBN.js:19137
+renderRootSync @ VM55 chunk-RPCDYKBN.js:19116
+recoverFromConcurrentError @ VM55 chunk-RPCDYKBN.js:18736
+performConcurrentWorkOnRoot @ VM55 chunk-RPCDYKBN.js:18684
+workLoop @ VM55 chunk-RPCDYKBN.js:197
+flushWork @ VM55 chunk-RPCDYKBN.js:176
+performWorkUntilDeadline @ VM55 chunk-RPCDYKBN.js:384
+@tanstack_react-query.js:2800 Uncaught Error: No QueryClient set, use QueryClientProvider to set one
+    at useQueryClient (@tanstack_react-query.js:2800:11)
+    at useBaseQuery (@tanstack_react-query.js:2999:18)
+    at useQuery (@tanstack_react-query.js:3068:10)
+    at AuthProvider (use-auth.tsx:83:7)
+    at renderWithHooks (chunk-RPCDYKBN.js:11548:26)
+    at mountIndeterminateComponent (chunk-RPCDYKBN.js:14926:21)
+    at beginWork (chunk-RPCDYKBN.js:15914:22)
+    at HTMLUnknownElement.callCallback2 (chunk-RPCDYKBN.js:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-RPCDYKBN.js:3699:24)
+    at invokeGuardedCallback (chunk-RPCDYKBN.js:3733:39)
+useQueryClient @ VM141 @tanstack_react-query.js:2800
+useBaseQuery @ VM141 @tanstack_react-query.js:2999
+useQuery @ VM141 @tanstack_react-query.js:3068
+AuthProvider @ VM138 use-auth.tsx:83
+renderWithHooks @ VM84 chunk-RPCDYKBN.js:11548
+mountIndeterminateComponent @ VM84 chunk-RPCDYKBN.js:14926
+beginWork @ VM84 chunk-RPCDYKBN.js:15914
+callCallback2 @ VM84 chunk-RPCDYKBN.js:3674
+invokeGuardedCallbackDev @ VM84 chunk-RPCDYKBN.js:3699
+invokeGuardedCallback @ VM84 chunk-RPCDYKBN.js:3733
+beginWork$1 @ VM84 chunk-RPCDYKBN.js:19765
+performUnitOfWork @ VM84 chunk-RPCDYKBN.js:19198
+workLoopSync @ VM84 chunk-RPCDYKBN.js:19137
+renderRootSync @ VM84 chunk-RPCDYKBN.js:19116
+performConcurrentWorkOnRoot @ VM84 chunk-RPCDYKBN.js:18678
+workLoop @ VM84 chunk-RPCDYKBN.js:197
+flushWork @ VM84 chunk-RPCDYKBN.js:176
+performWorkUntilDeadline @ VM84 chunk-RPCDYKBN.js:384
+@tanstack_react-query.js:2800 Uncaught Error: No QueryClient set, use QueryClientProvider to set one
+    at useQueryClient (@tanstack_react-query.js:2800:11)
+    at useBaseQuery (@tanstack_react-query.js:2999:18)
+    at useQuery (@tanstack_react-query.js:3068:10)
+    at AuthProvider (use-auth.tsx:83:7)
+    at renderWithHooks (chunk-RPCDYKBN.js:11548:26)
+    at mountIndeterminateComponent (chunk-RPCDYKBN.js:14926:21)
+    at beginWork (chunk-RPCDYKBN.js:15914:22)
+    at HTMLUnknownElement.callCallback2 (chunk-RPCDYKBN.js:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-RPCDYKBN.js:3699:24)
+    at invokeGuardedCallback (chunk-RPCDYKBN.js:3733:39)
+useQueryClient @ VM141 @tanstack_react-query.js:2800
+useBaseQuery @ VM141 @tanstack_react-query.js:2999
+useQuery @ VM141 @tanstack_react-query.js:3068
+AuthProvider @ VM138 use-auth.tsx:83
+renderWithHooks @ VM84 chunk-RPCDYKBN.js:11548
+mountIndeterminateComponent @ VM84 chunk-RPCDYKBN.js:14926
+beginWork @ VM84 chunk-RPCDYKBN.js:15914
+callCallback2 @ VM84 chunk-RPCDYKBN.js:3674
+invokeGuardedCallbackDev @ VM84 chunk-RPCDYKBN.js:3699
+invokeGuardedCallback @ VM84 chunk-RPCDYKBN.js:3733
+beginWork$1 @ VM84 chunk-RPCDYKBN.js:19765
+performUnitOfWork @ VM84 chunk-RPCDYKBN.js:19198
+workLoopSync @ VM84 chunk-RPCDYKBN.js:19137
+renderRootSync @ VM84 chunk-RPCDYKBN.js:19116
+recoverFromConcurrentError @ VM84 chunk-RPCDYKBN.js:18736
+performConcurrentWorkOnRoot @ VM84 chunk-RPCDYKBN.js:18684
+workLoop @ VM84 chunk-RPCDYKBN.js:197
+flushWork @ VM84 chunk-RPCDYKBN.js:176
+performWorkUntilDeadline @ VM84 chunk-RPCDYKBN.js:384
+eruda.js:2 The above error occurred in the <AuthProvider> component:
+
+    at AuthProvider (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/src/hooks/use-auth.tsx:75:32)
+    at App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+Mt.forEach.n.<computed> @ VM48 eruda.js:2
+logCapturedError @ VM84 chunk-RPCDYKBN.js:14032
+update.callback @ VM84 chunk-RPCDYKBN.js:14052
+callCallback @ VM84 chunk-RPCDYKBN.js:11248
+commitUpdateQueue @ VM84 chunk-RPCDYKBN.js:11265
+commitLayoutEffectOnFiber @ VM84 chunk-RPCDYKBN.js:17093
+commitLayoutMountEffects_complete @ VM84 chunk-RPCDYKBN.js:17980
+commitLayoutEffects_begin @ VM84 chunk-RPCDYKBN.js:17969
+commitLayoutEffects @ VM84 chunk-RPCDYKBN.js:17920
+commitRootImpl @ VM84 chunk-RPCDYKBN.js:19353
+commitRoot @ VM84 chunk-RPCDYKBN.js:19277
+finishConcurrentRender @ VM84 chunk-RPCDYKBN.js:18760
+performConcurrentWorkOnRoot @ VM84 chunk-RPCDYKBN.js:18718
+workLoop @ VM84 chunk-RPCDYKBN.js:197
+flushWork @ VM84 chunk-RPCDYKBN.js:176
+performWorkUntilDeadline @ VM84 chunk-RPCDYKBN.js:384
+chunk-RPCDYKBN.js:19413 Uncaught Error: No QueryClient set, use QueryClientProvider to set one
+    at useQueryClient (@tanstack_react-query.js:2800:11)
+    at useBaseQuery (@tanstack_react-query.js:2999:18)
+    at useQuery (@tanstack_react-query.js:3068:10)
+    at AuthProvider (use-auth.tsx:83:7)
+    at renderWithHooks (chunk-RPCDYKBN.js:11548:26)
+    at mountIndeterminateComponent (chunk-RPCDYKBN.js:14926:21)
+    at beginWork (chunk-RPCDYKBN.js:15914:22)
+    at beginWork$1 (chunk-RPCDYKBN.js:19753:22)
+    at performUnitOfWork (chunk-RPCDYKBN.js:19198:20)
+    at workLoopSync (chunk-RPCDYKBN.js:19137:13)
+useQueryClient @ VM141 @tanstack_react-query.js:2800
+useBaseQuery @ VM141 @tanstack_react-query.js:2999
+useQuery @ VM141 @tanstack_react-query.js:3068
+AuthProvider @ VM138 use-auth.tsx:83
+renderWithHooks @ VM84 chunk-RPCDYKBN.js:11548
+mountIndeterminateComponent @ VM84 chunk-RPCDYKBN.js:14926
+beginWork @ VM84 chunk-RPCDYKBN.js:15914
+beginWork$1 @ VM84 chunk-RPCDYKBN.js:19753
+performUnitOfWork @ VM84 chunk-RPCDYKBN.js:19198
+workLoopSync @ VM84 chunk-RPCDYKBN.js:19137
+renderRootSync @ VM84 chunk-RPCDYKBN.js:19116
+recoverFromConcurrentError @ VM84 chunk-RPCDYKBN.js:18736
+performConcurrentWorkOnRoot @ VM84 chunk-RPCDYKBN.js:18684
+workLoop @ VM84 chunk-RPCDYKBN.js:197
+flushWork @ VM84 chunk-RPCDYKBN.js:176
+performWorkUntilDeadline @ VM84 chunk-RPCDYKBN.js:384
+_app-0bb1957c7ad439b1.js:16 Invalid href 'https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+(anonymous) @ _app-0bb1957c7ad439b1.js:16
+a.JZ.<computed> @ _app-0bb1957c7ad439b1.js:1
+d @ main-2c17586e111480f6.js:1
+(anonymous) @ _app-0bb1957c7ad439b1.js:4
+useMemo @ framework-6eb7c4101bad9707.js:1
+t.useMemo @ framework-6eb7c4101bad9707.js:1
+(anonymous) @ _app-0bb1957c7ad439b1.js:4
+ld @ framework-6eb7c4101bad9707.js:1
+ou @ framework-6eb7c4101bad9707.js:1
+i @ framework-6eb7c4101bad9707.js:1
+uI @ framework-6eb7c4101bad9707.js:1
+(anonymous) @ framework-6eb7c4101bad9707.js:1
+uM @ framework-6eb7c4101bad9707.js:1
+uS @ framework-6eb7c4101bad9707.js:1
+C @ framework-6eb7c4101bad9707.js:1
+z @ framework-6eb7c4101bad9707.js:1
+_app-0bb1957c7ad439b1.js:16 Invalid href 'https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+(anonymous) @ _app-0bb1957c7ad439b1.js:16
+a.JZ.<computed> @ _app-0bb1957c7ad439b1.js:1
+d @ main-2c17586e111480f6.js:1
+(anonymous) @ _app-0bb1957c7ad439b1.js:4
+useMemo @ framework-6eb7c4101bad9707.js:1
+t.useMemo @ framework-6eb7c4101bad9707.js:1
+(anonymous) @ _app-0bb1957c7ad439b1.js:4
+ld @ framework-6eb7c4101bad9707.js:1
+ou @ framework-6eb7c4101bad9707.js:1
+i @ framework-6eb7c4101bad9707.js:1
+uI @ framework-6eb7c4101bad9707.js:1
+(anonymous) @ framework-6eb7c4101bad9707.js:1
+uM @ framework-6eb7c4101bad9707.js:1
+uS @ framework-6eb7c4101bad9707.js:1
+C @ framework-6eb7c4101bad9707.js:1
+z @ framework-6eb7c4101bad9707.js:1
+_app-0bb1957c7ad439b1.js:16 Invalid href 'https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+(anonymous) @ _app-0bb1957c7ad439b1.js:16
+a.JZ.<computed> @ _app-0bb1957c7ad439b1.js:1
+d @ main-2c17586e111480f6.js:1
+(anonymous) @ _app-0bb1957c7ad439b1.js:4
+useMemo @ framework-6eb7c4101bad9707.js:1
+t.useMemo @ framework-6eb7c4101bad9707.js:1
+(anonymous) @ _app-0bb1957c7ad439b1.js:4
+ld @ framework-6eb7c4101bad9707.js:1
+ou @ framework-6eb7c4101bad9707.js:1
+i @ framework-6eb7c4101bad9707.js:1
+uI @ framework-6eb7c4101bad9707.js:1
+(anonymous) @ framework-6eb7c4101bad9707.js:1
+uM @ framework-6eb7c4101bad9707.js:1
+uS @ framework-6eb7c4101bad9707.js:1
+C @ framework-6eb7c4101bad9707.js:1
+z @ framework-6eb7c4101bad9707.js:1
+_app-0bb1957c7ad439b1.js:16 Invalid href 'https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+(anonymous) @ _app-0bb1957c7ad439b1.js:16
+a.JZ.<computed> @ _app-0bb1957c7ad439b1.js:1
+d @ main-2c17586e111480f6.js:1
+(anonymous) @ _app-0bb1957c7ad439b1.js:4
+useMemo @ framework-6eb7c4101bad9707.js:1
+t.useMemo @ framework-6eb7c4101bad9707.js:1
+(anonymous) @ _app-0bb1957c7ad439b1.js:4
+ld @ framework-6eb7c4101bad9707.js:1
+ou @ framework-6eb7c4101bad9707.js:1
+i @ framework-6eb7c4101bad9707.js:1
+uI @ framework-6eb7c4101bad9707.js:1
+(anonymous) @ framework-6eb7c4101bad9707.js:1
+uM @ framework-6eb7c4101bad9707.js:1
+uS @ framework-6eb7c4101bad9707.js:1
+C @ framework-6eb7c4101bad9707.js:1
+z @ framework-6eb7c4101bad9707.js:1
+Console.js:61 Failed to check authentication status SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+Mt.forEach.n.<computed> @ Console.js:61
+checkAuth @ use-auth.tsx:52
+await in checkAuth
+(anonymous) @ use-auth.tsx:59
+commitHookEffectListMount @ chunk-RPCDYKBN.js?v=f9deebfe:16915
+commitPassiveMountOnFiber @ chunk-RPCDYKBN.js?v=f9deebfe:18156
+commitPassiveMountEffects_complete @ chunk-RPCDYKBN.js?v=f9deebfe:18129
+commitPassiveMountEffects_begin @ chunk-RPCDYKBN.js?v=f9deebfe:18119
+commitPassiveMountEffects @ chunk-RPCDYKBN.js?v=f9deebfe:18109
+flushPassiveEffectsImpl @ chunk-RPCDYKBN.js?v=f9deebfe:19490
+flushPassiveEffects @ chunk-RPCDYKBN.js?v=f9deebfe:19447
+(anonymous) @ chunk-RPCDYKBN.js?v=f9deebfe:19328
+workLoop @ chunk-RPCDYKBN.js?v=f9deebfe:197
+flushWork @ chunk-RPCDYKBN.js?v=f9deebfe:176
+performWorkUntilDeadline @ chunk-RPCDYKBN.js?v=f9deebfe:384
+Console.js:61 Failed to check authentication status SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+Mt.forEach.n.<computed> @ Console.js:61
+checkAuth @ use-auth.tsx:52
+await in checkAuth
+(anonymous) @ use-auth.tsx:59
+commitHookEffectListMount @ chunk-RPCDYKBN.js?v=f9deebfe:16915
+commitPassiveMountOnFiber @ chunk-RPCDYKBN.js?v=f9deebfe:18156
+commitPassiveMountEffects_complete @ chunk-RPCDYKBN.js?v=f9deebfe:18129
+commitPassiveMountEffects_begin @ chunk-RPCDYKBN.js?v=f9deebfe:18119
+commitPassiveMountEffects @ chunk-RPCDYKBN.js?v=f9deebfe:18109
+flushPassiveEffectsImpl @ chunk-RPCDYKBN.js?v=f9deebfe:19490
+flushPassiveEffects @ chunk-RPCDYKBN.js?v=f9deebfe:19447
+(anonymous) @ chunk-RPCDYKBN.js?v=f9deebfe:19328
+workLoop @ chunk-RPCDYKBN.js?v=f9deebfe:197
+flushWork @ chunk-RPCDYKBN.js?v=f9deebfe:176
+performWorkUntilDeadline @ chunk-RPCDYKBN.js?v=f9deebfe:384

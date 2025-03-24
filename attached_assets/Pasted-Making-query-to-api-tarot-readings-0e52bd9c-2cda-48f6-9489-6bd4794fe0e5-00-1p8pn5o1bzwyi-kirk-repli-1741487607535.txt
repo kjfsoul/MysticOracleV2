@@ -1,0 +1,96 @@
+Making query to /api/tarot-readings
+0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/api/tarot-readings:1 
+        
+        
+       Failed to load resource: the server responded with a status of 401 (Unauthorized)
+0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/api/tarot-readings:1 
+        
+        
+       Failed to load resource: the server responded with a status of 401 (Unauthorized)
+0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/api/tarot-readings:1 
+        
+        
+       Failed to load resource: the server responded with a status of 401 (Unauthorized)
+Console.js:61 Query response status: 401
+Console.js:61 API error for /api/tarot-readings: Error: 401: {"message":"Not authenticated"}
+    at throwIfResNotOk (queryClient.ts:6:11)
+    at async queryClient.ts:72:7
+Mt.forEach.n.<computed> @ Console.js:61
+await in Mt.forEach.n.<computed>
+fetchFn @ @tanstack_react-query.js?v=fdd20fbe:840
+run @ @tanstack_react-query.js?v=fdd20fbe:494
+start @ @tanstack_react-query.js?v=fdd20fbe:536
+fetch @ @tanstack_react-query.js?v=fdd20fbe:926
+executeFetch_fn @ @tanstack_react-query.js?v=fdd20fbe:2211
+onSubscribe @ @tanstack_react-query.js?v=fdd20fbe:1898
+subscribe @ @tanstack_react-query.js?v=fdd20fbe:24
+(anonymous) @ @tanstack_react-query.js?v=fdd20fbe:3022
+subscribeToStore @ chunk-RPCDYKBN.js?v=fdd20fbe:11984
+commitHookEffectListMount @ chunk-RPCDYKBN.js?v=fdd20fbe:16915
+commitPassiveMountOnFiber @ chunk-RPCDYKBN.js?v=fdd20fbe:18156
+commitPassiveMountEffects_complete @ chunk-RPCDYKBN.js?v=fdd20fbe:18129
+commitPassiveMountEffects_begin @ chunk-RPCDYKBN.js?v=fdd20fbe:18119
+commitPassiveMountEffects @ chunk-RPCDYKBN.js?v=fdd20fbe:18109
+flushPassiveEffectsImpl @ chunk-RPCDYKBN.js?v=fdd20fbe:19490
+flushPassiveEffects @ chunk-RPCDYKBN.js?v=fdd20fbe:19447
+performSyncWorkOnRoot @ chunk-RPCDYKBN.js?v=fdd20fbe:18868
+flushSyncCallbacks @ chunk-RPCDYKBN.js?v=fdd20fbe:9119
+commitRootImpl @ chunk-RPCDYKBN.js?v=fdd20fbe:19432
+commitRoot @ chunk-RPCDYKBN.js?v=fdd20fbe:19277
+finishConcurrentRender @ chunk-RPCDYKBN.js?v=fdd20fbe:18805
+performConcurrentWorkOnRoot @ chunk-RPCDYKBN.js?v=fdd20fbe:18718
+workLoop @ chunk-RPCDYKBN.js?v=fdd20fbe:197
+flushWork @ chunk-RPCDYKBN.js?v=fdd20fbe:176
+performWorkUntilDeadline @ chunk-RPCDYKBN.js?v=fdd20fbe:384
+_app-9f9d20fa1022d10f.js:16 Invalid href 'https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev//tarot' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+(anonymous) @ _app-9f9d20fa1022d10f.js:16
+Console.js:61 Making POST request to /api/tarot-readings
+0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/api/tarot-readings:1 
+        
+        
+       Failed to load resource: the server responded with a status of 401 (Unauthorized)
+0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/api/tarot-readings:1 
+        
+        
+       Failed to load resource: the server responded with a status of 401 (Unauthorized)
+0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/api/tarot-readings:1 
+        
+        
+       Failed to load resource: the server responded with a status of 401 (Unauthorized)
+Console.js:61 Response status: 401
+Console.js:61 Request error for /api/tarot-readings: Error: 401: {"message":"Not authenticated"}
+    at throwIfResNotOk (queryClient.ts:6:11)
+    at async apiRequest (queryClient.ts:39:5)
+    at async Object.mutationFn (tarot-page.tsx:40:19)
+Mt.forEach.n.<computed> @ Console.js:61
+await in Mt.forEach.n.<computed>
+mutationFn @ tarot-page.tsx:40
+fn @ @tanstack_react-query.js?v=fdd20fbe:1189
+run @ @tanstack_react-query.js?v=fdd20fbe:494
+start @ @tanstack_react-query.js?v=fdd20fbe:536
+execute @ @tanstack_react-query.js?v=fdd20fbe:1225
+await in execute
+mutate @ @tanstack_react-query.js?v=fdd20fbe:2630
+(anonymous) @ @tanstack_react-query.js?v=fdd20fbe:3295
+handleCardSelection @ tarot-page.tsx:84
+(anonymous) @ tarot-deck.tsx:58
+setTimeout
+handleCardClick @ tarot-deck.tsx:57
+onClick @ tarot-deck.tsx:153
+handleClick @ tarot-card.tsx:39
+callCallback2 @ chunk-RPCDYKBN.js?v=fdd20fbe:3674
+invokeGuardedCallbackDev @ chunk-RPCDYKBN.js?v=fdd20fbe:3699
+invokeGuardedCallback @ chunk-RPCDYKBN.js?v=fdd20fbe:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-RPCDYKBN.js?v=fdd20fbe:3736
+executeDispatch @ chunk-RPCDYKBN.js?v=fdd20fbe:7014
+processDispatchQueueItemsInOrder @ chunk-RPCDYKBN.js?v=fdd20fbe:7034
+processDispatchQueue @ chunk-RPCDYKBN.js?v=fdd20fbe:7043
+dispatchEventsForPlugins @ chunk-RPCDYKBN.js?v=fdd20fbe:7051
+(anonymous) @ chunk-RPCDYKBN.js?v=fdd20fbe:7174
+batchedUpdates$1 @ chunk-RPCDYKBN.js?v=fdd20fbe:18913
+batchedUpdates @ chunk-RPCDYKBN.js?v=fdd20fbe:3579
+dispatchEventForPluginEventSystem @ chunk-RPCDYKBN.js?v=fdd20fbe:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-RPCDYKBN.js?v=fdd20fbe:5478
+dispatchEvent @ chunk-RPCDYKBN.js?v=fdd20fbe:5472
+dispatchDiscreteEvent @ chunk-RPCDYKBN.js?v=fdd20fbe:5449
+846Chrome is moving towards a new experience that allows users to choose to browse without third-party cookies.

@@ -1,0 +1,41 @@
+Warning: validateDOMNesting(...): <div> cannot appear as a descendant of &lt;p&gt;.
+    at div
+    at Badge (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/src/components/ui/badge.tsx:35:18)
+    at p
+    at div
+    at div
+    at div
+    at div
+    at _c9 (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/src/components/ui/card.tsx:114:12)
+    at div
+    at _c (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/src/components/ui/card.tsx:20:11)
+    at div
+    at DebugAuthPage (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/src/pages/debug-auth.tsx:27:46)
+    at Route (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=965e9452:323:16)
+    at Switch (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=965e9452:379:17)
+    at Router
+    at AuthProvider (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/src/hooks/use-auth.tsx:73:32)
+    at QueryClientProvider (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=965e9452:2805:3)
+    at App
+at div
+at Badge (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/src/components/ui/badge.tsx:35:18)
+at p
+at div
+at div
+at div
+at div
+at _c9 (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/src/components/ui/card.tsx:114:12)
+at div
+at _c (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/src/components/ui/card.tsx:20:11)
+at div
+at DebugAuthPage (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/src/pages/debug-auth.tsx:27:46)
+at Route (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=965e9452:323:16)
+at Switch (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=965e9452:379:17)
+at Router
+at AuthProvider (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/src/hooks/use-auth.tsx:73:32)
+at QueryClientProvider (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=965e9452:2805:3)
+at App
+at t.value (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi.kirk.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400
