@@ -1,22 +1,38 @@
-import React, { useState } from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import * as z from 'zod';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { useToast } from '@/hooks/use-toast';
-import { apiRequest } from '@/lib/queryClient';
-import { useAuth } from '@/hooks/use-auth-fixed';
-import { useLocation } from 'wouter';
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { useAuth } from "@/hooks/use-auth-fixed";
+import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/api";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useLocation } from "wouter";
+import * as z from "zod";
 
 // Form validation schema
 const formSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  birthDate: z.string().min(1, 'Birth date is required'),
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  birthDate: z.string().min(1, "Birth date is required"),
   birthTime: z.string().optional(),
-  birthLocation: z.string().min(2, 'Birth location must be at least 2 characters'),
+  birthLocation: z
+    .string()
+    .min(2, "Birth location must be at least 2 characters"),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -31,20 +47,20 @@ export default function BirthChartPreview() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
-      birthDate: '',
-      birthTime: '',
-      birthLocation: '',
+      name: "",
+      birthDate: "",
+      birthTime: "",
+      birthLocation: "",
     },
   });
 
   const onSubmit = async (data: FormValues) => {
     setIsLoading(true);
     try {
-      const response = await apiRequest('/api/public/birth-chart', {
-        method: 'POST',
+      const response = await apiRequest("/api/public/birth-chart", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
@@ -52,15 +68,15 @@ export default function BirthChartPreview() {
       const result = await response.json();
       setPreviewData(result.previewChart);
       toast({
-        title: 'Birth Chart Generated',
-        description: 'Your birth chart preview has been created successfully!',
+        title: "Birth Chart Generated",
+        description: "Your birth chart preview has been created successfully!",
       });
     } catch (error) {
-      console.error('Error generating birth chart:', error);
+      console.error("Error generating birth chart:", error);
       toast({
-        title: 'Error',
-        description: 'Failed to generate birth chart. Please try again.',
-        variant: 'destructive',
+        title: "Error",
+        description: "Failed to generate birth chart. Please try again.",
+        variant: "destructive",
       });
     } finally {
       setIsLoading(false);
@@ -71,16 +87,18 @@ export default function BirthChartPreview() {
   const handleSave = () => {
     if (!isAuthenticated) {
       toast({
-        title: 'Authentication Required',
-        description: 'Please sign in or create an account to save your birth chart.',
+        title: "Authentication Required",
+        description:
+          "Please sign in or create an account to save your birth chart.",
       });
-      navigate('/auth');
+      navigate("/auth");
     } else {
       toast({
-        title: 'Premium Feature',
-        description: 'Upgrade to premium to save and access detailed birth chart interpretations.',
+        title: "Premium Feature",
+        description:
+          "Upgrade to premium to save and access detailed birth chart interpretations.",
       });
-      navigate('/pricing');
+      navigate("/pricing");
     }
   };
 
@@ -91,12 +109,16 @@ export default function BirthChartPreview() {
           <CardHeader>
             <CardTitle>Birth Chart Preview</CardTitle>
             <CardDescription>
-              Enter your birth details to generate a free preview of your astrological birth chart
+              Enter your birth details to generate a free preview of your
+              astrological birth chart
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-4"
+              >
                 <FormField
                   control={form.control}
                   name="name"
@@ -154,7 +176,9 @@ export default function BirthChartPreview() {
                 />
 
                 <Button type="submit" className="w-full" disabled={isLoading}>
-                  {isLoading ? 'Generating Chart...' : 'Generate Free Birth Chart Preview'}
+                  {isLoading
+                    ? "Generating Chart..."
+                    : "Generate Free Birth Chart Preview"}
                 </Button>
               </form>
             </Form>
@@ -163,14 +187,21 @@ export default function BirthChartPreview() {
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle>Birth Chart Preview for {previewData.chartData.name}</CardTitle>
+            <CardTitle>
+              Birth Chart Preview for {previewData.chartData.name}
+            </CardTitle>
             <CardDescription>
-              Born on {previewData.chartData.date} at {previewData.chartData.time} in {previewData.chartData.location}
+              Born on {previewData.chartData.date} at{" "}
+              {previewData.chartData.time} in {previewData.chartData.location}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="prose dark:prose-invert max-w-none">
-              <div dangerouslySetInnerHTML={{ __html: previewData.interpretation.replace(/\n/g, '<br/>') }} />
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: previewData.interpretation.replace(/\n/g, "<br/>"),
+                }}
+              />
             </div>
             {previewData.message && (
               <div className="mt-4 p-4 bg-primary/10 rounded-md border border-primary/20">
@@ -182,9 +213,7 @@ export default function BirthChartPreview() {
             <Button variant="outline" onClick={() => setPreviewData(null)}>
               Generate Another Chart
             </Button>
-            <Button onClick={handleSave}>
-              Save & Get Full Interpretation
-            </Button>
+            <Button onClick={handleSave}>Save & Get Full Interpretation</Button>
           </CardFooter>
         </Card>
       )}

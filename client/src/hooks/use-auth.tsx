@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useQueryClient } from '@tanstack/react-query';
-import { apiRequest } from '../lib/queryClient';
+import { useQueryClient } from "@tanstack/react-query";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { apiRequest } from "../lib/api";
 
 type User = {
   id: string;
@@ -14,7 +14,11 @@ type AuthContextType = {
   isLoading: boolean;
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<User>;
-  register: (username: string, email: string, password: string) => Promise<User>;
+  register: (
+    username: string,
+    email: string,
+    password: string
+  ) => Promise<User>;
   logout: () => Promise<void>;
   checkAuth: () => Promise<User | null>;
 };
@@ -24,19 +28,21 @@ const AuthContext = createContext<AuthContextType | null>(null);
 export function useAuth() {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 }
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const queryClient = useQueryClient();
 
   const checkAuth = async (): Promise<User | null> => {
     try {
-      const userData = await apiRequest('/api/auth/me');
+      const userData = await apiRequest("/api/auth/me");
       if (userData && userData.id) {
         setUser(userData);
         return userData;
@@ -45,7 +51,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         return null;
       }
     } catch (error) {
-      console.error('Failed to check authentication status', error);
+      console.error("Failed to check authentication status", error);
       setUser(null);
       return null;
     } finally {
@@ -60,8 +66,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (email: string, password: string): Promise<User> => {
     setIsLoading(true);
     try {
-      const userData = await apiRequest('/api/auth/login', {
-        method: 'POST',
+      const userData = await apiRequest("/api/auth/login", {
+        method: "POST",
         body: JSON.stringify({ email, password }),
       });
       setUser(userData);
@@ -73,11 +79,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  const register = async (username: string, email: string, password: string): Promise<User> => {
+  const register = async (
+    username: string,
+    email: string,
+    password: string
+  ): Promise<User> => {
     setIsLoading(true);
     try {
-      const userData = await apiRequest('/api/auth/register', {
-        method: 'POST',
+      const userData = await apiRequest("/api/auth/register", {
+        method: "POST",
         body: JSON.stringify({ username, email, password }),
       });
       setUser(userData);
@@ -89,12 +99,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const logout = async (): Promise<void> => {
     try {
-      await apiRequest('/api/auth/logout', { method: 'POST' });
+      await apiRequest("/api/auth/logout", { method: "POST" });
       setUser(null);
       // Clear all queries from cache on logout
       queryClient.clear();
     } catch (error) {
-      console.error('Error during logout:', error);
+      console.error("Error during logout:", error);
     }
   };
 
@@ -105,7 +115,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     login,
     register,
     logout,
-    checkAuth
+    checkAuth,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

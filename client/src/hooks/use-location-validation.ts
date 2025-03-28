@@ -1,6 +1,6 @@
 
-import { useState, useEffect } from 'react';
-import { apiRequest } from '@/lib/queryClient';
+import { apiRequest } from "@/lib/api";
+import { useState, useEffect } from "react";
 
 export function useLocationValidation(location: string) {
   const [isValidating, setIsValidating] = useState(false);

@@ -1,23 +1,29 @@
-import { useState, useEffect } from "react";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { apiRequest, queryClient } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
-import { AstrologyChart } from "@shared/schema";
-import { motion } from "framer-motion";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useLocation } from "wouter";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/hooks/use-auth-fixed";
-
-import Navbar from "@/components/layout/navbar-fixed";
-import MobileNavigation from "@/components/layout/mobile-navigation";
-import SubscriptionBanner from "@/components/layout/subscription-banner";
-import ZodiacSignPicker from "@/components/astrology/zodiac-sign-picker";
-import BirthChartForm from "@/components/astrology/birth-chart-form";
-import BirthChartDisplay from "@/components/astrology/birth-chart-display";
-import HoroscopeDisplay from "@/components/astrology/horoscope-display";
-import CompatibilityChart from "@/components/astrology/compatibility-chart";
+import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/api";
+import { queryClient } from "@/lib/queryClient";
+import { AstrologyChart } from "@shared/schema";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { useLocation } from "wouter";
+import BirthChartDisplay from "../components/astrology/birth-chart-display";
+import BirthChartForm from "../components/astrology/birth-chart-form";
+import CompatibilityChart from "../components/astrology/compatibility-chart";
+import HoroscopeDisplay from "../components/astrology/horoscope-display";
+import ZodiacSignPicker from "../components/astrology/zodiac-sign-picker";
+import MobileNavigation from "../components/layout/mobile-navigation";
+import Navbar from "../components/layout/navbar-fixed";
+import SubscriptionBanner from "../components/layout/subscription-banner";
 
 // Import zodiac signs data from the server
 // In a real app, this would be fetched from the API
@@ -33,7 +39,7 @@ const zodiacSigns = [
   { sign: "Sagittarius", element: "Fire", dates: "November 22 - December 21" },
   { sign: "Capricorn", element: "Earth", dates: "December 22 - January 19" },
   { sign: "Aquarius", element: "Air", dates: "January 20 - February 18" },
-  { sign: "Pisces", element: "Water", dates: "February 19 - March 20" }
+  { sign: "Pisces", element: "Water", dates: "February 19 - March 20" },
 ];
 
 export default function AstrologyPage() {
@@ -50,7 +56,7 @@ export default function AstrologyPage() {
   const {
     data: horoscope,
     isLoading: isLoadingHoroscope,
-    error: horoscopeError
+    error: horoscopeError,
   } = useQuery({
     queryKey: ["/api/horoscopes", selectedSign],
     queryFn: async () => {
@@ -64,14 +70,20 @@ export default function AstrologyPage() {
   const {
     data: compatibility,
     isLoading: isLoadingCompatibility,
-    error: compatibilityError
+    error: compatibilityError,
   } = useQuery({
     queryKey: ["/api/compatibility", selectedSign, secondSign],
     queryFn: async () => {
       if (!selectedSign || !secondSign) return null;
-      return await apiRequest(`/api/compatibility/${selectedSign.toLowerCase()}/${secondSign.toLowerCase()}`);
+      return await apiRequest(
+        `/api/compatibility/${selectedSign.toLowerCase()}/${secondSign.toLowerCase()}`
+      );
     },
-    enabled: !!selectedSign && !!secondSign && compatibilityMode && activeTab === "compatibility",
+    enabled:
+      !!selectedSign &&
+      !!secondSign &&
+      compatibilityMode &&
+      activeTab === "compatibility",
   });
 
   // Birth chart mutation
@@ -79,7 +91,7 @@ export default function AstrologyPage() {
     mutationFn: async (formData: any) => {
       const res = await apiRequest("/api/astrology-charts/birth-chart", {
         method: "POST",
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
       return res;
     },
@@ -104,7 +116,8 @@ export default function AstrologyPage() {
   const handleUpgradeToPremium = () => {
     toast({
       title: "Premium Feature",
-      description: "Upgrade functionality will be available in a future update.",
+      description:
+        "Upgrade functionality will be available in a future update.",
     });
   };
 
@@ -146,28 +159,29 @@ export default function AstrologyPage() {
       // Format the birth date properly
       const formattedData = {
         ...formData,
-        birthDate: formData.birthDate instanceof Date ?
-          formData.birthDate.toISOString().split('T')[0] :
-          formData.birthDate
+        birthDate:
+          formData.birthDate instanceof Date
+            ? formData.birthDate.toISOString().split("T")[0]
+            : formData.birthDate,
       };
 
       // Show loading toast
       const loadingToast = toast({
         description: "Generating your birth chart...",
-        duration: 30000 // Long duration as chart generation can take time
+        duration: 30000, // Long duration as chart generation can take time
       });
 
       console.log("Submitting birth chart data:", {
         name: formattedData.name,
         birthDate: formattedData.birthDate,
         birthTime: formattedData.birthTime || "unknown",
-        birthLocation: formattedData.birthLocation
+        birthLocation: formattedData.birthLocation,
       });
 
       try {
-        const data = await apiRequest('/api/astrology-charts/birth-chart', {
-          method: 'POST',
-          body: JSON.stringify(formattedData)
+        const data = await apiRequest("/api/astrology-charts/birth-chart", {
+          method: "POST",
+          body: JSON.stringify(formattedData),
         });
 
         dismiss(loadingToast.id);
@@ -176,7 +190,7 @@ export default function AstrologyPage() {
         setCurrentChart(data.data || data);
         toast({
           description: "Birth chart generated successfully!",
-          variant: "default"
+          variant: "default",
         });
       } catch (error) {
         dismiss(loadingToast.id);
@@ -190,7 +204,7 @@ export default function AstrologyPage() {
           const previewChart = {
             id: Date.now(),
             userId: 0,
-            chartType: 'birth-chart',
+            chartType: "birth-chart",
             chartData: {
               name: formattedData.name,
               date: formattedData.birthDate,
@@ -207,18 +221,20 @@ export default function AstrologyPage() {
                 uranus: { sign: "Capricorn", degree: 3 },
                 neptune: { sign: "Capricorn", degree: 12 },
                 pluto: { sign: "Scorpio", degree: 19 },
-              }
+              },
             },
-            interpretation: "This is a preview birth chart. Log in or create an account to save your charts and receive personalized interpretations.",
-            createdAt: new Date()
+            interpretation:
+              "This is a preview birth chart. Log in or create an account to save your charts and receive personalized interpretations.",
+            createdAt: new Date(),
           };
 
           setCurrentChart(previewChart);
 
           toast({
             title: "Preview Chart Ready",
-            description: "Create an account to save your chart and unlock personalized interpretations.",
-            variant: "default"
+            description:
+              "Create an account to save your chart and unlock personalized interpretations.",
+            variant: "default",
           });
         } else {
           // Rethrow other errors
@@ -229,28 +245,36 @@ export default function AstrologyPage() {
       console.error("Birth chart generation error:", error);
 
       // Extract error message
-      const errorMessage = error instanceof Error
-        ? error.message
-        : "Failed to generate birth chart. Please try again.";
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : "Failed to generate birth chart. Please try again.";
 
       // Provide more user-friendly error messages based on specific error types
-      let userFriendlyMessage = "Failed to generate birth chart. Please try again.";
-      
-      if (errorMessage.includes("Service Unavailable") || errorMessage.includes("interpretation service")) {
-        userFriendlyMessage = "Our interpretation service is temporarily unavailable. Please try again in a few minutes.";
+      let userFriendlyMessage =
+        "Failed to generate birth chart. Please try again.";
+
+      if (
+        errorMessage.includes("Service Unavailable") ||
+        errorMessage.includes("interpretation service")
+      ) {
+        userFriendlyMessage =
+          "Our interpretation service is temporarily unavailable. Please try again in a few minutes.";
       } else if (errorMessage.includes("Invalid birth date")) {
-        userFriendlyMessage = "Please check your birth date format and try again.";
+        userFriendlyMessage =
+          "Please check your birth date format and try again.";
       } else if (errorMessage.includes("Invalid birth location")) {
-        userFriendlyMessage = "We couldn't recognize your birth location. Please try a more specific city and country.";
+        userFriendlyMessage =
+          "We couldn't recognize your birth location. Please try a more specific city and country.";
       }
-      
+
       console.log("Showing error toast with message:", userFriendlyMessage);
-      
+
       toast({
         title: "Birth Chart Generation Failed",
         description: userFriendlyMessage,
         variant: "destructive",
-        duration: 8000
+        duration: 8000,
       });
 
       // Re-throw to allow form component to handle display
@@ -259,12 +283,32 @@ export default function AstrologyPage() {
   };
 
   // Generate random stars with moderate density
-  const [stars, setStars] = useState<Array<{x: number, y: number, size: number, opacity: number, delay: number}>>([]);
-  const [shootingStars, setShootingStars] = useState<Array<{id: number, startX: number, startY: number, endX: number, endY: number, duration: number, delay: number}>>([]);
+  const [stars, setStars] = useState<
+    Array<{
+      x: number;
+      y: number;
+      size: number;
+      opacity: number;
+      delay: number;
+    }>
+  >([]);
+  const [shootingStars, setShootingStars] = useState<
+    Array<{
+      id: number;
+      startX: number;
+      startY: number;
+      endX: number;
+      endY: number;
+      duration: number;
+      delay: number;
+    }>
+  >([]);
 
   useEffect(() => {
     // Generate random stars - reduced density
-    const starsCount = Math.floor(window.innerWidth * window.innerHeight / 10000); // Significantly reduced from typical 15000-20000
+    const starsCount = Math.floor(
+      (window.innerWidth * window.innerHeight) / 10000
+    ); // Significantly reduced from typical 15000-20000
     const newStars = [];
 
     for (let i = 0; i < starsCount; i++) {
@@ -273,7 +317,7 @@ export default function AstrologyPage() {
         y: Math.random() * 100,
         size: Math.random() * 2 + 1,
         opacity: Math.random() * 0.7 + 0.3,
-        delay: Math.random() * 5
+        delay: Math.random() * 5,
       });
     }
 
@@ -298,7 +342,7 @@ export default function AstrologyPage() {
           endX,
           endY,
           duration: 1 + Math.random() * 2,
-          delay: Math.random() * 2
+          delay: Math.random() * 2,
         });
       }
 
@@ -317,13 +361,15 @@ export default function AstrologyPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-dark overflow-hidden relative"
-         style={{
-           backgroundImage: `radial-gradient(circle at 10% 20%, rgba(74, 33, 116, 0.2) 0%, rgba(26, 26, 74, 0.1) 80%)`,
-           backgroundBlendMode: 'overlay',
-           backgroundSize: 'cover',
-           position: 'relative'
-         }}>
+    <div
+      className="min-h-screen bg-dark overflow-hidden relative"
+      style={{
+        backgroundImage: `radial-gradient(circle at 10% 20%, rgba(74, 33, 116, 0.2) 0%, rgba(26, 26, 74, 0.1) 80%)`,
+        backgroundBlendMode: "overlay",
+        backgroundSize: "cover",
+        position: "relative",
+      }}
+    >
       {/* Stars background */}
       <div className="fixed inset-0 pointer-events-none">
         {/* Regular stars */}
@@ -339,7 +385,7 @@ export default function AstrologyPage() {
               repeat: Infinity,
               duration: 3 + star.delay,
               ease: "easeInOut",
-              times: [0, 0.2, 0.8, 1]
+              times: [0, 0.2, 0.8, 1],
             }}
             style={{
               left: `${star.x}%`,
@@ -380,8 +426,12 @@ export default function AstrologyPage() {
             <motion.div
               className="absolute top-0 left-0 w-[60px] h-[2px] -z-10 origin-left"
               style={{
-                background: 'linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%)',
-                transform: `rotate(${Math.atan2(star.endY - star.startY, star.endX - star.startX) * (180 / Math.PI)}deg)`,
+                background:
+                  "linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%)",
+                transform: `rotate(${
+                  Math.atan2(star.endY - star.startY, star.endX - star.startX) *
+                  (180 / Math.PI)
+                }deg)`,
               }}
             />
           </motion.div>
@@ -398,7 +448,8 @@ export default function AstrologyPage() {
               Cosmic Astrology
             </h2>
             <p className="text-light/80 max-w-2xl mx-auto">
-              Explore your cosmic blueprint, daily horoscopes, and celestial compatibility with our AI-powered astrology tools.
+              Explore your cosmic blueprint, daily horoscopes, and celestial
+              compatibility with our AI-powered astrology tools.
             </p>
           </div>
 
@@ -442,7 +493,10 @@ export default function AstrologyPage() {
             </div>
 
             {/* Daily Horoscope */}
-            <TabsContent value="horoscope" className="mt-0 animate-in fade-in-50 duration-500">
+            <TabsContent
+              value="horoscope"
+              className="mt-0 animate-in fade-in-50 duration-500"
+            >
               {!selectedSign ? (
                 <ZodiacSignPicker
                   signs={zodiacSigns}
@@ -455,11 +509,11 @@ export default function AstrologyPage() {
                   sign={selectedSign}
                   content={horoscope.content}
                   premiumContent={horoscope.premium_content}
-                  date={new Date().toLocaleDateString('en-US', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
+                  date={new Date().toLocaleDateString("en-US", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
                   })}
                   isPremiumUser={false} // Would be dynamic based on user's subscription
                   onSubscribe={handleUpgradeToPremium}
@@ -467,7 +521,9 @@ export default function AstrologyPage() {
               ) : isLoadingHoroscope ? (
                 <div className="text-center py-12">
                   <div className="w-12 h-12 border-4 border-t-accent border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                  <p className="text-light/70">Consulting the cosmic energies...</p>
+                  <p className="text-light/70">
+                    Consulting the cosmic energies...
+                  </p>
                 </div>
               ) : horoscopeError ? (
                 <div className="text-center py-12 text-red-400">
@@ -477,7 +533,10 @@ export default function AstrologyPage() {
             </TabsContent>
 
             {/* Birth Chart */}
-            <TabsContent value="birth-chart" className="mt-0 animate-in fade-in-50 duration-500">
+            <TabsContent
+              value="birth-chart"
+              className="mt-0 animate-in fade-in-50 duration-500"
+            >
               {!currentChart ? (
                 // Use a simplified preview form directly in the page instead of dynamic imports
                 <div className="max-w-4xl mx-auto">
@@ -485,32 +544,36 @@ export default function AstrologyPage() {
                     <CardHeader>
                       <CardTitle>Birth Chart Preview</CardTitle>
                       <CardDescription>
-                        Enter your birth details to generate a free preview of your astrological birth chart
+                        Enter your birth details to generate a free preview of
+                        your astrological birth chart
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-6">
                         <p className="text-sm text-muted-foreground leading-relaxed">
-                          Our birth chart calculator uses Swiss Ephemeris for accurate planetary positions.
-                          Enter your details below to see your Sun and Moon signs, with an option to save and
-                          view your complete chart with a premium account.
+                          Our birth chart calculator uses Swiss Ephemeris for
+                          accurate planetary positions. Enter your details below
+                          to see your Sun and Moon signs, with an option to save
+                          and view your complete chart with a premium account.
                         </p>
-                        
+
                         {isAuthenticated ? (
-                          <BirthChartForm 
-                            onSubmit={handleBirthChartSubmit} 
-                            isLoading={createBirthChartMutation.isPending} 
+                          <BirthChartForm
+                            onSubmit={handleBirthChartSubmit}
+                            isLoading={createBirthChartMutation.isPending}
                           />
                         ) : (
                           <div className="space-y-4">
                             <div className="rounded-md bg-yellow-50 p-4 border border-yellow-200">
                               <p className="text-sm text-yellow-700">
-                                Sign in to save your birth chart and access detailed interpretations of all planetary aspects.
+                                Sign in to save your birth chart and access
+                                detailed interpretations of all planetary
+                                aspects.
                               </p>
                             </div>
-                            <Button 
-                              className="w-full" 
-                              onClick={() => navigate('/auth')}
+                            <Button
+                              className="w-full"
+                              onClick={() => navigate("/auth")}
                             >
                               Sign In to Generate Full Chart
                             </Button>
@@ -530,7 +593,10 @@ export default function AstrologyPage() {
             </TabsContent>
 
             {/* Compatibility */}
-            <TabsContent value="compatibility" className="mt-0 animate-in fade-in-50 duration-500">
+            <TabsContent
+              value="compatibility"
+              className="mt-0 animate-in fade-in-50 duration-500"
+            >
               {!selectedSign ? (
                 <ZodiacSignPicker
                   signs={zodiacSigns}
@@ -540,7 +606,7 @@ export default function AstrologyPage() {
                 />
               ) : !secondSign ? (
                 <ZodiacSignPicker
-                  signs={zodiacSigns.filter(s => s.sign !== selectedSign)}
+                  signs={zodiacSigns.filter((s) => s.sign !== selectedSign)}
                   onSelectSign={handleSelectSign}
                   selectedSign={selectedSign}
                   title="Select Second Zodiac Sign"
@@ -556,7 +622,9 @@ export default function AstrologyPage() {
               ) : isLoadingCompatibility ? (
                 <div className="text-center py-12">
                   <div className="w-12 h-12 border-4 border-t-accent border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                  <p className="text-light/70">Analyzing cosmic compatibility...</p>
+                  <p className="text-light/70">
+                    Analyzing cosmic compatibility...
+                  </p>
                 </div>
               ) : compatibilityError ? (
                 <div className="text-center py-12 text-red-400">

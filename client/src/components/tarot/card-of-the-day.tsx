@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { useQuery } from "@tanstack/react-query";
-import { useToast } from "@/hooks/use-toast";
-import { apiRequest, queryClient } from "@/lib/queryClient";
-import TarotCard from "./tarot-card";
 import { Button } from "@/components/ui/button";
-import { Sparkles, Clock } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/api";
+import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
+import { Clock, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "wouter";
+import TarotCard from "./tarot-card";
 
 interface CardOfTheDayResponse {
   success: boolean;
@@ -27,16 +27,16 @@ export default function CardOfTheDay() {
   const [isFlipped, setIsFlipped] = useState(false);
   const { toast } = useToast();
 
-  const { 
-    data: cardOfTheDay, 
+  const {
+    data: cardOfTheDay,
     isLoading,
-    error 
+    error,
   } = useQuery<CardOfTheDayResponse>({
     queryKey: ["/api/tarot-cards/card-of-the-day"],
     staleTime: 1000 * 60 * 60 * 24, // 24 hours
     queryFn: async () => {
       return await apiRequest("/api/tarot-cards/card-of-the-day");
-    }
+    },
   });
 
   useEffect(() => {
@@ -70,10 +70,15 @@ export default function CardOfTheDay() {
   if (error || !cardOfTheDay) {
     return (
       <div className="bg-dark/40 backdrop-blur-sm border border-light/10 rounded-lg p-6 text-center">
-        <h3 className="text-xl font-medium text-light mb-3">Unable to fetch today's card</h3>
-        <p className="text-light/70 mb-4">The mystical energies are momentarily disrupted. Please try again later.</p>
-        <Button 
-          variant="outline" 
+        <h3 className="text-xl font-medium text-light mb-3">
+          Unable to fetch today's card
+        </h3>
+        <p className="text-light/70 mb-4">
+          The mystical energies are momentarily disrupted. Please try again
+          later.
+        </p>
+        <Button
+          variant="outline"
           onClick={() => window.location.reload()}
           className="border-accent/50 text-accent hover:bg-accent/20"
         >
@@ -101,10 +106,7 @@ export default function CardOfTheDay() {
       <div className="flex flex-col md:flex-row gap-6">
         {/* Card Display */}
         <div className="flex justify-center md:w-1/3">
-          <div 
-            className="cursor-pointer" 
-            onClick={handleCardClick}
-          >
+          <div className="cursor-pointer" onClick={handleCardClick}>
             <TarotCard
               cardName={card.name}
               imageUrl={card.imageUrl}
@@ -129,13 +131,9 @@ export default function CardOfTheDay() {
             <p className="text-light/60 text-sm mb-3">
               {card.arcana} Arcana • {card.number}
             </p>
-            <p className="text-light/80 mb-4">
-              {interpretation}
-            </p>
+            <p className="text-light/80 mb-4">{interpretation}</p>
             <div className="bg-primary/20 border border-primary/30 rounded-lg p-4 mb-4">
-              <p className="text-light/90 text-sm">
-                {message}
-              </p>
+              <p className="text-light/90 text-sm">{message}</p>
             </div>
             <div className="flex space-x-4">
               <Link href="/auth">
@@ -144,7 +142,10 @@ export default function CardOfTheDay() {
                 </Button>
               </Link>
               <Link href="/tarot">
-                <Button variant="outline" className="border-accent/50 text-accent hover:bg-accent/20">
+                <Button
+                  variant="outline"
+                  className="border-accent/50 text-accent hover:bg-accent/20"
+                >
                   Full Reading
                 </Button>
               </Link>

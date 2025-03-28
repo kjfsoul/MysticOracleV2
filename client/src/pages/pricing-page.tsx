@@ -1,12 +1,19 @@
-import { useState } from "react";
-import { useAuth } from "@/hooks/use-auth-fixed";
-import { apiRequest } from "@/lib/queryClient";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, Check } from "lucide-react";
-import { PageHeader } from "../components/ui/page-header"; // Corrected import path
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { useAuth } from "@/hooks/use-auth-fixed";
 import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/api"; // Updated import path
+import { Check, Loader2 } from "lucide-react";
+import { useState } from "react";
+import { PageHeader } from "../components/ui/page-header";
 
 const PLANS = [
   {
@@ -54,7 +61,7 @@ export default function PricingPage() {
     try {
       const data = await apiRequest("/api/create-checkout-session", {
         method: "POST",
-        body: JSON.stringify({ planId })
+        body: JSON.stringify({ planId }),
       });
       if (data?.url) {
         window.location.href = data.url;
@@ -65,7 +72,8 @@ export default function PricingPage() {
       console.error("Error creating checkout session:", error);
       toast({
         title: "Subscription error",
-        description: "There was a problem processing your subscription request. Please try again later.",
+        description:
+          "There was a problem processing your subscription request. Please try again later.",
         variant: "destructive",
       });
     } finally {
@@ -86,11 +94,11 @@ export default function PricingPage() {
             <CardHeader>
               <div className="flex justify-between items-center">
                 <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                <Badge className="bg-gold text-background">${plan.price}/month</Badge>
+                <Badge className="bg-gold text-background">
+                  ${plan.price}/month
+                </Badge>
               </div>
-              <CardDescription>
-                Unlock your mystical potential
-              </CardDescription>
+              <CardDescription>Unlock your mystical potential</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
               <ul className="space-y-2">
@@ -103,12 +111,14 @@ export default function PricingPage() {
               </ul>
             </CardContent>
             <CardFooter>
-              <Button 
+              <Button
                 className="w-full bg-gold hover:bg-gold/80 text-background"
                 onClick={() => handleSubscribe(plan.id)}
                 disabled={!!isLoading}
               >
-                {isLoading === plan.id && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                {isLoading === plan.id && (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                )}
                 Subscribe Now
               </Button>
             </CardFooter>

@@ -1,16 +1,127 @@
-/* @ts-nocheck */
-import { is } from "drizzle-orm";
-import { Eclipse } from "lucide-react";
-import test from "node:test";
-import { a } from "node_modules/framer-motion/dist/types.d-B50aGbjN";
-import { Page } from "openai/pagination.mjs";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { HoroscopePreview } from "../components/astrology/horoscope-preview";
+import { BlogPreview } from "../components/blog/blog-preview";
+import CardOfTheDay from "../components/tarot/card-of-the-day";
+import { supabase } from "../lib/supabaseClient";
 
 const EclipseLandingPage: React.FC = () => {
+  const targetDate = new Date("2025-03-29T00:00:00");
+  const [countdown, setCountdown] = useState("");
+  const [email, setEmail] = useState("");
+  const [location, setLocation] = useState("");
+  const [formStatus, setFormStatus] = useState("");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      const diff = targetDate.getTime() - now.getTime();
+      if (diff <= 0) {
+        setCountdown("The Eclipse is happening now!");
+        clearInterval(interval);
+      } else {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+        setCountdown(`${days}d ${hours}h ${minutes}m ${seconds}s`);
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const { error } = await supabase
+      .from("subscriptions")
+      .insert([{ email, location }]);
+    if (error) {
+      setFormStatus("Error saving subscription. Please try again.");
+    } else {
+      setFormStatus("Thanks for subscribing!");
+      setEmail("");
+      setLocation("");
+    }
+  };
+
   return (
-    <div className="p-6 max-w-4xl mx-auto text-center">
-      <h1>Eclipse Landing Page</h1>
-      <p>This is a clean test page.</p>
+    <div className="min-h-screen bg-[url('/assets/images/stars-bg.jpg')] bg-cover bg-fixed p-8 animate-fadeIn">
+      <header className="mb-8 text-center">
+        <h1 className="text-4xl font-bold mb-4">
+          Mystic Arcana Eclipse Experience
+        </h1>
+        <p className="text-xl">Countdown to the Solar Eclipse: {countdown}</p>
+      </header>
+      <section className="mb-8 max-w-md mx-auto bg-gray-800 bg-opacity-75 p-6 rounded">
+        <h2 className="text-2xl font-semibold mb-4">Subscribe for Updates</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label className="block mb-1">Email:</label>
+            <input
+              type="email"
+              className="w-full p-2 rounded"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-1">Location:</label>
+            <input
+              type="text"
+              className="w-full p-2 rounded"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-purple-600 p-2 rounded hover:bg-purple-700"
+          >
+            Subscribe
+          </button>
+          {formStatus && <p className="mt-2 text-center">{formStatus}</p>}
+        </form>
+      </section>
+      <section className="mb-8">
+        <h2 className="text-3xl font-bold text-center mb-4">
+          Daily Tarot Draw
+        </h2>
+        <div className="flex justify-center">
+          <CardOfTheDay />
+        </div>
+      </section>
+      <section className="mb-8">
+        <h2 className="text-3xl font-bold text-center mb-4">Daily Horoscope</h2>
+        <div className="flex justify-center">
+          <HoroscopePreview />
+        </div>
+      </section>
+      <section className="mb-8">
+        <h2 className="text-3xl font-bold text-center mb-4">
+          Eclipse Zodiac Interpretations
+        </h2>
+        <div className="bg-gray-800 bg-opacity-75 p-6 rounded">
+          <p className="text-center">
+            Discover how the eclipse influences your zodiac sign. Detailed
+            interpretations coming soon.
+          </p>
+        </div>
+      </section>
+      <section className="mb-8">
+        <h2 className="text-3xl font-bold text-center mb-4">
+          Mystic Arcana Blog
+        </h2>
+        <div className="flex flex-wrap justify-center gap-4">
+          <BlogPreview />
+          {/* Additional blog previews can be added here */}
+        </div>
+      </section>
+      <footer className="text-center mt-8">
+        <p>
+          &copy; {new Date().getFullYear()} Mystic Arcana. All rights reserved.
+        </p>
+      </footer>
     </div>
   );
 };

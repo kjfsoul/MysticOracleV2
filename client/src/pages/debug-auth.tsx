@@ -1,15 +1,22 @@
-import { useState, useEffect } from 'react';
-import { useAuth } from '@/hooks/use-auth-fixed';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { apiRequest } from '@/lib/queryClient';
-import { Loader2 } from 'lucide-react';
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { useAuth } from "@/hooks/use-auth-fixed";
+import { apiRequest } from "@/lib/api";
+import { Loader2 } from "lucide-react";
+import { useState } from "react";
 
 export default function DebugAuthPage() {
   const { user, isLoading, login } = useAuth();
-  const [apiStatus, setApiStatus] = useState<{[key: string]: string}>({});
+  const [apiStatus, setApiStatus] = useState<{ [key: string]: string }>({});
   const [isTestingApi, setIsTestingApi] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
@@ -17,42 +24,42 @@ export default function DebugAuthPage() {
   const testApiAuthentication = async () => {
     setIsTestingApi(true);
     const apis = [
-      '/api/user',
-      '/api/tarot-readings',
-      '/api/auth-test' // Add our new auth test endpoint
+      "/api/user",
+      "/api/tarot-readings",
+      "/api/auth-test", // Add our new auth test endpoint
     ];
-    
-    const newStatus: {[key: string]: string} = {};
-    
+
+    const newStatus: { [key: string]: string } = {};
+
     for (const api of apis) {
       try {
         // Use apiRequest which handles credentials and headers properly
         const data = await apiRequest(api);
         console.log(`Data from ${api}:`, data);
-        
-        let statusText = '200 OK';
-        
+
+        let statusText = "200 OK";
+
         // For our special auth-test endpoint, add more details
-        if (api === '/api/auth-test' && data.status) {
+        if (api === "/api/auth-test" && data.status) {
           statusText += ` (${data.status})`;
         }
-        
+
         newStatus[api] = statusText;
       } catch (err: any) {
         // If this is an HTTP error, try to extract the status code
-        if (err?.message?.includes('HTTP error')) {
+        if (err?.message?.includes("HTTP error")) {
           const statusMatch = err.message.match(/(\d{3})/);
           if (statusMatch) {
             newStatus[api] = `${statusMatch[1]} Error`;
           } else {
-            newStatus[api] = `Error: ${err?.message || 'Unknown error'}`;
+            newStatus[api] = `Error: ${err?.message || "Unknown error"}`;
           }
         } else {
-          newStatus[api] = `Error: ${err?.message || 'Unknown error'}`;
+          newStatus[api] = `Error: ${err?.message || "Unknown error"}`;
         }
       }
     }
-    
+
     setApiStatus(newStatus);
     setIsTestingApi(false);
   };
@@ -63,7 +70,7 @@ export default function DebugAuthPage() {
       setIsLoggingIn(true);
       await login("newuser", "password123");
     } catch (err: any) {
-      console.error("Login error:", err?.message || 'Unknown error');
+      console.error("Login error:", err?.message || "Unknown error");
     } finally {
       setIsLoggingIn(false);
     }
@@ -71,7 +78,9 @@ export default function DebugAuthPage() {
 
   // Get cookie info
   const getCookieInfo = () => {
-    return document.cookie ? "Cookies present: " + document.cookie : "No cookies found";
+    return document.cookie
+      ? "Cookies present: " + document.cookie
+      : "No cookies found";
   };
 
   return (
@@ -86,7 +95,9 @@ export default function DebugAuthPage() {
         <CardContent>
           <div className="space-y-4">
             <div>
-              <h3 className="text-lg font-medium">Current Authentication Status</h3>
+              <h3 className="text-lg font-medium">
+                Current Authentication Status
+              </h3>
               {isLoading ? (
                 <div className="flex items-center mt-2">
                   <Loader2 className="h-4 w-4 mr-2 animate-spin" />
@@ -95,7 +106,7 @@ export default function DebugAuthPage() {
               ) : (
                 <div className="mt-2">
                   <div className="flex items-center gap-2">
-                    Status: 
+                    Status:
                     {user ? (
                       <Badge className="bg-green-500">Authenticated</Badge>
                     ) : (
@@ -128,30 +139,33 @@ export default function DebugAuthPage() {
               <h3 className="text-lg font-medium">API Authentication Tests</h3>
               <div className="mt-2 space-y-2">
                 <div>
-                  <a 
-                    href="/api/direct-login-test" 
+                  <a
+                    href="/api/direct-login-test"
                     className="text-blue-500 underline hover:text-blue-700"
                     onClick={(e) => {
                       e.preventDefault();
-                      window.location.href = '/api/direct-login-test';
+                      window.location.href = "/api/direct-login-test";
                     }}
                   >
                     Direct Login via Browser
                   </a>
                   <p className="text-sm text-muted-foreground mt-1">
-                    This will perform a direct login and then return to this page to test if cookies were set correctly.
+                    This will perform a direct login and then return to this
+                    page to test if cookies were set correctly.
                   </p>
                 </div>
-                
-                <Button 
-                  onClick={testApiAuthentication} 
+
+                <Button
+                  onClick={testApiAuthentication}
                   disabled={isTestingApi}
                   variant="outline"
                 >
-                  {isTestingApi && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                  {isTestingApi && (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  )}
                   Test API Authentication
                 </Button>
-                
+
                 {Object.keys(apiStatus).length > 0 && (
                   <div className="mt-4">
                     <h4 className="font-medium">Results:</h4>
@@ -159,8 +173,12 @@ export default function DebugAuthPage() {
                       {Object.entries(apiStatus).map(([api, status]) => (
                         <li key={api} className="flex flex-col">
                           <span className="font-mono text-sm">{api}: </span>
-                          <Badge 
-                            className={`w-fit mt-1 ${status.startsWith('2') ? 'bg-green-500' : 'bg-red-500'}`}
+                          <Badge
+                            className={`w-fit mt-1 ${
+                              status.startsWith("2")
+                                ? "bg-green-500"
+                                : "bg-red-500"
+                            }`}
                           >
                             {status}
                           </Badge>
@@ -174,12 +192,15 @@ export default function DebugAuthPage() {
           </div>
         </CardContent>
         <CardFooter className="flex justify-between">
-          <Button variant="outline" onClick={() => window.location.href = '/auth'}>
+          <Button
+            variant="outline"
+            onClick={() => (window.location.href = "/auth")}
+          >
             Go to Login Page
           </Button>
-          <Button 
-            variant="outline" 
-            onClick={() => window.open('/api/direct-login-test', '_blank')}
+          <Button
+            variant="outline"
+            onClick={() => window.open("/api/direct-login-test", "_blank")}
           >
             Try Server Direct Login
           </Button>
