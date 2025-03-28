@@ -1,7 +1,7 @@
-import { useAuth } from "@/hooks/use-auth-fixed";
+import { useAuth } from "@/hooks/use-auth";
 import { Redirect } from "wouter";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import AuthForm from "@/components/ui/auth-form-fixed";
+import AuthForm from "@/components/ui/auth-form";
 
 export default function AuthPage() {
   const { user, isLoading } = useAuth();

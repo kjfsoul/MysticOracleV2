@@ -1,8 +1,8 @@
-import { useAuth } from "@/hooks/use-auth-fixed";
+import { useAuth } from "@/hooks/use-auth";
 import { Loader2 } from "lucide-react";
 import { Redirect, Route } from "wouter";
 import MobileNavigation from "@/components/layout/mobile-navigation";
-import Navbar from "@/components/layout/navbar-fixed";
+import Navbar from "@/components/layout/navbar";
 
 export function ProtectedRoute({
   path,

@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Loader2, History, Filter, Search } from "lucide-react";
 import { PageHeader } from "@/components/ui/page-header";
 import { Input } from "@/components/ui/input";
-import { useAuth } from "@/hooks/use-auth-fixed";
+import { useAuth } from "@/hooks/use-auth";
 import MobileNavigation from "@/components/layout/mobile-navigation";
 import SubscriptionBanner from "@/components/layout/subscription-banner";
 

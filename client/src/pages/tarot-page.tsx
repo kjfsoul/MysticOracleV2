@@ -1,5 +1,5 @@
 import MobileNavigation from "@/components/layout/mobile-navigation";
-import Navbar from "@/components/layout/navbar-fixed";
+import Navbar from "@/components/layout/navbar";
 import SubscriptionBanner from "@/components/layout/subscription-banner";
 import TarotDeck from "@/components/tarot/tarot-deck";
 import TarotReading from "@/components/tarot/tarot-reading";

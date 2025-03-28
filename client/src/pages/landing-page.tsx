@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
-import Navbar from "@/components/layout/navbar-fixed";
+import Navbar from "@/components/layout/navbar";
 import MobileNavigation from "@/components/layout/mobile-navigation";
 import CardOfTheDay from "@/components/tarot/card-of-the-day";
 import { Button } from "@/components/ui/button";

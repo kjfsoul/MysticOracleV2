@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import Navbar from "@/components/layout/navbar-fixed";
+import Navbar from "@/components/layout/navbar";
 import TarotGallery from "@/components/tarot/tarot-gallery";
 import { PageHeader } from "@/components/ui/page-header";
 import { Moon, Stars, Sparkles } from "lucide-react";

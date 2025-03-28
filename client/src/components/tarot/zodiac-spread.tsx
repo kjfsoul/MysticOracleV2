@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { Link } from "wouter";
-import { useAuth } from "../../hooks/use-auth-fixed";
+import { useAuth } from "../../hooks/use-auth";
 import { useToast } from "../../hooks/use-toast";
 import { apiRequest } from "../../lib/api";
 import { Button } from "../ui/button";

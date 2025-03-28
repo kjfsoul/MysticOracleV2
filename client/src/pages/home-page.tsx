@@ -1,5 +1,5 @@
-import { useAuth } from "@/hooks/use-auth-fixed";
-import Navbar from "@/components/layout/navbar-fixed";
+import { useAuth } from "@/hooks/use-auth";
+import Navbar from "@/components/layout/navbar";
 import MobileNavigation from "@/components/layout/mobile-navigation";
 import SubscriptionBanner from "@/components/layout/subscription-banner";
 import { Button } from "@/components/ui/button";

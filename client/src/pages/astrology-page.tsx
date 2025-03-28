@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useAuth } from "@/hooks/use-auth-fixed";
+import { useAuth } from "@/hooks/use-auth";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/api";
 import { queryClient } from "@/lib/queryClient";
@@ -22,7 +22,7 @@ import CompatibilityChart from "../components/astrology/compatibility-chart";
 import HoroscopeDisplay from "../components/astrology/horoscope-display";
 import ZodiacSignPicker from "../components/astrology/zodiac-sign-picker";
 import MobileNavigation from "../components/layout/mobile-navigation";
-import Navbar from "../components/layout/navbar-fixed";
+import Navbar from "../components/layout/navbar";
 import SubscriptionBanner from "../components/layout/subscription-banner";
 
 // Import zodiac signs data from the server

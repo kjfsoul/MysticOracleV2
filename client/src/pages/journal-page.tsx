@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { PageHeader } from "@/components/ui/page-header";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Loader2, Save, BookOpen, Plus } from "lucide-react";
-import { useAuth } from "@/hooks/use-auth-fixed";
+import { useAuth } from "@/hooks/use-auth";
 import MobileNavigation from "@/components/layout/mobile-navigation";
 import SubscriptionBanner from "@/components/layout/subscription-banner";
 
