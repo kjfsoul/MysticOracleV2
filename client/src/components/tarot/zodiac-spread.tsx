@@ -1,3 +1,9 @@
+import { useMutation } from "@tanstack/react-query";
+import React, { useState } from "react";
+import { Link } from "wouter";
+import { useAuth } from "../../hooks/use-auth-fixed";
+import { useToast } from "../../hooks/use-toast";
+import { apiRequest } from "../../lib/api";
 import { Button } from "../ui/button";
 import {
   Card,
@@ -6,15 +12,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from t../ui/card";
+} from "../ui/card";
 import { Separator } from "../ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import { useAuth } from "../../hooks/use-auth-fixed";
-import { useToast } from "../../hooks/use-toast";
-import { apiRequest } from "../../lib/api";
-import { useMutation } from "@tanstack/react-query";
-import React, { useState } from "react";
-import { Link } from "wouter";
 import TarotCard from "./tarot-card";
 
 // ZodiacSpread component for the specialized tarot spread based on astrological houses
