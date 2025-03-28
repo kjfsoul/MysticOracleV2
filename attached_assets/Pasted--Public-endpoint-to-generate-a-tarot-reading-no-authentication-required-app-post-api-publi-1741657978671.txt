@@ -1,0 +1,161 @@
+  // Public endpoint to generate a tarot reading (no authentication required)
+  app.post("/api/public/tarot-readings", async (req, res) => {    
+    try {
+      const { spread, question } = req.body;
+
+      // Validate spread
+      const spreadConfig = getSpread(spread);
+      if (!spreadConfig) {
+        return res.status(400).json({ message: "Invalid spread type" });
+      }
+
+      // Get random cards for the spread
+      const cards = getRandomCards(spreadConfig.cardCount);
+
+      // Generate interpretation using OpenAI, without premium insight for public users
+      const { interpretation, aiInsight } = await generateTarotReading(cards, question, spread, false);
+
+      // Create a simple reading without saving to DB
+      const reading = {
+        id: Date.now(), // Use timestamp as ID
+        userId: 0, // Public user
+        spread,
+        question: question || null,
+        cards,
+        interpretation,
+        aiInsight: null, // No AI insight for public readings
+        isSaved: false,
+        createdAt: new Date()
+      };
+
+      res.status(201).json(reading);
+    } catch (error) {
+      console.error("Error creating public tarot reading:", error);
+      res.status(500).json({ message: "Failed to create reading" });
+    }
+  });
+
+  // Get user's tarot readings
+  app.get("/api/tarot-readings", async (req, res) => {
+    if (!req.isAuthenticated()) {
+      console.log("User not authenticated for tarot-readings endpoint");
+      return res.status(401).json({ 
+        message: "Please log in to view your tarot readings",
+        code: "AUTH_REQUIRED",
+        requiresAuth: true
+      });
+    }
+
+    try {
+      console.log(`Fetching tarot readings for user ID: ${req.user.id}`);
+      const readings = await storage.getTarotReadings(req.user.id);
+      console.log(`Found ${readings.length} readings`);
+      res.json(readings);
+    } catch (error) {
+      console.error("Error fetching tarot readings:", error);
+      res.status(500).json({ 
+        message: "Failed to fetch readings",
+        code: "SERVER_ERROR"
+      });
+    }
+  });
+
+  // Get specific tarot reading
+  app.get("/api/tarot-readings/:id", async (req, res) => {
+    if (!req.isAuthenticated()) {
+      return res.status(401).json({ message: "Not authenticated" });
+    }
+
+    try {
+      const readingId = parseInt(req.params.id);
+      const reading = await storage.getTarotReading(readingId);
+
+      if (!reading) {
+        return res.status(404).json({ message: "Reading not found" });
+      }
+
+      if (reading.userId !== req.user.id) {
+        return res.status(403).json({ message: "Access denied" });
+      }
+
+      res.json(reading);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch reading" });
+    }
+  });
+
+  // Generate a new tarot reading
+  app.post("/api/tarot-readings", async (req, res) => {
+    if (!req.isAuthenticated()) {
+      return res.status(401).json({ message: "Not authenticated" });
+    }
+
+    try {
+      const { spread, question } = req.body;
+
+      // Validate spread
+      const spreadConfig = getSpread(spread);
+      if (!spreadConfig) {
+        return res.status(400).json({ message: "Invalid spread type" });
+      }
+
+      // Get random cards for the spread
+      const cards = getRandomCards(spreadConfig.cardCount);
+
+      // Generate interpretation using OpenAI
+      const { interpretation, aiInsight } = await generateTarotReading(cards, question, spread);
+
+      // Create reading in database
+      const reading = await storage.createTarotReading({
+        userId: req.user.id,
+        spread,
+        question: question || null,
+        cards,
+        interpretation,
+        aiInsight,
+        isSaved: false
+      });
+
+      res.status(201).json(reading);
+    } catch (error) {
+      if (error instanceof ZodError) {
+        const validationError = fromZodError(error);
+        return res.status(400).json({ message: validationError.message });
+      }
+
+      console.error("Error creating tarot reading:", error);
+      res.status(500).json({ message: "Failed to create reading" });
+    }
+  });
+
+  // Save/unsave a tarot reading
+  app.patch("/api/tarot-readings/:id/save", async (req, res) => {
+    if (!req.isAuthenticated()) {
+      return res.status(401).json({ message: "Not authenticated" });
+    }
+
+    try {
+      const readingId = parseInt(req.params.id);
+      const { isSaved } = req.body;
+
+      if (typeof isSaved !== "boolean") {
+        return res.status(400).json({ message: "isSaved must be a boolean" });
+      }
+
+      const reading = await storage.getTarotReading(readingId);
+
+      if (!reading) {
+        return res.status(404).json({ message: "Reading not found" });
+      }
+
+      if (reading.userId !== req.user.id) {
+        return res.status(403).json({ message: "Access denied" });
+      }
+
+      const updatedReading = await storage.saveTarotReading(readingId, isSaved);
+      res.json(updatedReading);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to update reading" });
+    }
+  });
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mystic Arcana - Discover Your Cosmic Destiny</title>
+  <meta name="description" content="Explore the mystical realm of tarot and astrology with AI-powered insights personalized for your journey.">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- Custom CSS to set fonts -->
+  <style>
+    :root {
+      --font-heading: 'Cormorant Garamond', serif;
+      --font-body: 'Montserrat', sans-serif;
+      
+      /* Main colors */
+      --primary: 267 56% 30%;
+      --primary-foreground: 0 0% 100%;
+      
+      --secondary: 225 55% 23%;
+      --secondary-foreground: 0 0% 100%;
+      
+      --background: 240 11% 13%;
+      --foreground: 210 40% 98%;
+      
+      --accent: 46 65% 51%;
+      --accent-foreground: 0 0% 9%;
+      
+      --border: 233 12% 31%;
+      --input: 240 14% 23%;
+      --ring: 46 65% 51%;
+      
+      --radius: 0.75rem;
+    }
+    
+    .font-heading {
+      font-family: var(--font-heading);
+    }
+    
+    .font-body {
+      font-family: var(--font-body);
+    }
+  </style>
+</head>
+<body class="font-body antialiased bg-background text-foreground">
+<button id="shareModalTrigger">Share</button>
+  <div id="root"></div>
+<button id="shareModalTrigger" style="display: none;">Share</button>
+
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>

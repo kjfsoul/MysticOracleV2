@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  :root {
+    --mystic-purple: 262 60% 40%;
+    --mystic-blue: 210 60% 50%;
+    --mystic-teal: 180 70% 45%;
+    --mystic-pink: 320 70% 60%;
+    --mystic-gold: 45 80% 60%;
+    --star-color: 60 100% 90%;
+    --moon-glow: 260 100% 95%;
+    --crystal-glow: 280 100% 90%;
+  }
+
+  /* Tarot card styles */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  body {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    background-image: 
+      radial-gradient(circle at 15% 25%, rgba(126, 94, 162, 0.2) 0%, rgba(30, 30, 70, 0.1) 60%),
+      radial-gradient(circle at 85% 75%, rgba(81, 166, 198, 0.15) 0%, rgba(30, 30, 70, 0.05) 50%);
+    background-attachment: fixed;
+  }
+  
+  /* Mystical sparkling effect for special elements */
+  .mystic-sparkle {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .mystic-sparkle::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+      radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.7) 1px, transparent 1px),
+      radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.6) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px, 5px 5px;
+    animation: mysticSparkleAnimation 120s linear infinite;
+    pointer-events: none;
+    opacity: 0.1;
+    z-index: 1;
+  }
+  
+  @keyframes mysticSparkleAnimation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Arcane text styling */
+  .arcane-text {
+    background: linear-gradient(to right, 
+      hsl(var(--mystic-gold)), 
+      hsl(var(--mystic-pink)), 
+      hsl(var(--mystic-purple)),
+      hsl(var(--mystic-blue)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: arcaneTextShimmer 8s ease-in-out infinite;
+    background-size: 200% auto;
+  }
+  
+  @keyframes arcaneTextShimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Mystical glow effect */
+  .mystic-glow {
+    box-shadow: 0 0 15px rgba(180, 140, 230, 0.4), 
+                0 0 30px rgba(130, 90, 200, 0.2);
+  }
+  
+  /* Improved form input styling for better visibility */
+  input, select, textarea {
+    color: #e1e1e6 !important;
+    background-color: rgba(30, 30, 60, 0.65) !important;
+    border-color: rgba(170, 140, 230, 0.3) !important;
+    box-shadow: 0 0 10px rgba(140, 100, 200, 0.15) !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  input:focus, select:focus, textarea:focus {
+    border-color: rgba(170, 140, 230, 0.6) !important;
+    box-shadow: 0 0 15px rgba(140, 100, 200, 0.3) !important;
+  }
+  
+  input::placeholder {
+    color: rgba(225, 225, 230, 0.5) !important;
+  }
+  
+  /* Dark mode calendar styles */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8);
+  }
+  
+  /* Tarot card back styling */
+  .tarot-card-back {
+    background: linear-gradient(135deg, #2d2057 0%, #1a1040 100%);
+    border: 2px solid rgba(216, 180, 254, 0.3);
+    box-shadow: 
+      inset 0 0 20px rgba(216, 180, 254, 0.15),
+      0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Card selection flash effect */
+  .card-selected-flash {
+    animation: card-flash 0.6s ease-out;
+    position: relative;
+    z-index: 10;
+  }
+
+  @keyframes card-flash {
+    0% {
+      box-shadow: 0 0 0 0 rgba(200, 150, 255, 0);
+      transform: scale(1);
+    }
+    20% {
+      box-shadow: 0 0 15px 10px rgba(200, 150, 255, 0.7);
+      transform: scale(1.05);
+    }
+    60% {
+      box-shadow: 0 0 25px 15px rgba(200, 150, 255, 0.3);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(200, 150, 255, 0);
+      transform: scale(1);
+    }
+  }
+}
