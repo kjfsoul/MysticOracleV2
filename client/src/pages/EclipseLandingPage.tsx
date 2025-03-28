@@ -1,139 +1,337 @@
+// client/src/pages/EclipseLandingPage.tsx
 import React, { useEffect, useState } from "react";
-import { HoroscopePreview } from "../components/astrology/horoscope-preview";
-import { BlogPreview } from "../components/blog/blog-preview";
-import CardOfTheDay from "../components/tarot/card-of-the-day";
-import { supabase } from "../lib/supabaseClient";
+import { animate, motion } from "framer-motion"; // For animations
+
+// --- IMPORT YOUR ACTUAL COMPONENTS ---
+// import { EclipseZodiacMeaning } from '@/components/astrology/eclipse-zodiac-meaning'; // Placeholder
+import HoroscopePreview from "@/components/astrology/horoscope-preview";
+import CardOfTheDay from "@/components/tarot/card-of-the-day";
+import BlogPreview from "@/components/blog/blog-preview";
+
+// --- IMPORT UI COMPONENTS (Assuming ShadCN or similar) ---
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label"; // Import Label if using ShadCN Label
+
+// --- IMPORT SUPABASE CLIENT ---
+import { supabase } from "@/lib/supabaseClient"; // Ensure casing matches your file
+import { sign } from "crypto";
+import { on } from "events";
+import e from "express";
+import { p } from "framer-motion/dist/types.d-B50aGbjN";
+import { Eclipse, Unlock, Check } from "lucide-react";
+import { type } from "os";
+import { title } from "process";
+import { jsx } from "react/jsx-runtime";
+
+// --- CORRECT ECLIPSE DATE (UTC-4 for EDT) ---
+const eclipseDate = new Date("2025-03-29T04:50:00-04:00");
 
 const EclipseLandingPage: React.FC = () => {
-  const targetDate = new Date("2025-03-29T00:00:00");
-  const [countdown, setCountdown] = useState("");
-  const [email, setEmail] = useState("");
-  const [location, setLocation] = useState("");
-  const [formStatus, setFormStatus] = useState("");
+  // --- State Variables ---
+  const [timeLeft, setTimeLeft] = useState("Calculating...");
+  const [firstName, setFirstName] = useState(""); // Optional First Name
+  const [lastName, setLastName] = useState(""); // Optional Last Name
+  const [location, setLocation] = useState(""); // Required Location
+  const [email, setEmail] = useState(""); // Required Email
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  // Assuming CardOfTheDay and HoroscopePreview fetch their own data
+  // const [tarotCardData, setTarotCardData] = useState<any>(null); // Remove if CardOfTheDay handles fetch
 
+  // --- Countdown Timer Effect ---
   useEffect(() => {
-    const interval = setInterval(() => {
+    const updateCountdown = () => {
       const now = new Date();
-      const diff = targetDate.getTime() - now.getTime();
-      if (diff <= 0) {
-        setCountdown("The Eclipse is happening now!");
-        clearInterval(interval);
-      } else {
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((diff / (1000 * 60)) % 60);
-        const seconds = Math.floor((diff / 1000) % 60);
-        setCountdown(`${days}d ${hours}h ${minutes}m ${seconds}s`);
+      const difference = eclipseDate.getTime() - now.getTime();
+      if (difference <= 0) {
+        setTimeLeft("🌒 The Eclipse is Here!");
+        clearInterval(timer);
+        return;
       }
-    }, 1000);
-    return () => clearInterval(interval);
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / (1000 * 60)) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
+      setTimeLeft(
+        `${days}d ${hours}h ${minutes}m ${seconds}s until the cosmic alignment!`
+      );
+    };
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+    return () => clearInterval(timer);
   }, []);
 
+  // Removed tarot fetch useEffect - assuming CardOfTheDay handles it
+
+  // --- Form Submission Handler ---
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { error } = await supabase
-      .from("subscriptions")
-      .insert([{ email, location }]);
-    if (error) {
-      setFormStatus("Error saving subscription. Please try again.");
-    } else {
-      setFormStatus("Thanks for subscribing!");
-      setEmail("");
-      setLocation("");
+    setIsSubmitting(true);
+    setSubmitSuccess(false);
+    setSubmitError(null);
+
+    try {
+      const signupData = {
+        email: email.trim(),
+        location: location.trim(),
+        first_name: firstName.trim() || null, // Send null if empty
+        last_name: lastName.trim() || null, // Send null if empty
+        submitted_at: new Date(),
+      };
+
+      // Insert into 'eclipse_signups' table
+      const { error } = await supabase
+        .from("eclipse_signups")
+        .insert([signupData]);
+
+      if (error) {
+        throw error;
+      }
+
+      setSubmitSuccess(true);
+      // Optionally clear form on success
+      // setFirstName("");
+      // setLastName("");
+      // setEmail("");
+      // setLocation("");
+    } catch (error: any) {
+      console.error("Signup failed:", error);
+      setSubmitError(
+        error.message || "Failed to save your details. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
+  // --- Framer Motion Variants ---
+  const containerVariants = {
+    /* ... as before ... */
+  };
+  const itemVariants = {
+    /* ... as before ... */
+  };
+
   return (
-    <div className="min-h-screen relative bg-[url('/assets/images/zodiac-bg.jpg')] bg-cover bg-fixed bg-gray-900 bg-blend-overlay">
-      <div className="absolute inset-0 bg-black opacity-80"></div>
-      <div className="relative z-10 container mx-auto px-4 py-8 animate-fadeIn">
-        <header className="mb-8 text-center">
-          <h1 className="text-5xl font-bold mb-4 text-white drop-shadow-lg">
+    <div className="min-h-screen bg-background text-foreground font-body relative overflow-hidden">
+      <div className="absolute inset-0 mystic-sparkle z-0 opacity-5"></div>
+      <motion.div
+        className="relative z-10 container mx-auto max-w-5xl px-4 py-16 space-y-16"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* --- Hero Section --- */}
+        <motion.header variants={itemVariants} className="text-center">
+          {/* Eclipse Icon/Animation Placeholder */}
+          <div className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-yellow-400 via-orange-500 to-purple-900 shadow-lg relative overflow-hidden mystic-glow">
+            <div className="absolute top-0 left-0 w-full h-full rounded-full bg-gray-900 animate-eclipse-cover origin-right"></div>
+          </div>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading mb-4 arcane-text">
             Mystic Arcana Eclipse Experience
           </h1>
-          <p className="text-xl text-white">
-            Countdown to the Solar Eclipse: {countdown}
+          <p className="text-lg md:text-xl font-body mb-4">
+            Prepare for the cosmic shift on{" "}
+            <strong className="text-primary">
+              March 29, 2025 at 4:50 AM EDT
+            </strong>
+            .
           </p>
-        </header>
-        <section className="mb-12 max-w-md mx-auto bg-gray-800 bg-opacity-75 p-6 rounded shadow-lg">
-          <h2 className="text-2xl font-semibold mb-4 text-white">
-            Subscribe for Updates
+          <p className="text-2xl text-accent font-semibold mb-8">{timeLeft}</p>
+        </motion.header>
+
+        {/* --- Subscription Form Section (Updated) --- */}
+        <motion.section
+          variants={itemVariants}
+          className="max-w-lg mx-auto bg-card p-6 sm:p-8 rounded-lg shadow-xl border border-border mystic-glow"
+        >
+          <h2 className="text-2xl sm:text-3xl font-semibold font-heading mb-5 text-center text-card-foreground">
+            Unlock Personalized Eclipse Guidance
           </h2>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label className="block mb-1 text-white">Email:</label>
-              <input
-                type="email"
-                className="w-full p-2 rounded bg-gray-700 text-white focus:outline-none"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Optional First Name */}
+            <div>
+              <Label
+                htmlFor="firstName"
+                className="text-sm font-medium text-muted-foreground"
+              >
+                First Name (Optional)
+              </Label>
+              <Input
+                id="firstName"
+                type="text"
+                placeholder="Your first name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                className="w-full mt-1"
               />
             </div>
-            <div className="mb-4">
-              <label className="block mb-1 text-white">Location:</label>
-              <input
+            {/* Optional Last Name */}
+            <div>
+              <Label
+                htmlFor="lastName"
+                className="text-sm font-medium text-muted-foreground"
+              >
+                Last Name (Optional)
+              </Label>
+              <Input
+                id="lastName"
                 type="text"
-                className="w-full p-2 rounded bg-gray-700 text-white focus:outline-none"
+                placeholder="Your last name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                className="w-full mt-1"
+              />
+            </div>
+            {/* Required Location */}
+            <div>
+              <Label
+                htmlFor="location"
+                className="text-sm font-medium text-muted-foreground"
+              >
+                Your Location (City or ZIP) *
+              </Label>
+              <Input
+                id="location"
+                type="text"
+                placeholder="e.g., New York, NY or 10001"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 required
+                className="w-full mt-1"
               />
             </div>
-            <button
+            {/* Required Email */}
+            <div>
+              <Label
+                htmlFor="email"
+                className="text-sm font-medium text-muted-foreground"
+              >
+                Your Email Address *
+              </Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full mt-1"
+              />
+            </div>
+
+            <Button
               type="submit"
-              className="w-full bg-purple-600 text-white p-2 rounded hover:bg-purple-700 transition-colors"
+              disabled={isSubmitting}
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
             >
-              Subscribe
-            </button>
-            {formStatus && (
-              <p className="mt-2 text-center text-white">{formStatus}</p>
+              {isSubmitting ? (
+                <>
+                  <span className="mr-2 inline-block h-4 w-4 border-2 border-current border-t-transparent rounded-full animate-spin"></span>
+                  Subscribing...
+                </>
+              ) : (
+                "Get Eclipse Updates & Viewing Info"
+              )}
+            </Button>
+            {submitSuccess && (
+              <p className="mt-3 text-center text-green-400 text-sm">
+                Success! Check your email soon for eclipse details.
+              </p>
+            )}
+            {submitError && (
+              <p className="mt-3 text-center text-red-400 text-sm">
+                {submitError}
+              </p>
             )}
           </form>
-        </section>
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-center mb-4 text-white">
-            Daily Tarot Draw
+        </motion.section>
+
+        {/* --- Daily Insights Grid --- */}
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+          <motion.section variants={itemVariants}>
+            <h2 className="text-3xl font-semibold font-heading mb-4 text-center md:text-left">
+              🔮 Daily Tarot Guidance
+            </h2>
+            <CardOfTheDay /> {/* Assumes this component handles its data */}
+          </motion.section>
+          <motion.section variants={itemVariants}>
+            <h2 className="text-3xl font-semibold font-heading mb-4 text-center md:text-left">
+              🌠 Daily Horoscope Preview
+            </h2>
+            <HoroscopePreview defaultSign="Aries" />{" "}
+            {/* Assumes this component handles its data */}
+          </motion.section>
+        </div>
+
+        {/* --- Eclipse Zodiac Interpretations Section --- */}
+        <motion.section variants={itemVariants}>
+          <h2 className="text-3xl font-semibold font-heading mb-4 text-center">
+            🌌 What This Eclipse Means For You
           </h2>
-          <div className="flex justify-center">
-            <CardOfTheDay />
-          </div>
-        </section>
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-center mb-4 text-white">
-            Daily Horoscope
-          </h2>
-          <div className="flex justify-center">
-            <HoroscopePreview />
-          </div>
-        </section>
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-center mb-4 text-white">
-            Eclipse Zodiac Interpretations
-          </h2>
-          <div className="bg-gray-800 bg-opacity-75 p-6 rounded shadow">
-            <p className="text-center text-white">
-              Discover how the eclipse influences your zodiac sign.
-              Detailedinterpretations coming soon.
+          <Card className="bg-card p-6 text-card-foreground">
+            <p className="text-center text-muted-foreground">
+              Discover how the powerful energy of the solar eclipse influences
+              your specific zodiac sign. Deeper, personalized interpretations
+              coming soon!
             </p>
-          </div>
-        </section>
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-center mb-4 text-white">
-            Mystic Arcana Blog
+            {/* <EclipseZodiacMeaning /> */} {/* Placeholder */}
+          </Card>
+        </motion.section>
+
+        {/* --- Mystic Arcana Blog Section --- */}
+        <motion.section variants={itemVariants}>
+          <h2 className="text-3xl font-semibold font-heading mb-6 text-center">
+            From the Mystic Blog
           </h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            <BlogPreview />
-            {/* Additional blog previews can be added here */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <BlogPreview postId="1" title="Saturn-Uranus Square Insights" />
+            <BlogPreview postId="2" title="AI Enhanced Tarot Explained" />
+            <BlogPreview postId="3" title="Interpreting the Lunar Eclipse" />
           </div>
-        </section>
-        <footer className="text-center mt-8">
-          <p className="text-white">
-            &copy; {new Date().getFullYear()} Mystic Arcana. All rights
-            reserved.
-          </p>
-        </footer>
-      </div>
+          <div className="text-center mt-8">
+            <Button
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary/10"
+            >
+              Explore All Articles
+            </Button>
+          </div>
+        </motion.section>
+
+        {/* --- Footer --- */}
+        <motion.footer
+          variants={itemVariants}
+          className="text-center mt-16 text-xs text-muted-foreground border-t border-border pt-8"
+        >
+          {/* ... footer content ... */}
+        </motion.footer>
+      </motion.div>
+
+      {/* Make sure your index.css includes the keyframes */}
+      <style jsx global>{`
+        @keyframes eclipse-cover-anim {
+          0% {
+            transform: translateX(110%);
+          }
+          40% {
+            transform: translateX(0%);
+          }
+          60% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-110%);
+          }
+        }
+        .animate-eclipse-cover {
+          animation: eclipse-cover-anim 5s ease-in-out infinite;
+        }
+        /* Include other global styles or keyframes if needed */
+      `}</style>
     </div>
   );
 };
