@@ -1,28 +1,112 @@
-// client/src/hooks/use-auth-fixed.tsx
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { supabase } from "@/lib/supabaseClient";
+import { User } from "@/types/user";
 
-type AuthContextType = {
-  user: any;
+interface AuthContextType {
+  user: User | null;
   isLoading: boolean;
-  login: (email: string, password: string) => Promise<any>;
-  register: (username: string, email: string, password: string) => Promise<any>;
-  logout: () => void;
-};
+  login: (email: string, password: string) => Promise<User>;
+  register: (
+    username: string,
+    email: string,
+    password: string
+  ) => Promise<User>;
+  logout: () => Promise<void>;
+  checkAuth: () => Promise<User | null>;
+}
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-type AuthProviderProps = {
-  children: ReactNode;
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
 };
 
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<any>({ name: "Mira" });
-  const [isLoading, setIsLoading] = useState(false);
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const checkAuth = async () => {
+    try {
+      const {
+        data: { session },
+        error,
+      } = await supabase.auth.getSession();
+      if (error) throw error;
+
+      if (session?.user) {
+        const { data: userData, error: userError } = await supabase
+          .from("users")
+          .select("*")
+          .eq("id", session.user.id)
+          .single();
+
+        if (userError) throw userError;
+        setUser(userData);
+      } else {
+        setUser(null);
+      }
+    } catch (error) {
+      console.error("Auth check failed:", error);
+      setUser(null);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    checkAuth();
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (session) {
+        const { data: userData } = await supabase
+          .from("users")
+          .select("*")
+          .eq("id", session.user.id)
+          .single();
+        setUser(userData);
+      } else {
+        setUser(null);
+      }
+      setIsLoading(false);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   const login = async (email: string, password: string) => {
-    // TEMP: simulate login
-    setUser({ name: "Mira", email });
-    return { name: "Mira", email };
+    setIsLoading(true);
+    try {
+      const {
+        data: { user },
+        error,
+      } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (error) throw error;
+
+      const { data: userData, error: userError } = await supabase
+        .from("users")
+        .select("*")
+        .eq("id", user!.id)
+        .single();
+
+      if (userError) throw userError;
+      setUser(userData);
+      return userData;
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const register = async (
@@ -30,30 +114,61 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     email: string,
     password: string
   ) => {
-    // TEMP: simulate register
-    setUser({ name: username, email });
-    return { name: username, email };
+    setIsLoading(true);
+    try {
+      const {
+        data: { user },
+        error,
+      } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            username,
+          },
+        },
+      });
+      if (error) throw error;
+
+      const newUser = {
+        id: user!.id,
+        username,
+        email,
+        subscriptionLevel: "basic",
+        createdAt: new Date(),
+      };
+
+      const { data: userData, error: userError } = await supabase
+        .from("users")
+        .insert([newUser])
+        .select()
+        .single();
+
+      if (userError) throw userError;
+      setUser(userData);
+      return userData;
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const logout = () => {
+  const logout = async () => {
+    await supabase.auth.signOut();
     setUser(null);
   };
 
-  const value: AuthContextType = {
-    user,
-    isLoading,
-    login,
-    register,
-    logout,
-  };
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-};
-
-export const useAuth = (): AuthContextType => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
-  }
-  return context;
+  return (
+    <AuthContext.Provider
+      value={{
+        user,
+        isLoading,
+        login,
+        register,
+        logout,
+        checkAuth,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };
