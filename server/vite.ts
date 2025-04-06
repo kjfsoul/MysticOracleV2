@@ -1,13 +1,14 @@
 import express, { type Express } from "express";
+import rateLimit from "express-rate-limit";
 import fs from "fs";
+import { type Server } from "http";
+import { nanoid } from "nanoid";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
-import { createServer as createViteServer, createLogger } from "vite";
+import { createLogger, createServer as createViteServer } from "vite";
+import viteConfig from "../vite.config";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-import { type Server } from "http";
-import viteConfig from "../vite.config";
-import { nanoid } from "nanoid";
 
 const viteLogger = createLogger();
 
@@ -44,23 +45,32 @@ export async function setupVite(app: Express, server: Server) {
   });
 
   app.use(vite.middlewares);
-  app.use("*", async (req, res, next) => {
-    const url = req.originalUrl;
+  // Add rate limiting for the HTML endpoint
+  const htmlRequestLimiter = rateLimit({
+    windowMs: 1 * 60 * 1000, // 1 minute
+    max: 60, // limit each IP to 60 requests per windowMs
+    message: "Too many requests, please try again later.",
+  });
+
+  app.use("*", htmlRequestLimiter, async (req, res, next) => {
+    // Sanitize the URL to prevent XSS
+    const url = req.originalUrl.replace(/[<>"'&]/g, "");
 
     try {
       const clientTemplate = path.resolve(
         __dirname,
         "..",
         "client",
-        "index.html",
+        "index.html"
       );
 
       // always reload the index.html file from disk incase it changes
-      let template = await fs.promises.readFile(clientTemplate, "utf-8");
+      let template = await fs.promises.readFile(clientTemplate, "utf8");
       template = template.replace(
         `src="/src/main.tsx"`,
-        `src="/src/main.tsx?v=${nanoid()}"`,
+        `src="/src/main.tsx?v=${nanoid()}"`
       );
+      // Use Vite's built-in HTML transformation which handles security
       const page = await vite.transformIndexHtml(url, template);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {

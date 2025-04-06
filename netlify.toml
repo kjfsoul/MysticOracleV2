@@ -6,6 +6,12 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# API routes for serverless functions
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
 # Handle SPA routing
 [[redirects]]
   from = "/*"
@@ -16,3 +22,12 @@
   command = "npm run dev"
   port = 5000
   targetPort = 5000
+
+# Function bundle settings
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["@supabase/supabase-js"]
+
+# For local development with Netlify Dev
+[dev.functions]
+  directory = "netlify/functions"

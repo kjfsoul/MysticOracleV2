@@ -11,6 +11,7 @@ import ZodiacSignSelector from "./zodiac-sign-selector";
 
 interface HoroscopePreviewProps {
   sign?: string;
+  defaultSign?: string;
   showSignSelector?: boolean;
 }
 
@@ -23,10 +24,11 @@ interface HoroscopePreviewResponse {
 
 export function HoroscopePreview({
   sign,
+  defaultSign,
   showSignSelector = true,
 }: HoroscopePreviewProps) {
   const [selectedSign, setSelectedSign] = useState<string>(
-    sign?.toLowerCase() || "aries"
+    sign?.toLowerCase() || defaultSign?.toLowerCase() || "aries"
   );
   const [activeTab, setActiveTab] = useState<string>("sign");
   const [birthdate, setBirthdate] = useState<string>("");

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="300" height="500" viewBox="0 0 300 500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="500" rx="15" fill="#302b63" />
+  <rect x="20" y="20" width="260" height="460" rx="10" fill="none" stroke="#d4af37" stroke-width="2" />
+  <text x="150" y="70" font-family="Arial" font-size="24" fill="#ffffff" text-anchor="middle">The Fool</text>
+  <text x="150" y="100" font-family="Arial" font-size="18" fill="#d4af37" text-anchor="middle">0</text>
+  <circle cx="150" cy="200" r="80" fill="#9333ea" opacity="0.5" />
+  <path d="M120,180 L180,220 M180,180 L120,220" stroke="#ffffff" stroke-width="3" />
+  <text x="150" y="300" font-family="Arial" font-size="16" fill="#ffffff" text-anchor="middle">New Beginnings</text>
+  <text x="150" y="330" font-family="Arial" font-size="16" fill="#ffffff" text-anchor="middle">Innocence</text>
+  <text x="150" y="360" font-family="Arial" font-size="16" fill="#ffffff" text-anchor="middle">Spontaneity</text>
+  <text x="150" y="450" font-family="Arial" font-size="14" fill="#d4af37" text-anchor="middle">Mystic Oracle Tarot</text>
+</svg>

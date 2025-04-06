@@ -1,0 +1,178 @@
+/**
+ * Cosmic Background Styles
+ * 
+ * This file contains styles for the cosmic background with animated stars,
+ * shooting stars, and parallax effects.
+ */
+
+/* Base cosmic background */
+.cosmic-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -10;
+  pointer-events: none;
+}
+
+/* Gradient background */
+.cosmic-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+  z-index: -9;
+}
+
+/* Stars layer */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: transparent url('/images/stars.png') repeat;
+  z-index: -8;
+  opacity: 0.4;
+  animation: moveStars 200s linear infinite;
+}
+
+/* Second stars layer for parallax effect */
+.stars-parallax {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: transparent url('/images/stars-small.png') repeat;
+  z-index: -7;
+  opacity: 0.3;
+  animation: moveStarsParallax 150s linear infinite;
+}
+
+/* Mystic symbols layer */
+.mystic-symbols {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent url('/images/mystic-symbols.png') repeat;
+  z-index: -6;
+  opacity: 0.1;
+  animation: rotateMysticSymbols 300s linear infinite;
+}
+
+/* Shooting star */
+.shooting-star {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+  transform: rotate(45deg);
+  z-index: -5;
+  opacity: 0;
+  animation: shootingStar 4s ease-in-out;
+}
+
+/* Glow effect for symbols */
+.mystic-glow {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(147, 51, 234, 0.1) 0%, rgba(147, 51, 234, 0) 70%);
+  z-index: -6;
+  opacity: 0.5;
+  animation: pulseGlow 10s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes moveStars {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, -25%, 0);
+  }
+}
+
+@keyframes moveStarsParallax {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-25%, -50%, 0);
+  }
+}
+
+@keyframes rotateMysticSymbols {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shootingStar {
+  0% {
+    transform: translateX(-100px) translateY(100px) rotate(45deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  20% {
+    transform: translateX(calc(100vw + 100px)) translateY(calc(-100vh - 100px)) rotate(45deg);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+}
+
+/* Tailwind utility classes */
+.bg-cosmic-gradient {
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+}
+
+.animate-twinkle {
+  animation: moveStars 200s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 10s ease-in-out infinite;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .stars, .stars-parallax {
+    opacity: 0.3;
+  }
+  
+  .mystic-symbols {
+    opacity: 0.05;
+  }
+}

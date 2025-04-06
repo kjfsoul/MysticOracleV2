@@ -33,12 +33,14 @@ interface AstrologyWheelProps {
   positions: Record<string, { sign: string; degree: number }>;
   size?: number;
   interactive?: boolean;
+  hideBackground?: boolean;
 }
 
-export const AstrologyWheel: React.FC<AstrologyWheelProps> = ({ 
-  positions = {}, 
-  size = 500, 
-  interactive = true 
+export const AstrologyWheel: React.FC<AstrologyWheelProps> = ({
+  positions = {},
+  size = 500,
+  interactive = true,
+  hideBackground = false,
 }) => {
   const center = size / 2;
   const wheelRadius = (size / 2) * 0.9;
@@ -47,19 +49,22 @@ export const AstrologyWheel: React.FC<AstrologyWheelProps> = ({
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
       <defs>
         <radialGradient id="wheelGradient">
-          <stop offset="0%" stopColor="rgba(147, 51, 234, 0.1)" />
+          <stop offset="0%" stopColor="rgba(147, 51, 234, 0.05)" />
           <stop offset="100%" stopColor="rgba(147, 51, 234, 0)" />
         </radialGradient>
       </defs>
 
-      <circle
-        cx={center}
-        cy={center}
-        r={wheelRadius}
-        fill="url(#wheelGradient)"
-        stroke="rgba(147, 51, 234, 0.3)"
-        strokeWidth="2"
-      />
+      {/* Only render the wheel background when not explicitly hidden */}
+      {!hideBackground && (
+        <circle
+          cx={center}
+          cy={center}
+          r={wheelRadius}
+          fill="url(#wheelGradient)"
+          stroke="rgba(147, 51, 234, 0.3)"
+          strokeWidth="2"
+        />
+      )}
 
       {zodiacSigns.map((zodiac) => {
         const startAngle = (zodiac.startAngle * Math.PI) / 180;
@@ -79,8 +84,18 @@ export const AstrologyWheel: React.FC<AstrologyWheelProps> = ({
               className="opacity-30"
             />
             <text
-              x={center + (wheelRadius * 0.85) * Math.cos((zodiac.startAngle + 15) * Math.PI / 180)}
-              y={center + (wheelRadius * 0.85) * Math.sin((zodiac.startAngle + 15) * Math.PI / 180)}
+              x={
+                center +
+                wheelRadius *
+                  0.85 *
+                  Math.cos(((zodiac.startAngle + 15) * Math.PI) / 180)
+              }
+              y={
+                center +
+                wheelRadius *
+                  0.85 *
+                  Math.sin(((zodiac.startAngle + 15) * Math.PI) / 180)
+              }
               textAnchor="middle"
               dominantBaseline="middle"
               fontSize="14"
@@ -95,15 +110,35 @@ export const AstrologyWheel: React.FC<AstrologyWheelProps> = ({
       {/* Ascendant */}
       {positions?.ascendant && (
         <g>
-          <circle 
-            cx={center + (wheelRadius * 0.95) * Math.cos((positions.ascendant.degree) * Math.PI / 180)}
-            cy={center + (wheelRadius * 0.95) * Math.sin((positions.ascendant.degree) * Math.PI / 180)}
+          <circle
+            cx={
+              center +
+              wheelRadius *
+                0.95 *
+                Math.cos((positions.ascendant.degree * Math.PI) / 180)
+            }
+            cy={
+              center +
+              wheelRadius *
+                0.95 *
+                Math.sin((positions.ascendant.degree * Math.PI) / 180)
+            }
             r="12"
             className="fill-purple-100 stroke-purple-500"
           />
           <text
-            x={center + (wheelRadius * 0.95) * Math.cos((positions.ascendant.degree) * Math.PI / 180)}
-            y={center + (wheelRadius * 0.95) * Math.sin((positions.ascendant.degree) * Math.PI / 180)}
+            x={
+              center +
+              wheelRadius *
+                0.95 *
+                Math.cos((positions.ascendant.degree * Math.PI) / 180)
+            }
+            y={
+              center +
+              wheelRadius *
+                0.95 *
+                Math.sin((positions.ascendant.degree * Math.PI) / 180)
+            }
             textAnchor="middle"
             dominantBaseline="middle"
             className="text-sm fill-purple-700"
@@ -115,52 +150,63 @@ export const AstrologyWheel: React.FC<AstrologyWheelProps> = ({
 
       {/* Houses */}
       {positions?.houses?.map((house, index) => (
-        <g key={index}>
-          {/* House Cusp */}
-        </g>
+        <g key={index}>{/* House Cusp */}</g>
       ))}
 
-      {Object.entries(positions || {}).filter(([key]) => key !== 'validLocation' && key !== 'formattedLocation' && key !== 'houses' && key !== 'ascendant').map(([planet, data]) => {
-        if (!data?.sign) return null;
-        const zodiacSign = zodiacSigns.find(z => z.sign.toLowerCase() === data.sign.toLowerCase());
-        if (!zodiacSign) return null;
+      {Object.entries(positions || {})
+        .filter(
+          ([key]) =>
+            key !== "validLocation" &&
+            key !== "formattedLocation" &&
+            key !== "houses" &&
+            key !== "ascendant"
+        )
+        .map(([planet, data]) => {
+          if (!data?.sign) return null;
+          const zodiacSign = zodiacSigns.find(
+            (z) => z.sign.toLowerCase() === data.sign.toLowerCase()
+          );
+          if (!zodiacSign) return null;
 
-        // Convert zodiac positions to wheel angles (clockwise from top)
-        const zodiacStartDegree = ((zodiacSign.startAngle + 270) % 360); // Rotate so 0° is at top
-        const totalDegree = (zodiacStartDegree + (data.degree || 0)) % 360;
-        const angle = (totalDegree * Math.PI) / 180;
+          // Convert zodiac positions to wheel angles (clockwise from top)
+          const zodiacStartDegree = (zodiacSign.startAngle + 270) % 360; // Rotate so 0° is at top
+          const totalDegree = (zodiacStartDegree + (data.degree || 0)) % 360;
+          const angle = (totalDegree * Math.PI) / 180;
 
-        // Calculate position on wheel (use negative angle for clockwise rotation)
-        const x = center + (wheelRadius * 0.7) * Math.cos(-angle);
-        const y = center + (wheelRadius * 0.7) * Math.sin(-angle);
+          // Calculate position on wheel (use negative angle for clockwise rotation)
+          const x = center + wheelRadius * 0.7 * Math.cos(-angle);
+          const y = center + wheelRadius * 0.7 * Math.sin(-angle);
 
-        return (
-          <g key={planet} className={interactive ? 'cursor-pointer hover:text-primary' : ''}>
-            <circle 
-              cx={x} 
-              cy={y} 
-              r="15" 
-              fill="rgba(147, 51, 234, 0.1)" 
-              stroke="currentColor" 
-              strokeWidth="1.5"
-              className="opacity-50"
-            />
-            <text 
-              x={x} 
-              y={y} 
-              textAnchor="middle" 
-              dominantBaseline="middle" 
-              fontSize="14"
-              className="fill-current font-bold"
+          return (
+            <g
+              key={planet}
+              className={interactive ? "cursor-pointer hover:text-primary" : ""}
             >
-              {planetSymbols[planet.toLowerCase()] || planet}
-            </text>
-            {interactive && (
-              <title>{`${planet} in ${data.sign} at ${data.degree}°`}</title>
-            )}
-          </g>
-        );
-      })}
+              <circle
+                cx={x}
+                cy={y}
+                r="15"
+                fill="rgba(147, 51, 234, 0.1)"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                className="opacity-50"
+              />
+              <text
+                x={x}
+                y={y}
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fontSize="14"
+                className="fill-current font-bold"
+              >
+                {planetSymbols[planet.toLowerCase()] || planet}
+              </text>
+              {interactive && (
+                <title>{`${planet} in ${data.sign} at ${data.degree}°`}</title>
+              )}
+            </g>
+          );
+        })}
     </svg>
   );
 };

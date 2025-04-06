@@ -5,7 +5,10 @@ import { registerRoutes } from "./routes";
 import { log, serveStatic, setupVite } from "./vite";
 
 const app = express();
-const DEFAULT_PORT = 3001;
+
+// Disable X-Powered-By header for security
+app.disable('x-powered-by');
+const DEFAULT_PORT = 7777; // Using port 7777 to avoid conflicts
 
 // Middleware setup
 app.use(express.json());
@@ -14,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 // Port resolution with error handling
 const resolvePort = async (): Promise<number> => {
   const basePort = parseInt(process.env.PORT || DEFAULT_PORT.toString(), 10);
-  
+
   try {
     portfinder.setBasePort(basePort);
     const port = await portfinder.getPortPromise();
@@ -32,11 +35,11 @@ const resolvePort = async (): Promise<number> => {
 const errorHandler = (err: any, _req: Request, res: Response, _next: NextFunction) => {
   const status = err.status || err.statusCode || 500;
   const message = err.message || "Internal Server Error";
-  
+
   // Log error for debugging
   console.error(`[Error] ${status}: ${message}`);
   if (err.stack) console.error(err.stack);
-  
+
   res.status(status).json({ message });
 };
 
@@ -44,17 +47,17 @@ const errorHandler = (err: any, _req: Request, res: Response, _next: NextFunctio
 const initializeApp = async () => {
   try {
     const server = await registerRoutes(app);
-    
+
     // Error handling middleware
     app.use(errorHandler);
-    
+
     // Setup environment-specific middleware
     if (app.get("env") === "development") {
       await setupVite(app, server);
     } else {
       serveStatic(app);
     }
-    
+
     const port = await resolvePort();
     server.listen(port, () => {
       console.log(`
@@ -63,7 +66,7 @@ const initializeApp = async () => {
 🌐 URL: http://localhost:${port}
       `);
     });
-    
+
     // Handle graceful shutdown
     const shutdown = () => {
       console.log("\n👋 Shutting down gracefully...");
@@ -72,10 +75,9 @@ const initializeApp = async () => {
         process.exit(0);
       });
     };
-    
+
     process.on("SIGTERM", shutdown);
     process.on("SIGINT", shutdown);
-    
   } catch (error) {
     console.error("Failed to start server:", error);
     process.exit(1);

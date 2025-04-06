@@ -1,29 +1,21 @@
 // client/src/pages/EclipseLandingPage.tsx
+import { motion } from "framer-motion"; // For animations
 import React, { useEffect, useState } from "react";
-import { animate, motion } from "framer-motion"; // For animations
 
 // --- IMPORT YOUR ACTUAL COMPONENTS ---
 // import { EclipseZodiacMeaning } from '@/components/astrology/eclipse-zodiac-meaning'; // Placeholder
-import HoroscopePreview from "@/components/astrology/horoscope-preview";
+import { HoroscopePreview } from "@/components/astrology/horoscope-preview";
+import { BlogPreview } from "@/components/blog/blog-preview";
 import CardOfTheDay from "@/components/tarot/card-of-the-day";
-import BlogPreview from "@/components/blog/blog-preview";
 
 // --- IMPORT UI COMPONENTS (Assuming ShadCN or similar) ---
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label"; // Import Label if using ShadCN Label
 
 // --- IMPORT SUPABASE CLIENT ---
 import { supabase } from "@/lib/supabaseClient"; // Ensure casing matches your file
-import { sign } from "crypto";
-import { on } from "events";
-import e from "express";
-import { p } from "framer-motion/dist/types.d-B50aGbjN";
-import { Eclipse, Unlock, Check } from "lucide-react";
-import { type } from "os";
-import { title } from "process";
-import { jsx } from "react/jsx-runtime";
 
 // --- CORRECT ECLIPSE DATE (UTC-4 for EDT) ---
 const eclipseDate = new Date("2025-03-29T04:50:00-04:00");

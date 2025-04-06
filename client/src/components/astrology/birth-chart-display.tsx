@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { AstrologyWheel } from "./astrology-wheel";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import { MapPin } from "lucide-react";
+import { AstrologyWheel } from "./astrology-wheel";
 
 interface BirthChartDisplayProps {
   chartData: {
-    positions: Record<string, { sign: string; degree: number; retrograde?: boolean }>;
+    positions: Record<
+      string,
+      { sign: string; degree: number; retrograde?: boolean }
+    >;
     validLocation: boolean;
     formattedLocation: string;
   };
@@ -18,7 +20,7 @@ interface BirthChartDisplayProps {
 export default function BirthChartDisplay({
   chartData,
   interpretation,
-  onNewChart
+  onNewChart,
 }: BirthChartDisplayProps) {
   const planetIcons: Record<string, string> = {
     sun: "☉",
@@ -30,7 +32,7 @@ export default function BirthChartDisplay({
     saturn: "♄",
     uranus: "♅",
     neptune: "♆",
-    pluto: "♇"
+    pluto: "♇",
   };
 
   const signSymbols: Record<string, string> = {
@@ -45,7 +47,7 @@ export default function BirthChartDisplay({
     sagittarius: "♐",
     capricorn: "♑",
     aquarius: "♒",
-    pisces: "♓"
+    pisces: "♓",
   };
 
   const { positions } = chartData;
@@ -65,7 +67,8 @@ export default function BirthChartDisplay({
           <Alert className="mb-4">
             <MapPin className="h-4 w-4" />
             <AlertDescription>
-              Location could not be verified. Some chart features may be limited.
+              Location could not be verified. Some chart features may be
+              limited.
             </AlertDescription>
           </Alert>
         )}
@@ -86,19 +89,27 @@ export default function BirthChartDisplay({
                 positions={positions}
                 size={500}
                 interactive={false}
+                hideBackground={false}
               />
             </div>
 
             <div className="grid gap-2 mt-4">
               {Object.entries(positions).map(([planet, data]) => (
-                <div key={planet} className="flex justify-between items-center p-2 rounded-lg hover:bg-muted/50">
+                <div
+                  key={planet}
+                  className="flex justify-between items-center p-2 rounded-lg hover:bg-muted/50"
+                >
                   <span className="flex items-center gap-2">
                     <span className="text-lg">{planetIcons[planet]}</span>
                     <span className="capitalize">{planet}</span>
                   </span>
                   <span>
-                    {data.sign} {signSymbols[data.sign?.toLowerCase() || ''] || '?'} {data.degree?.toFixed(1) || 0}°
-                    {data.retrograde && <span className="ml-1 text-muted-foreground">℞</span>}
+                    {data.sign}{" "}
+                    {signSymbols[data.sign?.toLowerCase() || ""] || "?"}{" "}
+                    {data.degree?.toFixed(1) || 0}°
+                    {data.retrograde && (
+                      <span className="ml-1 text-muted-foreground">℞</span>
+                    )}
                   </span>
                 </div>
               ))}
@@ -108,8 +119,10 @@ export default function BirthChartDisplay({
 
         <TabsContent value="interpretation" className="p-4">
           <div className="prose prose-invert max-w-none">
-            {interpretation.split('\n').map((paragraph, index) => (
-              <p key={index} className="mb-4">{paragraph}</p>
+            {interpretation.split("\n").map((paragraph, index) => (
+              <p key={index} className="mb-4">
+                {paragraph}
+              </p>
             ))}
           </div>
         </TabsContent>

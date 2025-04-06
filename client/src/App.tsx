@@ -4,6 +4,7 @@ import { lazy, Suspense } from "react";
 import { Route, Switch } from "wouter";
 import MobileNavigation from "./components/layout/mobile-navigation";
 import Navbar from "./components/layout/navbar";
+import CosmicBackground from "./components/ui/cosmic-background";
 import { AuthProvider } from "./hooks/use-auth";
 import { queryClient } from "./lib/queryClient";
 import EclipseLandingPage from "./pages/EclipseLandingPage";
@@ -32,7 +33,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <div className="flex flex-col min-h-screen bg-background">
+        <div className="flex flex-col min-h-screen bg-background relative">
+          <CosmicBackground />
           <Navbar />
           <div className="flex-1 container mx-auto py-6 px-4 mt-16">
             <Suspense fallback={<div>Loading...</div>}>
