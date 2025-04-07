@@ -1,6 +1,3 @@
-import React, { useState } from "react";
-import { Link, useLocation } from "wouter";
-import { useAuth } from "../../hooks/use-auth";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -19,13 +16,9 @@ import {
   Settings,
   User,
 } from "lucide-react";
-import { cx } from "class-variance-authority";
-import { Sign } from "crypto";
-import { cy } from "date-fns/locale";
-import { p } from "framer-motion/dist/types.d-B50aGbjN";
-import { link } from "fs";
-import { href } from "react-router-dom";
-import { map } from "zod";
+import React, { useState } from "react";
+import { Link, useLocation } from "wouter";
+import { useAuth } from "../../hooks/use-auth";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -92,6 +85,15 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-4">
+          {!user && !isLoading && (
+            <Link
+              href="/auth"
+              className="hidden md:flex items-center px-4 py-2 text-gold hover:text-gold/80 transition-colors duration-300"
+            >
+              <User className="mr-1 h-4 w-4" />
+              Sign In
+            </Link>
+          )}
           <Link
             href="/settings?tab=subscription"
             className="hidden md:block px-4 py-2 border border-gold rounded-full text-gold hover:bg-gold/10 transition-colors duration-300 font-medium"
