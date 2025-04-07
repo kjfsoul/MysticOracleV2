@@ -1,4 +1,5 @@
 import { useAuth } from '@/hooks/use-auth';
+import * as supabase from "@supabase/supabase-js";
 import { useState } from 'react';
 
 export default function ExactAuthForm() {
@@ -9,58 +10,125 @@ export default function ExactAuthForm() {
   // Form state
   const [name, setName] = useState('kevin');
   const [email, setEmail] = useState('kjfsoul@gmail.com');
-  const [password, setPassword] = useState('password123');
-  const [confirmPassword, setConfirmPassword] = useState('password123');
+  const [password, setPassword] = useState("Password123!");
+  const [confirmPassword, setConfirmPassword] = useState("Password123!");
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      setMessage({ type: 'error', text: 'Passwords do not match' });
+      setMessage({ type: "error", text: "Passwords do not match" });
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setMessage({ type: "error", text: "Please enter a valid email address" });
+      return;
+    }
+
+    // Validate password strength
+    if (password.length < 8) {
+      setMessage({
+        type: "error",
+        text: "Password must be at least 8 characters long",
+      });
       return;
     }
 
     setIsLoading(true);
-    setMessage({ type: 'info', text: 'Processing registration...' });
+    setMessage({ type: "info", text: "Processing registration..." });
 
     try {
-      console.log('Registering with:', { email, name });
+      console.log("Registering with:", { email, name });
 
       // Step 1: Log the Supabase URL being used
-      console.log('Using Supabase URL:', import.meta.env.VITE_SUPABASE_URL);
-      setMessage({ type: 'info', text: 'Connecting to Supabase...' });
+      console.log("Using Supabase URL:", import.meta.env.VITE_SUPABASE_URL);
+      setMessage({ type: "info", text: "Connecting to Supabase..." });
 
-      // Step 2: Call the signup function
-      setMessage({ type: 'info', text: 'Creating account...' });
-      const user = await signup(email, password, name);
-      console.log('Signup successful, user:', user);
+      // Step 2: Call the signup function directly with Supabase JS
+      setMessage({ type: "info", text: "Creating account..." });
+
+      // Get the Supabase client
+      const { createClient } = supabase;
+      const supabaseClient = createClient(
+        "https://pqfsbxcbsxuyfgqrxdob.supabase.co",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxZnNieGNic3h1eWZncXJ4ZG9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIzMzAxNzAsImV4cCI6MjA1NzkwNjE3MH0.1bjMIO2hzyCJS1ExpsB1JsCmkH8D2d2M_-Psz2DDJrQ"
+      );
+
+      // Try to sign up directly
+      const { data, error } = await supabaseClient.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: name,
+          },
+        },
+      });
+
+      if (error) throw error;
+
+      if (data.user) {
+        console.log("Signup successful, user:", data.user);
+
+        // Try to create a user record
+        try {
+          const { error: insertError } = await supabaseClient
+            .from("users")
+            .insert([
+              {
+                id: data.user.id,
+                email,
+                created_at: new Date().toISOString(),
+              },
+            ]);
+
+          if (insertError) {
+            console.error("Error creating user record:", insertError);
+          }
+        } catch (insertError) {
+          console.error("Error creating user record:", insertError);
+        }
+      }
 
       // Step 3: Show success message
-      setMessage({ type: 'success', text: 'Registration successful! Redirecting to home page...' });
+      setMessage({
+        type: "success",
+        text: "Registration successful! Redirecting to home page...",
+      });
 
       // Redirect to home page after successful registration
       setTimeout(() => {
-        window.location.href = '/';
+        window.location.href = "/";
       }, 2000);
     } catch (error) {
-      console.error('Registration error:', error);
+      console.error("Registration error:", error);
 
       // Provide more detailed error messages
-      let errorMessage = 'Registration failed';
+      let errorMessage = "Registration failed";
 
       if (error.message) {
         errorMessage = error.message;
       }
 
-      if (error.message && error.message.includes('fetch')) {
-        errorMessage = 'Could not connect to the authentication server. Please check your internet connection and try again.';
+      if (error.message && error.message.includes("fetch")) {
+        errorMessage =
+          "Could not connect to the authentication server. Please check your internet connection and try again.";
       }
 
-      if (error.message && error.message.includes('already registered')) {
-        errorMessage = 'This email is already registered. Please use a different email or try logging in.';
+      if (error.message && error.message.includes("already registered")) {
+        errorMessage =
+          "This email is already registered. Please use a different email or try logging in.";
       }
 
-      setMessage({ type: 'error', text: errorMessage });
+      if (error.message && error.message.includes("invalid")) {
+        errorMessage =
+          "Please check your email and password. Email must be valid and password must be at least 8 characters.";
+      }
+
+      setMessage({ type: "error", text: errorMessage });
     } finally {
       setIsLoading(false);
     }

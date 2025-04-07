@@ -4,8 +4,9 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 
-// Import debug script
+// Import debug scripts
 import './debug-env';
+import "./env-test";
 
 class ErrorBoundary extends React.Component<{children: React.ReactNode}, {hasError: boolean}> {
   constructor(props: {children: React.ReactNode}) {
