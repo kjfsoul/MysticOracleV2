@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fix Auth</title>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #2a1a4a;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      width: 100%;
+      max-width: 500px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    h1 {
+      text-align: center;
+      color: #2a1a4a;
+      margin-top: 0;
+    }
+    p {
+      text-align: center;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .panel {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #2a1a4a;
+    }
+    input {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #6b46c1;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    .message {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    .info {
+      background-color: #e2f3fd;
+      color: #0c5460;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 4px;
+      overflow: auto;
+      max-height: 200px;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Mystic Arcana Auth Fix</h1>
+    <p>Debug and fix authentication issues</p>
+    
+    <div class="panel">
+      <h2>Supabase Connection</h2>
+      <div>
+        <label for="supabase-url">Supabase URL:</label>
+        <input type="text" id="supabase-url" value="https://pqfsbxcbsxuyfgqrxdob.supabase.co">
+      </div>
+      <div>
+        <label for="supabase-key">Supabase Anon Key:</label>
+        <input type="text" id="supabase-key" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxZnNieGNic3h1eWZncXJ4ZG9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIzMzAxNzAsImV4cCI6MjA1NzkwNjE3MH0.1bjMIO2hzyCJS1ExpsB1JsCmkH8D2d2M_-Psz2DDJrQ">
+      </div>
+      <button id="test-connection">Test Connection</button>
+      <div id="connection-result" class="message info" style="display: none;"></div>
+    </div>
+    
+    <div class="panel">
+      <h2>Register</h2>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" value="test@example.com">
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" value="password123">
+      </div>
+      <button id="register-btn">Register</button>
+      <div id="register-result" class="message info" style="display: none;"></div>
+    </div>
+    
+    <div class="panel">
+      <h2>Login</h2>
+      <div>
+        <label for="login-email">Email:</label>
+        <input type="email" id="login-email" value="test@example.com">
+      </div>
+      <div>
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" value="password123">
+      </div>
+      <button id="login-btn">Login</button>
+      <div id="login-result" class="message info" style="display: none;"></div>
+    </div>
+    
+    <div class="panel">
+      <h2>Current Session</h2>
+      <button id="get-session-btn">Get Session</button>
+      <button id="logout-btn">Logout</button>
+      <pre id="session-data">No session data</pre>
+    </div>
+  </div>
+  
+  <script>
+    // Initialize variables
+    let supabase;
+    
+    // Helper function to show messages
+    function showMessage(elementId, message, type) {
+      const element = document.getElementById(elementId);
+      element.textContent = message;
+      element.className = `message ${type}`;
+      element.style.display = 'block';
+    }
+    
+    // Initialize Supabase client
+    function initSupabase() {
+      const supabaseUrl = document.getElementById('supabase-url').value;
+      const supabaseKey = document.getElementById('supabase-key').value;
+      
+      try {
+        supabase = supabase.createClient(supabaseUrl, supabaseKey);
+        console.log('Supabase client initialized');
+        return true;
+      } catch (error) {
+        console.error('Error initializing Supabase client:', error);
+        return false;
+      }
+    }
+    
+    // Test Connection
+    document.getElementById('test-connection').addEventListener('click', async () => {
+      if (!initSupabase()) {
+        showMessage('connection-result', 'Failed to initialize Supabase client', 'error');
+        return;
+      }
+      
+      showMessage('connection-result', 'Testing connection...', 'info');
+      
+      try {
+        // Try a simple query
+        const { data, error } = await supabase.from('users').select('count()', { count: 'exact' });
+        
+        if (error) throw error;
+        
+        showMessage('connection-result', `Connection successful! Found ${data[0].count} users.`, 'success');
+      } catch (error) {
+        showMessage('connection-result', `Connection error: ${error.message}`, 'error');
+        console.error('Connection error:', error);
+      }
+    });
+    
+    // Register
+    document.getElementById('register-btn').addEventListener('click', async () => {
+      if (!initSupabase()) {
+        showMessage('register-result', 'Failed to initialize Supabase client', 'error');
+        return;
+      }
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      showMessage('register-result', 'Registering...', 'info');
+      
+      try {
+        // Sign up with Supabase Auth
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password
+        });
+        
+        if (error) throw error;
+        
+        if (data.user) {
+          showMessage('register-result', `Registration successful! User ID: ${data.user.id}`, 'success');
+          
+          // Update session data
+          document.getElementById('session-data').textContent = JSON.stringify(data, null, 2);
+        } else {
+          showMessage('register-result', 'Registration successful! Check your email for confirmation.', 'success');
+        }
+      } catch (error) {
+        showMessage('register-result', `Registration error: ${error.message}`, 'error');
+        console.error('Registration error:', error);
+      }
+    });
+    
+    // Login
+    document.getElementById('login-btn').addEventListener('click', async () => {
+      if (!initSupabase()) {
+        showMessage('login-result', 'Failed to initialize Supabase client', 'error');
+        return;
+      }
+      
+      const email = document.getElementById('login-email').value;
+      const password = document.getElementById('login-password').value;
+      
+      showMessage('login-result', 'Logging in...', 'info');
+      
+      try {
+        // Sign in with Supabase Auth
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email,
+          password
+        });
+        
+        if (error) throw error;
+        
+        showMessage('login-result', `Login successful! User ID: ${data.user.id}`, 'success');
+        
+        // Update session data
+        document.getElementById('session-data').textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        showMessage('login-result', `Login error: ${error.message}`, 'error');
+        console.error('Login error:', error);
+      }
+    });
+    
+    // Get Session
+    document.getElementById('get-session-btn').addEventListener('click', async () => {
+      if (!initSupabase()) {
+        showMessage('session-data', 'Failed to initialize Supabase client', 'error');
+        return;
+      }
+      
+      try {
+        const { data, error } = await supabase.auth.getSession();
+        
+        if (error) throw error;
+        
+        document.getElementById('session-data').textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        document.getElementById('session-data').textContent = `Error: ${error.message}`;
+        console.error('Session error:', error);
+      }
+    });
+    
+    // Logout
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      if (!initSupabase()) {
+        return;
+      }
+      
+      try {
+        const { error } = await supabase.auth.signOut();
+        
+        if (error) throw error;
+        
+        document.getElementById('session-data').textContent = 'Logged out successfully';
+      } catch (error) {
+        document.getElementById('session-data').textContent = `Error: ${error.message}`;
+        console.error('Logout error:', error);
+      }
+    });
+    
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      initSupabase();
+      
+      // Get initial session
+      document.getElementById('get-session-btn').click();
+    });
+  </script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useAuth } from "@/hooks/use-auth";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/api";
 import { queryClient } from "@/lib/queryClient";
@@ -8,6 +9,7 @@ import { useMutation } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { Bookmark, Download, Info, Share2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import SimplePersonalizedInterpretation from "./simple-personalized-interpretation";
 import TarotCard from "./tarot-card";
 
 interface TarotReadingProps {
@@ -20,11 +22,13 @@ export default function TarotReading({
   onNewReading,
 }: TarotReadingProps) {
   const { toast } = useToast();
+  const { user } = useAuth();
   const [isSaved, setIsSaved] = useState(reading.isSaved);
   const [selectedCardIndex, setSelectedCardIndex] = useState(0);
   const [spreadLayout, setSpreadLayout] = useState<
     "horizontal" | "grid" | "circle"
   >("horizontal");
+  const [currentMood, setCurrentMood] = useState<string | undefined>(undefined);
 
   const cards = Array.isArray(reading.cards) ? reading.cards : [];
   const selectedCard = cards[selectedCardIndex] || cards[0] || {};
@@ -238,6 +242,27 @@ export default function TarotReading({
             <TabsTrigger value="reading">Reading Overview</TabsTrigger>
           </TabsList>
 
+          {user && (
+            <div className="mb-4 flex items-center gap-2">
+              <label className="text-sm text-light/70">Current Mood:</label>
+              <select
+                className="bg-dark/60 border border-light/20 rounded px-2 py-1 text-sm text-light"
+                value={currentMood || ""}
+                onChange={(e) => setCurrentMood(e.target.value || undefined)}
+              >
+                <option value="">Select mood (optional)</option>
+                <option value="reflective">Reflective</option>
+                <option value="energetic">Energetic</option>
+                <option value="anxious">Anxious</option>
+                <option value="peaceful">Peaceful</option>
+                <option value="curious">Curious</option>
+                <option value="grateful">Grateful</option>
+                <option value="inspired">Inspired</option>
+                <option value="uncertain">Uncertain</option>
+              </select>
+            </div>
+          )}
+
           <TabsContent value="interpretation">
             <div className="flex flex-col md:flex-row gap-6 items-start">
               <div className="md:w-1/3 flex flex-col items-center">
@@ -270,30 +295,49 @@ export default function TarotReading({
               </div>
 
               <div className="md:w-2/3">
-                <div className="prose prose-invert max-w-none text-light/90">
-                  {(selectedCard as any).description && (
-                    <div className="mb-4">
-                      <h5 className="text-lg font-medium text-accent/90 mb-2">
-                        Card Meaning
-                      </h5>
-                      <p>{(selectedCard as any).description}</p>
-                    </div>
-                  )}
+                {user ? (
+                  <SimplePersonalizedInterpretation
+                    cardId={
+                      (selectedCard as any).id ||
+                      `${
+                        (selectedCard as any).arcana === "major"
+                          ? "major"
+                          : (selectedCard as any).suit
+                      }-${(selectedCard as any).number}`
+                    }
+                    cardName={(selectedCard as any).name || "Card"}
+                    isReversed={(selectedCard as any).reversal || false}
+                    spreadPosition={getPositionLabel(selectedCardIndex)}
+                    spreadType={reading.spread}
+                    question={reading.question}
+                    currentMood={currentMood}
+                  />
+                ) : (
+                  <div className="prose prose-invert max-w-none text-light/90">
+                    {(selectedCard as any).description && (
+                      <div className="mb-4">
+                        <h5 className="text-lg font-medium text-accent/90 mb-2">
+                          Card Meaning
+                        </h5>
+                        <p>{(selectedCard as any).description}</p>
+                      </div>
+                    )}
 
-                  <div>
-                    <h5 className="text-lg font-medium text-accent/90 mb-2">
-                      In Your Reading
-                    </h5>
-                    {reading.interpretation
-                      .split("\n\n")
-                      .slice(0, 2)
-                      .map((paragraph, index) => (
-                        <p key={index} className="mb-4">
-                          {paragraph}
-                        </p>
-                      ))}
+                    <div>
+                      <h5 className="text-lg font-medium text-accent/90 mb-2">
+                        In Your Reading
+                      </h5>
+                      {reading.interpretation
+                        .split("\n\n")
+                        .slice(0, 2)
+                        .map((paragraph, index) => (
+                          <p key={index} className="mb-4">
+                            {paragraph}
+                          </p>
+                        ))}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* AI Insight (first one free, then premium) */}
                 <div className="mt-6 pt-6 border-t border-light/10">

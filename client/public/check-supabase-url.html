@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check Supabase URL</title>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .input-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      overflow: auto;
+      max-height: 300px;
+    }
+    .success {
+      color: green;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Check Supabase URL</h1>
+
+  <div class="input-group">
+    <label for="supabase-url">Supabase URL:</label>
+    <input type="text" id="supabase-url" value="https://pqfsbxcbsxuyfgqrxdob.supabase.co">
+  </div>
+
+  <div class="input-group">
+    <label for="supabase-key">Supabase Anon Key:</label>
+    <input type="text" id="supabase-key" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxZnNieGNic3h1eWZncXJ4ZG9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIzMzAxNzAsImV4cCI6MjA1NzkwNjE3MH0.1bjMIO2hzyCJS1ExpsB1JsCmkH8D2d2M_-Psz2DDJrQ">
+  </div>
+
+  <div class="input-group">
+    <label>Alternative URLs to try:</label>
+    <button class="alt-url" data-url="https://pqfsbxcbsxuyfgqrxdob.supabase.co">Try URL from supindex.js</button>
+    <button class="alt-url" data-url="https://supabase.co">Try Supabase Homepage</button>
+    <button class="alt-url" data-url="https://google.com">Try Google</button>
+  </div>
+
+  <button id="check-connection">Check Connection</button>
+  <button id="ping-url">Ping URL</button>
+
+  <h2>Results:</h2>
+  <pre id="result">Results will appear here...</pre>
+
+  <script>
+    const resultEl = document.getElementById('result');
+
+    // Check Connection
+    document.getElementById('check-connection').addEventListener('click', async () => {
+      const supabaseUrl = document.getElementById('supabase-url').value;
+      const supabaseKey = document.getElementById('supabase-key').value;
+
+      resultEl.textContent = `Testing connection to ${supabaseUrl}...`;
+
+      try {
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+        // Try a simple query
+        const { data, error } = await supabase.from('users').select('count()', { count: 'exact' });
+
+        if (error) throw error;
+
+        resultEl.innerHTML = `<span class="success">✅ Connection successful!</span>\nFound ${data[0].count} users.`;
+      } catch (error) {
+        resultEl.innerHTML = `<span class="error">❌ Connection error:</span>\n${JSON.stringify(error, null, 2)}`;
+      }
+    });
+
+    // Ping URL
+    document.getElementById('ping-url').addEventListener('click', async () => {
+      const url = document.getElementById('supabase-url').value;
+
+      resultEl.textContent = `Pinging ${url}...`;
+
+      try {
+        const startTime = Date.now();
+        const response = await fetch(url, { method: 'HEAD' });
+        const endTime = Date.now();
+
+        if (response.ok) {
+          resultEl.innerHTML = `<span class="success">✅ URL is reachable!</span>\nResponse time: ${endTime - startTime}ms\nStatus: ${response.status} ${response.statusText}`;
+        } else {
+          resultEl.innerHTML = `<span class="error">❌ URL returned error:</span>\nStatus: ${response.status} ${response.statusText}`;
+        }
+      } catch (error) {
+        resultEl.innerHTML = `<span class="error">❌ URL is not reachable:</span>\n${error.message}`;
+      }
+    });
+
+    // Alternative URLs
+    document.querySelectorAll('.alt-url').forEach(button => {
+      button.addEventListener('click', () => {
+        document.getElementById('supabase-url').value = button.dataset.url;
+      });
+    });
+  </script>
+</body>
+</html>

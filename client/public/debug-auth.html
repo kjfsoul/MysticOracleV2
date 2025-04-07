@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debug Auth</title>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+    .panel {
+      flex: 1;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    input, button {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      overflow: auto;
+      max-height: 300px;
+    }
+    .error {
+      color: red;
+    }
+    .success {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Supabase Auth Debugger</h1>
+
+  <div class="container">
+    <div class="panel">
+      <h2>Sign Up</h2>
+      <input type="text" id="signup-username" placeholder="Username" value="testuser">
+      <input type="email" id="signup-email" placeholder="Email" value="test@example.com">
+      <input type="password" id="signup-password" placeholder="Password" value="password123">
+      <button id="signup-btn">Sign Up</button>
+      <div id="signup-result"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Sign In</h2>
+      <input type="email" id="signin-email" placeholder="Email" value="test@example.com">
+      <input type="password" id="signin-password" placeholder="Password" value="password123">
+      <button id="signin-btn">Sign In</button>
+      <div id="signin-result"></div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top: 20px;">
+    <h2>Current Session</h2>
+    <button id="get-session-btn">Get Current Session</button>
+    <button id="logout-btn">Logout</button>
+    <pre id="session-data"></pre>
+  </div>
+
+  <div class="panel" style="margin-top: 20px;">
+    <h2>Check Users Table</h2>
+    <button id="check-users-table-btn">Check Users Table</button>
+    <pre id="users-table-data"></pre>
+  </div>
+
+  <script>
+    // Initialize Supabase client
+    const supabaseUrl = 'https://pqfsbxcbsxuyfgqrxdob.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxZnNieGNic3h1eWZncXJ4ZG9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIzMzAxNzAsImV4cCI6MjA1NzkwNjE3MH0.1bjMIO2hzyCJS1ExpsB1JsCmkH8D2d2M_-Psz2DDJrQ';
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    // Sign Up
+    document.getElementById('signup-btn').addEventListener('click', async () => {
+      const username = document.getElementById('signup-username').value;
+      const email = document.getElementById('signup-email').value;
+      const password = document.getElementById('signup-password').value;
+
+      const resultElement = document.getElementById('signup-result');
+      resultElement.innerHTML = 'Processing...';
+
+      try {
+        // 1. Sign up with Supabase Auth
+        const { data: authData, error: authError } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {
+              username,
+            },
+          },
+        });
+
+        if (authError) throw authError;
+
+        resultElement.innerHTML = `<div class="success">
+          <p>Auth signup successful!</p>
+          <p>User ID: ${authData.user.id}</p>
+          <p>Email: ${authData.user.email}</p>
+        </div>`;
+
+        // 2. Check if users table exists
+        const { error: tableCheckError } = await supabase
+          .from('users')
+          .select('id')
+          .limit(1);
+
+        const userTableExists = !tableCheckError;
+
+        if (userTableExists) {
+          // 3. Insert into users table
+          const newUser = {
+            id: authData.user.id,
+            username,
+            email,
+            subscription_level: 'basic',
+            created_at: new Date().toISOString(),
+          };
+
+          const { data: userData, error: userError } = await supabase
+            .from('users')
+            .insert([newUser])
+            .select()
+            .single();
+
+          if (userError) {
+            resultElement.innerHTML += `<div class="error">
+              <p>Error creating user record:</p>
+              <pre>${JSON.stringify(userError, null, 2)}</pre>
+            </div>`;
+          } else {
+            resultElement.innerHTML += `<div class="success">
+              <p>User record created successfully!</p>
+              <pre>${JSON.stringify(userData, null, 2)}</pre>
+            </div>`;
+          }
+        } else {
+          resultElement.innerHTML += `<div class="error">
+            <p>Users table does not exist or is not accessible.</p>
+            <pre>${JSON.stringify(tableCheckError, null, 2)}</pre>
+          </div>`;
+        }
+      } catch (error) {
+        resultElement.innerHTML = `<div class="error">
+          <p>Error:</p>
+          <pre>${JSON.stringify(error, null, 2)}</pre>
+        </div>`;
+      }
+    });
+
+    // Sign In
+    document.getElementById('signin-btn').addEventListener('click', async () => {
+      const email = document.getElementById('signin-email').value;
+      const password = document.getElementById('signin-password').value;
+
+      const resultElement = document.getElementById('signin-result');
+      resultElement.innerHTML = 'Processing...';
+
+      try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+
+        if (error) throw error;
+
+        resultElement.innerHTML = `<div class="success">
+          <p>Sign in successful!</p>
+          <pre>${JSON.stringify(data, null, 2)}</pre>
+        </div>`;
+      } catch (error) {
+        resultElement.innerHTML = `<div class="error">
+          <p>Error:</p>
+          <pre>${JSON.stringify(error, null, 2)}</pre>
+        </div>`;
+      }
+    });
+
+    // Get Current Session
+    document.getElementById('get-session-btn').addEventListener('click', async () => {
+      const resultElement = document.getElementById('session-data');
+      resultElement.textContent = 'Loading...';
+
+      try {
+        const { data, error } = await supabase.auth.getSession();
+
+        if (error) throw error;
+
+        resultElement.textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        resultElement.textContent = JSON.stringify(error, null, 2);
+      }
+    });
+
+    // Logout
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      const resultElement = document.getElementById('session-data');
+      resultElement.textContent = 'Logging out...';
+
+      try {
+        const { error } = await supabase.auth.signOut();
+
+        if (error) throw error;
+
+        resultElement.textContent = 'Logged out successfully';
+      } catch (error) {
+        resultElement.textContent = JSON.stringify(error, null, 2);
+      }
+    });
+
+    // Check Users Table
+    document.getElementById('check-users-table-btn').addEventListener('click', async () => {
+      const resultElement = document.getElementById('users-table-data');
+      resultElement.textContent = 'Checking...';
+
+      try {
+        const { data, error } = await supabase
+          .from('users')
+          .select('*')
+          .limit(5);
+
+        if (error) throw error;
+
+        resultElement.textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        resultElement.textContent = JSON.stringify(error, null, 2);
+      }
+    });
+
+    // Load session on page load
+    window.addEventListener('DOMContentLoaded', async () => {
+      const resultElement = document.getElementById('session-data');
+
+      try {
+        const { data, error } = await supabase.auth.getSession();
+
+        if (error) throw error;
+
+        resultElement.textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        resultElement.textContent = JSON.stringify(error, null, 2);
+      }
+    });
+  </script>
+</body>
+</html>

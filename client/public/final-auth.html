@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mystic Arcana - Login</title>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #2a1a4a;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      width: 100%;
+      max-width: 500px;
+      background-color: white;
+    }
+    h1 {
+      text-align: center;
+      color: #2a1a4a;
+      margin-top: 20px;
+      margin-bottom: 5px;
+    }
+    p {
+      text-align: center;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #ccc;
+    }
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .tab.active {
+      font-weight: bold;
+    }
+    form {
+      padding: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .message {
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 4px;
+    }
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Mystic Arcana</h1>
+    <p>Discover your cosmic destiny</p>
+
+    <div class="tabs">
+      <div class="tab" id="signin-tab">Sign In</div>
+      <div class="tab active" id="signup-tab">Sign Up</div>
+    </div>
+
+    <form id="auth-form">
+      <input type="text" id="username" placeholder="kevin" value="kevin">
+      <input type="email" id="email" placeholder="kjfsoul@gmail.com" value="kjfsoul@gmail.com">
+      <input type="password" id="password" placeholder="••••••" value="password123">
+      <input type="password" id="confirm-password" placeholder="••••••" value="password123">
+      <button type="submit">Register</button>
+      <div id="message" class="message" style="display: none;"></div>
+    </form>
+  </div>
+
+  <script>
+    // Initialize Supabase client
+    const supabaseUrl = 'https://pqfsbxcbsxuyfgqrxdob.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxZnNieGNic3h1eWZncXJ4ZG9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIzMzAxNzAsImV4cCI6MjA1NzkwNjE3MH0.1bjMIO2hzyCJS1ExpsB1JsCmkH8D2d2M_-Psz2DDJrQ';
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    // Form submission
+    document.getElementById('auth-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      const messageEl = document.getElementById('message');
+
+      // Validate passwords match
+      if (password !== confirmPassword) {
+        showMessage('Passwords do not match', 'error');
+        return;
+      }
+
+      try {
+        // Sign up with Supabase Auth
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {
+              username,
+            },
+          },
+        });
+
+        if (error) throw error;
+
+        if (data.user) {
+          // Try to create user record
+          try {
+            const { error: userError } = await supabase
+              .from('users')
+              .insert([
+                {
+                  id: data.user.id,
+                  username,
+                  email,
+                  subscription_level: 'basic',
+                  created_at: new Date().toISOString(),
+                }
+              ]);
+
+            if (userError) {
+              console.error('Error creating user record:', userError);
+            }
+          } catch (err) {
+            console.error('Error creating user record:', err);
+          }
+
+          showMessage('Registration successful! Check your email for confirmation.', 'success');
+
+          // Redirect to home page after 2 seconds
+          setTimeout(() => {
+            window.location.href = '/';
+          }, 2000);
+        } else {
+          showMessage('Registration successful! Check your email for confirmation.', 'success');
+        }
+      } catch (error) {
+        showMessage(error.message || 'An error occurred during registration', 'error');
+      }
+    });
+
+    // Tab switching
+    document.getElementById('signin-tab').addEventListener('click', function() {
+      this.classList.add('active');
+      document.getElementById('signup-tab').classList.remove('active');
+      document.querySelector('button').textContent = 'Login';
+    });
+
+    document.getElementById('signup-tab').addEventListener('click', function() {
+      this.classList.add('active');
+      document.getElementById('signin-tab').classList.remove('active');
+      document.querySelector('button').textContent = 'Register';
+    });
+
+    // Show message function
+    function showMessage(text, type) {
+      const messageEl = document.getElementById('message');
+      messageEl.textContent = text;
+      messageEl.className = `message ${type}`;
+      messageEl.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

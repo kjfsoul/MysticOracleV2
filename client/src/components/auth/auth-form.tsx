@@ -1,54 +1,55 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useToast } from '@/hooks/use-toast';
-import { useAuth } from '@/hooks/use-auth';
-import { Eye, EyeOff, Loader2 } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useAuth } from "@/hooks/use-auth";
+import { useToast } from "@/hooks/use-toast";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
+import { useState } from "react";
 
 export default function AuthForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const { toast } = useToast();
-  const { login, signup, isAuthenticated } = useAuth();
+  const { login, signup } = useAuth();
 
   // Login form state
-  const [loginEmail, setLoginEmail] = useState('');
-  const [loginPassword, setLoginPassword] = useState('');
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
 
   // Signup form state
-  const [signupEmail, setSignupEmail] = useState('');
-  const [signupPassword, setSignupPassword] = useState('');
-  const [signupName, setSignupName] = useState('');
-  const [signupConfirmPassword, setSignupConfirmPassword] = useState('');
+  const [signupEmail, setSignupEmail] = useState("");
+  const [signupPassword, setSignupPassword] = useState("");
+  const [signupName, setSignupName] = useState("");
+  const [signupConfirmPassword, setSignupConfirmPassword] = useState("");
 
   // Handle login submission
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!loginEmail || !loginPassword) {
       toast({
-        title: 'Missing fields',
-        description: 'Please fill in all required fields.',
-        variant: 'destructive',
+        title: "Missing fields",
+        description: "Please fill in all required fields.",
+        variant: "destructive",
       });
       return;
     }
 
     setIsLoading(true);
-    
+
     try {
       await login(loginEmail, loginPassword);
       toast({
-        title: 'Welcome back!',
-        description: 'You have successfully logged in.',
+        title: "Welcome back!",
+        description: "You have successfully logged in.",
       });
     } catch (error: any) {
       toast({
-        title: 'Login failed',
-        description: error.message || 'Please check your credentials and try again.',
-        variant: 'destructive',
+        title: "Login failed",
+        description:
+          error.message || "Please check your credentials and try again.",
+        variant: "destructive",
       });
     } finally {
       setIsLoading(false);
@@ -58,47 +59,59 @@ export default function AuthForm() {
   // Handle signup submission
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!signupEmail || !signupPassword || !signupName) {
       toast({
-        title: 'Missing fields',
-        description: 'Please fill in all required fields.',
-        variant: 'destructive',
+        title: "Missing fields",
+        description: "Please fill in all required fields.",
+        variant: "destructive",
       });
       return;
     }
 
     if (signupPassword !== signupConfirmPassword) {
       toast({
-        title: 'Passwords do not match',
-        description: 'Please make sure your passwords match.',
-        variant: 'destructive',
+        title: "Passwords do not match",
+        description: "Please make sure your passwords match.",
+        variant: "destructive",
       });
       return;
     }
 
     if (signupPassword.length < 8) {
       toast({
-        title: 'Password too short',
-        description: 'Password must be at least 8 characters long.',
-        variant: 'destructive',
+        title: "Password too short",
+        description: "Password must be at least 8 characters long.",
+        variant: "destructive",
       });
       return;
     }
 
     setIsLoading(true);
-    
+
     try {
+      console.log("Submitting signup form with:", {
+        email: signupEmail,
+        name: signupName,
+      });
       await signup(signupEmail, signupPassword, signupName);
       toast({
-        title: 'Account created',
-        description: 'Your account has been created successfully.',
+        title: "Account created",
+        description:
+          "Your account has been created successfully. Check your email for confirmation.",
       });
+
+      // Clear the form
+      setSignupEmail("");
+      setSignupPassword("");
+      setSignupName("");
+      setSignupConfirmPassword("");
     } catch (error: any) {
+      console.error("Signup error:", error);
       toast({
-        title: 'Signup failed',
-        description: error.message || 'An error occurred during signup.',
-        variant: 'destructive',
+        title: "Signup failed",
+        description: error.message || "An error occurred during signup.",
+        variant: "destructive",
       });
     } finally {
       setIsLoading(false);
@@ -109,14 +122,16 @@ export default function AuthForm() {
   if (isAuthenticated) {
     return (
       <div className="text-center p-6 bg-dark/40 backdrop-blur-sm border border-light/10 rounded-lg">
-        <h3 className="text-xl font-medium text-light mb-3">You're already logged in</h3>
+        <h3 className="text-xl font-medium text-light mb-3">
+          You're already logged in
+        </h3>
         <p className="text-light/70 mb-4">
           You can access your profile and readings from the navigation menu.
         </p>
         <Button
           variant="default"
           className="bg-accent hover:bg-accent/80 text-dark"
-          onClick={() => window.location.href = '/profile'}
+          onClick={() => (window.location.href = "/profile")}
         >
           Go to Profile
         </Button>
@@ -131,7 +146,7 @@ export default function AuthForm() {
           <TabsTrigger value="login">Login</TabsTrigger>
           <TabsTrigger value="signup">Sign Up</TabsTrigger>
         </TabsList>
-        
+
         {/* Login Form */}
         <TabsContent value="login">
           <form onSubmit={handleLogin} className="space-y-4">
@@ -147,7 +162,7 @@ export default function AuthForm() {
                 className="bg-dark/60 border-light/20"
               />
             </div>
-            
+
             <div className="space-y-2">
               <Label htmlFor="login-password">Password</Label>
               <div className="relative">
@@ -169,13 +184,16 @@ export default function AuthForm() {
                 </button>
               </div>
             </div>
-            
+
             <div className="text-right">
-              <a href="/forgot-password" className="text-accent text-sm hover:underline">
+              <a
+                href="/forgot-password"
+                className="text-accent text-sm hover:underline"
+              >
                 Forgot password?
               </a>
             </div>
-            
+
             <Button
               type="submit"
               className="w-full bg-accent hover:bg-accent/80 text-dark"
@@ -187,12 +205,12 @@ export default function AuthForm() {
                   Logging in...
                 </>
               ) : (
-                'Login'
+                "Login"
               )}
             </Button>
           </form>
         </TabsContent>
-        
+
         {/* Signup Form */}
         <TabsContent value="signup">
           <form onSubmit={handleSignup} className="space-y-4">
@@ -208,7 +226,7 @@ export default function AuthForm() {
                 className="bg-dark/60 border-light/20"
               />
             </div>
-            
+
             <div className="space-y-2">
               <Label htmlFor="signup-email">Email</Label>
               <Input
@@ -221,7 +239,7 @@ export default function AuthForm() {
                 className="bg-dark/60 border-light/20"
               />
             </div>
-            
+
             <div className="space-y-2">
               <Label htmlFor="signup-password">Password</Label>
               <div className="relative">
@@ -246,7 +264,7 @@ export default function AuthForm() {
                 Password must be at least 8 characters long
               </p>
             </div>
-            
+
             <div className="space-y-2">
               <Label htmlFor="signup-confirm-password">Confirm Password</Label>
               <Input
@@ -259,7 +277,7 @@ export default function AuthForm() {
                 className="bg-dark/60 border-light/20"
               />
             </div>
-            
+
             <Button
               type="submit"
               className="w-full bg-accent hover:bg-accent/80 text-dark"
@@ -271,12 +289,13 @@ export default function AuthForm() {
                   Creating account...
                 </>
               ) : (
-                'Create Account'
+                "Create Account"
               )}
             </Button>
-            
+
             <p className="text-xs text-light/60 text-center mt-4">
-              By signing up, you agree to our Terms of Service and Privacy Policy.
+              By signing up, you agree to our Terms of Service and Privacy
+              Policy.
             </p>
           </form>
         </TabsContent>

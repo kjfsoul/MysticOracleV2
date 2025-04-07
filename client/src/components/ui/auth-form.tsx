@@ -1,12 +1,11 @@
+import { useAuth } from "@/hooks/use-auth";
+import { useToast } from "@/hooks/use-toast";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useAuth } from "@/hooks/use-auth";
 import { Button } from "./button";
 import { Input } from "./input";
-import { useToast } from "@/hooks/use-toast";
-import { error } from "console";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -31,7 +30,7 @@ interface AuthFormProps {
 }
 
 export default function AuthForm({ type }: AuthFormProps) {
-  const { login, register } = useAuth();
+  const { login, signup } = useAuth();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -65,7 +64,11 @@ export default function AuthForm({ type }: AuthFormProps) {
   const onRegisterSubmit = async (data: RegisterData) => {
     setIsLoading(true);
     try {
-      await register(data.username, data.email, data.password);
+      console.log("Registering with:", {
+        email: data.email,
+        username: data.username,
+      });
+      await signup(data.email, data.password, data.username);
       toast({
         title: "Success",
         description: "Registered successfully",

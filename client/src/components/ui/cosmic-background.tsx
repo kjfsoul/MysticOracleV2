@@ -9,7 +9,7 @@ interface CosmicBackgroundProps {
 
 /**
  * CosmicBackground Component
- * 
+ *
  * A multi-layered animated cosmic background with stars, shooting stars,
  * and mystic symbols for the Mystic Oracle application.
  */
@@ -27,7 +27,8 @@ const CosmicBackground: React.FC<CosmicBackgroundProps> = ({
 
     // Function to create a shooting star
     const createShootingStar = () => {
-      const id = Date.now();
+      // Use a more unique ID by combining timestamp with a random number
+      const id = Date.now() + Math.random();
       const startX = Math.random() * window.innerWidth;
       const startY = Math.random() * window.innerHeight;
       const angle = Math.random() * 60 - 30 + 45; // 45° ± 30°
@@ -36,14 +37,14 @@ const CosmicBackground: React.FC<CosmicBackgroundProps> = ({
         left: `${startX}px`,
         top: `${startY}px`,
         transform: `rotate(${angle}deg)`,
-        animationDuration: `${3 + Math.random() * 3}s`
+        animationDuration: `${3 + Math.random() * 3}s`,
       };
 
-      setShootingStars(prev => [...prev, { id, style }]);
+      setShootingStars((prev) => [...prev, { id, style }]);
 
       // Remove the shooting star after animation completes
       setTimeout(() => {
-        setShootingStars(prev => prev.filter(star => star.id !== id));
+        setShootingStars((prev) => prev.filter((star) => star.id !== id));
       }, 6000);
     };
 
@@ -64,7 +65,8 @@ const CosmicBackground: React.FC<CosmicBackgroundProps> = ({
 
     // Function to create a glow effect
     const createGlowEffect = () => {
-      const id = Date.now();
+      // Use a more unique ID by combining timestamp with a random number
+      const id = Date.now() + Math.random();
       const x = Math.random() * window.innerWidth;
       const y = Math.random() * window.innerHeight;
       const size = 150 + Math.random() * 300;
@@ -76,10 +78,10 @@ const CosmicBackground: React.FC<CosmicBackgroundProps> = ({
         width: `${size}px`,
         height: `${size}px`,
         background: `radial-gradient(circle, hsla(${hue}, 70%, 50%, 0.1) 0%, hsla(${hue}, 70%, 50%, 0) 70%)`,
-        animationDelay: `${Math.random() * 10}s`
+        animationDelay: `${Math.random() * 10}s`,
       };
 
-      setGlowEffects(prev => [...prev, { id, style }]);
+      setGlowEffects((prev) => [...prev, { id, style }]);
     };
 
     // Create initial glow effects
@@ -97,7 +99,7 @@ const CosmicBackground: React.FC<CosmicBackgroundProps> = ({
         }
         return prev;
       });
-      
+
       createGlowEffect();
     }, 20000); // Every 20 seconds
 
@@ -108,23 +110,21 @@ const CosmicBackground: React.FC<CosmicBackgroundProps> = ({
     <div className="cosmic-background">
       {/* Base gradient background */}
       <div className="cosmic-gradient"></div>
-      
+
       {/* Stars layers for parallax effect */}
       <div className="stars"></div>
       <div className="stars-parallax"></div>
-      
+
       {/* Mystic symbols layer */}
-      {enableMysticSymbols && (
-        <div className="mystic-symbols"></div>
-      )}
-      
+      {enableMysticSymbols && <div className="mystic-symbols"></div>}
+
       {/* Shooting stars */}
-      {shootingStars.map(star => (
+      {shootingStars.map((star) => (
         <div key={star.id} className="shooting-star" style={star.style}></div>
       ))}
-      
+
       {/* Glow effects */}
-      {glowEffects.map(glow => (
+      {glowEffects.map((glow) => (
         <div key={glow.id} className="mystic-glow" style={glow.style}></div>
       ))}
     </div>

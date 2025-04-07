@@ -8,6 +8,7 @@ import CosmicBackground from "./components/ui/cosmic-background";
 import { AuthProvider } from "./hooks/use-auth";
 import { queryClient } from "./lib/queryClient";
 import EclipseLandingPage from "./pages/EclipseLandingPage";
+import TarotInterpretationDemo from "./pages/tarot-interpretation-demo";
 
 // Lazy load pages
 const pages = {
@@ -24,8 +25,16 @@ const pages = {
   BlogPage: lazy(() => import("./pages/blog-page")),
   ShopPage: lazy(() => import("./pages/shop-page")),
   AuthPage: lazy(() => import("./pages/auth-page")),
+  SimpleAuthPage: lazy(() => import("./pages/simple-auth")),
+  BasicAuthPage: lazy(() => import("./pages/basic-auth")),
+  VeryBasicAuthPage: lazy(() => import("./pages/very-basic-auth")),
+  SuperSimpleAuthPage: lazy(() => import("./pages/super-simple-auth")),
+  PlainAuthPage: lazy(() => import("./pages/plain-auth")),
+  ExactAuthPage: lazy(() => import("./pages/exact-auth")),
   LandingPage: lazy(() => import("./pages/landing-page")),
   ZodiacSpreadPage: lazy(() => import("./pages/zodiac-spread-page")),
+  AgentLearningDemo: lazy(() => import("./pages/agent-learning-demo")),
+  TestPage: lazy(() => import("./pages/test-page")),
   NotFound: lazy(() => import("./pages/not-found")),
 };
 
@@ -40,7 +49,19 @@ function App() {
             <Suspense fallback={<div>Loading...</div>}>
               <Switch>
                 <Route path="/" component={pages.LandingPage} />
-                <Route path="/auth" component={pages.AuthPage} />
+                <Route path="/auth" component={pages.ExactAuthPage} />
+                <Route path="/simple-auth" component={pages.SimpleAuthPage} />
+                <Route path="/basic-auth" component={pages.BasicAuthPage} />
+                <Route
+                  path="/very-basic-auth"
+                  component={pages.VeryBasicAuthPage}
+                />
+                <Route
+                  path="/super-simple-auth"
+                  component={pages.SuperSimpleAuthPage}
+                />
+                <Route path="/plain-auth" component={pages.PlainAuthPage} />
+                <Route path="/exact-auth" component={pages.ExactAuthPage} />
                 <Route path="/home" component={pages.ReadingsPage} />
                 <Route path="/profile" component={pages.ProfilePage} />
                 <Route path="/readings" component={pages.ReadingsPage} />
@@ -69,6 +90,15 @@ function App() {
                 <Route path="/upgrade" component={pages.PricingPage} />
                 <Route path="/eclipse" component={EclipseLandingPage} />
                 <Route path="/shop" component={pages.ShopPage} />
+                <Route
+                  path="/agent-learning"
+                  component={pages.AgentLearningDemo}
+                />
+                <Route
+                  path="/tarot-interpretation"
+                  component={TarotInterpretationDemo}
+                />
+                <Route path="/test" component={pages.TestPage} />
                 <Route component={pages.NotFound} />
               </Switch>
             </Suspense>
