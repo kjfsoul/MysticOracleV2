@@ -1,0 +1,32 @@
+{
+  "project": "Mystic Arcana",
+  "description": "A mystical web application for tarot readings, astrology charts, and spiritual content",
+  "mcpServers": {
+    "default": ["nextjs", "react-ui"],
+    "contextMapping": {
+      "tarot": ["ai-function-pack", "react-ui", "design-system-tailwind"],
+      "astrology": ["ai-function-pack", "react-ui", "design-system-tailwind"],
+      "payment": ["commerce-stripe", "netlify-edge"],
+      "blog": ["cms-headless", "nextjs"],
+      "auth": ["fullstack-turbo", "netlify-edge"]
+    },
+    "fileTypeMapping": {
+      "*.tsx": ["nextjs", "react-ui"],
+      "*.jsx": ["nextjs", "react-ui"],
+      "*.ts": ["fullstack-turbo"],
+      "*.js": ["fullstack-turbo"],
+      "*.css": ["design-system-tailwind"],
+      "*.mdx": ["cms-headless"]
+    },
+    "pathMapping": {
+      "app/": ["nextjs"],
+      "components/": ["react-ui"],
+      "netlify/functions/": ["netlify-edge"],
+      "netlify/edge-functions/": ["netlify-edge"],
+      "lib/api/": ["ai-function-pack"]
+    }
+  },
+  "customInstructions": {
+    "path": "../cline_docs/augment-mcp-integration.md"
+  }
+}

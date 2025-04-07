@@ -5,6 +5,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  NPM_FLAGS = "--legacy-peer-deps"
 
 # API routes for serverless functions
 [[redirects]]
@@ -28,6 +29,13 @@
   node_bundler = "esbuild"
   external_node_modules = ["@supabase/supabase-js"]
 
+# Edge function settings
+[edge_functions]
+  bundle = true
+
 # For local development with Netlify Dev
 [dev.functions]
   directory = "netlify/functions"
+
+[dev.edge_functions]
+  directory = "netlify/edge-functions"
