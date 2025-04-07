@@ -54,6 +54,8 @@
       radial-gradient(circle at 15% 25%, rgba(126, 94, 162, 0.2) 0%, rgba(30, 30, 70, 0.1) 60%),
       radial-gradient(circle at 85% 75%, rgba(81, 166, 198, 0.15) 0%, rgba(30, 30, 70, 0.05) 50%);
     background-attachment: fixed;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
   }
 
   /* Mystical sparkling effect for special elements */
@@ -137,6 +139,21 @@
   /* Dark mode calendar styles */
   input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(0.8);
+  }
+
+  /* Additional spacing utilities */
+  .space-y-consistent > * + * {
+    margin-top: 1.25rem;
+  }
+
+  .space-y-consistent-sm > * + * {
+    margin-top: 0.75rem;
+  }
+
+  /* Fix for links appearing in weird spots */
+  a, button {
+    position: relative;
+    display: inline-flex;
   }
 
   /* Tarot card back styling */

@@ -45,7 +45,7 @@ export default function LandingPage() {
 
       <Navbar />
 
-      <main className="container mx-auto px-4 pt-8 pb-12 md:pb-12 md:pt-12 max-w-7xl">
+      <main className="container mx-auto px-4 pt-8 pb-20 md:pb-16 md:pt-12 max-w-7xl">
         {/* Hero Section */}
         <div className="max-w-6xl mx-auto mb-8">
           <div className="text-center mb-8">
@@ -59,11 +59,11 @@ export default function LandingPage() {
               Embrace the spirit of Spring renewal and new beginnings with our
               special Easter readings
             </p>
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap justify-center gap-3 mb-4">
               <Link href="/tarot">
                 <Button
                   size="lg"
-                  className="bg-accent hover:bg-accent/80 text-dark"
+                  className="bg-accent hover:bg-accent/80 text-dark w-full sm:w-auto mb-2 sm:mb-0"
                 >
                   Get Spring Reading
                 </Button>
@@ -72,7 +72,7 @@ export default function LandingPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-light/30 text-light hover:bg-light/10"
+                  className="border-light/30 text-light hover:bg-light/10 w-full sm:w-auto mb-2 sm:mb-0"
                 >
                   Start Spring Journal
                 </Button>
@@ -81,7 +81,7 @@ export default function LandingPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-light/30 text-light hover:bg-light/10"
+                  className="border-light/30 text-light hover:bg-light/10 w-full sm:w-auto"
                 >
                   Spring Equinox Chart
                 </Button>
@@ -104,7 +104,7 @@ export default function LandingPage() {
             Spring <span className="text-accent">Mystical Services</span>
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             <Card className="bg-dark/40 backdrop-blur-sm border border-light/10 text-light">
               <CardHeader className="pb-1 pt-3 px-3">
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-2">
@@ -121,8 +121,11 @@ export default function LandingPage() {
                 </p>
               </CardContent>
               <CardFooter className="px-3 pt-1 pb-3">
-                <Link href="/tarot">
-                  <Button variant="link" className="text-accent p-0 text-sm">
+                <Link href="/tarot" className="w-full">
+                  <Button
+                    variant="link"
+                    className="text-accent p-0 text-sm w-full text-left"
+                  >
                     Try Free Reading →
                   </Button>
                 </Link>
@@ -145,8 +148,11 @@ export default function LandingPage() {
                 </p>
               </CardContent>
               <CardFooter className="px-3 pt-1 pb-3">
-                <Link href="/astrology">
-                  <Button variant="link" className="text-accent p-0 text-sm">
+                <Link href="/astrology" className="w-full">
+                  <Button
+                    variant="link"
+                    className="text-accent p-0 text-sm w-full text-left"
+                  >
                     View Spring Forecast →
                   </Button>
                 </Link>
@@ -167,8 +173,11 @@ export default function LandingPage() {
                 </p>
               </CardContent>
               <CardFooter className="px-3 pt-1 pb-3">
-                <Link href="/journal">
-                  <Button variant="link" className="text-accent p-0 text-sm">
+                <Link href="/journal" className="w-full">
+                  <Button
+                    variant="link"
+                    className="text-accent p-0 text-sm w-full text-left"
+                  >
                     Start Journaling →
                   </Button>
                 </Link>
@@ -191,8 +200,11 @@ export default function LandingPage() {
                 </p>
               </CardContent>
               <CardFooter className="px-3 pt-1 pb-3">
-                <Link href="/blog/rituals/easter-rituals">
-                  <Button variant="link" className="text-accent p-0 text-sm">
+                <Link href="/blog/rituals/easter-rituals" className="w-full">
+                  <Button
+                    variant="link"
+                    className="text-accent p-0 text-sm w-full text-left"
+                  >
                     Explore Rituals →
                   </Button>
                 </Link>
@@ -207,7 +219,7 @@ export default function LandingPage() {
             Spring <span className="text-accent">Featured Content</span>
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {/* Featured Blog Post */}
             <Card className="bg-dark/40 backdrop-blur-sm border border-light/10 text-light overflow-hidden">
               <div className="h-40 relative bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
@@ -317,8 +329,8 @@ export default function LandingPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="max-w-3xl mx-auto text-center px-4 mb-6">
-          <div className="bg-gradient-to-r from-green-500/30 to-yellow-500/30 backdrop-blur-sm rounded-xl border border-accent/20 p-3 md:p-5">
+        <section className="max-w-3xl mx-auto text-center px-4 mb-12">
+          <div className="bg-gradient-to-r from-green-500/30 to-yellow-500/30 backdrop-blur-sm rounded-xl border border-accent/20 p-5 md:p-8">
             <h2 className="font-heading text-xl md:text-2xl font-bold mb-2 text-light">
               Begin Your Spring Renewal Journey
             </h2>
@@ -329,8 +341,8 @@ export default function LandingPage() {
             </p>
             <Link href="/auth">
               <Button
-                size="md"
-                className="bg-accent hover:bg-accent/80 text-dark px-4 py-1.5"
+                size="lg"
+                className="bg-accent hover:bg-accent/80 text-dark px-6 py-2 mt-2"
               >
                 Start Your Spring Journey
               </Button>

@@ -45,7 +45,7 @@ function App() {
         <div className="flex flex-col min-h-screen bg-background relative">
           <CosmicBackground />
           <Navbar />
-          <div className="flex-1 container mx-auto py-6 px-4 mt-16">
+          <div className="flex-1 container mx-auto py-8 px-4 mt-16 mb-16 md:mb-0">
             <Suspense fallback={<div>Loading...</div>}>
               <Switch>
                 <Route path="/" component={pages.LandingPage} />

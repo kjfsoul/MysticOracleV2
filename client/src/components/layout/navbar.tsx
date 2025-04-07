@@ -179,11 +179,7 @@ export default function Navbar() {
             </DropdownMenu>
           )}
 
-          {!user && !isLoading && (
-            <Link href="/auth" className="text-gold hover:text-gold/80">
-              Sign In
-            </Link>
-          )}
+          {/* Sign In link moved to the top section */}
 
           <Button
             variant="ghost"
