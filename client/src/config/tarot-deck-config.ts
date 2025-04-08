@@ -1,6 +1,6 @@
 /**
  * Tarot Deck Configuration
- * 
+ *
  * This file contains configuration for tarot decks used in the application.
  * It allows for easy switching between different decks.
  */
@@ -16,12 +16,13 @@ export interface TarotDeckConfig {
 
 export const TAROT_DECKS: TarotDeckConfig[] = [
   {
-    id: 'rider-waite',
-    name: 'Rider-Waite',
-    description: 'The classic Rider-Waite tarot deck, illustrated by Pamela Colman Smith.',
-    basePath: '/images/tarot/decks/rider-waite',
-    cardBack: '/images/tarot/card-back.jpg',
-    isDefault: true
+    id: "rider-waite",
+    name: "Rider-Waite",
+    description:
+      "The classic Rider-Waite tarot deck, illustrated by Pamela Colman Smith.",
+    basePath: "/images/tarot/decks/rider-waite",
+    cardBack: "/images/tarot/card-back.svg",
+    isDefault: true,
   },
   // Add more decks here as needed
 ];
@@ -39,13 +40,13 @@ export function getDeckById(id: string): TarotDeckConfig | undefined {
 // Get the path for a specific card in the specified deck
 export function getCardPath(deckId: string, arcana: 'major' | 'minor', cardId: string, suit?: string): string {
   const deck = getDeckById(deckId) || getDefaultDeck();
-  
-  if (arcana === 'major') {
+
+  if (arcana === "major") {
     return `${deck.basePath}/major/${cardId}.jpg`;
-  } else if (arcana === 'minor' && suit) {
+  } else if (arcana === "minor" && suit) {
     return `${deck.basePath}/minor/${suit}/${cardId}.jpg`;
   }
-  
+
   // Fallback to placeholder
   return `/images/tarot/placeholders/${arcana === 'major' ? 'major' : suit}-placeholder.svg`;
 }
@@ -69,7 +70,35 @@ export function setActiveDeck(deckId: string): boolean {
   const deck = getDeckById(deckId);
   if (deck) {
     activeDeckId = deckId;
+    // Store in localStorage for persistence
+    try {
+      localStorage.setItem("mysticArcana.activeDeckId", deckId);
+    } catch (e) {
+      console.warn("Could not save active deck to localStorage:", e);
+    }
     return true;
   }
   return false;
+}
+
+// Initialize the deck system
+export function initializeDeckSystem(): void {
+  // Try to load the active deck from localStorage
+  try {
+    const storedDeckId = localStorage.getItem('mysticArcana.activeDeckId');
+    if (storedDeckId && getDeckById(storedDeckId)) {
+      activeDeckId = storedDeckId;
+    } else {
+      // Ensure Rider-Waite is set as the active deck
+      const riderWaiteDeck = TAROT_DECKS.find(deck => deck.id === 'rider-waite');
+      if (riderWaiteDeck) {
+        activeDeckId = 'rider-waite';
+        localStorage.setItem('mysticArcana.activeDeckId', 'rider-waite');
+      }
+    }
+  } catch (e) {
+    console.warn('Could not initialize deck system from localStorage:', e);
+    // Fallback to default
+    activeDeckId = getDefaultDeck().id;
+  }
 }

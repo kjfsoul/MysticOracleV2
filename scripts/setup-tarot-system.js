@@ -2,16 +2,15 @@
 
 /**
  * Setup Tarot System
- * 
+ *
  * This script sets up the tarot deck system by creating the necessary directories
  * and placeholder images, and providing instructions for downloading deck images.
  */
 
+import { spawn } from "child_process";
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import { spawn } from 'child_process';
-import { promisify } from 'util';
+import { fileURLToPath } from "url";
 
 // Get the directory name in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -58,23 +57,23 @@ const createPlaceholders = spawn('node', [path.join(__dirname, 'create-tarot-pla
 createPlaceholders.on('close', (code) => {
   if (code === 0) {
     console.log('\nPlaceholder images created successfully!');
-    
+
     // Print instructions
     console.log('\n=== Tarot Deck System Setup ===');
     console.log('\nDirectory structure has been created at:');
     console.log(TAROT_PATH);
-    
-    console.log('\nTo download the Rider-Waite deck, run:');
-    console.log('npm run tarot:download-rider-waite');
-    
-    console.log('\nTo access the deck management page, visit:');
-    console.log('/tarot-decks');
-    
+
+    console.log("\nTo download the Rider-Waite deck, run:");
+    console.log("npm run tarot:download-simple");
+
+    console.log("\nTo access the deck management page, visit:");
+    console.log("/tarot-decks");
+
     console.log('\nTo add your own deck:');
     console.log('1. Create a new directory under /client/public/images/tarot/decks/');
     console.log('2. Add your card images following the naming convention in the README');
     console.log('3. Update the tarot-deck-config.ts file to include your new deck');
-    
+
     console.log('\nSetup complete!');
   } else {
     console.error('\nError creating placeholder images. Please run manually:');
