@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { getDailyCard } from "@/data/tarot-cards";
 import { Clock, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
@@ -13,16 +12,29 @@ export default function DailyCardLocal() {
   useEffect(() => {
     // Simulate API loading
     const timer = setTimeout(() => {
-      const dailyCard = getDailyCard();
-      setCard({
-        name: dailyCard.name,
-        arcana: dailyCard.arcana,
-        number: dailyCard.number,
-        description: dailyCard.description,
-        imageUrl: dailyCard.imagePath,
-        reversal: false,
-      });
-      setIsLoading(false);
+      try {
+        // Import the utility functions
+        import("@/data/tarot-cards").then(({ allTarotCards }) => {
+          import("@/utils/tarot-utils").then(
+            ({ getDailyCard, getTarotCardImagePath }) => {
+              const { card: dailyCard, isReversed } =
+                getDailyCard(allTarotCards);
+              setCard({
+                name: dailyCard.name,
+                arcana: dailyCard.arcana,
+                number: dailyCard.number,
+                description: dailyCard.description,
+                imageUrl: getTarotCardImagePath(dailyCard),
+                reversal: isReversed,
+              });
+              setIsLoading(false);
+            }
+          );
+        });
+      } catch (error) {
+        console.error("Error loading daily card:", error);
+        setIsLoading(false);
+      }
     }, 1000);
 
     return () => clearTimeout(timer);

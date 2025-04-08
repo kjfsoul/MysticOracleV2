@@ -1,6 +1,6 @@
 /**
  * Tarot Card Data Model
- * 
+ *
  * This file contains the data model for tarot cards used in the application.
  */
 
@@ -22,43 +22,53 @@ export interface TarotCard {
 // Major Arcana Cards
 export const majorArcanaCards: TarotCard[] = [
   {
-    id: '00-fool',
-    name: 'The Fool',
-    arcana: 'major',
+    id: "00-fool",
+    name: "The Fool",
+    arcana: "major",
     number: 0,
-    keywords: ['beginnings', 'innocence', 'spontaneity', 'free spirit'],
-    description: 'The Fool represents new beginnings, having faith in the future, being inexperienced, not knowing what to expect, having beginner\'s luck, improvisation and believing in the universe.',
-    meaningUpright: 'Beginnings, innocence, spontaneity, a free spirit',
-    meaningReversed: 'Holding back, recklessness, risk-taking',
-    element: 'Air',
-    zodiacSign: 'Uranus',
-    imagePath: '/images/tarot/placeholders/00-fool.svg'
+    keywords: ["beginnings", "innocence", "spontaneity", "free spirit"],
+    description:
+      "The Fool represents new beginnings, having faith in the future, being inexperienced, not knowing what to expect, having beginner's luck, improvisation and believing in the universe.",
+    meaningUpright: "Beginnings, innocence, spontaneity, a free spirit",
+    meaningReversed: "Holding back, recklessness, risk-taking",
+    element: "Air",
+    zodiacSign: "Uranus",
+    imagePath: "/images/tarot/decks/rider-waite/major/00-fool.jpg",
   },
   {
-    id: '01-magician',
-    name: 'The Magician',
-    arcana: 'major',
+    id: "01-magician",
+    name: "The Magician",
+    arcana: "major",
     number: 1,
-    keywords: ['manifestation', 'resourcefulness', 'power', 'inspired action'],
-    description: 'The Magician represents manifestation, resourcefulness, power, inspired action, creation and the ability to create one\'s own reality.',
-    meaningUpright: 'Manifestation, resourcefulness, power, inspired action',
-    meaningReversed: 'Manipulation, poor planning, untapped talents',
-    element: 'Air',
-    zodiacSign: 'Mercury',
-    imagePath: '/images/tarot/placeholders/01-magician.svg'
+    keywords: ["manifestation", "resourcefulness", "power", "inspired action"],
+    description:
+      "The Magician represents manifestation, resourcefulness, power, inspired action, creation and the ability to create one's own reality.",
+    meaningUpright: "Manifestation, resourcefulness, power, inspired action",
+    meaningReversed: "Manipulation, poor planning, untapped talents",
+    element: "Air",
+    zodiacSign: "Mercury",
+    imagePath: "/images/tarot/placeholders/01-magician.svg",
   },
   {
-    id: '02-high-priestess',
-    name: 'The High Priestess',
-    arcana: 'major',
+    id: "02-high-priestess",
+    name: "The High Priestess",
+    arcana: "major",
     number: 2,
-    keywords: ['intuition', 'sacred knowledge', 'divine feminine', 'subconscious mind'],
-    description: 'The High Priestess represents intuition, sacred knowledge, divine feminine, the subconscious mind, and wisdom.',
-    meaningUpright: 'Intuition, sacred knowledge, divine feminine, the subconscious mind',
-    meaningReversed: 'Secrets, disconnected from intuition, withdrawal and silence',
-    element: 'Water',
-    zodiacSign: 'Moon',
-    imagePath: '/images/tarot/placeholders/02-high-priestess.svg'
+    keywords: [
+      "intuition",
+      "sacred knowledge",
+      "divine feminine",
+      "subconscious mind",
+    ],
+    description:
+      "The High Priestess represents intuition, sacred knowledge, divine feminine, the subconscious mind, and wisdom.",
+    meaningUpright:
+      "Intuition, sacred knowledge, divine feminine, the subconscious mind",
+    meaningReversed:
+      "Secrets, disconnected from intuition, withdrawal and silence",
+    element: "Water",
+    zodiacSign: "Moon",
+    imagePath: "/images/tarot/placeholders/02-high-priestess.svg",
   },
   // Add more major arcana cards as needed
 ];
@@ -139,11 +149,11 @@ export function getRandomCard(): TarotCard {
 export function getDailyCard(): TarotCard {
   // Get today's date as string for consistent seeding
   const today = new Date().toISOString().split('T')[0];
-  
+
   // Use the date string to seed a simple random number generator
   const seed = today.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
   const randomIndex = seed % allTarotCards.length;
-  
+
   return allTarotCards[randomIndex];
 }
 

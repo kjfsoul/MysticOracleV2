@@ -39,6 +39,8 @@
     "augment:run-code": "node scripts/augment-agent.js CodeAgent",
     "augment:run-design": "node scripts/augment-agent.js DesignAgent",
     "tarot:download-rider-waite": "node scripts/download-rider-waite-deck.js",
+    "tarot:create-placeholders": "node scripts/create-tarot-placeholders.js",
+    "tarot:setup": "node scripts/setup-tarot-system.js",
     "augment:run-api": "node scripts/augment-agent.js APIAgent",
     "augment:run-content": "node scripts/augment-agent.js ContentAgent",
     "augment:run-test": "node scripts/augment-agent.js TestAgent"
