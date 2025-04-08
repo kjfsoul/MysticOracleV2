@@ -1,7 +1,6 @@
-import { Handler } from '@netlify/functions';
+import { createClient } from '@supabase/supabase-js';
 import Stripe from 'stripe';
 import dotenv from 'dotenv';
-import { createClient } from '@supabase/supabase-js';
 
 // Load environment variables
 dotenv.config();
@@ -16,7 +15,7 @@ const supabaseUrl = process.env.VITE_SUPABASE_URL || '';
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-const handler: Handler = async (event, context) => {
+export const handler = async (event, context) => {
   // Set CORS headers
   const headers = {
     'Access-Control-Allow-Origin': '*',
@@ -34,7 +33,7 @@ const handler: Handler = async (event, context) => {
   }
 
   // Get the path parameter
-  const path = event.path.replace(/\\/netlify\\/functions\\/stripe/, '').replace(/^\\/+/, '');
+  const path = event.path.replace(/\/netlify\/functions\/stripe/g, '').replace(/^\//g, '');
 
   try {
     // Handle different API endpoints
@@ -73,7 +72,7 @@ const handler: Handler = async (event, context) => {
 /**
  * Create a Stripe checkout session
  */
-async function createCheckoutSession(event: any, headers: any) {
+async function createCheckoutSession(event, headers) {
   try {
     const { priceId, successUrl, cancelUrl } = JSON.parse(event.body);
 
@@ -120,7 +119,7 @@ async function createCheckoutSession(event: any, headers: any) {
 /**
  * Create a Stripe customer portal session
  */
-async function createCustomerPortalSession(event: any, headers: any) {
+async function createCustomerPortalSession(event, headers) {
   try {
     const { customerId, returnUrl } = JSON.parse(event.body);
 
@@ -159,7 +158,7 @@ async function createCustomerPortalSession(event: any, headers: any) {
 /**
  * Handle Stripe webhook events
  */
-async function handleWebhook(event: any, headers: any) {
+async function handleWebhook(event, headers) {
   const signature = event.headers['stripe-signature'];
 
   if (!signature) {
@@ -182,7 +181,7 @@ async function handleWebhook(event: any, headers: any) {
     switch (stripeEvent.type) {
       case 'checkout.session.completed':
         // Payment is successful and the subscription is created
-        const checkoutSession = stripeEvent.data.object as Stripe.Checkout.Session;
+        const checkoutSession = stripeEvent.data.object;
         
         // Update user's subscription status in your database
         if (checkoutSession.customer && checkoutSession.subscription) {
@@ -196,7 +195,7 @@ async function handleWebhook(event: any, headers: any) {
         
       case 'customer.subscription.updated':
         // Subscription is updated
-        const subscription = stripeEvent.data.object as Stripe.Subscription;
+        const subscription = stripeEvent.data.object;
         
         // Update subscription details in your database
         if (subscription.customer) {
@@ -210,7 +209,7 @@ async function handleWebhook(event: any, headers: any) {
         
       case 'customer.subscription.deleted':
         // Subscription is canceled or expired
-        const canceledSubscription = stripeEvent.data.object as Stripe.Subscription;
+        const canceledSubscription = stripeEvent.data.object;
         
         // Update subscription status in your database
         if (canceledSubscription.customer) {
@@ -246,9 +245,9 @@ async function handleWebhook(event: any, headers: any) {
  * Update user subscription in Supabase
  */
 async function updateUserSubscription(
-  stripeCustomerId: string,
-  subscriptionId: string,
-  isActive: boolean
+  stripeCustomerId,
+  subscriptionId,
+  isActive
 ) {
   try {
     // Find the user with the given Stripe customer ID
@@ -287,7 +286,7 @@ async function updateUserSubscription(
 /**
  * Get subscription prices
  */
-async function getSubscriptionPrices(event: any, headers: any) {
+async function getSubscriptionPrices(event, headers) {
   try {
     // Retrieve all active subscription prices
     const prices = await stripe.prices.list({
@@ -315,7 +314,7 @@ async function getSubscriptionPrices(event: any, headers: any) {
 /**
  * Get customer subscription
  */
-async function getCustomerSubscription(event: any, headers: any) {
+async function getCustomerSubscription(event, headers) {
   try {
     const customerId = event.queryStringParameters?.customerId;
 
@@ -353,7 +352,7 @@ async function getCustomerSubscription(event: any, headers: any) {
 /**
  * Create a Stripe customer
  */
-async function createCustomer(event: any, headers: any) {
+async function createCustomer(event, headers) {
   try {
     const { email, name, userId } = JSON.parse(event.body);
 
@@ -408,7 +407,7 @@ async function createCustomer(event: any, headers: any) {
 /**
  * Verify a checkout session
  */
-async function verifySession(event: any, headers: any) {
+async function verifySession(event, headers) {
   try {
     const { sessionId } = JSON.parse(event.body);
 
@@ -447,5 +446,3 @@ async function verifySession(event: any, headers: any) {
     };
   }
 }
-
-export { handler };

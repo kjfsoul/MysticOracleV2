@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+o#!/usr/bin/env node
 
 /**
  * Start Autonomous Agents Script for Mystic Arcana

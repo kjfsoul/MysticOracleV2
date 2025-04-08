@@ -1,56 +1,61 @@
-const { createClient } = require('@supabase/supabase-js');
+import { createClient } from "@supabase/supabase-js";
 
 // Initialize Supabase client
 const supabaseUrl = process.env.VITE_SUPABASE_URL;
 const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-exports.handler = async function(event, context) {
+export const handler = async (event, context) => {
   // Only allow POST requests
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
-      body: JSON.stringify({ error: "Method Not Allowed" })
+      body: JSON.stringify({ error: "Method Not Allowed" }),
     };
   }
 
   try {
     // Parse the request body
-    const { title, content, emotions, tags, embedding, userId } = JSON.parse(event.body);
+    const { title, content, emotions, tags, embedding, userId } = JSON.parse(
+      event.body
+    );
 
     // Validate required parameters
     if (!content || !userId) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: "Content and userId are required" })
+        body: JSON.stringify({ error: "Content and userId are required" }),
       };
     }
 
     // Verify the user is authenticated
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
 
     if (authError || !user || user.id !== userId) {
       return {
         statusCode: 401,
-        body: JSON.stringify({ error: "Unauthorized" })
+        body: JSON.stringify({ error: "Unauthorized" }),
       };
     }
 
     // Store the journal entry in Supabase
     const { data, error } = await supabase
-      .from('journal_entries')
+      .from("journal_entries")
       .insert([
         {
           user_id: userId,
-          title: title || 'Untitled Entry',
+          title: title || "Untitled Entry",
           content,
           emotions: emotions || [],
           tags: tags || [],
           embedding,
-          created_at: new Date()
-        }
+          created_at: new Date(),
+        },
       ])
-      .select('id')
+      .select("id")
       .single();
 
     if (error) {
@@ -62,18 +67,18 @@ exports.handler = async function(event, context) {
       statusCode: 200,
       body: JSON.stringify({
         id: data.id,
-        message: "Journal entry stored successfully"
-      })
+        message: "Journal entry stored successfully",
+      }),
     };
   } catch (error) {
-    console.error('Error storing journal entry:', error);
+    console.error("Error storing journal entry:", error);
 
     return {
       statusCode: 500,
       body: JSON.stringify({
         error: "Failed to store journal entry",
-        details: error.message
-      })
+        details: error.message,
+      }),
     };
   }
 };
