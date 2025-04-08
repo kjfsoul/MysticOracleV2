@@ -1,0 +1,251 @@
+/**
+ * Improved Layout Styles for Mystic Arcana
+ * 
+ * This file contains improved spacing, typography, and layout styles
+ * to enhance the overall design of the website.
+ */
+
+/* Improved spacing for main content */
+.main-content {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Improved card styling */
+.card-improved {
+  background-color: rgba(30, 27, 75, 0.65) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(128, 90, 213, 0.2) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 0.75rem !important;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-improved:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25) !important;
+  transform: translateY(-2px);
+}
+
+/* Improved typography */
+.heading-improved {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.subheading-improved {
+  font-family: 'Marcellus', serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.text-improved {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Improved section spacing */
+.section-improved {
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+}
+
+/* Improved button styling */
+.button-improved {
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.9), rgba(79, 70, 229, 0.9)) !important;
+  border: none !important;
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3) !important;
+  transition: all 0.3s ease !important;
+  font-family: 'Marcellus', serif !important;
+  letter-spacing: 0.03em !important;
+  font-weight: 500 !important;
+}
+
+.button-improved:hover {
+  background: linear-gradient(135deg, rgba(147, 51, 234, 1), rgba(79, 70, 229, 1)) !important;
+  box-shadow: 0 6px 15px rgba(79, 70, 229, 0.4) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Improved grid layouts */
+.grid-improved {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* Improved daily card section */
+.daily-card-improved {
+  background: linear-gradient(135deg, rgba(30, 27, 75, 0.7), rgba(60, 50, 120, 0.7));
+  border: 1px solid rgba(128, 90, 213, 0.3);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Improved header styling */
+.header-improved {
+  background-color: rgba(17, 24, 39, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(128, 90, 213, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Improved navigation */
+.nav-link-improved {
+  position: relative;
+  padding: 0.5rem 0.75rem;
+  margin: 0 0.25rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Marcellus', serif;
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+}
+
+.nav-link-improved:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+.nav-link-improved::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(147, 51, 234, 0), rgba(147, 51, 234, 1), rgba(147, 51, 234, 0));
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-link-improved:hover::after {
+  width: 80%;
+  left: 10%;
+}
+
+/* Improved footer */
+.footer-improved {
+  background-color: rgba(17, 24, 39, 0.8);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(128, 90, 213, 0.2);
+  padding: 2rem 0;
+}
+
+/* Improved mobile navigation */
+.mobile-nav-improved {
+  background-color: rgba(17, 24, 39, 0.9);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(128, 90, 213, 0.2);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Improved form elements */
+.input-improved {
+  background-color: rgba(30, 27, 75, 0.6) !important;
+  border: 1px solid rgba(128, 90, 213, 0.3) !important;
+  border-radius: 0.5rem !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  padding: 0.75rem 1rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.input-improved:focus {
+  border-color: rgba(147, 51, 234, 0.6) !important;
+  box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.25) !important;
+  outline: none !important;
+}
+
+/* Improved badge styling */
+.badge-improved {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.2)) !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  color: rgba(167, 243, 208, 0.9) !important;
+  font-family: 'Marcellus', serif !important;
+  letter-spacing: 0.03em !important;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 9999px !important;
+}
+
+/* Improved card title styling */
+.card-title-improved {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: rgba(147, 51, 234, 0.9);
+  margin-bottom: 0.5rem;
+}
+
+/* Improved card content styling */
+.card-content-improved {
+  padding: 1.25rem;
+}
+
+/* Improved dividers */
+.divider-improved {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(128, 90, 213, 0), rgba(128, 90, 213, 0.5), rgba(128, 90, 213, 0));
+  margin: 2rem 0;
+}
+
+/* Improved icons */
+.icon-improved {
+  color: rgba(147, 51, 234, 0.9);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.icon-improved:hover {
+  color: rgba(147, 51, 234, 1);
+  transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-improved {
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .heading-improved {
+    font-size: 1.75rem !important;
+  }
+  
+  .subheading-improved {
+    font-size: 1rem !important;
+  }
+  
+  .grid-improved {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Improved spacing for card of the day */
+.daily-card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .daily-card-container {
+    flex-direction: row;
+  }
+  
+  .daily-card-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .daily-card-content {
+    flex: 2;
+  }
+}

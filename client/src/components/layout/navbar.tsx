@@ -44,7 +44,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="bg-background border-b border-accent/20 fixed top-0 w-full z-50 h-16 shadow-md">
+    <header className="bg-background border-b border-accent/20 fixed top-0 w-full z-50 h-16 shadow-md header-improved">
       <div className="container mx-auto px-4 h-full flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-primary border border-gold flex items-center justify-center">
@@ -74,7 +74,7 @@ export default function Navbar() {
                 <Link
                   key={link.path}
                   href={link.path}
-                  className={`text-foreground hover:text-gold transition-colors duration-300 flex items-center gap-1 ${
+                  className={`nav-link-improved flex items-center gap-1 ${
                     location === link.path ? "text-gold font-medium" : ""
                   }`}
                 >
@@ -88,15 +88,15 @@ export default function Navbar() {
           {!user && !isLoading && (
             <Link
               href="/auth"
-              className="hidden md:flex items-center px-4 py-2 text-gold hover:text-gold/80 transition-colors duration-300"
+              className="hidden md:flex items-center px-4 py-2 text-gold hover:text-gold/80 transition-colors duration-300 nav-link-improved"
             >
-              <User className="mr-1 h-4 w-4" />
+              <User className="mr-1 h-4 w-4 icon-improved" />
               Sign In
             </Link>
           )}
           <Link
             href="/settings?tab=subscription"
-            className="hidden md:block px-4 py-2 border border-gold rounded-full text-gold hover:bg-gold/10 transition-colors duration-300 font-medium"
+            className="hidden md:block px-4 py-2 border border-gold rounded-full text-gold hover:bg-gold/10 transition-colors duration-300 font-medium button-improved text-white"
           >
             Upgrade to Premium
           </Link>

@@ -15,11 +15,15 @@ interface CosmicBackgroundProps {
  */
 const CosmicBackground: React.FC<CosmicBackgroundProps> = ({
   enableShootingStars = true,
-  enableMysticSymbols = true,
-  enableGlowEffects = true
+  enableMysticSymbols = false, // Disable by default for better readability
+  enableGlowEffects = true,
 }) => {
-  const [shootingStars, setShootingStars] = useState<{ id: number; style: React.CSSProperties }[]>([]);
-  const [glowEffects, setGlowEffects] = useState<{ id: number; style: React.CSSProperties }[]>([]);
+  const [shootingStars, setShootingStars] = useState<
+    { id: number; style: React.CSSProperties }[]
+  >([]);
+  const [glowEffects, setGlowEffects] = useState<
+    { id: number; style: React.CSSProperties }[]
+  >([]);
 
   // Generate shooting stars at random intervals
   useEffect(() => {
@@ -91,11 +95,14 @@ const CosmicBackground: React.FC<CosmicBackgroundProps> = ({
 
     // Periodically refresh glow effects
     const interval = setInterval(() => {
-      setGlowEffects(prev => {
+      setGlowEffects((prev) => {
         // Remove one random glow effect
         if (prev.length > 0) {
           const indexToRemove = Math.floor(Math.random() * prev.length);
-          return [...prev.slice(0, indexToRemove), ...prev.slice(indexToRemove + 1)];
+          return [
+            ...prev.slice(0, indexToRemove),
+            ...prev.slice(indexToRemove + 1),
+          ];
         }
         return prev;
       });

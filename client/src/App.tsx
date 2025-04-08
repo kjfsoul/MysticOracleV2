@@ -9,6 +9,7 @@ import { AuthProvider } from "./hooks/use-auth";
 import { queryClient } from "./lib/queryClient";
 import EclipseLandingPage from "./pages/EclipseLandingPage";
 import TarotInterpretationDemo from "./pages/tarot-interpretation-demo";
+import "./styles/improved-layout.css";
 
 // Lazy load pages
 const pages = {
@@ -37,6 +38,7 @@ const pages = {
   LandingPage: lazy(() => import("./pages/landing-page")),
   ZodiacSpreadPage: lazy(() => import("./pages/zodiac-spread-page")),
   AgentLearningDemo: lazy(() => import("./pages/agent-learning-demo")),
+  DeckManagementPage: lazy(() => import("./pages/deck-management")),
   TestPage: lazy(() => import("./pages/test-page")),
   NotFound: lazy(() => import("./pages/not-found")),
 };
@@ -48,7 +50,7 @@ function App() {
         <div className="flex flex-col min-h-screen bg-background relative">
           <CosmicBackground />
           <Navbar />
-          <div className="flex-1 container mx-auto py-8 px-4 mt-16 mb-16 md:mb-0">
+          <div className="flex-1 container mx-auto py-10 px-4 mt-16 mb-16 md:mb-0 main-content">
             <Suspense fallback={<div>Loading...</div>}>
               <Switch>
                 <Route path="/" component={pages.LandingPage} />
@@ -105,6 +107,10 @@ function App() {
                 />
                 <Route path="/eclipse" component={EclipseLandingPage} />
                 <Route path="/shop" component={pages.ShopPage} />
+                <Route
+                  path="/tarot-decks"
+                  component={pages.DeckManagementPage}
+                />
                 <Route
                   path="/agent-learning"
                   component={pages.AgentLearningDemo}

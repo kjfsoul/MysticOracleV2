@@ -45,25 +45,23 @@ export default function LandingPage() {
 
       <Navbar />
 
-      <main className="container mx-auto px-4 pt-8 pb-20 md:pb-16 md:pt-12 max-w-7xl">
+      <main className="container mx-auto px-4 pt-8 pb-20 md:pb-16 md:pt-12 max-w-7xl main-content">
         {/* Hero Section */}
-        <div className="max-w-6xl mx-auto mb-8">
-          <div className="text-center mb-8">
-            <Badge className="mb-3 bg-green-500/20 text-green-300 border-green-500/30 py-1 px-3 text-xs">
-              Spring 2025 Special
-            </Badge>
-            <h1 className="font-heading text-4xl md:text-6xl font-bold mb-3 bg-gradient-to-r from-[#D4AF37] to-[#F5E1A4] bg-clip-text text-transparent font-serif tracking-wide">
+        <div className="max-w-6xl mx-auto mb-12">
+          <div className="text-center mb-10">
+            <Badge className="mb-4 badge-improved">Spring 2025 Special</Badge>
+            <h1 className="heading-improved text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-[#D4AF37] to-[#F5E1A4] bg-clip-text text-transparent font-serif tracking-wide">
               The Fool's Journey
             </h1>
-            <p className="text-light/90 text-lg md:text-xl max-w-2xl mx-auto mb-6 font-serif leading-relaxed">
+            <p className="subheading-improved text-lg md:text-xl max-w-2xl mx-auto mb-8 font-serif leading-relaxed">
               Embrace the spirit of Spring renewal and new beginnings with our
               special Easter readings
             </p>
-            <div className="flex flex-wrap justify-center gap-3 mb-4">
+            <div className="flex flex-wrap justify-center gap-4 mb-6">
               <Link href="/tarot">
                 <Button
                   size="lg"
-                  className="bg-accent hover:bg-accent/80 text-dark w-full sm:w-auto mb-2 sm:mb-0"
+                  className="button-improved text-white w-full sm:w-auto mb-2 sm:mb-0"
                 >
                   Get Spring Reading
                 </Button>
@@ -91,21 +89,23 @@ export default function LandingPage() {
         </div>
 
         {/* Card of the Day Section */}
-        <section className="max-w-4xl mx-auto mb-8">
-          <h2 className="font-heading text-2xl md:text-3xl font-semibold mb-4 text-center text-light">
+        <section className="max-w-4xl mx-auto mb-12 section-improved">
+          <h2 className="heading-improved text-2xl md:text-3xl font-semibold mb-6 text-center text-light">
             The <span className="text-accent">Fool's Wisdom</span> Today
           </h2>
-          <DailyCardLocal />
+          <div className="daily-card-improved">
+            <DailyCardLocal />
+          </div>
         </section>
 
         {/* Features Section */}
-        <section className="max-w-6xl mx-auto mb-8">
-          <h2 className="font-heading text-2xl md:text-3xl font-semibold mb-5 text-center text-light">
+        <section className="max-w-6xl mx-auto mb-12 section-improved">
+          <h2 className="heading-improved text-2xl md:text-3xl font-semibold mb-6 text-center text-light">
             Spring <span className="text-accent">Mystical Services</span>
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            <Card className="bg-dark/40 backdrop-blur-sm border border-light/10 text-light">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <Card className="card-improved text-light">
               <CardHeader className="pb-1 pt-3 px-3">
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-2">
                   <Sparkles className="h-5 w-5 text-primary" />
@@ -132,7 +132,7 @@ export default function LandingPage() {
               </CardFooter>
             </Card>
 
-            <Card className="bg-dark/40 backdrop-blur-sm border border-light/10 text-light">
+            <Card className="card-improved text-light">
               <CardHeader className="pb-1 pt-3 px-3">
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-2">
                   <Stars className="h-5 w-5 text-primary" />
@@ -159,7 +159,7 @@ export default function LandingPage() {
               </CardFooter>
             </Card>
 
-            <Card className="bg-dark/40 backdrop-blur-sm border border-light/10 text-light">
+            <Card className="card-improved text-light">
               <CardHeader className="pb-1 pt-3 px-3">
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-2">
                   <BookOpen className="h-5 w-5 text-primary" />
@@ -184,7 +184,7 @@ export default function LandingPage() {
               </CardFooter>
             </Card>
 
-            <Card className="bg-dark/40 backdrop-blur-sm border border-light/10 text-light">
+            <Card className="card-improved text-light">
               <CardHeader className="pb-1 pt-3 px-3">
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-2">
                   <Egg className="h-5 w-5 text-primary" />
@@ -214,14 +214,14 @@ export default function LandingPage() {
         </section>
 
         {/* Featured Content Section */}
-        <section className="max-w-6xl mx-auto mb-8 md:mb-10 px-4">
-          <h2 className="font-heading text-2xl md:text-3xl font-semibold mb-6 text-center text-light">
+        <section className="max-w-6xl mx-auto mb-12 section-improved">
+          <h2 className="heading-improved text-2xl md:text-3xl font-semibold mb-6 text-center text-light">
             Spring <span className="text-accent">Featured Content</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {/* Featured Blog Post */}
-            <Card className="bg-dark/40 backdrop-blur-sm border border-light/10 text-light overflow-hidden">
+            <Card className="card-improved text-light overflow-hidden">
               <div className="h-40 relative bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
                 <ScrollText className="h-12 w-12 text-accent/50" />
                 <div className="absolute top-2 left-2 bg-accent/80 text-dark px-2 py-0.5 rounded text-xs font-medium">
@@ -257,7 +257,7 @@ export default function LandingPage() {
             </Card>
 
             {/* Featured Easter Ritual */}
-            <Card className="bg-dark/40 backdrop-blur-sm border border-light/10 text-light overflow-hidden">
+            <Card className="card-improved text-light overflow-hidden">
               <div className="h-40 relative bg-gradient-to-br from-green-500/20 to-yellow-500/20 flex items-center justify-center">
                 <Egg className="h-12 w-12 text-green-500/50" />
                 <div className="absolute top-2 right-2 bg-green-500/80 text-dark px-2 py-0.5 rounded text-xs font-medium">
@@ -295,7 +295,7 @@ export default function LandingPage() {
         </section>
 
         {/* The Fool's Journey Section */}
-        <section className="max-w-4xl mx-auto mb-6 md:mb-8 bg-dark/60 backdrop-blur-sm border border-light/10 rounded-lg p-3 md:p-5 mx-4">
+        <section className="max-w-4xl mx-auto mb-12 card-improved p-4 md:p-6 section-improved">
           <div className="flex flex-col md:flex-row gap-4 items-center">
             <div className="md:w-1/3">
               <img
@@ -305,22 +305,22 @@ export default function LandingPage() {
               />
             </div>
             <div className="md:w-2/3">
-              <h2 className="font-heading text-2xl md:text-3xl font-semibold mb-3 text-light">
+              <h2 className="heading-improved text-2xl md:text-3xl font-semibold mb-4 text-light">
                 The <span className="text-accent">Fool's Journey</span>
               </h2>
-              <p className="text-light/80 mb-3 text-sm md:text-base">
+              <p className="text-improved mb-4">
                 The Fool represents new beginnings, taking a leap of faith, and
                 embracing the unknown. As Spring arrives, we're all invited to
                 embark on our own Fool's journey - stepping forward with
                 innocence, spontaneity, and trust in the universe.
               </p>
-              <p className="text-light/80 mb-4 text-sm md:text-base">
+              <p className="text-improved mb-5">
                 This Spring, let The Fool guide you toward fresh starts and new
                 adventures. What seeds will you plant? What journeys will you
                 begin?
               </p>
               <Link href="/tarot-cards/the-fool">
-                <Button className="bg-accent hover:bg-accent/80 text-dark text-sm px-3 py-1">
+                <Button className="button-improved text-white text-sm px-4 py-2">
                   Explore The Fool's Wisdom
                 </Button>
               </Link>
@@ -329,12 +329,12 @@ export default function LandingPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="max-w-3xl mx-auto text-center px-4 mb-12">
-          <div className="bg-gradient-to-r from-green-500/30 to-yellow-500/30 backdrop-blur-sm rounded-xl border border-accent/20 p-5 md:p-8">
-            <h2 className="font-heading text-xl md:text-2xl font-bold mb-2 text-light">
+        <section className="max-w-3xl mx-auto text-center mb-16 section-improved">
+          <div className="bg-gradient-to-r from-green-500/30 to-yellow-500/30 backdrop-blur-sm rounded-xl border border-accent/20 p-6 md:p-10 card-improved">
+            <h2 className="heading-improved text-xl md:text-2xl font-bold mb-4 text-light">
               Begin Your Spring Renewal Journey
             </h2>
-            <p className="text-light/80 mb-3 max-w-xl mx-auto text-sm">
+            <p className="text-improved mb-5 max-w-xl mx-auto">
               Sign up now to access our special Spring and Easter content,
               including The Fool's wisdom, sacred egg rituals, and personalized
               Spring equinox readings.
@@ -342,7 +342,7 @@ export default function LandingPage() {
             <Link href="/auth">
               <Button
                 size="lg"
-                className="bg-accent hover:bg-accent/80 text-dark px-6 py-2 mt-2"
+                className="button-improved text-white px-8 py-3 mt-2"
               >
                 Start Your Spring Journey
               </Button>
