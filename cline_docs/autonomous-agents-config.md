@@ -8,11 +8,11 @@ This document configures autonomous agents to work with MCP servers for the Myst
 
 | Agent Type | Primary MCP Servers | Responsibilities |
 |------------|---------------------|------------------|
-| CodeAgent | MCP-Dev-NextJS, MCP-React-UI | - Implement planned components<br>- Refactor existing code<br>- Fix identified bugs<br>- Write unit tests |
-| DesignAgent | MCP-Design-System-Tailwind, MCP-React-UI | - Implement UI designs<br>- Create animations<br>- Optimize responsive layouts<br>- Ensure accessibility compliance |
-| APIAgent | MCP-Netlify-EdgeDocs, MCP-Fullstack-Turbo | - Implement API endpoints<br>- Create serverless functions<br>- Set up database queries<br>- Handle authentication flows |
-| ContentAgent | MCP-CMS-Headless, MCP-AI-FunctionPack | - Generate content templates<br>- Create tarot card descriptions<br>- Write astrological interpretations<br>- Develop blog post outlines |
-| TestAgent | MCP-Dev-NextJS, MCP-Fullstack-Turbo | - Write unit tests<br>- Create integration tests<br>- Run test suites<br>- Report test coverage |
+| CodeAgent | server-filesystem, server-github | - Implement planned components<br>- Refactor existing code<br>- Fix identified bugs<br>- Write unit tests |
+| DesignAgent | server-everything, server-puppeteer | - Implement UI designs<br>- Create animations<br>- Optimize responsive layouts<br>- Ensure accessibility compliance |
+| APIAgent | server-brave-search, server-sequential-thinking | - Implement API endpoints<br>- Create serverless functions<br>- Set up database queries<br>- Handle authentication flows |
+| ContentAgent | server-memory, server-brave-search | - Generate content templates<br>- Create tarot card descriptions<br>- Write astrological interpretations<br>- Develop blog post outlines |
+| TestAgent | server-puppeteer, server-sequential-thinking | - Write unit tests<br>- Create integration tests<br>- Run test suites<br>- Report test coverage |
 
 ### 2. Agent Workflow Configuration
 
@@ -125,7 +125,7 @@ Autonomous agents leverage MCP servers through the following integration points:
 To ensure agents operate safely and produce high-quality work:
 
 1. **Scope Limitations**: Agents will only work on tasks explicitly defined in the task queue
-2. **Change Limits**: Agents will limit changes to 200 lines of code per task
+2. **Change Limits**: Agents will limit changes to 300 lines of code per task
 3. **Review Requirements**: Critical changes require human review before being committed
 4. **Rollback Capability**: All agent changes are tracked for easy rollback if needed
 5. **Error Handling**: Agents will pause and notify on encountering blocking issues

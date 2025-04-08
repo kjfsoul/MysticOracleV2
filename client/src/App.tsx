@@ -21,6 +21,9 @@ const pages = {
   WheelDebugPage: lazy(() => import("./pages/wheel-debug")),
   JournalPage: lazy(() => import("./pages/journal-page")),
   PricingPage: lazy(() => import("./pages/pricing-page")),
+  SubscriptionPage: lazy(() => import("./pages/Subscription")),
+  SubscriptionSuccessPage: lazy(() => import("./pages/SubscriptionSuccess")),
+  SubscriptionCancelPage: lazy(() => import("./pages/SubscriptionCancel")),
   DebugAuthPage: lazy(() => import("./pages/debug-auth")),
   BlogPage: lazy(() => import("./pages/blog-page")),
   ShopPage: lazy(() => import("./pages/shop-page")),
@@ -88,6 +91,18 @@ function App() {
                 />
                 <Route path="/settings" component={pages.DebugAuthPage} />
                 <Route path="/upgrade" component={pages.PricingPage} />
+                <Route
+                  path="/subscription"
+                  component={pages.SubscriptionPage}
+                />
+                <Route
+                  path="/subscription/success"
+                  component={pages.SubscriptionSuccessPage}
+                />
+                <Route
+                  path="/subscription/cancel"
+                  component={pages.SubscriptionCancelPage}
+                />
                 <Route path="/eclipse" component={EclipseLandingPage} />
                 <Route path="/shop" component={pages.ShopPage} />
                 <Route

@@ -1,3 +1,214 @@
 {
-  "tasks": []
+  "tasks": [
+    {
+      "id": "task-001",
+      "title": "Implement Basic Tarot Card Component",
+      "description": "Create a reusable tarot card component with front/back faces",
+      "type": "feature",
+      "priority": "high",
+      "assignedAgent": "CodeAgent",
+      "requiredMcpServers": [
+        "server-filesystem",
+        "server-github"
+      ],
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "Component renders card front and back",
+        "Accepts custom images",
+        "Responsive sizing",
+        "Accessible markup"
+      ],
+      "estimatedEffort": "medium",
+      "status": "pending",
+      "completedAt": "2025-04-07T23:20:03.821Z"
+    },
+    {
+      "id": "task-003",
+      "title": "Generate Major Arcana Card Descriptions",
+      "description": "Create detailed descriptions for all 22 Major Arcana cards",
+      "type": "content",
+      "priority": "medium",
+      "assignedAgent": "ContentAgent",
+      "requiredMcpServers": [
+        "server-memory",
+        "server-brave-search"
+      ],
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "Includes upright and reversed meanings",
+        "Covers symbolism and imagery",
+        "Provides practical interpretations",
+        "Consistent tone and depth"
+      ],
+      "estimatedEffort": "large",
+      "status": "pending",
+      "completedAt": "2025-04-07T23:20:33.180Z"
+    },
+    {
+      "id": "task-002",
+      "title": "Create Daily Tarot API Endpoint",
+      "description": "Implement serverless function to generate daily tarot card",
+      "type": "feature",
+      "priority": "high",
+      "assignedAgent": "APIAgent",
+      "requiredMcpServers": [
+        "server-brave-search",
+        "server-sequential-thinking"
+      ],
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "Returns random card with interpretation",
+        "Caches result for 24 hours",
+        "Handles errors gracefully",
+        "Includes proper typing"
+      ],
+      "estimatedEffort": "medium",
+      "status": "pending",
+      "completedAt": "2025-04-07T23:20:33.181Z"
+    },
+    {
+      "id": "task-004",
+      "title": "Implement Card Flip Animation",
+      "description": "Create smooth 3D flip animation for tarot cards",
+      "type": "feature",
+      "priority": "medium",
+      "assignedAgent": "DesignAgent",
+      "requiredMcpServers": [
+        "server-everything",
+        "server-puppeteer"
+      ],
+      "dependencies": [
+        "task-001"
+      ],
+      "acceptanceCriteria": [
+        "Card flips smoothly on click",
+        "Animation works on all supported browsers",
+        "Includes keyboard accessibility",
+        "Respects reduced motion preferences"
+      ],
+      "estimatedEffort": "medium",
+      "status": "pending",
+      "completedAt": "2025-04-07T23:20:33.182Z"
+    },
+    {
+      "id": "task-010",
+      "title": "Write Unit Tests for Tarot Components",
+      "description": "Create comprehensive tests for tarot card components",
+      "type": "testing",
+      "priority": "medium",
+      "assignedAgent": "TestAgent",
+      "requiredMcpServers": [
+        "server-puppeteer",
+        "server-sequential-thinking"
+      ],
+      "dependencies": [
+        "task-001",
+        "task-004",
+        "task-005"
+      ],
+      "acceptanceCriteria": [
+        "Tests component rendering",
+        "Tests prop variations",
+        "Tests animations and interactions",
+        "Tests accessibility features",
+        "Achieves >80% coverage"
+      ],
+      "estimatedEffort": "medium",
+      "status": "pending",
+      "completedAt": "2025-04-07T23:20:33.182Z"
+    },
+    {
+      "id": "task-005",
+      "title": "Create Basic Three-Card Spread Layout",
+      "description": "Implement layout for past/present/future tarot spread",
+      "type": "feature",
+      "priority": "high",
+      "assignedAgent": "CodeAgent",
+      "requiredMcpServers": [
+        "server-filesystem",
+        "server-github"
+      ],
+      "dependencies": [
+        "task-001"
+      ],
+      "acceptanceCriteria": [
+        "Displays three cards in horizontal layout",
+        "Shows position labels (past/present/future)",
+        "Responsive on all screen sizes",
+        "Animates card placement"
+      ],
+      "estimatedEffort": "medium",
+      "status": "pending",
+      "completedAt": "2025-04-07T23:20:38.544Z"
+    },
+    {
+      "id": "task-007",
+      "title": "Create Authentication API Endpoints",
+      "description": "Implement Netlify Functions for authentication",
+      "type": "feature",
+      "priority": "high",
+      "assignedAgent": "APIAgent",
+      "requiredMcpServers": [
+        "server-brave-search",
+        "server-sequential-thinking"
+      ],
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "Sign-in endpoint with JWT generation",
+        "Registration endpoint with validation",
+        "Password reset endpoints",
+        "Social auth integration",
+        "Proper error handling"
+      ],
+      "estimatedEffort": "large",
+      "status": "pending",
+      "completedAt": "2025-04-07T23:20:38.549Z"
+    },
+    {
+      "id": "task-006",
+      "title": "Implement User Authentication UI",
+      "description": "Create sign-in and registration components",
+      "type": "feature",
+      "priority": "high",
+      "assignedAgent": "CodeAgent",
+      "requiredMcpServers": [
+        "server-filesystem",
+        "server-sequential-thinking"
+      ],
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "Email/password sign-in form",
+        "Registration form with validation",
+        "Social login buttons",
+        "Password reset flow",
+        "Error handling and feedback"
+      ],
+      "estimatedEffort": "large",
+      "status": "pending",
+      "completedAt": "2025-04-07T23:20:43.622Z"
+    },
+    {
+      "id": "task-009",
+      "title": "Create Astrology Calculation API",
+      "description": "Implement serverless function for chart calculations",
+      "type": "feature",
+      "priority": "medium",
+      "assignedAgent": "APIAgent",
+      "requiredMcpServers": [
+        "server-brave-search",
+        "server-sequential-thinking"
+      ],
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "Calculates planet positions from birth data",
+        "Determines houses and aspects",
+        "Returns formatted chart data",
+        "Handles errors gracefully",
+        "Includes proper typing"
+      ],
+      "estimatedEffort": "large",
+      "status": "pending",
+      "completedAt": "2025-04-07T23:20:43.665Z"
+    }
+  ]
 }
