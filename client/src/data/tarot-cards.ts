@@ -47,7 +47,7 @@ export const majorArcanaCards: TarotCard[] = [
     meaningReversed: "Manipulation, poor planning, untapped talents",
     element: "Air",
     zodiacSign: "Mercury",
-    imagePath: "/images/tarot/placeholders/01-magician.svg",
+    imagePath: "/images/tarot/decks/rider-waite/major/01-magician.jpg",
   },
   {
     id: "02-high-priestess",

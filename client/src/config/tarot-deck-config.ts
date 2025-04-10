@@ -54,7 +54,7 @@ export function getCardPath(deckId: string, arcana: 'major' | 'minor', cardId: s
 // Get the card back image for a deck
 export function getCardBackPath(deckId?: string): string {
   const deck = deckId ? getDeckById(deckId) : getDefaultDeck();
-  return deck?.cardBack || '/images/tarot/card-back.jpg';
+  return deck?.cardBack || "/images/tarot/card-back.svg";
 }
 
 // Current active deck ID (can be stored in user preferences)

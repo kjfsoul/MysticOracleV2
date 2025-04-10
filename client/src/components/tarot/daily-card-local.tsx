@@ -31,8 +31,24 @@ export default function DailyCardLocal() {
               console.log("Selected daily card:", dailyCard);
 
               // Get the image path
-              const imagePath = getTarotCardImagePath(dailyCard);
+              let imagePath = getTarotCardImagePath(dailyCard);
               console.log("Daily card image path:", imagePath);
+
+              // Fallback to placeholder if needed
+              if (!imagePath || imagePath.trim() === "") {
+                if (dailyCard.arcana === "major") {
+                  const cardId = dailyCard.name
+                    .toLowerCase()
+                    .replace(/\s+/g, "-");
+                  imagePath = `/images/tarot/placeholders/${cardId}.svg`;
+                } else if (dailyCard.suit) {
+                  imagePath = `/images/tarot/placeholders/${dailyCard.suit}-placeholder.svg`;
+                } else {
+                  imagePath =
+                    "/images/tarot/placeholders/major-placeholder.svg";
+                }
+                console.log("Using fallback image path:", imagePath);
+              }
 
               setCard({
                 name: dailyCard.name,

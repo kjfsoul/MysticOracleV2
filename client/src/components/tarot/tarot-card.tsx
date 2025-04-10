@@ -39,7 +39,10 @@ export default function TarotCard({
 
   // Use provided values or get from card object
   const cardImageUrl =
-    imageUrl || (card && card.imageUrl) || "/images/tarot/card-back.jpg";
+    imageUrl ||
+    (card && card.imagePath) ||
+    (card && card.imageUrl) ||
+    "/images/tarot/card-back.svg";
   const name = cardName || (card && card.name) || "Unknown Card";
   const cardArcana = arcana || (card && card.arcana) || "";
   const cardSuit = suit || (card && card.suit) || "";
@@ -114,9 +117,9 @@ export default function TarotCard({
     pulse: {
       scale: [1, 1.02, 1],
       boxShadow: [
-        `0 10px 15px -3px rgba(126, 94, 162, 0.4)`,
-        `0 15px 20px -3px rgba(126, 94, 162, 0.5), 0 0 15px rgba(180, 140, 230, 0.3)`,
-        `0 10px 15px -3px rgba(126, 94, 162, 0.4)`,
+        "0 10px 15px -3px rgba(126, 94, 162, 0.4)",
+        "0 15px 20px -3px rgba(126, 94, 162, 0.5), 0 0 15px rgba(180, 140, 230, 0.3)",
+        "0 10px 15px -3px rgba(126, 94, 162, 0.4)",
       ],
       transition: {
         repeat: Infinity,
@@ -206,17 +209,47 @@ export default function TarotCard({
       img.onerror = (error) => {
         console.error("Error loading image:", cardImageUrl, error);
         // Try to load a placeholder instead
-        if (cardArcana === "major") {
-          setLoadedImage("/images/tarot/placeholders/major-placeholder.svg");
-        } else if (cardSuit) {
-          setLoadedImage(
-            `/images/tarot/placeholders/${cardSuit}-placeholder.svg`
-          );
-        } else {
+        const fallbackPath = getFallbackImagePath();
+        console.log("Using fallback image:", fallbackPath);
+
+        // Try to load the fallback image
+        const fallbackImg = new Image();
+        fallbackImg.src = fallbackPath;
+        fallbackImg.onload = () => {
+          setLoadedImage(fallbackPath);
+          setIsImageLoaded(true);
+        };
+        fallbackImg.onerror = () => {
+          // If even the fallback fails, use the card back
+          console.error("Fallback image also failed to load");
           setLoadedImage("/images/tarot/card-back.svg");
-        }
-        setIsImageLoaded(true);
+          setIsImageLoaded(true);
+        };
       };
+
+      // Helper function to get fallback image path
+      function getFallbackImagePath() {
+        if (cardArcana === "major") {
+          // Try to use a specific placeholder for this card if available
+          const cardId = cardName?.toLowerCase().replace(/\s+/g, "-");
+          if (cardId) {
+            const specificPlaceholder = `/images/tarot/placeholders/${cardId}.svg`;
+            // Check if the specific placeholder exists
+            try {
+              const img = new Image();
+              img.src = specificPlaceholder;
+              return specificPlaceholder;
+            } catch (e) {
+              // Fall back to generic placeholder
+            }
+          }
+          return "/images/tarot/placeholders/major-placeholder.svg";
+        } else if (cardSuit) {
+          return `/images/tarot/placeholders/${cardSuit}-placeholder.svg`;
+        } else {
+          return "/images/tarot/card-back.svg";
+        }
+      }
     }
   }, [cardImageUrl, cardArcana, cardSuit]);
 

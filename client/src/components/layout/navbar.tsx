@@ -88,13 +88,22 @@ export default function Navbar() {
 
         <div className="flex items-center gap-4">
           {!user && !isLoading && (
-            <Link
-              href="/auth?tab=login"
-              className="hidden md:flex items-center px-4 py-2 text-white bg-primary/30 hover:bg-primary/50 rounded-md transition-colors duration-300 nav-link-improved"
-            >
-              <User className="mr-2 h-4 w-4 text-gold" />
-              Sign In
-            </Link>
+            <div className="hidden md:flex gap-2">
+              <Link
+                href="/auth?tab=login"
+                className="flex items-center px-4 py-2 text-white bg-primary/30 hover:bg-primary/50 rounded-md transition-colors duration-300 nav-link-improved"
+              >
+                <User className="mr-2 h-4 w-4 text-gold" />
+                Sign In
+              </Link>
+              <Link
+                href="/auth?tab=register"
+                className="flex items-center px-4 py-2 text-white border border-gold/50 hover:bg-gold/10 rounded-md transition-colors duration-300 nav-link-improved"
+              >
+                <User className="mr-2 h-4 w-4 text-gold" />
+                Sign Up
+              </Link>
+            </div>
           )}
           <Link
             href="/settings?tab=subscription"
@@ -253,14 +262,24 @@ export default function Navbar() {
               </>
             )}
             {!user && !isLoading && (
-              <Link
-                href="/auth?tab=login"
-                className="flex items-center gap-2 px-2 py-2 rounded-md text-gold hover:bg-gold/10 border border-gold/50 mt-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <User className="h-4 w-4" />
-                Sign In / Register
-              </Link>
+              <div className="flex flex-col gap-2 mt-2">
+                <Link
+                  href="/auth?tab=login"
+                  className="flex items-center gap-2 px-2 py-2 rounded-md text-white bg-primary/30 hover:bg-primary/50"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <User className="h-4 w-4 text-gold" />
+                  Sign In
+                </Link>
+                <Link
+                  href="/auth?tab=register"
+                  className="flex items-center gap-2 px-2 py-2 rounded-md text-gold hover:bg-gold/10 border border-gold/50"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <User className="h-4 w-4" />
+                  Sign Up
+                </Link>
+              </div>
             )}
           </nav>
         </div>

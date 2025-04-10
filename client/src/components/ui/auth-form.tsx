@@ -1,7 +1,7 @@
 import { useAuth } from "@/hooks/use-auth";
 import { useToast } from "@/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "./button";
@@ -33,6 +33,13 @@ export default function AuthForm({ type }: AuthFormProps) {
   const { login, signup } = useAuth();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState(type);
+
+  // Update active tab when type prop changes
+  useEffect(() => {
+    setActiveTab(type);
+    console.log("Auth form type changed to:", type);
+  }, [type]);
 
   const loginForm = useForm<LoginData>({
     resolver: zodResolver(loginSchema),
@@ -45,12 +52,21 @@ export default function AuthForm({ type }: AuthFormProps) {
   const onLoginSubmit = async (data: LoginData) => {
     setIsLoading(true);
     try {
-      await login(data.email, data.password);
+      console.log("Attempting to login with:", { email: data.email });
+
+      // Attempt to login
+      const user = await login(data.email, data.password);
+      console.log("Login successful, user data:", user);
+
       toast({
         title: "Success",
         description: "Logged in successfully",
       });
+
+      // Redirect to home page after successful login
+      window.location.href = "/";
     } catch (error) {
+      console.error("Login error:", error);
       toast({
         title: "Error",
         description: error instanceof Error ? error.message : "Failed to login",
@@ -68,12 +84,20 @@ export default function AuthForm({ type }: AuthFormProps) {
         email: data.email,
         username: data.username,
       });
-      await signup(data.email, data.password, data.username);
+
+      // Attempt to sign up
+      const user = await signup(data.email, data.password, data.username);
+      console.log("Registration successful, user data:", user);
+
       toast({
         title: "Success",
         description: "Registered successfully",
       });
+
+      // Redirect to home page or login tab after successful registration
+      window.location.href = "/auth?tab=login";
     } catch (error) {
+      console.error("Registration error:", error);
       toast({
         title: "Error",
         description:

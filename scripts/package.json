@@ -1,8 +1,8 @@
 {
   "type": "module",
-  "name": "MysticOracleV2-mcp",
+  "name": "MysticOracleV2-scripts",
   "version": "1.0.0",
-  "description": "MCP for MysticOracleV2",
+  "description": "Scripts for MysticOracleV2",
   "engines": {
     "node": ">=16.0.0"
   }

@@ -2,18 +2,24 @@ import AuthForm from "@/components/ui/auth-form";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/hooks/use-auth";
 import { Redirect, useLocation } from "wouter";
+import { useState, useEffect } from "react";
 
 export default function AuthPage() {
   const { user, isLoading } = useAuth();
   const [location] = useLocation();
+  const [activeTab, setActiveTab] = useState("login");
 
   // Get the tab from URL query parameters
   const params = new URLSearchParams(location.split("?")[1] || "");
   const tabParam = params.get("tab");
-  const defaultTab =
-    tabParam === "login" || tabParam === "register" ? tabParam : "login";
+  // Force the default tab to be "login" if not specified or invalid
+  const defaultTab = tabParam === "register" ? "register" : "login";
 
-  console.log("Auth page loaded with tab:", defaultTab);
+  // Set the active tab based on the URL parameter
+  useEffect(() => {
+    setActiveTab(defaultTab);
+    console.log("Auth page loaded with tab:", defaultTab);
+  }, [defaultTab]);
 
   // Redirect if already logged in
   if (!isLoading && user) {
@@ -62,9 +68,15 @@ export default function AuthPage() {
 
           <div className="bg-gradient-to-b from-primary/40 to-secondary/40 backdrop-blur-md rounded-xl border border-accent/30 p-6">
             <Tabs
+              value={activeTab}
               defaultValue={defaultTab}
               className="w-full"
-              onValueChange={(value) => console.log("Tab changed to:", value)}
+              onValueChange={(value) => {
+                console.log("Tab changed to:", value);
+                setActiveTab(value);
+                // Update URL to reflect tab change without page reload
+                window.history.replaceState(null, "", `/auth?tab=${value}`);
+              }}
             >
               <TabsList className="grid w-full grid-cols-2 mb-6">
                 <TabsTrigger value="login">Sign In</TabsTrigger>

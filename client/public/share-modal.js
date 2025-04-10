@@ -1,7 +1,12 @@
 // Share modal functionality
 // This is a completely passive script that won't cause errors
 (function () {
-  // Only run this code when the DOM is fully loaded
+  // Only run this code when the DOM is fully loaded and document is defined
+  if (typeof document === "undefined") {
+    console.log("Document not available, skipping share modal initialization");
+    return;
+  }
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initShareModal);
   } else {

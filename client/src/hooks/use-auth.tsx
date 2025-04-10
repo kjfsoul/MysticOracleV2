@@ -90,20 +90,37 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const login = async (email: string, password: string) => {
     setIsLoading(true);
     try {
+      console.log("Attempting to sign in with:", { email });
+
+      // Sign in with Supabase Auth
       const {
-        data: { user },
-        error,
+        data: { user: authUser },
+        error: authError,
       } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
-      if (error) throw error;
 
+      if (authError) {
+        console.error("Auth error during login:", authError);
+        throw authError;
+      }
+
+      if (!authUser) {
+        console.error("No user returned from auth");
+        throw new Error("Authentication failed");
+      }
+
+      console.log("Auth successful, user ID:", authUser.id);
+
+      // Get user data from the users table
       const { data: userData, error: userError } = await supabase
         .from("users")
         .select("*")
-        .eq("id", user!.id)
+        .eq("id", authUser.id)
         .single();
+
+      console.log("User data query result:", { userData, userError });
 
       if (userError) {
         console.warn(
@@ -111,25 +128,37 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         );
         // If the user doesn't exist in the users table, create a basic user object
         const basicUser = {
-          id: user!.id,
+          id: authUser.id,
           email,
+          username: email.split("@")[0], // Default username from email
           created_at: new Date(),
           last_login: new Date(),
         };
 
         // Try to create the user record
         try {
-          await supabase.from("users").insert([basicUser]);
+          const { error: insertError } = await supabase
+            .from("users")
+            .insert([basicUser]);
+          if (insertError) {
+            console.error("Error creating user record:", insertError);
+          } else {
+            console.log("Created new user record in users table");
+          }
         } catch (insertError) {
-          console.error("Error creating user record:", insertError);
+          console.error("Exception creating user record:", insertError);
         }
 
         setUser(basicUser);
         return basicUser;
       }
 
+      console.log("User data retrieved successfully:", userData);
       setUser(userData);
       return userData;
+    } catch (error) {
+      console.error("Login failed:", error);
+      throw error;
     } finally {
       setIsLoading(false);
     }
@@ -182,14 +211,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         const newUser = {
           id: user.id,
           email,
+          username, // Include the username
           created_at: new Date(),
         };
+
+        console.log("Attempting to create user record:", newUser);
 
         const { data: userData, error: userError } = await supabase
           .from("users")
           .insert([newUser])
           .select()
           .single();
+
+        console.log("User record creation result:", { userData, userError });
 
         if (userError) {
           console.error("Error creating user record:", userError);
@@ -204,6 +238,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       const basicUser = {
         id: user.id,
         email,
+        username, // Include the username
         created_at: new Date(),
       };
 
