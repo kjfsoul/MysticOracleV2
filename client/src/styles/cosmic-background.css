@@ -24,7 +24,38 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+  background: linear-gradient(to bottom, var(--color-dark), var(--color-primary), var(--color-secondary));
+  z-index: -9;
+}
+
+/* Color scheme variations */
+.cosmic-gradient-blue {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #0a0a1e, #1a2574, #0f1a47);
+  z-index: -9;
+}
+
+.cosmic-gradient-purple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #0f0a1e, #4a2174, #2e1a47);
+  z-index: -9;
+}
+
+.cosmic-gradient-gold {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #1a1a2e, #2d2a4a, #4a3c2a);
   z-index: -9;
 }
 
@@ -87,7 +118,7 @@
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(147, 51, 234, 0.1) 0%, rgba(147, 51, 234, 0) 70%);
+  background: radial-gradient(circle, var(--color-primary-20) 0%, var(--color-primary-0) 70%);
   z-index: -6;
   opacity: 0.5;
   animation: pulseGlow 10s ease-in-out infinite;
@@ -155,7 +186,7 @@
 
 /* Tailwind utility classes */
 .bg-cosmic-gradient {
-  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+  background: linear-gradient(to bottom, var(--color-dark), var(--color-primary), var(--color-secondary));
 }
 
 .animate-twinkle {

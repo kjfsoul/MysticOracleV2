@@ -63,8 +63,11 @@ export default function AuthForm({ type }: AuthFormProps) {
         description: "Logged in successfully",
       });
 
-      // Redirect to home page after successful login
-      window.location.href = "/";
+      // Add a small delay to ensure the toast is shown before redirect
+      setTimeout(() => {
+        // Redirect to home page after successful login
+        window.location.href = "/";
+      }, 1000);
     } catch (error) {
       console.error("Login error:", error);
       toast({
@@ -85,6 +88,11 @@ export default function AuthForm({ type }: AuthFormProps) {
         username: data.username,
       });
 
+      // Validate passwords match
+      if (data.password !== data.confirmPassword) {
+        throw new Error("Passwords do not match");
+      }
+
       // Attempt to sign up
       const user = await signup(data.email, data.password, data.username);
       console.log("Registration successful, user data:", user);
@@ -94,8 +102,11 @@ export default function AuthForm({ type }: AuthFormProps) {
         description: "Registered successfully",
       });
 
-      // Redirect to home page or login tab after successful registration
-      window.location.href = "/auth?tab=login";
+      // Add a small delay to ensure the toast is shown before redirect
+      setTimeout(() => {
+        // Redirect to home page after successful registration
+        window.location.href = "/";
+      }, 1000);
     } catch (error) {
       console.error("Registration error:", error);
       toast({

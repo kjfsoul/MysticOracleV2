@@ -2,9 +2,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { lazy, Suspense } from "react";
 import { Route, Switch } from "wouter";
-import MobileNavigation from "./components/layout/mobile-navigation";
-import Navbar from "./components/layout/navbar";
-import CosmicBackground from "./components/ui/cosmic-background";
+import MobileNavigationImproved from "./components/layout/mobile-navigation-improved";
+import NavbarImproved from "./components/layout/navbar-improved";
+import EnhancedCosmicBackground from "./components/ui/enhanced-cosmic-background";
 import { AuthProvider } from "./hooks/use-auth";
 import { queryClient } from "./lib/queryClient";
 import EclipseLandingPage from "./pages/EclipseLandingPage";
@@ -15,7 +15,7 @@ import "./styles/improved-layout.css";
 const pages = {
   ReadingsPage: lazy(() => import("./pages/readings-page")),
   ProfilePage: lazy(() => import("./pages/profile-page")),
-  TarotPage: lazy(() => import("./pages/tarot-page")),
+  TarotPage: lazy(() => import("./pages/tarot-page-improved")),
   TarotCardsPage: lazy(() => import("./pages/tarot-cards-page")),
   AstrologyPage: lazy(() => import("./pages/astrology-page")),
   InteractiveWheelPage: lazy(() => import("./pages/interactive-wheel-page")),
@@ -35,11 +35,14 @@ const pages = {
   SuperSimpleAuthPage: lazy(() => import("./pages/super-simple-auth")),
   PlainAuthPage: lazy(() => import("./pages/plain-auth")),
   ExactAuthPage: lazy(() => import("./pages/exact-auth")),
-  LandingPage: lazy(() => import("./pages/landing-page")),
+  LandingPage: lazy(() => import("./pages/landing-page-improved")),
+  CrewAIPage: lazy(() => import("./pages/crewai-page")),
   ZodiacSpreadPage: lazy(() => import("./pages/zodiac-spread-page")),
   AgentLearningDemo: lazy(() => import("./pages/agent-learning-demo")),
   DeckManagementPage: lazy(() => import("./pages/deck-management")),
   TestPage: lazy(() => import("./pages/test-page")),
+  LinkCheckerPage: lazy(() => import("./pages/link-checker")),
+  DesignSystemPage: lazy(() => import("./pages/design-system-page")),
   NotFound: lazy(() => import("./pages/not-found")),
 };
 
@@ -48,8 +51,8 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <div className="flex flex-col min-h-screen bg-background relative">
-          <CosmicBackground />
-          <Navbar />
+          <EnhancedCosmicBackground density="medium" colorScheme="purple" />
+          <NavbarImproved />
           <div className="flex-1 container mx-auto py-10 px-4 mt-16 mb-16 md:mb-0 main-content">
             <Suspense fallback={<div>Loading...</div>}>
               <Switch>
@@ -120,11 +123,16 @@ function App() {
                   component={TarotInterpretationDemo}
                 />
                 <Route path="/test" component={pages.TestPage} />
+                <Route path="/link-checker" component={pages.LinkCheckerPage} />
+                <Route
+                  path="/design-system"
+                  component={pages.DesignSystemPage}
+                />
                 <Route component={pages.NotFound} />
               </Switch>
             </Suspense>
           </div>
-          <MobileNavigation />
+          <MobileNavigationImproved />
         </div>
         <Toaster />
       </AuthProvider>

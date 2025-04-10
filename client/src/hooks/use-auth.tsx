@@ -44,14 +44,31 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       if (error) throw error;
 
       if (session?.user) {
+        // Try to get user data from the users table
         const { data: userData, error: userError } = await supabase
           .from("users")
           .select("*")
           .eq("id", session.user.id)
           .single();
 
-        if (userError) throw userError;
-        setUser(userData);
+        if (userError) {
+          console.warn(
+            "User not found in users table during checkAuth, using session data"
+          );
+          // Create a basic user object from session data
+          const basicUser = {
+            id: session.user.id,
+            email: session.user.email,
+            username:
+              session.user.user_metadata?.username ||
+              session.user.email?.split("@")[0] ||
+              "user",
+            created_at: session.user.created_at || new Date(),
+          };
+          setUser(basicUser);
+        } else {
+          setUser(userData);
+        }
       } else {
         setUser(null);
       }
@@ -70,12 +87,30 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (_event, session) => {
       if (session) {
-        const { data: userData } = await supabase
+        const { data: userData, error: userError } = await supabase
           .from("users")
           .select("*")
           .eq("id", session.user.id)
           .single();
-        setUser(userData);
+
+        if (userError) {
+          console.warn(
+            "User not found in users table during auth state change, using session data"
+          );
+          // Create a basic user object from session data
+          const basicUser = {
+            id: session.user.id,
+            email: session.user.email,
+            username:
+              session.user.user_metadata?.username ||
+              session.user.email?.split("@")[0] ||
+              "user",
+            created_at: session.user.created_at || new Date(),
+          };
+          setUser(basicUser);
+        } else {
+          setUser(userData);
+        }
       } else {
         setUser(null);
       }
@@ -94,7 +129,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
       // Sign in with Supabase Auth
       const {
-        data: { user: authUser },
+        data: { user: authUser, session },
         error: authError,
       } = await supabase.auth.signInWithPassword({
         email,
@@ -112,6 +147,30 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       }
 
       console.log("Auth successful, user ID:", authUser.id);
+      console.log("Session:", session ? "Valid" : "Missing");
+
+      // Get user data from the users table
+      // First check if the users table exists
+      const { data: tableData, error: tableError } = await supabase
+        .from("users")
+        .select("count")
+        .limit(1);
+
+      // If there's an error with the users table, just use the auth user data
+      if (tableError) {
+        console.warn(
+          "Error accessing users table, using auth data only:",
+          tableError.message
+        );
+        const basicUser = {
+          id: authUser.id,
+          email: authUser.email,
+          username: authUser.user_metadata?.username || email.split("@")[0],
+          created_at: authUser.created_at,
+        };
+        setUser(basicUser);
+        return basicUser;
+      }
 
       // Get user data from the users table
       const { data: userData, error: userError } = await supabase

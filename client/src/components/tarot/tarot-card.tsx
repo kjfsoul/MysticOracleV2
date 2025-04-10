@@ -212,19 +212,9 @@ export default function TarotCard({
         const fallbackPath = getFallbackImagePath();
         console.log("Using fallback image:", fallbackPath);
 
-        // Try to load the fallback image
-        const fallbackImg = new Image();
-        fallbackImg.src = fallbackPath;
-        fallbackImg.onload = () => {
-          setLoadedImage(fallbackPath);
-          setIsImageLoaded(true);
-        };
-        fallbackImg.onerror = () => {
-          // If even the fallback fails, use the card back
-          console.error("Fallback image also failed to load");
-          setLoadedImage("/images/tarot/card-back.svg");
-          setIsImageLoaded(true);
-        };
+        // Directly set the fallback image path
+        setLoadedImage(fallbackPath);
+        setIsImageLoaded(true);
       };
 
       // Helper function to get fallback image path

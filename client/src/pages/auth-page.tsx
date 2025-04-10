@@ -1,8 +1,8 @@
 import AuthForm from "@/components/ui/auth-form";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/hooks/use-auth";
+import { useEffect, useState } from "react";
 import { Redirect, useLocation } from "wouter";
-import { useState, useEffect } from "react";
 
 export default function AuthPage() {
   const { user, isLoading } = useAuth();
@@ -19,6 +19,9 @@ export default function AuthPage() {
   useEffect(() => {
     setActiveTab(defaultTab);
     console.log("Auth page loaded with tab:", defaultTab);
+
+    // Additional logging for debugging
+    console.log("Auth page: checking if user is already authenticated");
   }, [defaultTab]);
 
   // Redirect if already logged in

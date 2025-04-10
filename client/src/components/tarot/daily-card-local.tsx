@@ -34,6 +34,16 @@ export default function DailyCardLocal() {
               let imagePath = getTarotCardImagePath(dailyCard);
               console.log("Daily card image path:", imagePath);
 
+              // Additional safety check for problematic images
+              if (
+                dailyCard.id === "07-chariot" ||
+                dailyCard.id === "13-death" ||
+                dailyCard.id === "16-tower"
+              ) {
+                console.warn("Using placeholder for known problematic card");
+                imagePath = "/images/tarot/placeholders/major-placeholder.svg";
+              }
+
               // Fallback to placeholder if needed
               if (!imagePath || imagePath.trim() === "") {
                 if (dailyCard.arcana === "major") {

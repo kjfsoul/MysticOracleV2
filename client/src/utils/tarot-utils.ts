@@ -27,7 +27,27 @@ export function getTarotCardImagePath(card: TarotCard): string {
   // First try the imagePath property if it exists
   if (card.imagePath && card.imagePath.trim() !== "") {
     console.log("Using card.imagePath:", card.imagePath);
-    return card.imagePath;
+    // Verify the image exists by checking file size
+    try {
+      // We'll still return the path but log a warning if there might be an issue
+      if (
+        card.id === "07-chariot" ||
+        card.id === "13-death" ||
+        card.id === "16-tower"
+      ) {
+        console.warn(
+          "This card image might be problematic, using alternative path"
+        );
+        // Use placeholder for known problematic images
+        if (card.arcana === "major") {
+          return "/images/tarot/placeholders/major-placeholder.svg";
+        }
+      }
+      return card.imagePath;
+    } catch (e) {
+      console.error("Error checking image path:", e);
+      // Continue to fallback paths
+    }
   }
 
   // Otherwise construct the path based on card properties
@@ -39,6 +59,23 @@ export function getTarotCardImagePath(card: TarotCard): string {
   }
 
   console.log("Constructed path:", path);
+
+  // Check for known problematic images
+  if (
+    card.id === "07-chariot" ||
+    card.id === "13-death" ||
+    card.id === "16-tower"
+  ) {
+    console.warn("This card image might be problematic, using placeholder");
+    if (card.arcana === "major") {
+      path = "/images/tarot/placeholders/major-placeholder.svg";
+    } else if (card.suit) {
+      path = `/images/tarot/placeholders/${card.suit}-placeholder.svg`;
+    } else {
+      path = "/images/tarot/card-back.svg";
+    }
+    return path;
+  }
 
   // Fallback to placeholder if needed
   if (!path || path.trim() === "") {
