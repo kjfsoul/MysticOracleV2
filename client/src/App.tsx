@@ -124,6 +124,7 @@ function App() {
                 />
                 <Route path="/test" component={pages.TestPage} />
                 <Route path="/link-checker" component={pages.LinkCheckerPage} />
+                <Route path="/crewai" component={pages.CrewAIPage} />
                 <Route
                   path="/design-system"
                   component={pages.DesignSystemPage}

@@ -53,11 +53,12 @@ export default function NavbarImproved() {
 
   // Navigation links
   const mainNavLinks = [
-    { name: 'Home', path: '/', icon: '🏠' },
-    { name: 'Tarot', path: '/tarot', icon: '🔮' },
-    { name: 'Astrology', path: '/astrology', icon: '✨' },
-    { name: 'Journal', path: '/journal', icon: '📓', requiresAuth: true },
-    { name: 'Blog', path: '/blog', icon: '📚' },
+    { name: "Home", path: "/", icon: "🏠" },
+    { name: "Tarot", path: "/tarot", icon: "🔮" },
+    { name: "Astrology", path: "/astrology", icon: "✨" },
+    { name: "Journal", path: "/journal", icon: "📓", requiresAuth: true },
+    { name: "Blog", path: "/blog", icon: "📚" },
+    { name: "CrewAI", path: "/crewai", icon: "🤖" },
   ];
 
   // Dropdown menus
@@ -76,11 +77,11 @@ export default function NavbarImproved() {
   ];
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-dark/90 backdrop-blur-md shadow-lg border-b border-gold/10' 
-          : 'bg-transparent'
+        isScrolled
+          ? "bg-dark/90 backdrop-blur-md shadow-lg border-b border-gold/10"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -102,12 +103,16 @@ export default function NavbarImproved() {
               if (link.requiresAuth && !user) return null;
 
               // Determine if this is a dropdown link
-              const isDropdown = link.name === 'Tarot' || link.name === 'Astrology';
-              const dropdownItems = link.name === 'Tarot' ? tarotDropdown : astrologyDropdown;
-              
+              const isDropdown =
+                link.name === "Tarot" || link.name === "Astrology";
+              const dropdownItems =
+                link.name === "Tarot" ? tarotDropdown : astrologyDropdown;
+
               // Check if current location matches this link or any of its dropdown items
-              const isActive = location === link.path || 
-                (isDropdown && dropdownItems.some(item => location === item.path));
+              const isActive =
+                location === link.path ||
+                (isDropdown &&
+                  dropdownItems.some((item) => location === item.path));
 
               if (isDropdown) {
                 return (
@@ -117,8 +122,8 @@ export default function NavbarImproved() {
                         variant="ghost"
                         className={`flex items-center gap-1 px-3 py-2 rounded-md transition-colors ${
                           isActive
-                            ? 'text-gold font-medium bg-primary/30'
-                            : 'text-light hover:text-gold hover:bg-primary/20'
+                            ? "text-gold font-medium bg-primary/30"
+                            : "text-light hover:text-gold hover:bg-primary/20"
                         }`}
                       >
                         <span className="text-xl">{link.icon}</span>
@@ -133,13 +138,15 @@ export default function NavbarImproved() {
                       {dropdownItems.map((item) => {
                         // Skip auth-required items if user not logged in
                         if (item.requiresAuth && !user) return null;
-                        
+
                         return (
                           <DropdownMenuItem asChild key={item.name}>
                             <Link
                               href={item.path}
                               className={`cursor-pointer flex items-center px-2 py-1.5 ${
-                                location === item.path ? 'text-gold' : 'text-light hover:text-gold'
+                                location === item.path
+                                  ? "text-gold"
+                                  : "text-light hover:text-gold"
                               }`}
                             >
                               <span>{item.name}</span>
@@ -161,8 +168,8 @@ export default function NavbarImproved() {
                   href={link.path}
                   className={`flex items-center gap-1 px-3 py-2 rounded-md transition-colors ${
                     location === link.path
-                      ? 'text-gold font-medium bg-primary/30'
-                      : 'text-light hover:text-gold hover:bg-primary/20'
+                      ? "text-gold font-medium bg-primary/30"
+                      : "text-light hover:text-gold hover:bg-primary/20"
                   }`}
                 >
                   <span className="text-xl">{link.icon}</span> {link.name}
@@ -177,17 +184,15 @@ export default function NavbarImproved() {
             {!user && !isLoading && (
               <div className="hidden md:flex gap-2">
                 <Link href="/auth?tab=login">
-                  <Button 
-                    variant="ghost" 
+                  <Button
+                    variant="ghost"
                     className="text-light hover:text-gold hover:bg-primary/20"
                   >
                     Sign In
                   </Button>
                 </Link>
                 <Link href="/auth?tab=register">
-                  <Button 
-                    className="bg-gold/20 hover:bg-gold/30 text-gold border border-gold/50"
-                  >
+                  <Button className="bg-gold/20 hover:bg-gold/30 text-gold border border-gold/50">
                     Sign Up
                   </Button>
                 </Link>
@@ -197,8 +202,8 @@ export default function NavbarImproved() {
             {/* Premium badge/button */}
             {user && (
               <Link href="/settings?tab=subscription">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   size="sm"
                   className="hidden md:flex items-center gap-1 border-gold/50 text-gold hover:bg-gold/10 rounded-full"
                 >
@@ -235,9 +240,7 @@ export default function NavbarImproved() {
                 >
                   <div className="flex items-center justify-start p-2">
                     <div className="flex flex-col space-y-1 leading-none">
-                      <p className="font-medium text-gold">
-                        {user.username}
-                      </p>
+                      <p className="font-medium text-gold">{user.username}</p>
                       <p className="w-full truncate text-xs text-light/70">
                         {user.email}
                       </p>
@@ -245,19 +248,37 @@ export default function NavbarImproved() {
                   </div>
                   <DropdownMenuSeparator className="bg-gold/10" />
                   {[
-                    { label: 'Profile', icon: <User />, href: '/profile' },
-                    { label: 'Reading History', icon: <History />, href: '/readings' },
-                    { label: 'Journal', icon: <BookOpen />, href: '/journal' },
-                    { label: 'Blog & Rituals', icon: <BookText />, href: '/blog' },
-                    { label: 'Settings', icon: <Settings />, href: '/settings' },
-                    { label: 'Premium Upgrade', icon: <CreditCard />, href: '/upgrade' },
+                    { label: "Profile", icon: <User />, href: "/profile" },
+                    {
+                      label: "Reading History",
+                      icon: <History />,
+                      href: "/readings",
+                    },
+                    { label: "Journal", icon: <BookOpen />, href: "/journal" },
+                    {
+                      label: "Blog & Rituals",
+                      icon: <BookText />,
+                      href: "/blog",
+                    },
+                    {
+                      label: "Settings",
+                      icon: <Settings />,
+                      href: "/settings",
+                    },
+                    {
+                      label: "Premium Upgrade",
+                      icon: <CreditCard />,
+                      href: "/upgrade",
+                    },
                   ].map(({ label, icon, href }) => (
                     <DropdownMenuItem asChild key={href}>
                       <Link
                         href={href}
                         className="cursor-pointer flex items-center text-light hover:text-gold"
                       >
-                        {React.cloneElement(icon, { className: 'mr-2 h-4 w-4' })}
+                        {React.cloneElement(icon, {
+                          className: "mr-2 h-4 w-4",
+                        })}
                         <span>{label}</span>
                         {location === href && (
                           <div className="ml-auto w-1.5 h-1.5 rounded-full bg-gold" />
@@ -300,7 +321,7 @@ export default function NavbarImproved() {
         {isMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             className="md:hidden bg-dark/95 backdrop-blur-md overflow-hidden"
@@ -318,8 +339,8 @@ export default function NavbarImproved() {
                       href={link.path}
                       className={`flex items-center gap-2 px-3 py-2.5 rounded-md ${
                         location === link.path
-                          ? 'text-gold bg-primary/30 font-medium'
-                          : 'text-light hover:text-gold hover:bg-primary/20'
+                          ? "text-gold bg-primary/30 font-medium"
+                          : "text-light hover:text-gold hover:bg-primary/20"
                       }`}
                       onClick={() => setIsMenuOpen(false)}
                     >
@@ -344,8 +365,8 @@ export default function NavbarImproved() {
                         href={item.path}
                         className={`flex items-center gap-2 px-3 py-2 rounded-md ${
                           location === item.path
-                            ? 'text-gold bg-primary/30 font-medium'
-                            : 'text-light hover:text-gold hover:bg-primary/20'
+                            ? "text-gold bg-primary/30 font-medium"
+                            : "text-light hover:text-gold hover:bg-primary/20"
                         }`}
                         onClick={() => setIsMenuOpen(false)}
                       >
@@ -366,8 +387,8 @@ export default function NavbarImproved() {
                       href={item.path}
                       className={`flex items-center gap-2 px-3 py-2 rounded-md ${
                         location === item.path
-                          ? 'text-gold bg-primary/30 font-medium'
-                          : 'text-light hover:text-gold hover:bg-primary/20'
+                          ? "text-gold bg-primary/30 font-medium"
+                          : "text-light hover:text-gold hover:bg-primary/20"
                       }`}
                       onClick={() => setIsMenuOpen(false)}
                     >
