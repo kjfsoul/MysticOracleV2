@@ -1,10 +1,9 @@
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import TarotCard from "./tarot-card";
-import { CardDefinition, tarotDeck } from "@/data/tarot-data";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Loader2, Info, Shuffle } from "lucide-react";
+import { CardDefinition, tarotDeck } from "@/data/tarot-data";
+import { AnimatePresence, motion } from "framer-motion";
+import { Info, Loader2, Shuffle } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import TarotCard from "./tarot-card";
 
 interface TarotDeckProps {
   spread: string;
@@ -14,17 +13,21 @@ interface TarotDeckProps {
 
 const getSpreadCardCount = (spread: string): number => {
   switch (spread) {
-    case "single": return 1;
-    case "past-present-future": return 3;
-    case "celtic-cross": return 10;
-    default: return 3; // Default to PPF
+    case "single":
+      return 1;
+    case "past-present-future":
+      return 3;
+    case "celtic-cross":
+      return 10;
+    default:
+      return 3; // Default to PPF
   }
 };
 
-export default function TarotDeck({ 
-  spread, 
-  onCardSelection, 
-  isLoading = false 
+export default function TarotDeck({
+  spread,
+  onCardSelection,
+  isLoading = false,
 }: TarotDeckProps) {
   const [availableCards, setAvailableCards] = useState<CardDefinition[]>([]);
   const [selectedCards, setSelectedCards] = useState<CardDefinition[]>([]);
@@ -55,30 +58,44 @@ export default function TarotDeck({
     // Play card selection sound (if browser allows)
     try {
       const audio = new Audio();
-      audio.src = "https://assets.mixkit.co/active_storage/sfx/212/212-preview.mp3";
+      audio.src =
+        "https://assets.mixkit.co/active_storage/sfx/212/212-preview.mp3";
       audio.volume = 0.2;
-      audio.play().catch(e => console.log('Audio play prevented by browser policy'));
+      audio
+        .play()
+        .catch((e) => console.log("Audio play prevented by browser policy"));
     } catch (e) {
-      console.log('Audio not supported');
+      console.log("Audio not supported");
     }
 
     // Visual flash effect via class (we'll add the CSS for this)
-    const cardElements = document.querySelectorAll('.card-container');
+    const cardElements = document.querySelectorAll(".card-container");
     const selectedElement = cardElements[index];
     if (selectedElement) {
-      selectedElement.classList.add('card-selected-flash');
+      selectedElement.classList.add("card-selected-flash");
       setTimeout(() => {
-        selectedElement.classList.remove('card-selected-flash');
+        selectedElement.classList.remove("card-selected-flash");
       }, 600);
+    }
+
+    // Create a dramatic pause before revealing the card
+    const selectedCard = document.querySelector(
+      `.card-container:nth-child(${index + 1}) .tarot-card`
+    );
+    if (selectedCard) {
+      selectedCard.classList.add("selected-card-animation");
     }
 
     // Add card to selected cards with a slight delay to allow animation to show
     setTimeout(() => {
-      setSelectedCards(prev => [...prev, card]);
-      
+      setSelectedCards((prev) => [...prev, card]);
+
       // Remove selected card from available cards
-      setAvailableCards(prev => prev.filter((_, i) => i !== index));
-    }, 300);
+      setAvailableCards((prev) => prev.filter((_, i) => i !== index));
+
+      // Show a toast or message about the selected card
+      console.log(`Selected card: ${card.name}`);
+    }, 600);
   };
 
   const handleStartSelection = () => {
@@ -116,13 +133,13 @@ export default function TarotDeck({
   // Animation variants
   const deckVariants = {
     initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
         duration: 0.7,
-        staggerChildren: 0.05
-      }
+        staggerChildren: 0.05,
+      },
     },
     shuffle: {
       opacity: 1,
@@ -130,23 +147,35 @@ export default function TarotDeck({
       rotate: [0, 3, -3, 0],
       transition: {
         duration: 1,
-        ease: "easeInOut"
-      }
-    }
+        ease: "easeInOut",
+        times: [0, 0.5, 0.75, 1],
+      },
+    },
+    dealing: {
+      opacity: 1,
+      scale: [1, 1.05, 1],
+      y: [0, -20, 0],
+      transition: {
+        duration: 0.8,
+        ease: [0.34, 1.56, 0.64, 1], // Spring-like easing
+        repeat: 1,
+        repeatType: "reverse",
+      },
+    },
   };
 
   const cardVariants = {
     initial: { opacity: 0, scale: 0.8, y: 20 },
-    animate: { 
-      opacity: 1, 
-      scale: 1, 
+    animate: {
+      opacity: 1,
+      scale: 1,
       y: 0,
-      transition: { duration: 0.5 }
+      transition: { duration: 0.5 },
     },
-    exit: { 
-      opacity: 0, 
+    exit: {
+      opacity: 0,
       scale: 0.8,
-      transition: { duration: 0.3 }
+      transition: { duration: 0.3 },
     },
     shuffleItem: {
       scale: [1, 1.05, 0.98, 1],
@@ -155,9 +184,33 @@ export default function TarotDeck({
       rotate: [0, 5, -3, 0],
       transition: {
         duration: 0.8,
-        ease: "easeInOut"
-      }
-    }
+        ease: "easeInOut",
+      },
+    },
+    selected: {
+      scale: [1, 1.2, 1.1],
+      y: [0, -30, -20],
+      rotate: [0, 5, 0],
+      filter: [
+        "brightness(1)",
+        "brightness(1.5) drop-shadow(0 0 15px rgba(255, 215, 0, 0.7))",
+        "brightness(1.2) drop-shadow(0 0 10px rgba(255, 215, 0, 0.5))",
+      ],
+      transition: {
+        duration: 0.6,
+        ease: [0.34, 1.56, 0.64, 1], // Spring-like easing
+        times: [0, 0.6, 1],
+      },
+    },
+    dealing: {
+      x: (custom: number) => [0, custom * 100], // Custom will be the position index
+      y: [0, -50, 0],
+      rotate: [0, 5, 0],
+      transition: {
+        duration: 0.8,
+        ease: "backOut",
+      },
+    },
   };
 
   return (
@@ -165,7 +218,11 @@ export default function TarotDeck({
       {/* Spread info */}
       <div className="flex items-center gap-2 mb-6">
         <h2 className="text-xl font-semibold text-light">
-          {spread.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Spread
+          {spread
+            .split("-")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ")}{" "}
+          Spread
         </h2>
         <button
           onClick={() => setShowInfo(!showInfo)}
@@ -185,9 +242,12 @@ export default function TarotDeck({
             className="bg-dark/70 border border-light/20 rounded-lg p-4 mb-6 max-w-md"
           >
             <p className="text-light/80 text-sm">
-              {spread === "single" && "Draw a single card for quick insight into your question or the day ahead."}
-              {spread === "past-present-future" && "This three-card spread reveals influences from your past, current situation, and likely outcome."}
-              {spread === "celtic-cross" && "A comprehensive ten-card spread that provides a detailed analysis of your situation, including obstacles, influences, hopes, and outcomes."}
+              {spread === "single" &&
+                "Draw a single card for quick insight into your question or the day ahead."}
+              {spread === "past-present-future" &&
+                "This three-card spread reveals influences from your past, current situation, and likely outcome."}
+              {spread === "celtic-cross" &&
+                "A comprehensive ten-card spread that provides a detailed analysis of your situation, including obstacles, influences, hopes, and outcomes."}
             </p>
           </motion.div>
         )}
@@ -196,10 +256,11 @@ export default function TarotDeck({
       {/* Card selection UI */}
       <div className="text-center mb-8">
         <p className="text-light/80 mb-6">
-          {!isSelecting 
-            ? "Shuffle the deck and focus on your question" 
-            : `Select ${selectionCount} ${selectionCount === 1 ? 'card' : 'cards'} from the deck (${selectedCards.length}/${selectionCount})`
-          }
+          {!isSelecting
+            ? "Shuffle the deck and focus on your question"
+            : `Select ${selectionCount} ${
+                selectionCount === 1 ? "card" : "cards"
+              } from the deck (${selectedCards.length}/${selectionCount})`}
         </p>
         {!isSelecting && (
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -216,7 +277,9 @@ export default function TarotDeck({
               className="bg-gold hover:bg-gold/80 text-dark flex items-center gap-2"
               disabled={isLoading || deckShuffled}
             >
-              {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+              {isLoading ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : null}
               Select Cards
             </Button>
           </div>
@@ -224,7 +287,8 @@ export default function TarotDeck({
       </div>
 
       {/* Tarot Deck */}
-      <motion.div className="flex justify-center mb-12"
+      <motion.div
+        className="flex justify-center mb-12"
         ref={deckRef}
         variants={deckVariants}
         initial="initial"
@@ -234,7 +298,7 @@ export default function TarotDeck({
         <div className="flex flex-wrap justify-center gap-4 max-w-4xl">
           <AnimatePresence>
             {availableCards.slice(0, selectionCount * 3).map((card, index) => (
-              <motion.div 
+              <motion.div
                 key={card.id + index}
                 variants={cardVariants}
                 initial="initial"
@@ -246,7 +310,9 @@ export default function TarotDeck({
                 <TarotCard
                   onClick={() => handleCardClick(card, index)}
                   card={card}
-                  isSelectable={isSelecting && selectedCards.length < selectionCount}
+                  isSelectable={
+                    isSelecting && selectedCards.length < selectionCount
+                  }
                 />
               </motion.div>
             ))}
@@ -264,7 +330,7 @@ export default function TarotDeck({
           <h3 className="text-center text-light/80 mb-4">Selected Cards</h3>
           <div className="flex flex-wrap justify-center gap-4">
             {selectedCards.map((card, index) => (
-              <motion.div 
+              <motion.div
                 key={`selected-${card.id}`}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}

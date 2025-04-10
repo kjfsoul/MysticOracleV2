@@ -1,0 +1,619 @@
+/**
+ * Enhanced Agent Status Report
+ * 
+ * This script generates a comprehensive status report of all running agents,
+ * their tasks, and project management status, with rich terminal output.
+ */
+
+import { exec } from 'child_process';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+import os from 'os';
+
+// Get the directory name in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const rootDir = path.join(__dirname, '..');
+
+// Load environment variables
+dotenv.config({ path: path.join(rootDir, '.env') });
+
+// Configuration
+const LOG_DIR = path.join(rootDir, '.mcp', 'logs');
+const statusLogFile = path.join(LOG_DIR, 'agent-status.log');
+const INCLUDE_TASK_STATUS = process.env.AGENT_INCLUDE_TASK_STATUS !== 'false';
+const INCLUDE_RESOURCE_USAGE = process.env.AGENT_INCLUDE_RESOURCE_USAGE !== 'false';
+
+// ANSI color codes for terminal output
+const COLORS = {
+  reset: '\x1b[0m',
+  bright: '\x1b[1m',
+  dim: '\x1b[2m',
+  underscore: '\x1b[4m',
+  blink: '\x1b[5m',
+  reverse: '\x1b[7m',
+  hidden: '\x1b[8m',
+  
+  black: '\x1b[30m',
+  red: '\x1b[31m',
+  green: '\x1b[32m',
+  yellow: '\x1b[33m',
+  blue: '\x1b[34m',
+  magenta: '\x1b[35m',
+  cyan: '\x1b[36m',
+  white: '\x1b[37m',
+  
+  bgBlack: '\x1b[40m',
+  bgRed: '\x1b[41m',
+  bgGreen: '\x1b[42m',
+  bgYellow: '\x1b[43m',
+  bgBlue: '\x1b[44m',
+  bgMagenta: '\x1b[45m',
+  bgCyan: '\x1b[46m',
+  bgWhite: '\x1b[47m'
+};
+
+// Ensure log directory exists
+if (!fs.existsSync(LOG_DIR)) {
+  fs.mkdirSync(LOG_DIR, { recursive: true });
+}
+
+// Logger
+const logger = {
+  log: (message) => {
+    const timestamp = new Date().toISOString();
+    const logMessage = `[${timestamp}] ${message}\n`;
+    console.log(message);
+    fs.appendFileSync(statusLogFile, logMessage);
+  },
+  error: (message, error) => {
+    const timestamp = new Date().toISOString();
+    const errorMessage = error ? `${error.message}\n${error.stack}` : '';
+    const logMessage = `[${timestamp}] ERROR: ${message}\n${errorMessage}\n`;
+    console.error(`${COLORS.red}${message}${COLORS.reset}`);
+    if (error) console.error(error);
+    fs.appendFileSync(statusLogFile, logMessage);
+  }
+};
+
+// Get running agents
+async function getRunningAgents() {
+  return new Promise((resolve) => {
+    exec('ps aux | grep "[a]gent-runner\\.js"', (error, stdout) => {
+      if (error || !stdout.trim()) {
+        resolve([]);
+        return;
+      }
+      
+      const lines = stdout.trim().split('\n');
+      const agents = lines.map(line => {
+        const parts = line.trim().split(/\s+/);
+        const pid = parts[1];
+        const command = line.substring(line.indexOf('node'));
+        const type = 'Agent';
+        const startTime = new Date(Date.now() - (parseInt(parts[9] || "0") * 1000)).toISOString();
+        const cpuUsage = parts[2];
+        const memoryUsage = parts[3];
+        
+        return { pid, type, command, startTime, cpuUsage, memoryUsage };
+      });
+      
+      resolve(agents);
+    });
+  });
+}
+
+// Get agent tasks
+async function getAgentTasks() {
+  if (!INCLUDE_TASK_STATUS) {
+    return [];
+  }
+  
+  try {
+    // Read agent configuration files
+    const agentConfigPath = path.join(rootDir, '.mcp', 'agents.json');
+    
+    let tasks = [];
+    
+    // Read agent tasks
+    if (fs.existsSync(agentConfigPath)) {
+      const agentConfig = JSON.parse(fs.readFileSync(agentConfigPath, 'utf8'));
+      
+      if (agentConfig.agents) {
+        Object.entries(agentConfig.agents).forEach(([agentName, agent]) => {
+          if (agent.tasks) {
+            agent.tasks.forEach(task => {
+              // Calculate next run time based on cron schedule
+              const nextRun = getNextCronRunTime(task.schedule);
+              
+              tasks.push({
+                agent: agentName,
+                type: 'Regular',
+                name: task.name,
+                description: task.description,
+                schedule: task.schedule,
+                nextRun,
+                enabled: task.enabled !== false,
+                priority: task.priority || 'normal'
+              });
+            });
+          }
+        });
+      }
+      
+      if (agentConfig.workflows) {
+        Object.entries(agentConfig.workflows).forEach(([workflowName, workflow]) => {
+          // Calculate next run time based on cron schedule
+          const nextRun = getNextCronRunTime(workflow.schedule);
+          
+          tasks.push({
+            agent: 'Workflow',
+            type: 'Workflow',
+            name: workflowName,
+            description: workflow.description,
+            schedule: workflow.schedule,
+            nextRun,
+            enabled: workflow.enabled !== false,
+            priority: workflow.priority || 'normal',
+            steps: workflow.steps ? workflow.steps.length : 0
+          });
+        });
+      }
+    }
+    
+    return tasks;
+  } catch (error) {
+    logger.error('Failed to get agent tasks', error);
+    return [];
+  }
+}
+
+// Get next run time based on cron schedule
+function getNextCronRunTime(cronExpression) {
+  try {
+    // This is a simplified implementation
+    // In a real implementation, you would use a cron parser library
+    
+    // For demonstration purposes, we'll just return a future time
+    const now = new Date();
+    const future = new Date(now.getTime() + Math.random() * 24 * 60 * 60 * 1000);
+    return future.toISOString();
+  } catch (error) {
+    return 'Unknown';
+  }
+}
+
+// Get resource usage
+async function getResourceUsage() {
+  if (!INCLUDE_RESOURCE_USAGE) {
+    return null;
+  }
+  
+  try {
+    const cpuCount = os.cpus().length;
+    const freeMemory = os.freemem();
+    const totalMemory = os.totalmem();
+    const memoryUsagePercent = ((totalMemory - freeMemory) / totalMemory * 100).toFixed(2);
+    
+    // Get CPU usage of agent processes
+    return new Promise((resolve) => {
+      exec('ps -o %cpu,rss -p $(pgrep -f "agent-runner\\.js" | tr "\\n" ",")', (error, stdout) => {
+        if (error || !stdout.trim()) {
+          resolve({
+            cpuCount,
+            memoryUsagePercent,
+            memoryUsage: `${(totalMemory - freeMemory) / 1024 / 1024 / 1024} GB / ${totalMemory / 1024 / 1024 / 1024} GB`,
+            freeMemory: `${(freeMemory / 1024 / 1024 / 1024).toFixed(2)} GB`,
+            totalMemory: `${(totalMemory / 1024 / 1024 / 1024).toFixed(2)} GB`,
+            agentCpuUsage: '0%',
+            agentMemoryUsage: '0 MB',
+            uptime: formatUptime(os.uptime())
+          });
+          return;
+        }
+        
+        const lines = stdout.trim().split('\n').slice(1); // Skip header
+        let totalCpu = 0;
+        let totalRss = 0;
+        
+        lines.forEach(line => {
+          const [cpu, rss] = line.trim().split(/\s+/);
+          totalCpu += parseFloat(cpu);
+          totalRss += parseInt(rss);
+        });
+        
+        resolve({
+          cpuCount,
+          memoryUsagePercent,
+          memoryUsage: `${((totalMemory - freeMemory) / 1024 / 1024 / 1024).toFixed(2)} GB / ${(totalMemory / 1024 / 1024 / 1024).toFixed(2)} GB`,
+          freeMemory: `${(freeMemory / 1024 / 1024 / 1024).toFixed(2)} GB`,
+          totalMemory: `${(totalMemory / 1024 / 1024 / 1024).toFixed(2)} GB`,
+          agentCpuUsage: `${totalCpu.toFixed(2)}%`,
+          agentMemoryUsage: `${(totalRss / 1024).toFixed(2)} MB`,
+          uptime: formatUptime(os.uptime())
+        });
+      });
+    });
+  } catch (error) {
+    logger.error('Failed to get resource usage', error);
+    return null;
+  }
+}
+
+// Format uptime
+function formatUptime(uptime) {
+  const days = Math.floor(uptime / 86400);
+  const hours = Math.floor((uptime % 86400) / 3600);
+  const minutes = Math.floor((uptime % 3600) / 60);
+  const seconds = Math.floor(uptime % 60);
+  
+  return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+// Get project management status
+async function getProjectStatus() {
+  try {
+    // Check if project management file exists
+    const projectStatusPath = path.join(rootDir, '.mcp', 'project-status.json');
+    
+    if (fs.existsSync(projectStatusPath)) {
+      return JSON.parse(fs.readFileSync(projectStatusPath, 'utf8'));
+    }
+    
+    // If not, create a basic status
+    const basicStatus = {
+      projectName: path.basename(rootDir),
+      lastUpdated: new Date().toISOString(),
+      currentPhase: 'Development',
+      activeTasks: [],
+      completedTasks: [],
+      nextMilestone: 'Initial Deployment',
+      progress: {
+        overall: '0%'
+      }
+    };
+    
+    fs.writeFileSync(projectStatusPath, JSON.stringify(basicStatus, null, 2));
+    return basicStatus;
+  } catch (error) {
+    logger.error('Failed to get project status', error);
+    return null;
+  }
+}
+
+// Check if away mode is active
+async function isAwayModeActive() {
+  try {
+    const awayModePath = path.join(rootDir, '.mcp', 'away-mode.json');
+    
+    if (fs.existsSync(awayModePath)) {
+      const awayMode = JSON.parse(fs.readFileSync(awayModePath, 'utf8'));
+      
+      if (!awayMode.enabled) {
+        return false;
+      }
+      
+      const now = new Date();
+      const currentHour = now.getHours();
+      const currentMinute = now.getMinutes();
+      const currentTime = currentHour * 60 + currentMinute;
+      
+      const [startHour, startMinute] = awayMode.startTime.split(':').map(Number);
+      const [endHour, endMinute] = awayMode.endTime.split(':').map(Number);
+      
+      const startTime = startHour * 60 + startMinute;
+      const endTime = endHour * 60 + endMinute;
+      
+      // Check if current time is within away hours
+      if (startTime < endTime) {
+        // Normal time range (e.g., 18:00 to 09:00)
+        return currentTime >= startTime || currentTime <= endTime;
+      } else {
+        // Overnight time range (e.g., 18:00 to 09:00)
+        return currentTime >= startTime || currentTime <= endTime;
+      }
+    }
+    
+    return false;
+  } catch (error) {
+    logger.error('Failed to check away mode', error);
+    return false;
+  }
+}
+
+// Get recent logs
+async function getRecentLogs() {
+  try {
+    const logFiles = [
+      { name: 'Agent Runner', path: path.join(LOG_DIR, 'agent-runner.log') },
+      { name: 'Agent Status', path: statusLogFile },
+      { name: 'Agent Stdout', path: path.join(LOG_DIR, 'agent-stdout.log') },
+      { name: 'Agent Stderr', path: path.join(LOG_DIR, 'agent-stderr.log') }
+    ];
+    
+    const logs = {};
+    
+    for (const logFile of logFiles) {
+      if (fs.existsSync(logFile.path)) {
+        // Get last 5 lines of the log file
+        const content = fs.readFileSync(logFile.path, 'utf8');
+        const lines = content.split('\n').filter(line => line.trim());
+        logs[logFile.name] = lines.slice(-5);
+      } else {
+        logs[logFile.name] = ['Log file not found'];
+      }
+    }
+    
+    return logs;
+  } catch (error) {
+    logger.error('Failed to get recent logs', error);
+    return {};
+  }
+}
+
+// Generate status report
+async function generateStatusReport() {
+  try {
+    logger.log('Generating agent status report...');
+    
+    // Get running agents
+    const agents = await getRunningAgents();
+    
+    // Get agent tasks
+    const tasks = await getAgentTasks();
+    
+    // Get resource usage
+    const resourceUsage = await getResourceUsage();
+    
+    // Get project status
+    const projectStatus = await getProjectStatus();
+    
+    // Check away mode
+    const awayMode = await isAwayModeActive();
+    
+    // Get recent logs
+    const recentLogs = await getRecentLogs();
+    
+    // Generate report
+    const report = {
+      timestamp: new Date().toISOString(),
+      agentStatus: {
+        totalAgents: agents.length,
+        runningAgents: agents,
+        awayModeActive: awayMode
+      },
+      taskStatus: {
+        totalTasks: tasks.length,
+        tasks
+      },
+      resourceUsage,
+      projectStatus,
+      recentLogs
+    };
+    
+    // Save report
+    const reportPath = path.join(LOG_DIR, 'latest-status-report.json');
+    fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
+    
+    // Print report to terminal with rich formatting
+    printTerminalReport(report);
+    
+    return report;
+  } catch (error) {
+    logger.error('Failed to generate status report', error);
+    throw error;
+  }
+}
+
+// Print report to terminal with rich formatting
+function printTerminalReport(report) {
+  const { agentStatus, taskStatus, resourceUsage, projectStatus, recentLogs } = report;
+  const timestamp = new Date().toLocaleString();
+  
+  // Clear terminal
+  console.clear();
+  
+  // Print header
+  console.log(`${COLORS.bgBlue}${COLORS.white}${COLORS.bright}                                                                                ${COLORS.reset}`);
+  console.log(`${COLORS.bgBlue}${COLORS.white}${COLORS.bright}                      AUTONOMOUS AGENT SYSTEM STATUS REPORT                     ${COLORS.reset}`);
+  console.log(`${COLORS.bgBlue}${COLORS.white}${COLORS.bright}                                                                                ${COLORS.reset}`);
+  
+  // Print timestamp and project info
+  console.log(`\n${COLORS.cyan}${COLORS.bright}Generated:${COLORS.reset} ${timestamp}`);
+  console.log(`${COLORS.cyan}${COLORS.bright}Project:${COLORS.reset} ${projectStatus.projectName}`);
+  console.log(`${COLORS.cyan}${COLORS.bright}Phase:${COLORS.reset} ${projectStatus.currentPhase}`);
+  console.log(`${COLORS.cyan}${COLORS.bright}Away Mode:${COLORS.reset} ${agentStatus.awayModeActive ? `${COLORS.green}ACTIVE${COLORS.reset}` : `${COLORS.yellow}INACTIVE${COLORS.reset}`}`);
+  
+  // Print system info
+  if (resourceUsage) {
+    console.log(`\n${COLORS.magenta}${COLORS.bright}=== System Information ===${COLORS.reset}`);
+    console.log(`${COLORS.magenta}CPU:${COLORS.reset} ${resourceUsage.cpuCount} cores`);
+    
+    // Color-code memory usage
+    let memoryColor = COLORS.green;
+    if (resourceUsage.memoryUsagePercent > 70) memoryColor = COLORS.red;
+    else if (resourceUsage.memoryUsagePercent > 50) memoryColor = COLORS.yellow;
+    
+    console.log(`${COLORS.magenta}Memory:${COLORS.reset} ${memoryColor}${resourceUsage.memoryUsage} (${resourceUsage.memoryUsagePercent}%)${COLORS.reset}`);
+    console.log(`${COLORS.magenta}Uptime:${COLORS.reset} ${resourceUsage.uptime}`);
+  }
+  
+  // Print agent status
+  console.log(`\n${COLORS.blue}${COLORS.bright}=== Agent Status ===${COLORS.reset}`);
+  console.log(`${COLORS.blue}Total Agents:${COLORS.reset} ${agentStatus.totalAgents}`);
+  
+  if (agentStatus.totalAgents > 0) {
+    console.log(`\n${COLORS.blue}Running Agents:${COLORS.reset}`);
+    
+    // Create a table for agents
+    console.log(`${COLORS.dim}┌────────┬──────────────┬────────────┬────────────┬────────────────────────┐${COLORS.reset}`);
+    console.log(`${COLORS.dim}│${COLORS.reset} ${COLORS.bright}PID    ${COLORS.reset} ${COLORS.dim}│${COLORS.reset} ${COLORS.bright}Type         ${COLORS.reset} ${COLORS.dim}│${COLORS.reset} ${COLORS.bright}CPU Usage ${COLORS.reset} ${COLORS.dim}│${COLORS.reset} ${COLORS.bright}Mem Usage ${COLORS.reset} ${COLORS.dim}│${COLORS.reset} ${COLORS.bright}Start Time             ${COLORS.reset} ${COLORS.dim}│${COLORS.reset}`);
+    console.log(`${COLORS.dim}├────────┼──────────────┼────────────┼────────────┼────────────────────────┤${COLORS.reset}`);
+    
+    agentStatus.runningAgents.forEach(agent => {
+      // Color-code CPU usage
+      let cpuColor = COLORS.green;
+      const cpuUsage = parseFloat(agent.cpuUsage);
+      if (cpuUsage > 50) cpuColor = COLORS.red;
+      else if (cpuUsage > 20) cpuColor = COLORS.yellow;
+      
+      // Color-code memory usage
+      let memColor = COLORS.green;
+      const memUsage = parseFloat(agent.memoryUsage);
+      if (memUsage > 50) memColor = COLORS.red;
+      else if (memUsage > 20) memColor = COLORS.yellow;
+      
+      // Format start time
+      const startTime = new Date(agent.startTime).toLocaleString();
+      
+      console.log(`${COLORS.dim}│${COLORS.reset} ${agent.pid.padEnd(6)} ${COLORS.dim}│${COLORS.reset} ${agent.type.padEnd(12)} ${COLORS.dim}│${COLORS.reset} ${cpuColor}${agent.cpuUsage.padEnd(8)}%${COLORS.reset} ${COLORS.dim}│${COLORS.reset} ${memColor}${agent.memoryUsage.padEnd(8)}%${COLORS.reset} ${COLORS.dim}│${COLORS.reset} ${startTime.padEnd(22)} ${COLORS.dim}│${COLORS.reset}`);
+    });
+    
+    console.log(`${COLORS.dim}└────────┴──────────────┴────────────┴────────────┴────────────────────────┘${COLORS.reset}`);
+  } else {
+    console.log(`${COLORS.yellow}No agents are currently running.${COLORS.reset}`);
+  }
+  
+  // Print task status
+  console.log(`\n${COLORS.green}${COLORS.bright}=== Task Status ===${COLORS.reset}`);
+  console.log(`${COLORS.green}Total Tasks:${COLORS.reset} ${taskStatus.totalTasks}`);
+  
+  if (taskStatus.totalTasks > 0) {
+    console.log(`\n${COLORS.green}Configured Tasks:${COLORS.reset}`);
+    
+    // Create a table for tasks
+    console.log(`${COLORS.dim}┌──────────────┬──────────────┬────────────────────────────────┬────────────┬────────────────────────┐${COLORS.reset}`);
+    console.log(`${COLORS.dim}│${COLORS.reset} ${COLORS.bright}Agent        ${COLORS.reset} ${COLORS.dim}│${COLORS.reset} ${COLORS.bright}Task         ${COLORS.reset} ${COLORS.dim}│${COLORS.reset} ${COLORS.bright}Description                  ${COLORS.reset} ${COLORS.dim}│${COLORS.reset} ${COLORS.bright}Priority   ${COLORS.reset} ${COLORS.dim}│${COLORS.reset} ${COLORS.bright}Next Run              ${COLORS.reset} ${COLORS.dim}│${COLORS.reset}`);
+    console.log(`${COLORS.dim}├──────────────┼──────────────┼────────────────────────────────┼────────────┼────────────────────────┤${COLORS.reset}`);
+    
+    // Sort tasks by next run time
+    const sortedTasks = [...taskStatus.tasks].sort((a, b) => {
+      return new Date(a.nextRun) - new Date(b.nextRun);
+    });
+    
+    // Show first 10 tasks
+    sortedTasks.slice(0, 10).forEach(task => {
+      // Color-code priority
+      let priorityColor = COLORS.green;
+      if (task.priority === 'high') priorityColor = COLORS.red;
+      else if (task.priority === 'medium') priorityColor = COLORS.yellow;
+      
+      // Format next run time
+      const nextRun = new Date(task.nextRun).toLocaleString();
+      
+      // Truncate description if too long
+      const description = task.description.length > 30 ? task.description.substring(0, 27) + '...' : task.description;
+      
+      console.log(`${COLORS.dim}│${COLORS.reset} ${task.agent.padEnd(12)} ${COLORS.dim}│${COLORS.reset} ${task.name.padEnd(12)} ${COLORS.dim}│${COLORS.reset} ${description.padEnd(30)} ${COLORS.dim}│${COLORS.reset} ${priorityColor}${task.priority.padEnd(10)}${COLORS.reset} ${COLORS.dim}│${COLORS.reset} ${nextRun.padEnd(22)} ${COLORS.dim}│${COLORS.reset}`);
+    });
+    
+    if (taskStatus.tasks.length > 10) {
+      console.log(`${COLORS.dim}├──────────────┴──────────────┴────────────────────────────────┴────────────┴────────────────────────┤${COLORS.reset}`);
+      console.log(`${COLORS.dim}│${COLORS.reset} ${COLORS.yellow}... and ${taskStatus.tasks.length - 10} more tasks${COLORS.reset}${' '.repeat(79 - (`... and ${taskStatus.tasks.length - 10} more tasks`).length)} ${COLORS.dim}│${COLORS.reset}`);
+    }
+    
+    console.log(`${COLORS.dim}└──────────────┴──────────────┴────────────────────────────────┴────────────┴────────────────────────┘${COLORS.reset}`);
+  }
+  
+  // Print project status
+  if (projectStatus) {
+    console.log(`\n${COLORS.yellow}${COLORS.bright}=== Project Status ===${COLORS.reset}`);
+    console.log(`${COLORS.yellow}Current Phase:${COLORS.reset} ${projectStatus.currentPhase}`);
+    console.log(`${COLORS.yellow}Next Milestone:${COLORS.reset} ${projectStatus.nextMilestone}`);
+    
+    console.log(`\n${COLORS.yellow}Progress:${COLORS.reset}`);
+    
+    // Create a progress bar for each progress item
+    Object.entries(projectStatus.progress).forEach(([key, value]) => {
+      const percentage = parseInt(value.replace('%', ''));
+      const barLength = 50;
+      const completedLength = Math.floor(percentage / 100 * barLength);
+      const remainingLength = barLength - completedLength;
+      
+      // Color-code progress bar
+      let progressColor = COLORS.green;
+      if (percentage < 30) progressColor = COLORS.red;
+      else if (percentage < 70) progressColor = COLORS.yellow;
+      
+      const bar = `${progressColor}${'█'.repeat(completedLength)}${COLORS.dim}${'░'.repeat(remainingLength)}${COLORS.reset}`;
+      
+      console.log(`${COLORS.yellow}${key}:${COLORS.reset} ${bar} ${percentage}%`);
+    });
+    
+    // Print active tasks
+    if (projectStatus.activeTasks && projectStatus.activeTasks.length > 0) {
+      console.log(`\n${COLORS.yellow}Active Tasks:${COLORS.reset}`);
+      
+      // Create a table for active tasks
+      console.log(`${COLORS.dim}┌────────────┬────────────────────────────────┬────────────┬────────────┐${COLORS.reset}`);
+      console.log(`${COLORS.dim}│${COLORS.reset} ${COLORS.bright}Assigned To ${COLORS.reset} ${COLORS.dim}│${COLORS.reset} ${COLORS.bright}Task                         ${COLORS.reset} ${COLORS.dim}│${COLORS.reset} ${COLORS.bright}Status     ${COLORS.reset} ${COLORS.dim}│${COLORS.reset} ${COLORS.bright}Progress   ${COLORS.reset} ${COLORS.dim}│${COLORS.reset}`);
+      console.log(`${COLORS.dim}├────────────┼────────────────────────────────┼────────────┼────────────┤${COLORS.reset}`);
+      
+      projectStatus.activeTasks.forEach(task => {
+        // Color-code status
+        let statusColor = COLORS.yellow;
+        if (task.status === 'completed') statusColor = COLORS.green;
+        else if (task.status === 'failed') statusColor = COLORS.red;
+        
+        // Create progress bar
+        const barLength = 10;
+        const completedLength = Math.floor(task.progress / 100 * barLength);
+        const remainingLength = barLength - completedLength;
+        
+        // Color-code progress bar
+        let progressColor = COLORS.green;
+        if (task.progress < 30) progressColor = COLORS.red;
+        else if (task.progress < 70) progressColor = COLORS.yellow;
+        
+        const bar = `${progressColor}${'█'.repeat(completedLength)}${COLORS.dim}${'░'.repeat(remainingLength)}${COLORS.reset}`;
+        
+        // Truncate task name if too long
+        const taskName = task.name.length > 30 ? task.name.substring(0, 27) + '...' : task.name;
+        
+        console.log(`${COLORS.dim}│${COLORS.reset} ${task.assignedTo.padEnd(10)} ${COLORS.dim}│${COLORS.reset} ${taskName.padEnd(30)} ${COLORS.dim}│${COLORS.reset} ${statusColor}${task.status.padEnd(10)}${COLORS.reset} ${COLORS.dim}│${COLORS.reset} ${bar} ${task.progress}% ${COLORS.dim}│${COLORS.reset}`);
+      });
+      
+      console.log(`${COLORS.dim}└────────────┴────────────────────────────────┴────────────┴────────────┘${COLORS.reset}`);
+    }
+  }
+  
+  // Print recent logs
+  console.log(`\n${COLORS.cyan}${COLORS.bright}=== Recent Logs ===${COLORS.reset}`);
+  
+  Object.entries(recentLogs).forEach(([logName, lines]) => {
+    if (lines.length > 0) {
+      console.log(`\n${COLORS.cyan}${logName}:${COLORS.reset}`);
+      
+      lines.forEach(line => {
+        // Color-code log lines
+        let lineColor = COLORS.reset;
+        if (line.includes('ERROR')) lineColor = COLORS.red;
+        else if (line.includes('WARNING')) lineColor = COLORS.yellow;
+        else if (line.includes('SUCCESS')) lineColor = COLORS.green;
+        
+        console.log(`${lineColor}${line}${COLORS.reset}`);
+      });
+    }
+  });
+  
+  // Print footer
+  console.log(`\n${COLORS.dim}Full report saved to: ${reportPath}${COLORS.reset}`);
+  console.log(`\n${COLORS.bgBlue}${COLORS.white}${COLORS.bright}                                                                                ${COLORS.reset}`);
+  console.log(`${COLORS.bgBlue}${COLORS.white}${COLORS.bright}                           END OF STATUS REPORT                            ${COLORS.reset}`);
+  console.log(`${COLORS.bgBlue}${COLORS.white}${COLORS.bright}                                                                                ${COLORS.reset}`);
+}
+
+// Main function
+async function main() {
+  try {
+    await generateStatusReport();
+  } catch (error) {
+    logger.error('Unhandled error in main function', error);
+    process.exit(1);
+  }
+}
+
+// Run the main function
+main();

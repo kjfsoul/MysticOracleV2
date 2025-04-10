@@ -16,7 +16,7 @@
     "agents:status": "node scripts/status-agents.js",
     "agents:logs": "cat cline_docs/agent-logs/agent-*.log",
     "agents:add-task": "node scripts/agents.js add-task",
-    "agents:run": "node scripts/run-all-agents.js",
+    "agents:run": "node scripts/run-agent-system.js",
     "agents:run-code": "node scripts/autonomous-agent.js CodeAgent",
     "agents:run-design": "node scripts/autonomous-agent.js DesignAgent",
     "agents:run-api": "node scripts/autonomous-agent.js APIAgent",
@@ -53,7 +53,9 @@
     "task:resume": "node scripts/task-chunker.js resume",
     "augment:run-api": "node scripts/augment-agent.js APIAgent",
     "augment:run-content": "node scripts/augment-agent.js ContentAgent",
-    "augment:run-test": "node scripts/augment-agent.js TestAgent"
+    "augment:run-test": "node scripts/augment-agent.js TestAgent",
+    "agents:away:enable": "node scripts/enable-away-mode.js",
+    "agents:away:disable": "node scripts/disable-away-mode.js"
   },
   "dependencies": {
     "@hapi/code": "^9.0.3",
@@ -109,6 +111,7 @@
     "input-otp": "^1.4.2",
     "lucide-react": "^0.484.0",
     "memorystore": "^1.6.7",
+    "node-cron": "^3.0.2",
     "node-geocoder": "^4.4.1",
     "node-schedule": "^2.1.1",
     "openai": "^4.89.0",

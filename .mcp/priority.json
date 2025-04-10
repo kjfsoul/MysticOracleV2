@@ -1,0 +1,29 @@
+{
+  "tasks": [
+    {
+      "name": "deploy",
+      "priority": 1,
+      "description": "Deploy the project to production"
+    },
+    {
+      "name": "test",
+      "priority": 2,
+      "description": "Run automated tests"
+    },
+    {
+      "name": "build",
+      "priority": 3,
+      "description": "Build the project"
+    },
+    {
+      "name": "lint",
+      "priority": 4,
+      "description": "Lint the code"
+    },
+    {
+      "name": "status-report",
+      "priority": 5,
+      "description": "Generate status report"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Moon, Star, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
+import { Moon, Sparkles, Star } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface TarotCardProps {
   card?: any;
@@ -30,7 +30,7 @@ export default function TarotCard({
   isReversed = false,
   arcana,
   suit,
-  number
+  number,
 }: TarotCardProps) {
   const [flipped, setFlipped] = useState(isFlipped);
   const [hover, setHover] = useState(false);
@@ -38,7 +38,8 @@ export default function TarotCard({
   const [loadedImage, setLoadedImage] = useState("");
 
   // Use provided values or get from card object
-  const cardImageUrl = imageUrl || (card && card.imageUrl) || "/images/tarot/card-back.jpg";
+  const cardImageUrl =
+    imageUrl || (card && card.imageUrl) || "/images/tarot/card-back.jpg";
   const name = cardName || (card && card.name) || "Unknown Card";
   const cardArcana = arcana || (card && card.arcana) || "";
   const cardSuit = suit || (card && card.suit) || "";
@@ -50,7 +51,7 @@ export default function TarotCard({
     sm: { width: 100, height: 170 },
     md: { width: 130, height: 220 },
     lg: { width: 160, height: 270 },
-    xl: { width: 200, height: 340 }
+    xl: { width: 200, height: 340 },
   };
 
   // Animation variants with enhanced effects
@@ -59,29 +60,29 @@ export default function TarotCard({
       scale: 1,
       y: 0,
       boxShadow: `
-        0 10px 15px -3px rgba(0, 0, 0, 0.3), 
+        0 10px 15px -3px rgba(0, 0, 0, 0.3),
         0 4px 6px -2px rgba(0, 0, 0, 0.1)
-      `
+      `,
     },
-    hover: { 
-      y: -10, 
+    hover: {
+      y: -10,
       boxShadow: `
-        0 20px 25px -5px rgba(0, 0, 0, 0.3), 
+        0 20px 25px -5px rgba(0, 0, 0, 0.3),
         0 10px 10px -5px rgba(0, 0, 0, 0.2),
         0 0 15px rgba(180, 140, 230, 0.4)
       `,
-      transition: { 
+      transition: {
         duration: 0.3,
-        ease: "easeOut"
-      }
+        ease: "easeOut",
+      },
     },
-    tap: { 
+    tap: {
       scale: 0.98,
       boxShadow: `
-        0 10px 15px -3px rgba(0, 0, 0, 0.2), 
+        0 10px 15px -3px rgba(0, 0, 0, 0.2),
         0 4px 6px -2px rgba(0, 0, 0, 0.1)
       `,
-      transition: { duration: 0.2, ease: "easeIn" }
+      transition: { duration: 0.2, ease: "easeIn" },
     },
     selected: {
       scale: 1.05,
@@ -90,39 +91,39 @@ export default function TarotCard({
         0 25px 50px -12px rgba(0, 0, 0, 0.4),
         0 0 20px rgba(180, 140, 230, 0.5)
       `,
-      transition: { 
+      transition: {
         duration: 0.5,
-        ease: [0.19, 1.0, 0.22, 1.0] // Expo ease out for smooth motion
-      }
+        ease: [0.19, 1.0, 0.22, 1.0], // Expo ease out for smooth motion
+      },
     },
     flipped: {
       rotateY: 180,
-      transition: { 
-        duration: 0.6, 
+      transition: {
+        duration: 0.6,
         ease: [0.34, 1.56, 0.64, 1], // Custom spring-like easing
-        delayChildren: 0.2
-      }
+        delayChildren: 0.2,
+      },
     },
     notFlipped: {
       rotateY: 0,
-      transition: { 
-        duration: 0.6, 
-        ease: [0.34, 1.56, 0.64, 1]
-      }
+      transition: {
+        duration: 0.6,
+        ease: [0.34, 1.56, 0.64, 1],
+      },
     },
     pulse: {
       scale: [1, 1.02, 1],
       boxShadow: [
         `0 10px 15px -3px rgba(126, 94, 162, 0.4)`,
         `0 15px 20px -3px rgba(126, 94, 162, 0.5), 0 0 15px rgba(180, 140, 230, 0.3)`,
-        `0 10px 15px -3px rgba(126, 94, 162, 0.4)`
+        `0 10px 15px -3px rgba(126, 94, 162, 0.4)`,
       ],
-      transition: { 
-        repeat: Infinity, 
+      transition: {
+        repeat: Infinity,
         duration: 2,
         ease: "easeInOut",
-        times: [0, 0.5, 1]
-      }
+        times: [0, 0.5, 1],
+      },
     },
     enterAnimation: {
       opacity: [0, 1],
@@ -130,9 +131,9 @@ export default function TarotCard({
       y: [10, 0],
       transition: {
         duration: 0.4,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   // Determine card back pattern based on arcana/suit
@@ -141,11 +142,16 @@ export default function TarotCard({
       return "bg-gradient-to-br from-purple-900/90 to-indigo-900/90";
     } else {
       switch (cardSuit) {
-        case "wands": return "bg-gradient-to-br from-orange-900/90 to-red-900/90"; // Fire
-        case "cups": return "bg-gradient-to-br from-blue-900/90 to-cyan-900/90";  // Water
-        case "swords": return "bg-gradient-to-br from-sky-900/90 to-indigo-900/90"; // Air
-        case "pentacles": return "bg-gradient-to-br from-emerald-900/90 to-green-900/90"; // Earth
-        default: return "bg-gradient-to-br from-purple-900/90 to-indigo-900/90";
+        case "wands":
+          return "bg-gradient-to-br from-orange-900/90 to-red-900/90"; // Fire
+        case "cups":
+          return "bg-gradient-to-br from-blue-900/90 to-cyan-900/90"; // Water
+        case "swords":
+          return "bg-gradient-to-br from-sky-900/90 to-indigo-900/90"; // Air
+        case "pentacles":
+          return "bg-gradient-to-br from-emerald-900/90 to-green-900/90"; // Earth
+        default:
+          return "bg-gradient-to-br from-purple-900/90 to-indigo-900/90";
       }
     }
   };
@@ -156,26 +162,63 @@ export default function TarotCard({
       return <Star className="h-6 w-6 text-gold/80" />;
     } else {
       switch (cardSuit) {
-        case "wands": return <div className="h-6 w-6 flex items-center justify-center text-amber-500/80 font-bold">🔥</div>;
-        case "cups": return <div className="h-6 w-6 flex items-center justify-center text-blue-500/80 font-bold">💧</div>;
-        case "swords": return <div className="h-6 w-6 flex items-center justify-center text-sky-400/80 font-bold">💨</div>;
-        case "pentacles": return <div className="h-6 w-6 flex items-center justify-center text-emerald-500/80 font-bold">🌱</div>;
-        default: return <Moon className="h-6 w-6 text-gold/80" />;
+        case "wands":
+          return (
+            <div className="h-6 w-6 flex items-center justify-center text-amber-500/80 font-bold">
+              🔥
+            </div>
+          );
+        case "cups":
+          return (
+            <div className="h-6 w-6 flex items-center justify-center text-blue-500/80 font-bold">
+              💧
+            </div>
+          );
+        case "swords":
+          return (
+            <div className="h-6 w-6 flex items-center justify-center text-sky-400/80 font-bold">
+              💨
+            </div>
+          );
+        case "pentacles":
+          return (
+            <div className="h-6 w-6 flex items-center justify-center text-emerald-500/80 font-bold">
+              🌱
+            </div>
+          );
+        default:
+          return <Moon className="h-6 w-6 text-gold/80" />;
       }
     }
   };
 
   // Preload the image
   useEffect(() => {
-    if (isFlipped && cardImageUrl) {
+    if (cardImageUrl) {
+      console.log("Preloading image:", cardImageUrl);
       const img = new Image();
       img.src = cardImageUrl;
       img.onload = () => {
+        console.log("Image loaded successfully:", cardImageUrl);
         setIsImageLoaded(true);
         setLoadedImage(cardImageUrl); // Store the loaded image URL
       };
+      img.onerror = (error) => {
+        console.error("Error loading image:", cardImageUrl, error);
+        // Try to load a placeholder instead
+        if (cardArcana === "major") {
+          setLoadedImage("/images/tarot/placeholders/major-placeholder.svg");
+        } else if (cardSuit) {
+          setLoadedImage(
+            `/images/tarot/placeholders/${cardSuit}-placeholder.svg`
+          );
+        } else {
+          setLoadedImage("/images/tarot/card-back.svg");
+        }
+        setIsImageLoaded(true);
+      };
     }
-  }, [isFlipped, cardImageUrl]);
+  }, [cardImageUrl, cardArcana, cardSuit]);
 
   // Ensure card name and image consistency
   useEffect(() => {
@@ -203,9 +246,9 @@ export default function TarotCard({
         "relative cursor-pointer perspective-1000 transform-style-3d",
         isSelectable ? "cursor-pointer" : "cursor-default"
       )}
-      style={{ 
-        width: dimensions[size].width, 
-        height: dimensions[size].height
+      style={{
+        width: dimensions[size].width,
+        height: dimensions[size].height,
       }}
       variants={cardVariants}
       initial="initial"
@@ -220,17 +263,19 @@ export default function TarotCard({
       <motion.div
         className={cn(
           "absolute w-full h-full backface-hidden rounded-lg border-2 tarot-card-back overflow-hidden",
-          hover && isSelectable ? "border-purple-300/70" : "border-purple-400/30",
+          hover && isSelectable
+            ? "border-purple-300/70"
+            : "border-purple-400/30",
           getCardBackPattern(),
           "mystic-glow"
         )}
-        style={{ 
+        style={{
           backfaceVisibility: "hidden",
           opacity: flipped ? 0 : 1,
-          transition: "opacity 0.3s ease"
+          transition: "opacity 0.3s ease",
         }}
         animate={{
-          zIndex: flipped ? -1 : 1
+          zIndex: flipped ? -1 : 1,
         }}
       >
         <div className="absolute inset-0 m-1 rounded-md bg-[url('/images/tarot/card-back-pattern.jpg')] bg-cover bg-center opacity-70">
@@ -240,7 +285,7 @@ export default function TarotCard({
                 {getSuitSymbol()}
               </div>
             </div>
-            
+
             {cardArcana === "major" && cardNumber && (
               <div className="text-white/80 text-xs font-medium">
                 {cardNumber}
@@ -254,28 +299,29 @@ export default function TarotCard({
       <motion.div
         className={cn(
           "absolute w-full h-full backface-hidden rounded-lg overflow-hidden border-2",
-          hover && isSelectable ? "border-purple-300/70" : "border-purple-400/30",
+          hover && isSelectable
+            ? "border-purple-300/70"
+            : "border-purple-400/30",
           "mystic-glow"
         )}
-        style={{ 
+        style={{
           backfaceVisibility: "hidden",
           transform: "rotateY(180deg)",
           opacity: flipped ? 1 : 0,
-          transition: "opacity 0.3s ease"
+          transition: "opacity 0.3s ease",
         }}
         animate={{
-          zIndex: flipped ? 1 : -1
+          zIndex: flipped ? 1 : -1,
         }}
       >
         <div className="relative w-full h-full bg-gradient-to-b from-slate-800 to-slate-900">
           {/* Card image */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center" 
-            style={{ 
-              backgroundImage: isFlipped && isImageLoaded && loadedImage 
-                ? `url(${loadedImage})` 
-                : 'none',
-              transform: isReversed ? 'rotate(180deg)' : 'none' 
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage:
+                isImageLoaded && loadedImage ? `url(${loadedImage})` : "none",
+              transform: isReversed ? "rotate(180deg)" : "none",
             }}
           ></div>
 
@@ -287,7 +333,13 @@ export default function TarotCard({
                 {name}
               </div>
               <div className="text-center text-purple-400/70 text-xs mt-1">
-                {cardArcana === "major" ? "Major Arcana" : `${cardSuit ? cardSuit.charAt(0).toUpperCase() + cardSuit.slice(1) : ""}`}
+                {cardArcana === "major"
+                  ? "Major Arcana"
+                  : `${
+                      cardSuit
+                        ? cardSuit.charAt(0).toUpperCase() + cardSuit.slice(1)
+                        : ""
+                    }`}
               </div>
               <div className="mt-4 h-1 w-16 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent rounded-full">
                 <div className="h-full w-1/2 bg-purple-400/80 rounded-full animate-[pulse_1.5s_ease-in-out_infinite]"></div>
@@ -302,7 +354,13 @@ export default function TarotCard({
             </p>
             {cardArcana && (
               <p className="text-white/70 text-[10px] text-center mt-0.5">
-                {cardArcana === "major" ? "Major Arcana" : `${cardSuit ? cardSuit.charAt(0).toUpperCase() + cardSuit.slice(1) : ""} • ${cardNumber}`}
+                {cardArcana === "major"
+                  ? "Major Arcana"
+                  : `${
+                      cardSuit
+                        ? cardSuit.charAt(0).toUpperCase() + cardSuit.slice(1)
+                        : ""
+                    } • ${cardNumber}`}
               </p>
             )}
           </div>

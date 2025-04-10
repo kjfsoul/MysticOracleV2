@@ -74,8 +74,10 @@ export default function Navbar() {
                 <Link
                   key={link.path}
                   href={link.path}
-                  className={`nav-link-improved flex items-center gap-1 ${
-                    location === link.path ? "text-gold font-medium" : ""
+                  className={`nav-link-improved flex items-center gap-1 px-3 py-2 rounded-md transition-colors ${
+                    location === link.path
+                      ? "text-gold font-medium bg-primary/30"
+                      : "text-white hover:text-gold hover:bg-primary/20"
                   }`}
                 >
                   <span className="text-xl">{link.icon}</span> {link.name}
@@ -87,10 +89,10 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           {!user && !isLoading && (
             <Link
-              href="/auth"
-              className="hidden md:flex items-center px-4 py-2 text-gold hover:text-gold/80 transition-colors duration-300 nav-link-improved"
+              href="/auth?tab=login"
+              className="hidden md:flex items-center px-4 py-2 text-white bg-primary/30 hover:bg-primary/50 rounded-md transition-colors duration-300 nav-link-improved"
             >
-              <User className="mr-1 h-4 w-4 icon-improved" />
+              <User className="mr-2 h-4 w-4 text-gold" />
               Sign In
             </Link>
           )}
@@ -252,7 +254,7 @@ export default function Navbar() {
             )}
             {!user && !isLoading && (
               <Link
-                href="/auth"
+                href="/auth?tab=login"
                 className="flex items-center gap-2 px-2 py-2 rounded-md text-gold hover:bg-gold/10 border border-gold/50 mt-2"
                 onClick={() => setIsMenuOpen(false)}
               >

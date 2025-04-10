@@ -1,0 +1,15 @@
+{\n  "type": "module",
+  "name": "mystic-arcana-mcp-servers",
+  "version": "1.0.0",
+  "description": "MCP servers for Mystic Arcana",
+  "dependencies": {\n  "type": "module",
+    "@modelcontextprotocol/server-filesystem": "latest",
+    "@modelcontextprotocol/server-github": "latest",
+    "@modelcontextprotocol/server-puppeteer": "latest",
+    "@modelcontextprotocol/server-brave-search": "latest",
+    "@modelcontextprotocol/server-sequential-thinking": "latest",
+    "@modelcontextprotocol/server-memory": "latest",
+    "@modelcontextprotocol/server-google-maps": "latest",
+    "@modelcontextprotocol/server-everything": "latest"
+  }
+}

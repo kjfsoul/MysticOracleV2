@@ -1,124 +1,104 @@
 {
+  "projectName": "MysticOracleV2",
   "agents": {
-    "CodeAgent": {
-      "description": "Handles code implementation and refactoring",
-      "capabilities": [
-        "component-implementation",
-        "code-refactoring",
-        "bug-fixing",
-        "test-writing"
-      ],
-      "schedule": "0 */4 * * *",
+    "deployment": {
+      "name": "Deployment Agent",
+      "description": "Handles deployment tasks",
+      "enabled": true,
       "tasks": [
         {
-          "name": "tarot-component",
-          "description": "Implement and improve tarot card components",
-          "schedule": "0 2 * * *",
-          "command": "node scripts/augment-agent.js CodeAgent"
+          "name": "deploy",
+          "description": "Deploy the project",
+          "enabled": true,
+          "schedule": "0 */4 * * *",
+          "runInAwayMode": true,
+          "action": {
+            "type": "command",
+            "command": "npm run build && npx netlify deploy --prod --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_SITE_ID",
+            "cwd": "./"
+          }
+        }
+      ]
+    },
+    "status": {
+      "name": "Status Agent",
+      "description": "Reports on project status",
+      "enabled": true,
+      "tasks": [
+        {
+          "name": "status-report",
+          "description": "Generate status report",
+          "enabled": true,
+          "schedule": "0 */2 * * *",
+          "runInAwayMode": true,
+          "action": {
+            "type": "script",
+            "path": ".mcp/status-report.js",
+            "args": []
+          }
+        }
+      ]
+    },
+    "code": {
+      "name": "Code Agent",
+      "description": "Handles code-related tasks",
+      "enabled": true,
+      "tasks": [
+        {
+          "name": "lint",
+          "description": "Lint the code",
+          "enabled": true,
+          "schedule": "30 */4 * * *",
+          "runInAwayMode": true,
+          "action": {
+            "type": "command",
+            "command": "npm run lint || echo 'Linting not configured'",
+            "cwd": "./"
+          }
         },
         {
-          "name": "auth-ui",
-          "description": "Implement authentication UI components",
-          "schedule": "0 4 * * *",
-          "command": "node scripts/augment-agent.js CodeAgent"
-        }
-      ]
-    },
-    "DesignAgent": {
-      "description": "Handles UI design and animations",
-      "capabilities": [
-        "ui-design",
-        "animation",
-        "responsive-layout",
-        "accessibility"
-      ],
-      "schedule": "0 */6 * * *",
-      "tasks": [
-        {
-          "name": "card-animations",
-          "description": "Implement card flip and spread animations",
-          "schedule": "0 3 * * *",
-          "command": "node scripts/augment-agent.js DesignAgent"
-        }
-      ]
-    },
-    "APIAgent": {
-      "description": "Handles API implementation and serverless functions",
-      "capabilities": [
-        "api-implementation",
-        "serverless-function",
-        "database-query",
-        "authentication"
-      ],
-      "schedule": "0 */8 * * *",
-      "tasks": [
-        {
-          "name": "daily-tarot-api",
-          "description": "Implement daily tarot card API",
-          "schedule": "0 1 * * *",
-          "command": "node scripts/augment-agent.js APIAgent"
-        },
-        {
-          "name": "auth-api",
-          "description": "Implement authentication API endpoints",
-          "schedule": "0 5 * * *",
-          "command": "node scripts/augment-agent.js APIAgent"
-        }
-      ]
-    },
-    "ContentAgent": {
-      "description": "Handles content generation",
-      "capabilities": [
-        "content-generation",
-        "tarot-description",
-        "astrology-interpretation",
-        "blog-outline"
-      ],
-      "schedule": "0 */12 * * *",
-      "tasks": [
-        {
-          "name": "tarot-descriptions",
-          "description": "Generate tarot card descriptions",
-          "schedule": "0 0 * * *",
-          "command": "node scripts/augment-agent.js ContentAgent"
-        }
-      ]
-    },
-    "TestAgent": {
-      "description": "Handles testing and quality assurance",
-      "capabilities": [
-        "unit-test",
-        "integration-test",
-        "test-suite",
-        "test-coverage"
-      ],
-      "schedule": "0 */12 * * *",
-      "tasks": [
-        {
-          "name": "component-tests",
-          "description": "Write and run tests for components",
-          "schedule": "0 6 * * *",
-          "command": "node scripts/augment-agent.js TestAgent"
+          "name": "test",
+          "description": "Run tests",
+          "enabled": true,
+          "schedule": "45 */4 * * *",
+          "runInAwayMode": true,
+          "action": {
+            "type": "command",
+            "command": "npm run test || echo 'Tests not configured'",
+            "cwd": "./"
+          }
         }
       ]
     }
   },
   "workflows": {
-    "daily-build": {
-      "description": "Daily build and test workflow",
-      "schedule": "0 0 * * *",
-      "tasks": [
-        "tarot-component",
-        "card-animations",
-        "component-tests"
-      ]
-    },
-    "netlify-deploy": {
-      "description": "Deploy to Netlify",
-      "schedule": "0 12 * * 5",
-      "tasks": [
-        "component-tests",
-        "deploy-netlify"
+    "deploy-and-notify": {
+      "name": "Deploy and Notify",
+      "description": "Deploy the project and send notification",
+      "enabled": true,
+      "schedule": "0 9,13,17,21 * * *",
+      "runInAwayMode": true,
+      "steps": [
+        {
+          "agent": "code",
+          "task": "lint",
+          "required": false
+        },
+        {
+          "agent": "code",
+          "task": "test",
+          "required": false
+        },
+        {
+          "agent": "deployment",
+          "task": "deploy",
+          "required": true
+        },
+        {
+          "agent": "status",
+          "task": "status-report",
+          "required": false
+        }
       ]
     }
   }

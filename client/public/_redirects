@@ -3,9 +3,9 @@
 <https://www.mysticarcana.com/>* <https://mysticarcana.com/:s> 301!
 <https://mysticarcana.netlify.app/>* <https://mysticarcana.com/:s> 301!
 
-# Route root to eclipse page
+# Route root to home page
 
-/ /eclipse 302
+# / /eclipse 302  # Commented out to allow normal routing
 
 # Fallback routes
 

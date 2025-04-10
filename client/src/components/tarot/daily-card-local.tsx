@@ -17,14 +17,29 @@ export default function DailyCardLocal() {
         import("@/data/tarot-cards").then(({ allTarotCards }) => {
           import("@/utils/tarot-utils").then(
             ({ getDailyCard, getTarotCardImagePath }) => {
+              console.log("Loaded tarot cards:", allTarotCards.length);
+
+              // Make sure we have cards to work with
+              if (allTarotCards.length === 0) {
+                console.error("No tarot cards found!");
+                setIsLoading(false);
+                return;
+              }
+
               const { card: dailyCard, isReversed } =
                 getDailyCard(allTarotCards);
+              console.log("Selected daily card:", dailyCard);
+
+              // Get the image path
+              const imagePath = getTarotCardImagePath(dailyCard);
+              console.log("Daily card image path:", imagePath);
+
               setCard({
                 name: dailyCard.name,
                 arcana: dailyCard.arcana,
                 number: dailyCard.number,
                 description: dailyCard.description,
-                imageUrl: getTarotCardImagePath(dailyCard),
+                imageUrl: imagePath,
                 reversal: isReversed,
               });
               setIsLoading(false);
