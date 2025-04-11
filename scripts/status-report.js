@@ -6,11 +6,11 @@
  */
 
 import { exec } from 'child_process';
+import dotenv from "dotenv";
 import fs from 'fs';
+import os from "os";
 import path from 'path';
-import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
-import os from 'os';
+import { fileURLToPath } from "url";
 
 // Get the directory name in ESM
 const __filename = fileURLToPath(import.meta.url);
@@ -21,7 +21,8 @@ const rootDir = path.join(__dirname, '..');
 dotenv.config({ path: path.join(rootDir, '.env') });
 
 // Configuration
-const LOG_DIR = path.join(rootDir, '.mcp', 'logs');
+const LOG_DIR = path.join(__dirname, '..', '.mcp', 'logs');
+const logsDir = LOG_DIR; // Add this line to fix the reference error
 const statusLogFile = path.join(LOG_DIR, 'agent-status.log');
 const INCLUDE_TASK_STATUS = process.env.AGENT_INCLUDE_TASK_STATUS !== 'false';
 const INCLUDE_RESOURCE_USAGE = process.env.AGENT_INCLUDE_RESOURCE_USAGE !== 'false';
@@ -395,6 +396,7 @@ async function generateStatusReport() {
     
     // Save report
     const reportPath = path.join(LOG_DIR, 'latest-status-report.json');
+    const mdReportPath = path.join(LOG_DIR, "status-report.md");
     fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
     
     // Print report to terminal with rich formatting

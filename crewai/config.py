@@ -10,6 +10,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 # CrewAI configuration
 VERBOSE = True  # Set to True for detailed logs
 MAX_ITERATIONS = 5  # Maximum number of iterations for agents to work on tasks
+MAX_TOKEN_BUFFER = 4000  # Reduced from 12000
 
 # Integration configuration
 MYSTIC_ORACLE_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

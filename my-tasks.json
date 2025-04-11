@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": "nav-fix-001",
+      "title": "Fix navigation menu",
+      "type": "ui",
+      "priority": "high",
+      "assignedAgent": "DesignAgent",
+      "description": "Fix and improve the navigation menu",
+      "status": "pending"
+    },
+    {
+      "id": "links-001",
+      "title": "Update broken links",
+      "type": "maintenance",
+      "priority": "medium",
+      "assignedAgent": "CodeAgent",
+      "description": "Find and fix broken links across the website",
+      "status": "pending"
+    }
+  ]
+}

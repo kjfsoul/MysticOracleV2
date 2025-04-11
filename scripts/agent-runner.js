@@ -102,10 +102,36 @@ class TaskQueue {
     this.maxConcurrent = maxConcurrent;
     this.running = 0;
     this.queue = [];
+    
+    // Add memory monitoring
+    this.memoryMonitor = setInterval(() => {
+      const memUsage = process.memoryUsage();
+      if (memUsage.heapUsed / memUsage.heapTotal > 0.7) {
+        console.warn('High memory usage detected. Pausing new tasks.');
+        this.pauseProcessing();
+      }
+    }, 30000);
+  }
+
+  pauseProcessing() {
+    this.paused = true;
+    // Wait for current tasks to complete
+    if (this.running === 0) {
+      global.gc && global.gc(); // Force garbage collection if available
+    }
+  }
+
+  resumeProcessing() {
+    this.paused = false;
+    this.next();
   }
 
   add(task) {
     return new Promise((resolve, reject) => {
+      if (this.paused) {
+        reject(new Error("Task queue is paused due to high memory usage"));
+        return;
+      }
       this.queue.push({
         task,
         resolve,
@@ -116,7 +142,11 @@ class TaskQueue {
   }
 
   next() {
-    if (this.running >= this.maxConcurrent || this.queue.length === 0) {
+    if (
+      this.paused ||
+      this.running >= this.maxConcurrent ||
+      this.queue.length === 0
+    ) {
       return;
     }
 

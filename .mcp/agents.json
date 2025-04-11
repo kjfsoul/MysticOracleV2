@@ -1,71 +1,94 @@
 {
   "projectName": "MysticOracleV2",
   "agents": {
-    "deployment": {
-      "name": "Deployment Agent",
-      "description": "Handles deployment tasks",
+    "CodeAgent": {
       "enabled": true,
+      "type": "code",
       "tasks": [
         {
-          "name": "deploy",
-          "description": "Deploy the project",
+          "name": "memory-opt-001",
+          "type": "system",
+          "schedule": "*/15 * * * *",
           "enabled": true,
-          "schedule": "0 */4 * * *",
-          "runInAwayMode": true,
-          "action": {
-            "type": "command",
-            "command": "npm run build && npx netlify deploy --prod --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_SITE_ID",
-            "cwd": "./"
-          }
-        }
-      ]
-    },
-    "status": {
-      "name": "Status Agent",
-      "description": "Reports on project status",
-      "enabled": true,
-      "tasks": [
-        {
-          "name": "status-report",
-          "description": "Generate status report",
-          "enabled": true,
-          "schedule": "0 */2 * * *",
-          "runInAwayMode": true,
-          "action": {
-            "type": "script",
-            "path": ".mcp/status-report.js",
-            "args": []
-          }
-        }
-      ]
-    },
-    "code": {
-      "name": "Code Agent",
-      "description": "Handles code-related tasks",
-      "enabled": true,
-      "tasks": [
-        {
-          "name": "lint",
-          "description": "Lint the code",
-          "enabled": true,
-          "schedule": "30 */4 * * *",
-          "runInAwayMode": true,
-          "action": {
-            "type": "command",
-            "command": "npm run lint || echo 'Linting not configured'",
-            "cwd": "./"
+          "priority": "high",
+          "estimatedTime": "5 minutes",
+          "description": "Memory Usage Optimization",
+          "action": "optimizeMemory",
+          "completed": true,
+          "completedAt": "2025-04-11T06:11:01.782Z",
+          "result": {
+            "success": false,
+            "error": "Command failed: node --print-memory-usage ./scripts/analyze-memory.js\nnode: bad option: --print-memory-usage\n"
           }
         },
         {
-          "name": "test",
-          "description": "Run tests",
+          "name": "crawl-001",
+          "type": "maintenance",
+          "schedule": "*/30 * * * *",
           "enabled": true,
-          "schedule": "45 */4 * * *",
-          "runInAwayMode": true,
-          "action": {
-            "type": "command",
-            "command": "npm run test || echo 'Tests not configured'",
-            "cwd": "./"
+          "priority": "high",
+          "estimatedTime": "3 minutes",
+          "description": "Website Link Crawling",
+          "action": "crawlLinks",
+          "completed": true,
+          "completedAt": "2025-04-11T06:11:02.859Z",
+          "result": {
+            "success": false,
+            "error": "Command failed: node ./scripts/crawl-links.js\nnode:internal/modules/cjs/loader:1249\n  throw err;\n  ^\n\nError: Cannot find module '/Users/kfitz/MysticOracleV2/MysticOracleV2/scripts/crawl-links.js'\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1246:15)\n    at Function._load (node:internal/modules/cjs/loader:1072:27)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:216:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n    at node:internal/main/run_main_module:36:49 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n\nNode.js v23.1.0\n"
+          }
+        },
+        {
+          "name": "links-001",
+          "type": "maintenance",
+          "schedule": "0 */2 * * *",
+          "enabled": true,
+          "priority": "medium",
+          "estimatedTime": "8 minutes",
+          "description": "Find and fix broken links across the website",
+          "action": "fixBrokenLinks",
+          "completed": true,
+          "completedAt": "2025-04-11T06:11:03.939Z",
+          "result": {
+            "success": false,
+            "error": "Command failed: node ./scripts/fix-links.js\nnode:internal/modules/cjs/loader:1249\n  throw err;\n  ^\n\nError: Cannot find module '/Users/kfitz/MysticOracleV2/MysticOracleV2/scripts/fix-links.js'\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1246:15)\n    at Function._load (node:internal/modules/cjs/loader:1072:27)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:216:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n    at node:internal/main/run_main_module:36:49 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n\nNode.js v23.1.0\n"
+          }
+        }
+      ]
+    },
+    "DesignAgent": {
+      "enabled": true,
+      "type": "ui",
+      "tasks": [
+        {
+          "name": "ui-audit-001",
+          "type": "ui",
+          "schedule": "*/20 * * * *",
+          "enabled": true,
+          "priority": "high",
+          "estimatedTime": "4 minutes",
+          "description": "Website UI Audit and Fixes",
+          "action": "auditUI",
+          "completed": true,
+          "completedAt": "2025-04-11T06:11:05.013Z",
+          "result": {
+            "success": false,
+            "error": "Command failed: node ./scripts/audit-ui.js\nnode:internal/modules/cjs/loader:1249\n  throw err;\n  ^\n\nError: Cannot find module '/Users/kfitz/MysticOracleV2/MysticOracleV2/scripts/audit-ui.js'\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1246:15)\n    at Function._load (node:internal/modules/cjs/loader:1072:27)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:216:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n    at node:internal/main/run_main_module:36:49 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n\nNode.js v23.1.0\n"
+          }
+        },
+        {
+          "name": "nav-fix-001",
+          "type": "ui",
+          "schedule": "*/25 * * * *",
+          "enabled": true,
+          "priority": "high",
+          "estimatedTime": "3 minutes",
+          "description": "Fix and improve the navigation menu",
+          "action": "fixNavigation",
+          "completed": true,
+          "completedAt": "2025-04-11T06:11:06.093Z",
+          "result": {
+            "success": false,
+            "error": "Command failed: node ./scripts/fix-navigation.js\nnode:internal/modules/cjs/loader:1249\n  throw err;\n  ^\n\nError: Cannot find module '/Users/kfitz/MysticOracleV2/MysticOracleV2/scripts/fix-navigation.js'\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1246:15)\n    at Function._load (node:internal/modules/cjs/loader:1072:27)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:216:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n    at node:internal/main/run_main_module:36:49 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n\nNode.js v23.1.0\n"
           }
         }
       ]
@@ -76,30 +99,61 @@
       "name": "Deploy and Notify",
       "description": "Deploy the project and send notification",
       "enabled": true,
-      "schedule": "0 9,13,17,21 * * *",
-      "runInAwayMode": true,
+      "schedule": "0 9 * * *",
       "steps": [
         {
-          "agent": "code",
-          "task": "lint",
-          "required": false
+          "agent": "test",
+          "task": "test"
         },
         {
           "agent": "code",
-          "task": "test",
-          "required": false
+          "task": "lint"
         },
         {
           "agent": "deployment",
-          "task": "deploy",
+          "task": "deploy"
+        }
+      ]
+    },
+    "ui-improvement": {
+      "name": "UI Improvement",
+      "description": "Continuous UI/UX improvement workflow",
+      "enabled": true,
+      "schedule": "0 */4 * * *",
+      "runInAwayMode": true,
+      "steps": [
+        {
+          "agent": "design",
+          "task": "analyze-ui",
           "required": true
         },
         {
-          "agent": "status",
-          "task": "status-report",
+          "agent": "code",
+          "task": "fix-issues",
+          "required": true
+        },
+        {
+          "agent": "test",
+          "task": "verify-fixes",
+          "required": true
+        },
+        {
+          "agent": "deployment",
+          "task": "deploy-changes",
           "required": false
         }
       ]
     }
+  },
+  "globalLimits": {
+    "maxTotalMemoryMB": 8192,
+    "maxTotalCPUPercent": 80,
+    "emergencyShutdownMemoryPercent": 90
+  },
+  "settings": {
+    "maxConcurrentTasks": 3,
+    "taskTimeout": 900,
+    "retryAttempts": 3,
+    "retryDelay": 60
   }
 }

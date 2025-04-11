@@ -4,21 +4,22 @@
  * This script generates a status report for the autonomous agent system.
  */
 
-import fs from 'fs';
+import { spawn } from "child_process";
+import fs from "fs";
+import os from "os";
 import path from 'path';
-import { fileURLToPath } from 'url';
-import { spawn } from 'child_process';
-import os from 'os';
+import { fileURLToPath } from "url";
 
 // Get the directory name in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.join(__dirname, "..");
-const logsDir = path.join(rootDir, ".mcp", "logs");
+const LOG_DIR = path.join(__dirname, "logs");
+const logsDir = LOG_DIR;
 
 // Ensure logs directory exists
-if (!fs.existsSync(logsDir)) {
-  fs.mkdirSync(logsDir, { recursive: true });
+if (!fs.existsSync(LOG_DIR)) {
+  fs.mkdirSync(LOG_DIR, { recursive: true });
 }
 
 // Configuration
@@ -34,21 +35,37 @@ const config = {
 };
 
 // Get system information
-function getSystemInfo() {
+async function getSystemInfo() {
   const cpuCount = os.cpus().length;
   const totalMemory = os.totalmem();
   const freeMemory = os.freemem();
   const usedMemory = totalMemory - freeMemory;
-  const memoryUsagePercent = (usedMemory / totalMemory) * 100;
-  const uptime = os.uptime();
-  
+  const memoryUsagePercent = ((usedMemory / totalMemory) * 100).toFixed(2);
+
+  // Get process memory usage
+  const processMemory = process.memoryUsage();
+  const heapUsed = formatBytes(processMemory.heapUsed);
+  const heapTotal = formatBytes(processMemory.heapTotal);
+  const rss = formatBytes(processMemory.rss);
+
+  // Get agent processes memory
+  const agentProcesses = await getAgentProcessesMemory();
+
   return {
     cpuCount,
-    totalMemory,
-    freeMemory,
-    usedMemory,
-    memoryUsagePercent,
-    uptime
+    systemMemory: {
+      total: formatBytes(totalMemory),
+      free: formatBytes(freeMemory),
+      used: formatBytes(usedMemory),
+      usagePercent: memoryUsagePercent,
+    },
+    processMemory: {
+      heapUsed,
+      heapTotal,
+      rss,
+    },
+    agentProcesses,
+    uptime: formatUptime(os.uptime()),
   };
 }
 
@@ -270,75 +287,106 @@ function getRecentLogs() {
 
 // Generate status report
 async function generateStatusReport() {
-  console.log('Generating agent status report...');
-  
   try {
+    logger.log("Generating agent status report...");
+
+    // Create logs directory if it doesn't exist
+    if (!fs.existsSync(LOG_DIR)) {
+      fs.mkdirSync(LOG_DIR, { recursive: true });
+    }
+
     // Get system information
     const systemInfo = getSystemInfo();
-    
+
     // Get running processes
     const processesOutput = await getRunningProcesses();
     const processes = parseRunningProcesses(processesOutput);
-    
+
     // Get agent configuration
     const agentConfig = getAgentConfig();
-    
+
     // Get project status
     const projectStatus = getProjectStatus();
-    
+
     // Get away mode status
     const awayModeActive = getAwayModeStatus();
-    
+
     // Get recent logs
     const logs = getRecentLogs();
-    
+
     // Generate report
     const report = [];
-    
+
     // Header
-    report.push('');
-    report.push('                                                                                ');
-    report.push('                      AUTONOMOUS AGENT SYSTEM STATUS REPORT                     ');
-    report.push('                                                                                ');
-    report.push('');
-    
+    report.push("");
+    report.push(
+      "                                                                                "
+    );
+    report.push(
+      "                      AUTONOMOUS AGENT SYSTEM STATUS REPORT                     "
+    );
+    report.push(
+      "                                                                                "
+    );
+    report.push("");
+
     // Basic information
     report.push(`Generated: ${new Date().toLocaleString()}`);
     report.push(`Project: ${config.projectName}`);
-    report.push(`Phase: ${projectStatus?.currentPhase || 'Development'}`);
-    report.push(`Away Mode: ${awayModeActive ? 'ACTIVE' : 'INACTIVE'}`);
-    report.push('');
-    
+    report.push(`Phase: ${projectStatus?.currentPhase || "Development"}`);
+    report.push(`Away Mode: ${awayModeActive ? "ACTIVE" : "INACTIVE"}`);
+    report.push("");
+
     // System information
-    report.push('=== System Information ===');
+    report.push("=== System Information ===");
     report.push(`CPU: ${systemInfo.cpuCount} cores`);
-    report.push(`Memory: ${formatBytes(systemInfo.usedMemory)} / ${formatBytes(systemInfo.totalMemory)} (${systemInfo.memoryUsagePercent.toFixed(2)}%)`);
+    report.push(
+      `Memory: ${formatBytes(systemInfo.usedMemory)} / ${formatBytes(
+        systemInfo.totalMemory
+      )} (${systemInfo.memoryUsagePercent.toFixed(2)}%)`
+    );
     report.push(`Uptime: ${formatUptime(systemInfo.uptime)}`);
-    report.push('');
-    
+    report.push("");
+
     // Agent status
-    report.push('=== Agent Status ===');
+    report.push("=== Agent Status ===");
     report.push(`Total Agents: ${processes.length}`);
-    report.push('');
-    
+    report.push("");
+
     if (processes.length > 0) {
-      report.push('Running Agents:');
-      report.push('┌────────┬──────────────┬────────────┬────────────┬────────────────────────┐');
-      report.push('│ PID     │ Type          │ CPU Usage  │ Mem Usage  │ Start Time              │');
-      report.push('├────────┼──────────────┼────────────┼────────────┼────────────────────────┤');
-      
+      report.push("Running Agents:");
+      report.push(
+        "┌────────┬──────────────┬────────────┬────────────┬────────────────────────┐"
+      );
+      report.push(
+        "│ PID     │ Type          │ CPU Usage  │ Mem Usage  │ Start Time              │"
+      );
+      report.push(
+        "├────────┼──────────────┼────────────┼────────────┼────────────────────────┤"
+      );
+
       for (const process of processes) {
-        report.push(`│ ${process.pid.padEnd(7)} │ ${process.type.padEnd(12)} │ ${process.cpuUsage.toFixed(1).padEnd(8)} % │ ${process.memUsage.toFixed(1).padEnd(8)} % │ ${new Date(process.startTime).toLocaleString().padEnd(22)} │`);
+        report.push(
+          `│ ${process.pid.padEnd(7)} │ ${process.type.padEnd(
+            12
+          )} │ ${process.cpuUsage.toFixed(1).padEnd(8)} % │ ${process.memUsage
+            .toFixed(1)
+            .padEnd(8)} % │ ${new Date(process.startTime)
+            .toLocaleString()
+            .padEnd(22)} │`
+        );
       }
-      
-      report.push('└────────┴──────────────┴────────────┴────────────┴────────────────────────┘');
-      report.push('');
+
+      report.push(
+        "└────────┴──────────────┴────────────┴────────────┴────────────────────────┘"
+      );
+      report.push("");
     }
-    
+
     // Task status
     if (agentConfig) {
       const tasks = [];
-      
+
       // Get tasks from agents
       for (const [agentName, agent] of Object.entries(agentConfig.agents)) {
         if (agent.tasks) {
@@ -347,152 +395,211 @@ async function generateStatusReport() {
               agent: agentName,
               name: task.name,
               description: task.description,
-              priority: 'normal',
-              schedule: task.schedule
+              priority: "normal",
+              schedule: task.schedule,
             });
           }
         }
       }
-      
+
       // Get workflows
       if (agentConfig.workflows) {
-        for (const [workflowName, workflow] of Object.entries(agentConfig.workflows)) {
+        for (const [workflowName, workflow] of Object.entries(
+          agentConfig.workflows
+        )) {
           tasks.push({
-            agent: 'Workflow',
+            agent: "Workflow",
             name: workflowName,
             description: workflow.description,
-            priority: 'normal',
-            schedule: workflow.schedule
+            priority: "normal",
+            schedule: workflow.schedule,
           });
         }
       }
-      
-      report.push('=== Task Status ===');
+
+      report.push("=== Task Status ===");
       report.push(`Total Tasks: ${tasks.length}`);
-      report.push('');
-      
+      report.push("");
+
       if (tasks.length > 0) {
-        report.push('Configured Tasks:');
-        report.push('┌──────────────┬──────────────┬────────────────────────────────┬────────────┬────────────────────────┐');
-        report.push('│ Agent         │ Task          │ Description                   │ Priority    │ Next Run               │');
-        report.push('├──────────────┼──────────────┼────────────────────────────────┼────────────┼────────────────────────┤');
-        
+        report.push("Configured Tasks:");
+        report.push(
+          "┌──────────────┬──────────────┬────────────────────────────────┬────────────┬────────────────────────┐"
+        );
+        report.push(
+          "│ Agent         │ Task          │ Description                   │ Priority    │ Next Run               │"
+        );
+        report.push(
+          "├──────────────┼──────────────┼────────────────────────────────┼────────────┼────────────────────────┤"
+        );
+
         for (const task of tasks) {
           // Calculate next run time based on schedule
-          let nextRun = 'N/A';
-          
+          let nextRun = "N/A";
+
           if (task.schedule) {
             // Simple schedule calculation (random time in the next 24 hours)
             const now = new Date();
             const randomHours = Math.floor(Math.random() * 24);
             const randomMinutes = Math.floor(Math.random() * 60);
             const randomSeconds = Math.floor(Math.random() * 60);
-            
+
             now.setHours(now.getHours() + randomHours);
             now.setMinutes(now.getMinutes() + randomMinutes);
             now.setSeconds(now.getSeconds() + randomSeconds);
-            
+
             nextRun = now.toLocaleString();
           }
-          
-          report.push(`│ ${task.agent.padEnd(12)} │ ${task.name.padEnd(12)} │ ${(task.description || '').padEnd(32)} │ ${task.priority.padEnd(10)} │ ${nextRun.padEnd(22)} │`);
+
+          report.push(
+            `│ ${task.agent.padEnd(12)} │ ${task.name.padEnd(12)} │ ${(
+              task.description || ""
+            ).padEnd(32)} │ ${task.priority.padEnd(10)} │ ${nextRun.padEnd(
+              22
+            )} │`
+          );
         }
-        
-        report.push('└──────────────┴──────────────┴────────────────────────────────┴────────────┴────────────────────────┘');
-        report.push('');
+
+        report.push(
+          "└──────────────┴──────────────┴────────────────────────────────┴────────────┴────────────────────────┘"
+        );
+        report.push("");
       }
     }
-    
+
     // Project status
     if (projectStatus) {
-      report.push('=== Project Status ===');
-      report.push(`Current Phase: ${projectStatus.currentPhase || 'Development'}`);
-      report.push(`Next Milestone: ${projectStatus.nextMilestone || 'Initial Deployment'}`);
-      report.push('');
-      
+      report.push("=== Project Status ===");
+      report.push(
+        `Current Phase: ${projectStatus.currentPhase || "Development"}`
+      );
+      report.push(
+        `Next Milestone: ${projectStatus.nextMilestone || "Initial Deployment"}`
+      );
+      report.push("");
+
       // Progress
-      report.push('Progress:');
-      const overallProgress = projectStatus.progress?.overall || '0%';
+      report.push("Progress:");
+      const overallProgress = projectStatus.progress?.overall || "0%";
       const progressValue = parseInt(overallProgress);
-      const progressBar = '░'.repeat(50);
-      const filledProgressBar = progressBar.substring(0, Math.floor(progressValue / 2)) + progressBar.substring(Math.floor(progressValue / 2)).substring(0, 50 - Math.floor(progressValue / 2));
-      
+      const progressBar = "░".repeat(50);
+      const filledProgressBar =
+        progressBar.substring(0, Math.floor(progressValue / 2)) +
+        progressBar
+          .substring(Math.floor(progressValue / 2))
+          .substring(0, 50 - Math.floor(progressValue / 2));
+
       report.push(`overall: ${filledProgressBar} ${overallProgress}`);
-      report.push('');
-      
+      report.push("");
+
       // Active tasks
       if (projectStatus.activeTasks && projectStatus.activeTasks.length > 0) {
-        report.push('Active Tasks:');
-        report.push('┌────────────┬────────────────────────────────┬────────────┬────────────┐');
-        report.push('│ Assigned To  │ Task                          │ Status      │ Progress    │');
-        report.push('├────────────┼────────────────────────────────┼────────────┼────────────┤');
-        
+        report.push("Active Tasks:");
+        report.push(
+          "┌────────────┬────────────────────────────────┬────────────┬────────────┐"
+        );
+        report.push(
+          "│ Assigned To  │ Task                          │ Status      │ Progress    │"
+        );
+        report.push(
+          "├────────────┼────────────────────────────────┼────────────┼────────────┤"
+        );
+
         for (const task of projectStatus.activeTasks) {
-          const progress = task.progress || '0%';
+          const progress = task.progress || "0%";
           const progressValue = parseInt(progress);
-          const progressBar = '░'.repeat(10);
-          const filledProgressBar = progressBar.substring(0, Math.floor(progressValue / 10)) + progressBar.substring(Math.floor(progressValue / 10)).substring(0, 10 - Math.floor(progressValue / 10));
-          
-          report.push(`│ ${(task.agent || '').padEnd(10)} │ ${(task.name || '').padEnd(32)} │ ${(task.status || 'pending').padEnd(10)} │ ${filledProgressBar} ${progress} │`);
+          const progressBar = "░".repeat(10);
+          const filledProgressBar =
+            progressBar.substring(0, Math.floor(progressValue / 10)) +
+            progressBar
+              .substring(Math.floor(progressValue / 10))
+              .substring(0, 10 - Math.floor(progressValue / 10));
+
+          report.push(
+            `│ ${(task.agent || "").padEnd(10)} │ ${(task.name || "").padEnd(
+              32
+            )} │ ${(task.status || "pending").padEnd(
+              10
+            )} │ ${filledProgressBar} ${progress} │`
+          );
         }
-        
-        report.push('└────────────┴────────────────────────────────┴────────────┴────────────┘');
-        report.push('');
+
+        report.push(
+          "└────────────┴────────────────────────────────┴────────────┴────────────┘"
+        );
+        report.push("");
       }
-      
+
       // Completed tasks
-      if (projectStatus.completedTasks && projectStatus.completedTasks.length > 0) {
+      if (
+        projectStatus.completedTasks &&
+        projectStatus.completedTasks.length > 0
+      ) {
         const recentCompletedTasks = projectStatus.completedTasks.slice(-5);
-        
-        report.push('Recent Completed Tasks:');
-        report.push('┌────────────┬────────────────────────────────┬────────────┬────────────────────────┐');
-        report.push('│ Assigned To  │ Task                          │ Status      │ Completion Time        │');
-        report.push('├────────────┼────────────────────────────────┼────────────┼────────────────────────┤');
-        
+
+        report.push("Recent Completed Tasks:");
+        report.push(
+          "┌────────────┬────────────────────────────────┬────────────┬────────────────────────┐"
+        );
+        report.push(
+          "│ Assigned To  │ Task                          │ Status      │ Completion Time        │"
+        );
+        report.push(
+          "├────────────┼────────────────────────────────┼────────────┼────────────────────────┤"
+        );
+
         for (const task of recentCompletedTasks) {
-          report.push(`│ ${(task.agent || '').padEnd(10)} │ ${(task.name || '').padEnd(32)} │ ${(task.success ? 'success' : 'failed').padEnd(10)} │ ${new Date(task.endTime).toLocaleString().padEnd(22)} │`);
+          report.push(
+            `│ ${(task.agent || "").padEnd(10)} │ ${(task.name || "").padEnd(
+              32
+            )} │ ${(task.success ? "success" : "failed").padEnd(
+              10
+            )} │ ${new Date(task.endTime).toLocaleString().padEnd(22)} │`
+          );
         }
-        
-        report.push('└────────────┴────────────────────────────────┴────────────┴────────────────────────┘');
-        report.push('');
+
+        report.push(
+          "└────────────┴────────────────────────────────┴────────────┴────────────────────────┘"
+        );
+        report.push("");
       }
     }
-    
+
     // Recent logs
-    report.push('=== Recent Logs ===');
-    report.push('');
-    
+    report.push("=== Recent Logs ===");
+    report.push("");
+
     if (logs.agentRunner) {
-      report.push('Agent Runner:');
+      report.push("Agent Runner:");
       report.push(logs.agentRunner);
-      report.push('');
+      report.push("");
     }
-    
+
     if (logs.agentStatus) {
-      report.push('Agent Status:');
+      report.push("Agent Status:");
       report.push(logs.agentStatus);
-      report.push('');
+      report.push("");
     }
-    
+
     if (logs.agentStdout) {
-      report.push('Agent Stdout:');
+      report.push("Agent Stdout:");
       report.push(logs.agentStdout);
-      report.push('');
+      report.push("");
     }
-    
+
     if (logs.agentStderr) {
-      report.push('Agent Stderr:');
+      report.push("Agent Stderr:");
       report.push(logs.agentStderr);
-      report.push('');
+      report.push("");
     }
-    
+
     // Write report to file
-    const reportPath = path.join(logsDir, 'status-report.md');
-    fs.writeFileSync(reportPath, report.join('\n'));
-    
+    const reportPath = path.join(logsDir, "status-report.md");
+    fs.writeFileSync(reportPath, report.join("\n"));
+
     // Print report to console
-    console.log(report.join('\n'));
-    
+    console.log(report.join("\n"));
+
     return true;
   } catch (error) {
     console.error(`Failed to generate status report: ${error.message}`);

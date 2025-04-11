@@ -1,26 +1,51 @@
 {
   "tasks": [
     {
-      "id": "task-008",
-      "title": "Implement Basic Astrology Chart Component",
-      "description": "Create component to display natal chart",
-      "type": "feature",
+      "id": "memory-opt-001",
+      "title": "Memory Usage Optimization",
+      "type": "system",
+      "priority": "high",
+      "assignedAgent": "CodeAgent",
+      "status": "pending",
+      "createdAt": "2024-01-24T00:00:00.000Z"
+    },
+    {
+      "id": "ui-audit-001",
+      "title": "Website UI Audit and Fixes",
+      "type": "ui",
+      "priority": "high",
+      "assignedAgent": "DesignAgent",
+      "status": "pending",
+      "createdAt": "2024-01-24T00:00:00.000Z"
+    },
+    {
+      "id": "crawl-001",
+      "title": "Website Link Crawling",
+      "type": "maintenance",
+      "priority": "high",
+      "assignedAgent": "CodeAgent",
+      "status": "pending",
+      "createdAt": "2024-01-24T00:00:00.000Z"
+    },
+    {
+      "id": "nav-fix-001",
+      "title": "Fix navigation menu",
+      "type": "ui",
+      "priority": "high",
+      "assignedAgent": "DesignAgent",
+      "description": "Fix and improve the navigation menu",
+      "status": "pending",
+      "createdAt": "2024-01-24T00:00:00.000Z"
+    },
+    {
+      "id": "links-001",
+      "title": "Update broken links",
+      "type": "maintenance",
       "priority": "medium",
       "assignedAgent": "CodeAgent",
-      "requiredMcpServers": [
-        "server-everything",
-        "server-puppeteer"
-      ],
-      "dependencies": [],
-      "acceptanceCriteria": [
-        "Renders zodiac wheel with houses",
-        "Places planets in correct positions",
-        "Shows aspect lines between planets",
-        "Responsive sizing",
-        "Interactive tooltips"
-      ],
-      "estimatedEffort": "large",
-      "status": "pending"
+      "description": "Find and fix broken links across the website",
+      "status": "pending",
+      "createdAt": "2024-01-24T00:00:00.000Z"
     }
   ]
 }

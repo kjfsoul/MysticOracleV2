@@ -1,29 +1,29 @@
 {
   "tasks": [
     {
-      "name": "deploy",
+      "name": "ui-audit",
       "priority": 1,
+      "description": "Fix UI/UX issues and improve user experience"
+    },
+    {
+      "name": "link-check",
+      "priority": 1,
+      "description": "Audit and fix broken links through web crawling"
+    },
+    {
+      "name": "perf-opt",
+      "priority": 2,
+      "description": "Optimize website performance and loading times"
+    },
+    {
+      "name": "deploy",
+      "priority": 3,
       "description": "Deploy the project to production"
     },
     {
       "name": "test",
-      "priority": 2,
-      "description": "Run automated tests"
-    },
-    {
-      "name": "build",
-      "priority": 3,
-      "description": "Build the project"
-    },
-    {
-      "name": "lint",
       "priority": 4,
-      "description": "Lint the code"
-    },
-    {
-      "name": "status-report",
-      "priority": 5,
-      "description": "Generate status report"
+      "description": "Run automated tests"
     }
   ]
 }

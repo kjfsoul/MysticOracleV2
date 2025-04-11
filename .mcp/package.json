@@ -1,9 +1,6 @@
 {
   "type": "module",
-  "name": "MysticOracleV2-mcp",
+  "name": "mystic-oracle-agent-system",
   "version": "1.0.0",
-  "description": "MCP for MysticOracleV2",
-  "engines": {
-    "node": ">=16.0.0"
-  }
+  "private": true
 }
