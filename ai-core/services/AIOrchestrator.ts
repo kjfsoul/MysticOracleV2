@@ -1,50 +1,38 @@
-import { MCPService } from './mcp/MCPService';
-import { CrewAIService } from './crewai/CrewAIService';
-import { AgentRegistry } from '../agents/AgentRegistry';
-import { PersonalizationEngine } from '../models/PersonalizationEngine';
-import { UserContext, AgentTask, AIResponse } from '../../shared/types';
+import { AgentTask, AIResponse, UserContext } from "../../shared/types";
+import { Logger } from "../utils/Logger";
+import { CrewAIService } from "./crewai/CrewAIService";
+import { MCPService } from "./mcp/MCPService";
 
 export class AIOrchestrator {
-  private static instance: AIOrchestrator;
-  private mcpService: MCPService;
-  private crewAIService: CrewAIService;
-  private agentRegistry: AgentRegistry;
-  private personalization: PersonalizationEngine;
+  private logger: Logger;
 
-  private constructor() {
-    this.mcpService = new MCPService();
-    this.crewAIService = new CrewAIService();
-    this.agentRegistry = new AgentRegistry();
-    this.personalization = new PersonalizationEngine();
+  constructor(
+    private mcpService: MCPService,
+    private crewAIService: CrewAIService
+  ) {
+    this.logger = new Logger("AIOrchestrator");
   }
 
-  static getInstance(): AIOrchestrator {
-    if (!AIOrchestrator.instance) {
-      AIOrchestrator.instance = new AIOrchestrator();
+  async processTask(
+    task: AgentTask,
+    userContext: UserContext
+  ): Promise<AIResponse> {
+    this.logger.info("Processing task", { taskId: task.id, type: task.type });
+
+    try {
+      const service = this.selectService(task);
+      const result = await service.executeTask(task, userContext);
+
+      this.logger.info("Task completed", { taskId: task.id, success: true });
+      return result;
+    } catch (error) {
+      this.logger.error("Task failed", { taskId: task.id, error });
+      throw error;
     }
-    return AIOrchestrator.instance;
   }
 
-  async processTask(task: AgentTask, userContext: UserContext): Promise<AIResponse> {
-    // Apply personalization
-    const personalizedTask = await this.personalization.enhanceTask(task, userContext);
-
-    // Select appropriate agent
-    const agent = this.agentRegistry.getAgent(personalizedTask.type);
-
-    // Choose between MCP and CrewAI based on task requirements
-    const service = this.selectService(personalizedTask);
-
-    // Execute task
-    const result = await service.executeTask(personalizedTask, agent);
-
-    // Learn from interaction
-    await this.personalization.learn(task, result, userContext);
-
-    return result;
-  }
-
-  private selectService(task: AgentTask) {
-    return task.requiresCrewAI ? this.crewAIService : this.mcpService;
+  private selectService(task: AgentTask): MCPService | CrewAIService {
+    const useCrewAI = task.complexity > 7 || task.requiresMultipleAgents;
+    return useCrewAI ? this.crewAIService : this.mcpService;
   }
 }

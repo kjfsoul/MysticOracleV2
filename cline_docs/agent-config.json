@@ -1,0 +1,43 @@
+{
+  "agentSystems": {
+    "mcp": {
+      "enabled": true,
+      "configPath": ".mcp/agents.json",
+      "logPath": ".mcp/logs",
+      "servers": ["react-ui", "design-system-tailwind", "server-memory"],
+      "autoRestart": true
+    },
+    "crewai": {
+      "enabled": true,
+      "configPath": "crewai/config.py",
+      "logPath": "crewai/logs",
+      "crews": ["tarot", "development", "content"],
+      "port": 8765
+    },
+    "custom": {
+      "enabled": true,
+      "configPath": "cline_docs/task-queue.json",
+      "logPath": "cline_docs/agent-logs",
+      "agents": ["CodeAgent", "DesignAgent", "ContentAgent", "TestAgent"]
+    }
+  },
+  "workingHours": {
+    "enabled": true,
+    "start": "22:00",
+    "end": "08:00",
+    "timezone": "UTC"
+  },
+  "taskPriorities": {
+    "critical": 1,
+    "high": 2,
+    "medium": 3,
+    "low": 4
+  },
+  "monitoring": {
+    "checkInterval": 300,
+    "notifications": {
+      "slack": true,
+      "email": true
+    }
+  }
+}

@@ -1,57 +1,57 @@
-import { UserContext, AgentTask, AIResponse } from '../../shared/types';
-import { MLModel } from './MLModel';
-import { UserPreferences } from './UserPreferences';
+import { AgentTask, UserContext } from "../../shared/types";
+import { Logger } from "../utils/Logger";
 
 export class PersonalizationEngine {
-  private mlModel: MLModel;
-  private userPreferences: UserPreferences;
+  private logger: Logger;
+  private readonly LEARNING_RATE = 0.1;
 
   constructor() {
-    this.mlModel = new MLModel();
-    this.userPreferences = new UserPreferences();
+    this.logger = new Logger("PersonalizationEngine");
   }
 
-  async enhanceTask(task: AgentTask, userContext: UserContext): Promise<AgentTask> {
-    // Get user preferences
-    const preferences = await this.userPreferences.get(userContext.userId);
+  async enhanceTask(
+    task: AgentTask,
+    userContext: UserContext
+  ): Promise<AgentTask> {
+    this.logger.info("Enhancing task", {
+      taskId: task.id,
+      userId: userContext.userId,
+    });
 
-    // Apply ML model predictions
-    const predictions = await this.mlModel.predict(task, userContext);
-
-    // Enhance task with personalization
-    return {
+    const enhancedTask = {
       ...task,
-      preferences,
-      predictions,
-      personalizedPrompts: this.generatePersonalizedPrompts(task, preferences, predictions),
-      adaptiveParameters: this.calculateAdaptiveParameters(task, preferences, predictions)
+      parameters: await this.getOptimizedParameters(task, userContext),
+      prompts: await this.getPersonalizedPrompts(task, userContext),
+      context: await this.enrichContext(task, userContext),
     };
-  }
 
-  async learn(task: AgentTask, result: AIResponse, userContext: UserContext): Promise<void> {
-    // Update ML model
-    await this.mlModel.train({
-      task,
-      result,
-      userContext,
-      timestamp: new Date()
+    this.logger.debug("Task enhanced", {
+      taskId: task.id,
+      originalComplexity: task.complexity,
+      enhancedComplexity: enhancedTask.complexity,
     });
 
-    // Update user preferences
-    await this.userPreferences.update(userContext.userId, {
-      taskType: task.type,
-      outcome: result,
-      interaction: result.userInteraction
-    });
+    return enhancedTask;
   }
 
-  private generatePersonalizedPrompts(task: AgentTask, preferences: any, predictions: any): string[] {
-    // Generate personalized prompts based on user preferences and ML predictions
+  private async getOptimizedParameters(
+    task: AgentTask,
+    userContext: UserContext
+  ) {
+    // Implementation here
+    return {};
+  }
+
+  private async getPersonalizedPrompts(
+    task: AgentTask,
+    userContext: UserContext
+  ) {
+    // Implementation here
     return [];
   }
 
-  private calculateAdaptiveParameters(task: AgentTask, preferences: any, predictions: any): Record<string, any> {
-    // Calculate adaptive parameters for the task
+  private async enrichContext(task: AgentTask, userContext: UserContext) {
+    // Implementation here
     return {};
   }
 }

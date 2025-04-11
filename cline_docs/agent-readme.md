@@ -1,155 +1,110 @@
-# Autonomous Agents for Mystic Arcana
+# Unified Agent System Architecture
 
-This document explains how to use the autonomous agents system to continue development on the Mystic Arcana project while you're away.
-
-## Overview
-
-The autonomous agents system allows development to progress on your Mystic Arcana project even when you're not actively working on it. These agents leverage MCP servers to implement features, fix bugs, create content, and run tests based on a predefined task queue.
-
-## Agent Types
-
-The system includes five specialized agent types:
-
-1. **CodeAgent**: Implements components and features using MCP-Dev-NextJS and MCP-React-UI
-2. **DesignAgent**: Creates UI designs and animations using MCP-Design-System-Tailwind and MCP-React-UI
-3. **APIAgent**: Develops API endpoints and serverless functions using MCP-Netlify-EdgeDocs and MCP-Fullstack-Turbo
-4. **ContentAgent**: Generates content using MCP-CMS-Headless and MCP-AI-FunctionPack
-5. **TestAgent**: Writes and runs tests using MCP-Dev-NextJS and MCP-Fullstack-Turbo
-
-## Getting Started
-
-### 1. Start Agents
-
-To start the autonomous agents:
+## Quick Start
 
 ```bash
-npm run agents:start
-```
+# Install all dependencies
+npm run agents:install-all
 
-This will activate all agents to work on tasks in the task queue.
+# Start all agent systems
+npm run agents:start-all
 
-You can also start specific agents:
-
-```bash
-npm run agents:start -- --agent=CodeAgent
-```
-
-Or set a time limit:
-
-```bash
-npm run agents:start -- --duration=8h
-```
-
-### 2. Monitor Progress
-
-Check the status of all agents:
-
-```bash
+# Monitor status
 npm run agents:status
 ```
 
-View task progress:
+## Architecture Overview
 
-```bash
-npm run agents:progress
-```
+The system consists of three integrated agent subsystems:
 
-View agent logs:
+1. **MCP Agents** (Low-level operations)
+   - File system operations
+   - Code generation
+   - System automation
 
-```bash
-npm run agents:logs
-```
+2. **CrewAI Agents** (AI-powered tasks)
+   - Content generation
+   - Code analysis
+   - UI/UX improvements
 
-### 3. Manage Tasks
+3. **Custom Agents** (Project-specific)
+   - Task orchestration
+   - Testing
+   - Integration
 
-Add a new task to the queue:
+## Integration Points
 
-```bash
-npm run agents:add-task -- --file=path/to/task.json
-```
+### Task Queue
+- Central task queue: `cline_docs/task-queue.json`
+- All agents read from and write to this queue
+- Priority-based task execution
+- Automatic task distribution
 
-Pause all agents:
+### Agent Communication
+- Inter-agent messaging system
+- Shared memory store
+- Event-based coordination
 
-```bash
-npm run agents:pause
-```
+### Monitoring
+- Unified dashboard
+- Real-time status updates
+- Centralized logging
+- Alert system
 
-Resume agents:
+## Configuration
 
-```bash
-npm run agents:resume
-```
-
-Stop all agents:
-
-```bash
-npm run agents:stop
-```
-
-## Task Definition
-
-Tasks are defined in JSON format with the following structure:
-
-```json
-{
-  "id": "task-123",
-  "title": "Implement Tarot Card Component",
-  "description": "Create a reusable tarot card component with front/back faces",
-  "type": "feature",
-  "priority": "high",
-  "assignedAgent": "CodeAgent",
-  "requiredMcpServers": ["react-ui", "design-system-tailwind"],
-  "dependencies": [],
-  "acceptanceCriteria": [
-    "Component renders card front and back",
-    "Accepts custom images",
-    "Responsive sizing",
-    "Accessible markup"
-  ],
-  "estimatedEffort": "medium",
-  "status": "pending"
-}
-```
-
-## Task Queue
-
-The task queue is stored in `cline_docs/task-queue.json`. Agents work through tasks in order of priority.
-
-Completed tasks are moved to `cline_docs/completed-tasks.json`.
+All configuration is managed through `cline_docs/agent-config.json`:
+- Working hours
+- System enables/disables
+- Monitoring settings
+- Integration points
 
 ## Best Practices
 
-1. **Define Clear Tasks**: Provide detailed descriptions and acceptance criteria
-2. **Set Dependencies**: Ensure prerequisite tasks are completed first
-3. **Assign Appropriate Agents**: Match tasks to the right agent type
-4. **Monitor Progress**: Regularly check agent status and task progress
-5. **Review Completed Work**: Always review agent-generated code before deploying
+1. **Task Definition**
+   - Clear acceptance criteria
+   - Defined dependencies
+   - Estimated complexity
 
-## Limitations
+2. **Agent Selection**
+   - Use MCP for system tasks
+   - Use CrewAI for AI-heavy tasks
+   - Use Custom for project-specific tasks
 
-The autonomous agents system has some limitations:
-
-1. Agents can only work on predefined tasks in the queue
-2. Complex architectural decisions still require human input
-3. Agents will pause and notify on encountering blocking issues
-4. Changes are limited to 200 lines of code per task
-5. Critical changes require human review before being committed
+3. **Monitoring**
+   - Regular status checks
+   - Log review
+   - Performance metrics
 
 ## Troubleshooting
 
-If agents encounter issues:
+Common issues and solutions:
 
-1. Check the agent logs for error messages
-2. Verify that MCP servers are properly configured
-3. Ensure task dependencies are correctly defined
-4. Check that tasks have clear acceptance criteria
-5. Restart agents if they become unresponsive
+1. **Agent System Not Starting**
+   - Check configurations
+   - Verify dependencies
+   - Review logs
 
-## Next Steps
+2. **Task Queue Issues**
+   - Validate JSON format
+   - Check file permissions
+   - Clear queue cache
 
-1. Review the initial task queue in `cline_docs/task-queue.json`
-2. Start agents to begin working on tasks
-3. Monitor progress and review completed work
-4. Add new tasks as needed
+3. **Integration Problems**
+   - Verify API keys
+   - Check network connectivity
+   - Validate endpoints
 
-With this autonomous agents system, your Mystic Arcana project can continue to progress even while you're sleeping or away from your computer.
+## Security
+
+- API key management
+- Access controls
+- Audit logging
+- Rate limiting
+
+## Scaling
+
+- Horizontal scaling
+- Load balancing
+- Resource management
+- Queue optimization
