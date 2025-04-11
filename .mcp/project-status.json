@@ -1,19 +1,8 @@
 {
   "projectName": "MysticOracleV2",
-  "lastUpdated": "2025-04-11T06:00:00.561Z",
+  "lastUpdated": "2025-04-11T08:45:02.612Z",
   "currentPhase": "Development",
-  "activeTasks": [
-    {
-      "id": "TASK-7465",
-      "name": "deploy",
-      "assignedTo": "deployment",
-      "status": "failed",
-      "progress": 0,
-      "startedAt": "2025-04-10T12:00:00.086Z",
-      "updatedAt": "2025-04-11T01:00:12.857Z",
-      "error": "Command exited with code 1: npm warn config production Use `--omit=dev` instead.\n✗ Build failed in 7.74s\nerror during build:\n[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'\n    at async open (node:internal/fs/promises:639:25)\n    at async Object.readFile (node:internal/fs/promises:1239:14)\n    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)\n    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)\n    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33\n    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)\n"
-    }
-  ],
+  "activeTasks": [],
   "completedTasks": [
     {
       "id": "TASK-1429",
@@ -1807,6 +1796,71 @@
         "message": "Script executed successfully",
         "stdout": "",
         "stderr": "Failed to generate status report: logger is not defined\nReferenceError: logger is not defined\n    at generateStatusReport (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:291:5)\n    at main (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:614:11)\n    at file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:623:1\n    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\n"
+      }
+    },
+    {
+      "id": "TASK-8692",
+      "name": "status-report",
+      "assignedTo": "status",
+      "status": "completed",
+      "progress": 100,
+      "startedAt": "2025-04-11T08:00:00.744Z",
+      "updatedAt": "2025-04-11T08:00:00.949Z",
+      "completedAt": "2025-04-11T08:00:00.949Z",
+      "result": {
+        "success": true,
+        "message": "Script executed successfully",
+        "stdout": "",
+        "stderr": "Failed to generate status report: logger is not defined\nReferenceError: logger is not defined\n    at generateStatusReport (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:291:5)\n    at main (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:614:11)\n    at file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:623:1\n    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\n"
+      }
+    },
+    {
+      "id": "TASK-7465",
+      "name": "deploy",
+      "assignedTo": "deployment",
+      "status": "completed",
+      "progress": 100,
+      "startedAt": "2025-04-10T12:00:00.086Z",
+      "updatedAt": "2025-04-11T08:00:15.737Z",
+      "error": "Command exited with code 1: npm warn config production Use `--omit=dev` instead.\n✗ Build failed in 7.74s\nerror during build:\n[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'\n    at async open (node:internal/fs/promises:639:25)\n    at async Object.readFile (node:internal/fs/promises:1239:14)\n    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)\n    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)\n    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33\n    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)\n",
+      "completedAt": "2025-04-11T08:00:15.737Z",
+      "result": {
+        "success": true,
+        "message": "Command executed successfully",
+        "stdout": "\n> rest-express@1.0.0 build\n> vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist\n\nvite v6.2.6 building for production...\ntransforming...\n✓ 2707 modules transformed.\nrendering chunks...\ncomputing gzip size...\n../dist/public/index.html                                   1.76 kB │ gzip:   0.85 kB\n../dist/public/assets/index-BnT-XANI.css                   44.94 kB │ gzip:   9.66 kB\n../dist/public/assets/page-header-DaDbFAzI.js               0.32 kB │ gzip:   0.23 kB\n../dist/public/assets/arrow-right-BZgLB_lb.js               0.34 kB │ gzip:   0.26 kB\n../dist/public/assets/search-0VAddvwW.js                    0.34 kB │ gzip:   0.27 kB\n../dist/public/assets/browser-DFTB3N_b.js                   0.34 kB │ gzip:   0.27 kB\n../dist/public/assets/info-CL4eHNdE.js                      0.37 kB │ gzip:   0.28 kB\n../dist/public/assets/circle-alert-BFXgOwiX.js              0.42 kB │ gzip:   0.29 kB\n../dist/public/assets/calendar-CUkq9k3D.js                  0.43 kB │ gzip:   0.31 kB\n../dist/public/assets/download-COE5MJ1k.js                  0.44 kB │ gzip:   0.32 kB\n../dist/public/assets/textarea-BRjlZR5Y.js                  0.48 kB │ gzip:   0.32 kB\n../dist/public/assets/tarot-deck-config-CiQLOlXY.js         0.56 kB │ gzip:   0.37 kB\n../dist/public/assets/separator-BqOvvlt5.js                 0.67 kB │ gzip:   0.40 kB\n../dist/public/assets/alert-CPhAeQFu.js                     0.91 kB │ gzip:   0.47 kB\n../dist/public/assets/plain-auth-CJjNnL8n.js                1.13 kB │ gzip:   0.52 kB\n../dist/public/assets/test-page-WGklZl8O.js                 1.31 kB │ gzip:   0.54 kB\n../dist/public/assets/super-simple-auth--D9n_bBa.js         1.98 kB │ gzip:   0.77 kB\n../dist/public/assets/not-found-Ck6OUEkr.js                 2.00 kB │ gzip:   0.90 kB\n../dist/public/assets/shop-page-ClLHncCE.js                 2.00 kB │ gzip:   0.93 kB\n../dist/public/assets/pricing-page-CujWvDou.js              2.31 kB │ gzip:   1.18 kB\n../dist/public/assets/link-checker-DeAlGNzn.js              2.45 kB │ gzip:   0.98 kB\n../dist/public/assets/useMutation-DiG5kaZw.js               2.88 kB │ gzip:   1.22 kB\n../dist/public/assets/subscription-banner-B9AnbwXJ.js       3.09 kB │ gzip:   1.31 kB\n../dist/public/assets/basic-auth-CMRYW08R.js                3.53 kB │ gzip:   1.05 kB\n../dist/public/assets/simple-auth-Ds7TZQVx.js               3.59 kB │ gzip:   1.24 kB\n../dist/public/assets/very-basic-auth-DrLMxzMY.js           3.77 kB │ gzip:   1.01 kB\n../dist/public/assets/debug-auth-C8AKa6Xt.js                3.81 kB │ gzip:   1.49 kB\n../dist/public/assets/Subscription-Y10hZH6o.js              3.99 kB │ gzip:   1.71 kB\n../dist/public/assets/readings-page-OkoXktmA.js             4.06 kB │ gzip:   1.86 kB\n../dist/public/assets/SubscriptionCancel-DHfieHNa.js        4.19 kB │ gzip:   1.17 kB\n../dist/public/assets/exact-auth-DwP6eVHU.js                4.36 kB │ gzip:   1.81 kB\n../dist/public/assets/journal-page-W_DH2khN.js              4.42 kB │ gzip:   1.87 kB\n../dist/public/assets/interactive-wheel-page-Br8ckWyT.js    5.31 kB │ gzip:   1.99 kB\n../dist/public/assets/SubscriptionSuccess-CGHAczl7.js       5.34 kB │ gzip:   1.58 kB\n../dist/public/assets/wheel-debug-BbzWC4C-.js               5.76 kB │ gzip:   1.77 kB\n../dist/public/assets/auth-page-Dy5SdCws.js                 8.20 kB │ gzip:   2.73 kB\n../dist/public/assets/zodiac-spread-page-CNb3G460.js        8.61 kB │ gzip:   2.56 kB\n../dist/public/assets/deck-management-CkHG9tZk.js           9.70 kB │ gzip:   3.78 kB\n../dist/public/assets/landing-page-improved-DzEF6zkY.js    11.14 kB │ gzip:   3.05 kB\n../dist/public/assets/daily-card-improved-C41SnSgc.js      12.62 kB │ gzip:   3.86 kB\n../dist/public/assets/blog-page-CyrzVEDI.js                12.90 kB │ gzip:   3.94 kB\n../dist/public/assets/profile-page-BF8Vlaq7.js             12.94 kB │ gzip:   3.43 kB\n../dist/public/assets/design-system-page-Bew_Booj.js       14.62 kB │ gzip:   2.79 kB\n../dist/public/assets/tarot-page-improved-CoDVcHEo.js      17.24 kB │ gzip:   4.98 kB\n../dist/public/assets/agent-learning-demo-NbK9CA1M.js      23.05 kB │ gzip:   6.69 kB\n../dist/public/assets/format-C58Tk2yM.js                   23.93 kB │ gzip:   7.10 kB\n../dist/public/assets/crewai-page-eBlO95q3.js              27.00 kB │ gzip:   9.51 kB\n../dist/public/assets/tarot-cards-page-B9eSfE7r.js         44.27 kB │ gzip:  11.97 kB\n../dist/public/assets/index-CDr-rUrK.js                    86.95 kB │ gzip:  24.20 kB\n../dist/public/assets/astrology-page-DxeaWsLc.js           89.71 kB │ gzip:  27.00 kB\n../dist/public/assets/index-5tv2q1P4.js                   676.55 kB │ gzip: 209.11 kB\n✓ built in 6.58s\n\u001b[32mDeploy path: \u001b[39m       /Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public\n\u001b[32mFunctions path: \u001b[39m    /Users/kfitz/MysticOracleV2/MysticOracleV2/netlify/functions\n\u001b[32mConfiguration path: \u001b[39m/Users/kfitz/MysticOracleV2/MysticOracleV2/netlify.toml\nDeploying to main site URL...\n​\nNetlify Build                                                 \n────────────────────────────────────────────────────────────────\n​\n❯ Version\n  @netlify/build 30.0.6\n​\n❯ Flags\n  auth: nfp_9hT8HV2Z6FZK9z1FjoC6Eq7qxjCRoW9s6af7\n  deployId: 67f8cc0cb828ae983b89ce94\n  open: false\n  prod: true\n  prodIfUnlocked: false\n  site: 41fd478e-aa00-4fcb-887d-511b2a2c4a17\n  skipFunctionsCache: false\n​\n❯ Current directory\n  /Users/kfitz/MysticOracleV2/MysticOracleV2\n​\n❯ Config file\n  /Users/kfitz/MysticOracleV2/MysticOracleV2/netlify.toml\n​\n❯ Context\n  dev\n\n\u001b[32mBuild logs: \u001b[39m        https://app.netlify.com/sites/mysticarcana/deploys/67f8cc0cb828ae983b89ce94\n\u001b[32mFunction logs: \u001b[39m     https://app.netlify.com/sites/mysticarcana/logs/functions\n\u001b[32mEdge function Logs: \u001b[39mhttps://app.netlify.com/sites/mysticarcana/logs/edge-functions\n\u001b[32mUnique deploy URL: \u001b[39m https://67f8cc0cb828ae983b89ce94--mysticarcana.netlify.app\n\u001b[32mWebsite URL: \u001b[39m       https://mysticarcana.com\n",
+        "stderr": "npm warn config production Use `--omit=dev` instead.\n\n(!) Some chunks are larger than 500 kB after minification. Consider:\n- Using dynamic import() to code-split the application\n- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks\n- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.\n\n  dist/index.js  93.0kb\n\n⚡ Done in 7ms\nnpm warn config production Use `--omit=dev` instead.\n(node:36423) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().\nSupport for loading ES Module in require() is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:36576) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/supports-color/index.js using require().\nSupport for loading ES Module in require() is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n​\nWarning: some redirects have syntax errors:\n​\nCould not parse redirect line 3:\n  <https://www.mysticarcana.com/>* <https://mysticarcana.com/:s> 301!\nThe destination path/URL must start with \"/\", \"http:\" or \"https:\"\n​\nCould not parse redirect line 4:\n  <https://mysticarcana.netlify.app/>* <https://mysticarcana.com/:s> 301!\nThe destination path/URL must start with \"/\", \"http:\" or \"https:\"\n​\nCould not parse redirect number 1:\n  {\"from\":\"<http://www.mysticarcana.com/>*<https://mysticarcana.com/:s>\",\"query\":{},\"status\":301,\"force\":true,\"conditions\":{}}\nMissing \"to\" field\n⠋ Uploading blobs to deploy store...\n\n⠙ Finished uploading blobs to deploy store\n⠋ Hashing files...\n⠋ Looking for a functions cache...\n⠙ No cached functions were found\n⠙ Finished hashing 176 files and 12 functions\n⠋ CDN diffing files...\n⠙ CDN requesting 0 files and 0 functions\n⠋ Uploading 0 files\n⠙ Finished uploading 0 assets\n⠋ Waiting for deploy to go live...\n⠙ Deploy is live!\n"
+      }
+    },
+    {
+      "id": "TASK-9772",
+      "name": "lint",
+      "assignedTo": "code",
+      "status": "completed",
+      "progress": 100,
+      "startedAt": "2025-04-11T08:30:00.448Z",
+      "updatedAt": "2025-04-11T08:30:02.836Z",
+      "completedAt": "2025-04-11T08:30:02.836Z",
+      "result": {
+        "success": true,
+        "message": "Command executed successfully",
+        "stdout": "\n> rest-express@1.0.0 lint\n> eslint . --ext .ts,.tsx --fix\n\nLinting not configured\n",
+        "stderr": "npm warn config production Use `--omit=dev` instead.\n\nOops! Something went wrong! :(\n\nESLint: 8.57.1\n\nESLint couldn't find the plugin \"@typescript-eslint/eslint-plugin\".\n\n(The package \"@typescript-eslint/eslint-plugin\" was not found when loaded as a Node module from the directory \"/Users/kfitz/MysticOracleV2/MysticOracleV2\".)\n\nIt's likely that the plugin isn't installed correctly. Try reinstalling by running the following:\n\n    npm install @typescript-eslint/eslint-plugin@latest --save-dev\n\nThe plugin \"@typescript-eslint/eslint-plugin\" was referenced from the config file in \".eslintrc.json\".\n\nIf you still can't figure out the problem, please stop by https://eslint.org/chat/help to chat with the team.\n\n"
+      }
+    },
+    {
+      "id": "TASK-4878",
+      "name": "test",
+      "assignedTo": "code",
+      "status": "completed",
+      "progress": 100,
+      "startedAt": "2025-04-11T08:45:00.633Z",
+      "updatedAt": "2025-04-11T08:45:02.612Z",
+      "completedAt": "2025-04-11T08:45:02.612Z",
+      "result": {
+        "success": true,
+        "message": "Command executed successfully",
+        "stdout": "\n> rest-express@1.0.0 test\n> jest\n\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/kfitz/MysticOracleV2/MysticOracleV2\n  373 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 373 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\nTests not configured\n",
+        "stderr": "npm warn config production Use `--omit=dev` instead.\n"
       }
     }
   ],
