@@ -1,0 +1,42 @@
+{
+  "mcpServers": {
+    "ai-function-pack": {
+      "features": ["imageGeneration", "promptEngineering", "tarotAnalysis"],
+      "models": {
+        "primary": "openai/dall-e-3",
+        "fallback": "stability-ai/stable-diffusion"
+      },
+      "plugins": [
+        "lora-adapter",
+        "textual-inversion",
+        "image-tagging"
+      ]
+    },
+    "design-system": {
+      "features": ["imagePreview", "cardLayout", "animations"],
+      "plugins": [
+        "responsive-images",
+        "lazy-loading",
+        "zoom-viewer"
+      ]
+    },
+    "cms-headless": {
+      "features": ["assetManagement", "metadataStorage", "tarotLibrary"],
+      "plugins": [
+        "image-metadata",
+        "symbolism-tagger",
+        "dataset-builder"
+      ]
+    }
+  },
+  "webSearch": {
+    "enabled": true,
+    "providers": ["brave-search"],
+    "topics": [
+      "tarot symbolism",
+      "art styles",
+      "mystical imagery",
+      "card meanings"
+    ]
+  }
+}

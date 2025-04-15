@@ -94,19 +94,7 @@ async function getRunningAgents() {
         const pid = parts[1];
         const command = line.substring(line.indexOf('node'));
         const type = 'Agent';
-        // FIX: Safely handle the time calculation
-        let startTime;
-        try {
-          // Make sure parts[9] is a valid number
-          const elapsedSeconds = parseFloat(parts[9]);
-          if (isNaN(elapsedSeconds) || elapsedSeconds < 0) {
-            startTime = new Date().toISOString(); // Default to current time if invalid
-          } else {
-            startTime = new Date(Date.now() - (elapsedSeconds * 1000)).toISOString();
-          }
-        } catch (error) {
-          startTime = new Date().toISOString(); // Default to current time if error
-        }
+        const startTime = new Date(Date.now() - (parts[9] * 1000)).toISOString();
         const cpuUsage = parts[2];
         const memoryUsage = parts[3];
         

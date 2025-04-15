@@ -1,159 +1,470 @@
 {
-  "projectName": "MysticOracleV2",
+  "projectName": "MysticArcana",
   "agents": {
-    "CodeAgent": {
-      "enabled": true,
-      "type": "code",
+    "DevAgent": {
+      "description": "Handles development tasks",
+      "schedule": "0 */4 * * *",
       "tasks": [
         {
-          "name": "memory-opt-001",
-          "type": "system",
-          "schedule": "*/15 * * * *",
-          "enabled": true,
-          "priority": "high",
-          "estimatedTime": "5 minutes",
-          "description": "Memory Usage Optimization",
-          "action": "optimizeMemory",
-          "completed": true,
-          "completedAt": "2025-04-11T06:11:01.782Z",
-          "result": {
-            "success": false,
-            "error": "Command failed: node --print-memory-usage ./scripts/analyze-memory.js\nnode: bad option: --print-memory-usage\n"
-          }
-        },
-        {
-          "name": "crawl-001",
-          "type": "maintenance",
-          "schedule": "*/30 * * * *",
-          "enabled": true,
-          "priority": "high",
-          "estimatedTime": "3 minutes",
-          "description": "Website Link Crawling",
-          "action": "crawlLinks",
-          "completed": true,
-          "completedAt": "2025-04-11T06:11:02.859Z",
-          "result": {
-            "success": false,
-            "error": "Command failed: node ./scripts/crawl-links.js\nnode:internal/modules/cjs/loader:1249\n  throw err;\n  ^\n\nError: Cannot find module '/Users/kfitz/MysticOracleV2/MysticOracleV2/scripts/crawl-links.js'\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1246:15)\n    at Function._load (node:internal/modules/cjs/loader:1072:27)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:216:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n    at node:internal/main/run_main_module:36:49 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n\nNode.js v23.1.0\n"
-          }
-        },
-        {
-          "name": "links-001",
-          "type": "maintenance",
+          "name": "code-review",
+          "description": "Review code for quality and standards",
           "schedule": "0 */2 * * *",
-          "enabled": true,
-          "priority": "medium",
-          "estimatedTime": "8 minutes",
-          "description": "Find and fix broken links across the website",
-          "action": "fixBrokenLinks",
-          "completed": true,
-          "completedAt": "2025-04-11T06:11:03.939Z",
-          "result": {
-            "success": false,
-            "error": "Command failed: node ./scripts/fix-links.js\nnode:internal/modules/cjs/loader:1249\n  throw err;\n  ^\n\nError: Cannot find module '/Users/kfitz/MysticOracleV2/MysticOracleV2/scripts/fix-links.js'\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1246:15)\n    at Function._load (node:internal/modules/cjs/loader:1072:27)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:216:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n    at node:internal/main/run_main_module:36:49 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n\nNode.js v23.1.0\n"
+          "action": {
+            "type": "script",
+            "path": "scripts/code-review.js"
+          }
+        },
+        {
+          "name": "test-automation",
+          "description": "Run automated tests",
+          "schedule": "0 1 * * *",
+          "action": {
+            "type": "command",
+            "command": "npm test"
+          }
+        },
+        {
+          "name": "dependency-check",
+          "description": "Check for outdated dependencies",
+          "schedule": "0 3 * * 1",
+          "action": {
+            "type": "command",
+            "command": "npm outdated"
           }
         }
       ]
     },
-    "DesignAgent": {
-      "enabled": true,
-      "type": "ui",
+    "DeployAgent": {
+      "description": "Handles deployment tasks",
+      "schedule": "0 */6 * * *",
       "tasks": [
         {
-          "name": "ui-audit-001",
-          "type": "ui",
-          "schedule": "*/20 * * * *",
-          "enabled": true,
-          "priority": "high",
-          "estimatedTime": "4 minutes",
-          "description": "Website UI Audit and Fixes",
-          "action": "auditUI",
-          "completed": true,
-          "completedAt": "2025-04-11T06:11:05.013Z",
-          "result": {
-            "success": false,
-            "error": "Command failed: node ./scripts/audit-ui.js\nnode:internal/modules/cjs/loader:1249\n  throw err;\n  ^\n\nError: Cannot find module '/Users/kfitz/MysticOracleV2/MysticOracleV2/scripts/audit-ui.js'\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1246:15)\n    at Function._load (node:internal/modules/cjs/loader:1072:27)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:216:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n    at node:internal/main/run_main_module:36:49 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n\nNode.js v23.1.0\n"
+          "name": "build-check",
+          "description": "Check build status",
+          "schedule": "0 */3 * * *",
+          "action": {
+            "type": "command",
+            "command": "npm run build"
           }
         },
         {
-          "name": "nav-fix-001",
-          "type": "ui",
-          "schedule": "*/25 * * * *",
-          "enabled": true,
-          "priority": "high",
-          "estimatedTime": "3 minutes",
-          "description": "Fix and improve the navigation menu",
-          "action": "fixNavigation",
-          "completed": true,
-          "completedAt": "2025-04-11T06:11:06.093Z",
-          "result": {
-            "success": false,
-            "error": "Command failed: node ./scripts/fix-navigation.js\nnode:internal/modules/cjs/loader:1249\n  throw err;\n  ^\n\nError: Cannot find module '/Users/kfitz/MysticOracleV2/MysticOracleV2/scripts/fix-navigation.js'\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1246:15)\n    at Function._load (node:internal/modules/cjs/loader:1072:27)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:216:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n    at node:internal/main/run_main_module:36:49 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n\nNode.js v23.1.0\n"
+          "name": "deploy-staging",
+          "description": "Deploy to staging environment",
+          "schedule": "0 2 * * 1-5",
+          "action": {
+            "type": "script",
+            "path": "scripts/deploy-staging.js"
+          }
+        }
+      ]
+    },
+    "DocAgent": {
+      "description": "Handles documentation tasks",
+      "schedule": "0 5 * * *",
+      "tasks": [
+        {
+          "name": "generate-docs",
+          "description": "Generate documentation from code",
+          "schedule": "0 5 * * 1,4",
+          "action": {
+            "type": "command",
+            "command": "npm run docs"
+          }
+        },
+        {
+          "name": "check-readme",
+          "description": "Check README for outdated information",
+          "schedule": "0 5 * * 3",
+          "action": {
+            "type": "script",
+            "path": "scripts/check-readme.js"
+          }
+        }
+      ]
+    },
+    "DataCollectionAgent": {
+      "description": "Collects and processes data for various brands",
+      "schedule": "0 */12 * * *",
+      "tasks": [
+        {
+          "name": "celebrity-birthdays",
+          "description": "Collect celebrity birthdays and related information",
+          "schedule": "0 1 * * *",
+          "action": {
+            "type": "script",
+            "path": "scripts/data-collection/celebrity-birthdays.js"
+          }
+        },
+        {
+          "name": "edm-artists",
+          "description": "Collect EDM artists, producers, and influencers data",
+          "schedule": "0 2 * * *",
+          "action": {
+            "type": "script",
+            "path": "scripts/data-collection/edm-artists.js"
+          }
+        },
+        {
+          "name": "trending-topics",
+          "description": "Collect trending topics and themes for content creation",
+          "schedule": "0 */6 * * *",
+          "action": {
+            "type": "script",
+            "path": "scripts/data-collection/trending-topics.js"
+          }
+        },
+        {
+          "name": "data-cleanup",
+          "description": "Clean and organize collected data",
+          "schedule": "30 3 * * *",
+          "action": {
+            "type": "script",
+            "path": "scripts/data-collection/data-cleanup.js"
+          }
+        }
+      ]
+    },
+    "MediaAgent": {
+      "description": "Searches for and generates media content",
+      "schedule": "0 */8 * * *",
+      "tasks": [
+        {
+          "name": "image-search",
+          "description": "Search for trending and relevant images",
+          "schedule": "0 */12 * * *",
+          "action": {
+            "type": "script",
+            "path": "scripts/media/image-search.js"
+          }
+        },
+        {
+          "name": "video-search",
+          "description": "Search for trending and relevant videos",
+          "schedule": "0 */12 * * *",
+          "action": {
+            "type": "script",
+            "path": "scripts/media/video-search.js"
+          }
+        },
+        {
+          "name": "image-generation",
+          "description": "Generate unique images using AI",
+          "schedule": "0 4 * * *",
+          "action": {
+            "type": "script",
+            "path": "scripts/media/image-generation.js"
+          }
+        },
+        {
+          "name": "media-enhancement",
+          "description": "Enhance and modify collected media",
+          "schedule": "30 4 * * *",
+          "action": {
+            "type": "script",
+            "path": "scripts/media/media-enhancement.js"
+          }
+        }
+      ]
+    },
+    "WebUXAgent": {
+      "description": "Manages web user experience and application development",
+      "schedule": "0 */24 * * *",
+      "tasks": [
+        {
+          "name": "app-generation",
+          "description": "Generate and update web applications",
+          "schedule": "0 5 * * 1",
+          "action": {
+            "type": "script",
+            "path": "scripts/web-ux/app-generation.js"
+          }
+        },
+        {
+          "name": "dashboard-update",
+          "description": "Update data dashboards with latest information",
+          "schedule": "0 6 * * *",
+          "action": {
+            "type": "script",
+            "path": "scripts/web-ux/dashboard-update.js"
+          }
+        }
+      ]
+    },
+    "SMSAgent": {
+      "description": "Handles SMS communication with users",
+      "schedule": "0 */1 * * *",
+      "tasks": [
+        {
+          "name": "send-status-update",
+          "description": "Send status update via SMS",
+          "schedule": "0 */4 * * *",
+          "action": {
+            "type": "script",
+            "path": "scripts/sms-status-update.js"
+          }
+        },
+        {
+          "name": "process-sms-commands",
+          "description": "Process incoming SMS commands",
+          "schedule": "*/5 * * * *",
+          "action": {
+            "type": "script",
+            "path": "scripts/process-sms-commands.js"
+          }
+        },
+        {
+          "name": "start-sms-server",
+          "description": "Start the SMS server",
+          "schedule": "@reboot",
+          "action": {
+            "type": "script",
+            "path": "scripts/start-sms-server.js"
+          }
+        }
+      ]
+    },
+    "LearningAgent": {
+      "description": "Manages learning systems and continuous improvement",
+      "schedule": "0 */12 * * *",
+      "tasks": [
+        {
+          "name": "analyze-interruptions",
+          "description": "Analyze interruption patterns and generate recommendations",
+          "schedule": "0 0 * * *",
+          "action": {
+            "type": "script",
+            "path": "scripts/interruption-tracker.js"
+          }
+        },
+        {
+          "name": "update-vscode-config",
+          "description": "Update VS Code configuration based on project needs",
+          "schedule": "0 1 * * 1",
+          "action": {
+            "type": "script",
+            "path": "scripts/vscode-integration.js"
+          }
+        },
+        {
+          "name": "generate-learning-report",
+          "description": "Generate learning system report",
+          "schedule": "0 2 * * 1",
+          "action": {
+            "type": "script",
+            "path": "scripts/generate-learning-report.js"
           }
         }
       ]
     }
   },
   "workflows": {
-    "deploy-and-notify": {
-      "name": "Deploy and Notify",
-      "description": "Deploy the project and send notification",
-      "enabled": true,
-      "schedule": "0 9 * * *",
+    "nightly-build": {
+      "description": "Run nightly build process",
+      "schedule": "0 0 * * *",
       "steps": [
         {
-          "agent": "test",
-          "task": "test"
+          "agent": "DevAgent",
+          "task": "test-automation",
+          "timeout": 1800,
+          "required": true
         },
         {
-          "agent": "code",
-          "task": "lint"
+          "agent": "DeployAgent",
+          "task": "build-check",
+          "timeout": 1200,
+          "required": true
         },
         {
-          "agent": "deployment",
-          "task": "deploy"
+          "agent": "DeployAgent",
+          "task": "deploy-staging",
+          "timeout": 3600,
+          "required": false,
+          "condition": {
+            "type": "success",
+            "step": 1
+          }
         }
       ]
     },
-    "ui-improvement": {
-      "name": "UI Improvement",
-      "description": "Continuous UI/UX improvement workflow",
-      "enabled": true,
-      "schedule": "0 */4 * * *",
-      "runInAwayMode": true,
+    "weekly-maintenance": {
+      "description": "Run weekly maintenance tasks",
+      "schedule": "0 1 * * 0",
       "steps": [
         {
-          "agent": "design",
-          "task": "analyze-ui",
+          "agent": "DevAgent",
+          "task": "dependency-check",
+          "timeout": 1200,
           "required": true
         },
         {
-          "agent": "code",
-          "task": "fix-issues",
-          "required": true
-        },
-        {
-          "agent": "test",
-          "task": "verify-fixes",
-          "required": true
-        },
-        {
-          "agent": "deployment",
-          "task": "deploy-changes",
+          "agent": "DocAgent",
+          "task": "generate-docs",
+          "timeout": 1800,
           "required": false
+        },
+        {
+          "agent": "DocAgent",
+          "task": "check-readme",
+          "timeout": 600,
+          "required": false
+        }
+      ]
+    },
+    "daily-content-pipeline": {
+      "description": "Daily content collection and generation pipeline",
+      "schedule": "0 3 * * *",
+      "steps": [
+        {
+          "agent": "DataCollectionAgent",
+          "task": "celebrity-birthdays",
+          "timeout": 1800,
+          "required": true
+        },
+        {
+          "agent": "DataCollectionAgent",
+          "task": "edm-artists",
+          "timeout": 1800,
+          "required": true
+        },
+        {
+          "agent": "DataCollectionAgent",
+          "task": "trending-topics",
+          "timeout": 1200,
+          "required": true
+        },
+        {
+          "agent": "DataCollectionAgent",
+          "task": "data-cleanup",
+          "timeout": 1200,
+          "required": true,
+          "condition": {
+            "type": "success",
+            "step": 2
+          }
+        },
+        {
+          "agent": "MediaAgent",
+          "task": "image-search",
+          "timeout": 2400,
+          "required": false,
+          "condition": {
+            "type": "success",
+            "step": 3
+          }
+        },
+        {
+          "agent": "MediaAgent",
+          "task": "video-search",
+          "timeout": 2400,
+          "required": false,
+          "condition": {
+            "type": "success",
+            "step": 3
+          }
+        },
+        {
+          "agent": "MediaAgent",
+          "task": "image-generation",
+          "timeout": 3600,
+          "required": false,
+          "condition": {
+            "type": "success",
+            "step": 4
+          }
+        },
+        {
+          "agent": "MediaAgent",
+          "task": "media-enhancement",
+          "timeout": 1800,
+          "required": false,
+          "condition": {
+            "type": "success",
+            "step": 6
+          }
+        },
+        {
+          "agent": "WebUXAgent",
+          "task": "dashboard-update",
+          "timeout": 1200,
+          "required": false,
+          "condition": {
+            "type": "success",
+            "step": 7
+          }
+        }
+      ]
+    },
+    "weekly-app-update": {
+      "description": "Weekly application update and generation",
+      "schedule": "0 2 * * 1",
+      "steps": [
+        {
+          "agent": "DataCollectionAgent",
+          "task": "data-cleanup",
+          "timeout": 1800,
+          "required": true
+        },
+        {
+          "agent": "WebUXAgent",
+          "task": "app-generation",
+          "timeout": 7200,
+          "required": true,
+          "condition": {
+            "type": "success",
+            "step": 0
+          }
+        },
+        {
+          "agent": "WebUXAgent",
+          "task": "dashboard-update",
+          "timeout": 1800,
+          "required": true,
+          "condition": {
+            "type": "success",
+            "step": 1
+          }
+        },
+        {
+          "agent": "DeployAgent",
+          "task": "build-check",
+          "timeout": 1200,
+          "required": false,
+          "condition": {
+            "type": "success",
+            "step": 2
+          }
         }
       ]
     }
   },
-  "globalLimits": {
-    "maxTotalMemoryMB": 8192,
-    "maxTotalCPUPercent": 80,
-    "emergencyShutdownMemoryPercent": 90
+  "taskTypes": {
+    "custom": {
+      "handler": "scripts/custom-task-handler.js",
+      "description": "Custom task type"
+    }
   },
-  "settings": {
-    "maxConcurrentTasks": 3,
-    "taskTimeout": 900,
-    "retryAttempts": 3,
-    "retryDelay": 60
+  "eventHooks": {
+    "implementation": "scripts/event-hooks.js",
+    "enabled": true
+  },
+  "integrations": {
+    "slack": {
+      "enabled": false,
+      "webhookUrl": "",
+      "channel": "#agents",
+      "username": "Agent System",
+      "events": [
+        "task.failure",
+        "workflow.complete"
+      ]
+    },
+    "github": {
+      "enabled": false,
+      "token": "",
+      "repository": "",
+      "events": [
+        "workflow.complete"
+      ]
+    }
   }
 }

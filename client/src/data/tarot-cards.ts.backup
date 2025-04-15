@@ -33,7 +33,7 @@ export const majorArcanaCards: TarotCard[] = [
     meaningReversed: "Holding back, recklessness, risk-taking",
     element: "Air",
     zodiacSign: "Uranus",
-    imagePath: "/images/tarot/00-fool.jpg",
+    imagePath: "/images/tarot/decks/rider-waite/major/00-fool.jpg",
   },
   {
     id: "01-magician",
@@ -47,7 +47,7 @@ export const majorArcanaCards: TarotCard[] = [
     meaningReversed: "Manipulation, poor planning, untapped talents",
     element: "Air",
     zodiacSign: "Mercury",
-    imagePath: "/images/tarot/01-magician.jpg",
+    imagePath: "/images/tarot/decks/rider-waite/major/01-magician.jpg",
   },
   {
     id: "02-high-priestess",

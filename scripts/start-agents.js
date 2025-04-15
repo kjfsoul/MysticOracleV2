@@ -1,44 +1,54 @@
 #!/usr/bin/env node
 
-import { spawn } from "child_process";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+/**
+ * Start Agents
+ * 
+ * This script starts the autonomous agent system.
+ */
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const AGENT_LOG_PATH = path.join(__dirname, "..", ".mcp", "logs");
-const AGENT_RUNNER_PATH = path.join(__dirname, "..", ".mcp", "agent-runner.js");
+import { spawn } from 'child_process';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Get the directory name in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Ensure log directory exists
-if (!fs.existsSync(AGENT_LOG_PATH)) {
-  fs.mkdirSync(AGENT_LOG_PATH, { recursive: true });
+const logDir = path.join(process.cwd(), '.mcp', 'logs');
+if (!fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir, { recursive: true });
 }
 
-console.log("Starting autonomous agents...");
+// Log file
+const logFile = path.join(logDir, 'agents.log');
+const logStream = fs.createWriteStream(logFile, { flags: 'a' });
 
-// Create log files
-const stdoutLog = fs.openSync(
-  path.join(AGENT_LOG_PATH, "agent-stdout.log"),
-  "a"
-);
-const stderrLog = fs.openSync(
-  path.join(AGENT_LOG_PATH, "agent-stderr.log"),
-  "a"
-);
+// Log function
+function log(message) {
+  const timestamp = new Date().toISOString();
+  const logMessage = `[${timestamp}] ${message}\n`;
+  
+  console.log(message);
+  logStream.write(logMessage);
+}
 
-// Spawn the agent runner process with proper Node.js flags
-const agentProcess = spawn(
-  "node",
-  ["--expose-gc", "--max-old-space-size=512", AGENT_RUNNER_PATH],
-  {
-    detached: true,
-    stdio: ["ignore", stdoutLog, stderrLog],
-  }
-);
+// Start the interactive SME agent
+log('Starting Interactive SME Agent...');
 
-// Detach the process
-agentProcess.unref();
+const smeAgentPath = path.join(process.cwd(), 'scripts', 'interactive-sme-agent.js');
 
-console.log(`Autonomous agents started with PID: ${agentProcess.pid}`);
-console.log('Use "npm run agents:status" to check agent status');
-console.log('Use "npm run agents:stop" to stop agents');
+const smeAgent = spawn('node', [smeAgentPath], {
+  stdio: 'inherit'
+});
+
+smeAgent.on('error', (error) => {
+  log(`Error starting Interactive SME Agent: ${error.message}`);
+});
+
+smeAgent.on('exit', (code) => {
+  log(`Interactive SME Agent exited with code ${code}`);
+});
+
+log('Agent started successfully. Press Ctrl+C to exit.');

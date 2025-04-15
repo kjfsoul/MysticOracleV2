@@ -1,0 +1,10 @@
+server:
+  port: 3001
+  log_level: debug
+  storage_path: .mcp/data
+logging:
+  file: .mcp/logs/server.log
+  retention_days: 7
+agents:
+  max_concurrent: 5
+  health_check_interval: 60

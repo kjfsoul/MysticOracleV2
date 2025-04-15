@@ -22,7 +22,7 @@
     "mcp-agents:status": "node scripts/status-mcp-agents.js",
     "mcp-agents:logs": "cat cline_docs/agent-logs/mcp-agent-*.log",
     "lint": "eslint . --ext .ts,.tsx --fix",
-    "test": "jest --config jest.config.js",
+    "test": "vitest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "typecheck": "tsc --noEmit",
@@ -30,9 +30,17 @@
     "start:ai-core": "ts-node ai-core/index.ts",
     "test:ai-system": "jest ai-core/__tests__",
     "consolidate:ai": "ts-node scripts/consolidate-ai-system.ts",
-    "start:agents": "ts-node ai-core/scripts/start.ts",
+    "start:agents": "node scripts/start-agents.js",
     "status:agents": "ts-node ai-core/scripts/status.ts",
-    "test:agents": "jest ai-core/__tests__"
+    "test:agents": "jest ai-core/__tests__",
+    "mcp:install": "npm install --save-dev @modelcontextprotocol/server-everything",
+    "mcp:start": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' ./node_modules/.bin/mcp-server-everything --port 3001 --log-level debug --config .mcp/config.yaml",
+    "mcp:logs": "tail -f .mcp/logs/server.log",
+    "deploy": "netlify deploy --prod",
+    "agents:configure": "node node_modules/autonomous-agent-system/src/configure-agent-env.js",
+    "agents:away:enable": "node node_modules/autonomous-agent-system/scripts/enable-away-mode.js",
+    "agents:away:disable": "node node_modules/autonomous-agent-system/scripts/disable-away-mode.js",
+    "agent:sme": "node scripts/interactive-sme-agent.js"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -45,9 +53,11 @@
     "jest-environment-jsdom": "^29.0.0",
     "langchain": "^0.3.21",
     "openai": "^4.93.0",
-    "pdfjs-dist": "^5.1.91"
+    "pdfjs-dist": "^5.1.91",
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
+    "@modelcontextprotocol/server-everything": "^1.0.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
@@ -57,6 +67,7 @@
     "jest-environment-jsdom": "^29.3.1",
     "ts-jest": "^29.0.3",
     "typescript": "^4.9.4",
-    "vite": "^6.2.6"
+    "vite": "^6.2.6",
+    "ts-node": "^10.9.2"
   }
 }
