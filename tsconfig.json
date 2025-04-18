@@ -14,7 +14,8 @@
     "types": ["jest", "node", "@testing-library/jest-dom"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@client/*": ["client/src/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

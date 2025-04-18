@@ -1,37 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'wouter';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Sparkles, Stars, BookOpen, ScrollText, ArrowRight, Calendar, Egg } from 'lucide-react';
-import DailyCardImproved from '@/components/tarot/daily-card-improved';
-import { useAuth } from '@/hooks/use-auth';
+import { motion } from 'framer-motion';
+import { BookOpen, Sparkles, Stars } from 'lucide-react';
+import { Badge } from '../components/ui/badge';
+import { FeatureCard } from '../components/ui/feature-card';
 
-// Spring & Easter themed content
-const springFeaturedContent = {
-  title: "The Fool's Journey: Spring Renewal",
-  description:
-    "Embrace new beginnings and spiritual growth with the energy of The Fool tarot card and the renewal of Spring.",
-  image: "/images/content/fools-journey.jpg",
-  category: "Seasonal Wisdom",
-  slug: "fools-journey-spring-renewal",
-};
-
-const easterRitualContent = {
-  title: "Sacred Egg Ritual for Rebirth",
-  description:
-    "A mystical Easter ritual using decorated eggs to symbolize rebirth, transformation, and new possibilities.",
-  image: "/images/content/egg-ritual.jpg",
-  price: "Free Guide",
-};
+// Icon components
+const TarotIcon = () => <BookOpen className="h-8 w-8 text-purple-300" />;
+const AstrologyIcon = () => <Stars className="h-8 w-8 text-blue-300" />;
+const GuidanceIcon = () => <Sparkles className="h-8 w-8 text-gold" />;
 
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-background text-foreground font-body relative overflow-hidden">
-      {/* Cosmic Background */}
-      <EnhancedCosmicBackground density="medium" colorScheme="purple" />
+      {/* Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900 to-indigo-900" />
       
       {/* Hero Section */}
       <motion.div
@@ -66,9 +47,6 @@ export default function LandingPage() {
             description="Personalized daily insights"
           />
         </div>
-
-        {/* Daily Card Preview */}
-        <DailyCardImproved className="mt-16" />
       </motion.div>
     </div>
   );

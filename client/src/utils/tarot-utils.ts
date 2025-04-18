@@ -8,93 +8,19 @@ import { getActiveDeck } from '../config/tarot-deck-config';
 import { TarotCard } from '../data/tarot-cards';
 
 /**
- * Get the image path for a tarot card
- *
+ * Get the image path for a tarot card using new standardized format
+ * 
  * @param card The tarot card object
- * @returns The path to the card image
+ * @returns The path to the card image in webp format
  */
 export function getTarotCardImagePath(card: TarotCard): string {
   const activeDeck = getActiveDeck();
-
-  // Log the card and active deck for debugging
-  console.log(
-    "Getting image path for card:",
-    card.id,
-    "from deck:",
-    activeDeck.id
-  );
-
-  // First try the imagePath property if it exists
-  if (card.imagePath && card.imagePath.trim() !== "") {
-    console.log("Using card.imagePath:", card.imagePath);
-    // Verify the image exists by checking file size
-    try {
-      // We'll still return the path but log a warning if there might be an issue
-      if (
-        card.id === "07-chariot" ||
-        card.id === "13-death" ||
-        card.id === "16-tower"
-      ) {
-        console.warn(
-          "This card image might be problematic, using alternative path"
-        );
-        // Use placeholder for known problematic images
-        if (card.arcana === "major") {
-          return "/images/tarot/placeholders/major-placeholder.svg";
-        }
-      }
-      return card.imagePath;
-    } catch (e) {
-      console.error("Error checking image path:", e);
-      // Continue to fallback paths
-    }
-  }
-
-  // Otherwise construct the path based on card properties
-  let path = "";
-  if (card.arcana === "major") {
-    path = `/images/tarot/decks/${activeDeck.id}/major/${card.id}.jpg`;
-  } else if (card.arcana === "minor" && card.suit) {
-    path = `/images/tarot/decks/${activeDeck.id}/minor/${card.suit}/${card.id}.jpg`;
-  }
-
-  console.log("Constructed path:", path);
-
-  // Check for known problematic images
-  if (
-    card.id === "07-chariot" ||
-    card.id === "13-death" ||
-    card.id === "16-tower"
-  ) {
-    console.warn("This card image might be problematic, using placeholder");
-    if (card.arcana === "major") {
-      path = "/images/tarot/placeholders/major-placeholder.svg";
-    } else if (card.suit) {
-      path = `/images/tarot/placeholders/${card.suit}-placeholder.svg`;
-    } else {
-      path = "/images/tarot/card-back.svg";
-    }
-    return path;
-  }
-
-  // Fallback to placeholder if needed
-  if (!path || path.trim() === "") {
-    if (card.arcana === "major") {
-      path = "/images/tarot/placeholders/major-placeholder.svg";
-    } else if (card.suit) {
-      path = `/images/tarot/placeholders/${card.suit}-placeholder.svg`;
-    } else {
-      path = "/images/tarot/card-back.svg";
-    }
-    console.log("Using fallback path:", path);
-  }
-
-  return path;
+  return `/images/tarot/decks/${activeDeck.id}/${card.imageId}-${card.normalizedName}.webp`;
 }
 
 /**
  * Get the card back image path
- *
+ * 
  * @returns The path to the card back image
  */
 export function getCardBackPath(): string {
@@ -103,7 +29,7 @@ export function getCardBackPath(): string {
 
 /**
  * Handle image loading errors by providing fallback images
- *
+ * 
  * @param event The error event
  * @param card The tarot card
  */
@@ -112,18 +38,12 @@ export function handleTarotImageError(
   card: TarotCard
 ): void {
   const target = event.target as HTMLImageElement;
-  if (card.arcana === 'major') {
-    target.src = '/images/tarot/placeholders/major-placeholder.svg';
-  } else if (card.suit) {
-    target.src = `/images/tarot/placeholders/${card.suit}-placeholder.svg`;
-  } else {
-    target.src = '/images/tarot/placeholders/major-placeholder.svg';
-  }
+  target.src = `/images/tarot/decks/default/${card.imageId}-${card.normalizedName}.webp`;
 }
 
 /**
  * Get a random tarot card
- *
+ * 
  * @param cards Array of tarot cards
  * @param excludeIds Optional array of card IDs to exclude
  * @returns A random tarot card
@@ -136,7 +56,7 @@ export function getRandomTarotCard(cards: TarotCard[], excludeIds: string[] = []
 
 /**
  * Determine if a card should be reversed
- *
+ * 
  * @param reversalChance Chance of reversal (0-1)
  * @returns Boolean indicating if the card should be reversed
  */
@@ -146,7 +66,7 @@ export function shouldReverseCard(reversalChance = 0.25): boolean {
 
 /**
  * Get the meaning of a card based on its orientation
- *
+ * 
  * @param card The tarot card
  * @param isReversed Whether the card is reversed
  * @returns The meaning text for the card
@@ -157,7 +77,7 @@ export function getCardMeaning(card: TarotCard, isReversed: boolean): string {
 
 /**
  * Get a daily card based on the current date
- *
+ * 
  * @param cards Array of tarot cards
  * @returns A tarot card for today
  */

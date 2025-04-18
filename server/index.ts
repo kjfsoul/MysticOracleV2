@@ -4,6 +4,18 @@ import * as portfinder from "portfinder";
 import { registerRoutes } from "./routes";
 import { log, serveStatic, setupVite } from "./vite";
 
+// Monkey patch Express router to catch invalid routes
+const originalRoute = express.Router.route;
+express.Router.route = function(path) {
+  console.log('Registering route:', path);
+  try {
+    return originalRoute.call(this, path);
+  } catch (error) {
+    console.error(`Error registering route ${path}:`, error);
+    throw error;
+  }
+};
+
 const app = express();
 
 // Disable X-Powered-By header for security

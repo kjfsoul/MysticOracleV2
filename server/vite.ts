@@ -52,7 +52,7 @@ export async function setupVite(app: Express, server: Server) {
     message: "Too many requests, please try again later.",
   });
 
-  app.use("*", htmlRequestLimiter, async (req, res, next) => {
+  app.use("/", htmlRequestLimiter, async (req, res, next) => {
     // Sanitize the URL to prevent XSS
     const url = req.originalUrl.replace(/[<>"'&]/g, "");
 
@@ -85,14 +85,14 @@ export function serveStatic(app: Express) {
 
   if (!fs.existsSync(distPath)) {
     throw new Error(
-      `Could not find the build directory: ${distPath}, make sure to build the client first`,
+      `Could not find the build directory: ${distPath}, make sure to build the client first`
     );
   }
 
   app.use(express.static(distPath));
 
   // fall through to index.html if the file doesn't exist
-  app.use("*", (_req, res) => {
+  app.use("/", (_req, res) => {
     res.sendFile(path.resolve(distPath, "index.html"));
   });
 }

@@ -19,6 +19,7 @@ When assisting with the Mystic Arcana project:
 ## Automatic Detection
 
 Detect keywords in user requests to determine which MCP servers to use:
+
 - "tarot", "card", "reading" → MCP-AI-FunctionPack
 - "component", "UI", "interface" → MCP-React-UI
 - "style", "design", "animation" → MCP-Design-System-Tailwind
@@ -32,6 +33,7 @@ Always inform the user which MCP servers you're using, but don't ask for permiss
 ## Project Context
 
 Mystic Arcana is a mystical web application featuring:
+
 - Tarot card readings with AI-powered interpretations
 - Interactive astrology charts and horoscopes
 - Custom tarot deck creation tools
@@ -40,6 +42,7 @@ Mystic Arcana is a mystical web application featuring:
 - User profiles with personalized experiences
 
 The application uses:
+
 - Next.js 13+ with App Router
 - React and TypeScript
 - Tailwind CSS for styling
@@ -59,6 +62,7 @@ The application uses:
 ## MCP Server Integration
 
 Always leverage MCP servers to enhance your capabilities:
+
 1. Analyze the user's request to determine relevant MCP servers
 2. Connect to those servers automatically
 3. Inform the user which servers you're using

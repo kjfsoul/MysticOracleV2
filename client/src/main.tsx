@@ -1,12 +1,18 @@
 
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
+import { initializeDeckSystem } from './config/tarot-deck-config';
+
+// Initialize tarot deck system
+initializeDeckSystem();
 
 // Import debug scripts
 import './debug-env';
-import "./env-test";
+import './env-test';
+import { or } from 'drizzle-orm';
+import { Page } from 'openai/pagination';
 
 class ErrorBoundary extends React.Component<{children: React.ReactNode}, {hasError: boolean}> {
   constructor(props: {children: React.ReactNode}) {
