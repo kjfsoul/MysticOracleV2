@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { , LoginData, registerSchema, RegisterData } from "@/hooks/use-auth";
+import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Loader2, Mail, Lock, User, Calendar } from "lucide-react";
+import { LoginData, RegisterData, registerSchema, useAuth } from "@/hooks/use-auth";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Calendar, Loader2, Lock, Mail, User } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 interface AuthFormProps {
@@ -18,7 +18,7 @@ const loginSchema = z.object({
 });
 
 export default function AuthForm({ type }: AuthFormProps) {
-  const { loginMutation, registerMutation } = ();
+  const { loginMutation, registerMutation } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
 
   // Login form
@@ -74,7 +74,7 @@ export default function AuthForm({ type }: AuthFormProps) {
         <FormField
           control={form.control}
           name="username"
-          render={({ field }) => (
+          render={({ field }: { field: any }) => (
             <FormItem>
               <FormLabel className="text-light/80">Username</FormLabel>
               <FormControl>
@@ -99,7 +99,7 @@ export default function AuthForm({ type }: AuthFormProps) {
             <FormField
               control={registerForm.control}
               name="email"
-              render={({ field }) => (
+              render={({ field }: { field: any }) => (
                 <FormItem>
                   <FormLabel className="text-light/80">Email</FormLabel>
                   <FormControl>
@@ -122,7 +122,7 @@ export default function AuthForm({ type }: AuthFormProps) {
             <FormField
               control={registerForm.control}
               name="birthDate"
-              render={({ field }) => (
+              render={({ field }: { field: any }) => (
                 <FormItem>
                   <FormLabel className="text-light/80">Birth Date (Optional)</FormLabel>
                   <FormControl>
@@ -134,8 +134,31 @@ export default function AuthForm({ type }: AuthFormProps) {
                         placeholder="YYYY-MM-DD"
                         disabled={isPending}
                         {...field}
-                        onChange={(e) => field.onChange(e.target.value ? new Date(e.target.value) : null)}
+                        onChange={(e: any) => field.onChange(e.target.value ? new Date(e.target.value) : null)}
                         value={field.value ? new Date(field.value).toISOString().split('T')[0] : ""}
+                      />
+                    </div>
+                  </FormControl>
+                  <FormMessage className="text-red-400" />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={registerForm.control}
+              name="confirmPassword"
+              render={({ field }: { field: any }) => (
+                <FormItem>
+                  <FormLabel className="text-light/80">Confirm Password</FormLabel>
+                  <FormControl>
+                    <div className="relative">
+                      <Lock className="absolute left-3 top-3 h-4 w-4 text-light/60" />
+                      <Input
+                        type={showPassword ? "text" : "password"}
+                        className="bg-dark/60 border-light/20 pl-10 text-light focus:border-accent/50"
+                        placeholder="Confirm your password"
+                        disabled={isPending}
+                        {...field}
                       />
                     </div>
                   </FormControl>
@@ -149,7 +172,7 @@ export default function AuthForm({ type }: AuthFormProps) {
         <FormField
           control={form.control}
           name="password"
-          render={({ field }) => (
+          render={({ field }: { field: any }) => (
             <FormItem>
               <FormLabel className="text-light/80">Password</FormLabel>
               <FormControl>
@@ -187,31 +210,6 @@ export default function AuthForm({ type }: AuthFormProps) {
             </FormItem>
           )}
         />
-
-        {type === "register" && (
-          <FormField
-            control={registerForm.control}
-            name="confirmPassword"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-light/80">Confirm Password</FormLabel>
-                <FormControl>
-                  <div className="relative">
-                    <Lock className="absolute left-3 top-3 h-4 w-4 text-light/60" />
-                    <Input
-                      type={showPassword ? "text" : "password"}
-                      className="bg-dark/60 border-light/20 pl-10 text-light focus:border-accent/50"
-                      placeholder="Confirm your password"
-                      disabled={isPending}
-                      {...field}
-                    />
-                  </div>
-                </FormControl>
-                <FormMessage className="text-red-400" />
-              </FormItem>
-            )}
-          />
-        )}
 
         {type === "login" && (
           <div className="flex justify-between items-center text-sm">
