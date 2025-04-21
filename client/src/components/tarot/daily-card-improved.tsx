@@ -1,8 +1,8 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { Calendar, RefreshCw, Sparkles } from "lucide-react";
+import { animate, AnimatePresence, motion } from "framer-motion";
+import { Calendar, RefreshCw, Sparkles, View } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { Badge } from "../../../../src/components/ui/badge";
-import { Button } from "../../../../src/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -10,10 +10,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../../../../src/components/ui/card";
-import { TarotCard, allTarotCards } from "../../data/tarot-cards";
-import { getDailyCard, getTarotCardImagePath } from "../../utils/tarot-utils";
+} from "@/components/ui/card";
+import type { TarotCard } from "@/data/tarot-cards";
+import { allTarotCards } from "@/data/tarot-cards";
+import { getDailyCard, getTarotCardImagePath } from "@/utils/tarot-utils";
 import AnimatedTarotCard from "./animated-tarot-card";
+import { p, y } from "framer-motion/dist/types.d-B50aGbjN";
+import { exit } from "process";
 interface DailyCardImprovedProps {
   onViewFullReading?: () => void;
   className?: string;

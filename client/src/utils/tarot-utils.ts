@@ -1,5 +1,5 @@
-import { getActiveDeck } from '../config/tarot-deck-config';
-import { TarotCard } from '../data/tarot-cards';
+import { getActiveDeck } from '@/config/tarot-deck-config';
+import { TarotCard } from '@/data/tarot-cards';
 
 export function getTarotCardImagePath(card: TarotCard): string {
   const deck = getActiveDeck();
