@@ -31,6 +31,10 @@ interface AuthFormProps {
 
 export default function AuthForm({ type }: AuthFormProps) {
   const { login, signup } = useAuth();
+  console.log("Auth functions available:", {
+    login: !!login,
+    signup: !!signup,
+  });
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [activeTab, setActiveTab] = useState(type);
@@ -47,7 +51,22 @@ export default function AuthForm({ type }: AuthFormProps) {
 
   const registerForm = useForm<RegisterData>({
     resolver: zodResolver(registerSchema),
+    defaultValues: {
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
   });
+
+  // Log form state changes for debugging
+  useEffect(() => {
+    console.log("Register form state:", {
+      isDirty: registerForm.formState.isDirty,
+      isValid: registerForm.formState.isValid,
+      errors: registerForm.formState.errors,
+    });
+  }, [registerForm.formState]);
 
   const onLoginSubmit = async (data: LoginData) => {
     setIsLoading(true);
@@ -94,7 +113,13 @@ export default function AuthForm({ type }: AuthFormProps) {
       }
 
       // Attempt to sign up
+      console.log("Calling signup function with:", {
+        email: data.email,
+        password: "[REDACTED]",
+        username: data.username,
+      });
       const user = await signup(data.email, data.password, data.username);
+      console.log("Signup result:", user);
       console.log("Registration successful, user data:", user);
 
       toast({
@@ -143,7 +168,15 @@ export default function AuthForm({ type }: AuthFormProps) {
           </div>
         </form>
       ) : (
-        <form onSubmit={registerForm.handleSubmit(onRegisterSubmit)}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            console.log("Register form submitted");
+            const formData = registerForm.getValues();
+            console.log("Form data on submit:", formData);
+            registerForm.handleSubmit(onRegisterSubmit)(e);
+          }}
+        >
           <div className="space-y-4">
             <Input
               {...registerForm.register("username")}
@@ -168,7 +201,29 @@ export default function AuthForm({ type }: AuthFormProps) {
               placeholder="Confirm Password"
               error={registerForm.formState.errors.confirmPassword?.message}
             />
-            <Button type="submit" className="w-full" disabled={isLoading}>
+            <Button
+              type="button"
+              className="w-full"
+              disabled={isLoading}
+              onClick={() => {
+                console.log("Register button clicked");
+                const formData = registerForm.getValues();
+                console.log("Form data:", formData);
+                // Validate the form
+                registerForm.trigger().then((isValid) => {
+                  console.log("Form validation result:", isValid);
+                  if (isValid) {
+                    console.log("Form is valid, submitting");
+                    onRegisterSubmit(formData);
+                  } else {
+                    console.log(
+                      "Form is invalid, errors:",
+                      registerForm.formState.errors
+                    );
+                  }
+                });
+              }}
+            >
               {isLoading ? "Loading..." : "Register"}
             </Button>
           </div>

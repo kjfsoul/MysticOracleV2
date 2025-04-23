@@ -1,6 +1,6 @@
 /**
  * Tarot Deck Configuration
- * 
+ *
  * Centralized management for tarot deck configurations and switching
  */
 
@@ -18,15 +18,15 @@ export interface TarotDeckConfig {
 
 export const TAROT_DECKS: TarotDeckConfig[] = [
   {
-    id: 'rider-waite',
-    name: 'Rider-Waite-Smith',
-    description: 'Classic 1909 deck by Pamela Colman Smith',
-    author: 'Arthur Edward Waite',
+    id: "rider-waite",
+    name: "Rider-Waite-Smith",
+    description: "Classic 1909 deck by Pamela Colman Smith",
+    author: "Arthur Edward Waite",
     year: 1909,
-    cardBackImage: '/images/tarot/card-back.svg',
-    imageFormat: 'webp',
-    cardPathTemplate: '/images/tarot/decks/{deckId}/{imageId}-{normalizedName}.webp',
-    enabledSpreadTypes: ['daily', '3-card', 'love', 'career', 'zodiac']
+    cardBackImage: "/images/tarot/card-back.svg",
+    imageFormat: "svg",
+    cardPathTemplate: "/images/tarot/decks/rider-waite/{arcana}/{id}.jpg",
+    enabledSpreadTypes: ["daily", "3-card", "love", "career", "zodiac"],
   },
   // Additional decks can be added here
 ];

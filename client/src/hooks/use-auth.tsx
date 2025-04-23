@@ -224,6 +224,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const signup = async (email: string, password: string, username: string) => {
+    console.log("signup function called with:", {
+      email,
+      username,
+      passwordLength: password?.length,
+    });
     setIsLoading(true);
     try {
       console.log("Attempting to sign up with:", { email, username });
@@ -237,11 +242,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       const userTableExists = !tableCheckError;
       console.log("User table exists:", userTableExists);
 
+      console.log("Making Supabase auth.signUp call...");
       // Sign up the user with Supabase Auth
-      const {
-        data: { user },
-        error,
-      } = await supabase.auth.signUp({
+      const signUpResponse = await supabase.auth.signUp({
         email,
         password,
         options: {
@@ -250,6 +253,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           },
         },
       });
+
+      console.log("Supabase signUp response:", {
+        success: !!signUpResponse.data?.user,
+        error: signUpResponse.error ? signUpResponse.error.message : null,
+      });
+
+      const {
+        data: { user },
+        error,
+      } = signUpResponse;
 
       if (error) {
         console.error("Signup error:", error);

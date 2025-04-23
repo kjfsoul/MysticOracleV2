@@ -4,6 +4,9 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
+    "download:rider-waite": "node scripts/download-rider-waite.js",
+    "create:tarot-placeholders": "node scripts/create-tarot-placeholders.js",
+    "verify:tarot-paths": "node scripts/verify-tarot-paths.js",
     "fix-deps": "bash scripts/fix-dependencies.sh",
     "dev": "tsx server/index.ts",
     "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
@@ -42,7 +45,8 @@
     "agents:away:disable": "node node_modules/autonomous-agent-system/scripts/disable-away-mode.js",
     "agent:sme": "node scripts/interactive-sme-agent.js",
     "agent:web-crawler": "node scripts/web-crawler-agent.js",
-    "verify:tarot": "node scripts/verify-tarot-images.js"
+    "verify:tarot": "node scripts/verify-tarot-images.js",
+    "fix:tarot-paths": "node scripts/fix-tarot-paths.js"
   },
   "dependencies": {
     "@hookform/resolvers": "5.0.1",
@@ -128,6 +132,7 @@
     "ts-jest": "^29.0.3",
     "ts-node": "10.9.2",
     "typescript": "4.9.5",
-    "vite": "6.3.0"
+    "vite": "6.3.0",
+    "vite-tsconfig-paths": "5.1.4"
   }
 }

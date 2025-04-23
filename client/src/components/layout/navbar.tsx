@@ -36,7 +36,6 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Tarot", path: "/tarot", icon: "🔮", public: true },
-    { name: "Zodiac Spread", path: "/zodiac-spread", icon: "🌟", public: true },
     { name: "Astrology", path: "/astrology", icon: "✨", public: true },
     { name: "Blog", path: "/blog", icon: "📚", public: true },
     { name: "Journal", path: "/journal", icon: "📓", public: false },
@@ -44,7 +43,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="bg-background border-b border-accent/20 fixed top-0 w-full z-50 h-16 shadow-md header-improved">
+    <header className="bg-background border-b border-accent/20 fixed top-0 w-full z-50 h-16 shadow-md header-improved bg-primary-10">
       <div className="container mx-auto px-4 h-full flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-primary border border-gold flex items-center justify-center">

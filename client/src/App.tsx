@@ -9,6 +9,7 @@ import { AuthProvider } from "./hooks/use-auth";
 import { queryClient } from "./lib/queryClient";
 import EclipseLandingPage from "./pages/EclipseLandingPage";
 import TarotInterpretationDemo from "./pages/tarot-interpretation-demo";
+import "./styles/gold-text-animation.css";
 import "./styles/improved-layout.css";
 
 // Lazy load pages
@@ -36,7 +37,7 @@ const pages = {
   PlainAuthPage: lazy(() => import("./pages/plain-auth")),
   ExactAuthPage: lazy(() => import("./pages/exact-auth")),
   LandingPage: lazy(() => import("./pages/landing-page-improved")),
-  CrewAIPage: lazy(() => import("./pages/crewai-page")),
+  // CrewAIPage removed as requested
   ZodiacSpreadPage: lazy(() => import("./pages/zodiac-spread-page")),
   AgentLearningDemo: lazy(() => import("./pages/agent-learning-demo")),
   DeckManagementPage: lazy(() => import("./pages/deck-management")),
@@ -57,7 +58,7 @@ function App() {
             <Suspense fallback={<div>Loading...</div>}>
               <Switch>
                 <Route path="/" component={pages.LandingPage} />
-                <Route path="/auth" component={pages.ExactAuthPage} />
+                <Route path="/auth" component={pages.AuthPage} />
                 <Route path="/simple-auth" component={pages.SimpleAuthPage} />
                 <Route path="/basic-auth" component={pages.BasicAuthPage} />
                 <Route
@@ -124,7 +125,7 @@ function App() {
                 />
                 <Route path="/test" component={pages.TestPage} />
                 <Route path="/link-checker" component={pages.LinkCheckerPage} />
-                <Route path="/crewai" component={pages.CrewAIPage} />
+                {/* CrewAI route removed as requested */}
                 <Route
                   path="/design-system"
                   component={pages.DesignSystemPage}

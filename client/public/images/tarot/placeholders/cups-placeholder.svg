@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="250" height="430" viewBox="0 0 250 430" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="250" height="430" rx="12" fill="#1E1B4B"/>
-  <rect x="10" y="10" width="230" height="410" rx="8" stroke="#3B82F6" stroke-width="2" stroke-dasharray="4 4"/>
-  <text x="125" y="215" font-family="serif" font-size="24" fill="#3B82F6" text-anchor="middle">Cups</text>
-  <text x="125" y="245" font-family="serif" font-size="16" fill="#3B82F6" text-anchor="middle">Placeholder</text>
+<svg width="500" height="800" viewBox="0 0 500 800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="800" rx="20" fill="#1E1B4B" />
+  <rect x="10" y="10" width="480" height="780" rx="15" stroke="#3B82F6" stroke-width="2" fill="none" />
+  <text x="250" y="400" font-family="serif" font-size="32" text-anchor="middle" fill="#FFFFFF">Tarot Card</text>
+  <text x="250" y="450" font-family="serif" font-size="24" text-anchor="middle" fill="#3B82F6">Cups</text>
+  <text x="250" y="500" font-family="serif" font-size="18" text-anchor="middle" fill="#FFFFFF">Placeholder Image</text>
+  <circle cx="250" cy="250" r="100" fill="none" stroke="#3B82F6" stroke-width="2" />
+  <path d="M250,150 L250,350 M150,250 L350,250" stroke="#3B82F6" stroke-width="2" />
 </svg>

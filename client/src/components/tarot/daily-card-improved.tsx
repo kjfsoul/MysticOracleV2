@@ -1,6 +1,3 @@
-import { animate, AnimatePresence, motion } from "framer-motion";
-import { Calendar, RefreshCw, Sparkles, View } from "lucide-react";
-import React, { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,9 +11,10 @@ import {
 import type { TarotCard } from "@/data/tarot-cards";
 import { allTarotCards } from "@/data/tarot-cards";
 import { getDailyCard, getTarotCardImagePath } from "@/utils/tarot-utils";
+import { AnimatePresence, motion } from "framer-motion";
+import { Calendar, RefreshCw, Sparkles } from "lucide-react";
+import React, { useEffect, useState } from "react";
 import AnimatedTarotCard from "./animated-tarot-card";
-import { p, y } from "framer-motion/dist/types.d-B50aGbjN";
-import { exit } from "process";
 interface DailyCardImprovedProps {
   onViewFullReading?: () => void;
   className?: string;
@@ -58,15 +56,15 @@ const DailyCardImproved: React.FC<DailyCardImprovedProps> = ({
         // Ensure the card has a valid image path
         let imagePath = getTarotCardImagePath(dailyCard);
 
-        // Additional safety check for problematic images
-        if (
-          dailyCard.id === "07-chariot" ||
-          dailyCard.id === "13-death" ||
-          dailyCard.id === "16-tower"
-        ) {
-          console.warn("Using placeholder for known problematic card");
-          imagePath = "/images/tarot/placeholders/major-placeholder.svg";
-        }
+        // Log the image path for debugging
+        console.log(
+          `Daily card image path: ${imagePath} for card ${dailyCard.name}`
+        );
+
+        // Log the image path for debugging
+        console.log(
+          `Using image path: ${imagePath} for daily card ${dailyCard.name}`
+        );
 
         // Update the card with the verified image path
         const cardWithImage = {
@@ -91,16 +89,21 @@ const DailyCardImproved: React.FC<DailyCardImprovedProps> = ({
     loadDailyCard();
   }, []);
 
-  // Auto-flip the card after a delay
+  // Auto-flip the card after a delay, but only once when the card is loaded
   useEffect(() => {
     if (card && !isFlipped) {
+      console.log("Setting up flip timer for daily card");
       const timer = setTimeout(() => {
+        console.log("Flipping daily card");
         setIsFlipped(true);
       }, 1500);
 
-      return () => clearTimeout(timer);
+      return () => {
+        console.log("Clearing flip timer for daily card");
+        clearTimeout(timer);
+      };
     }
-  }, [card, isFlipped]);
+  }, [card]); // Only depend on card to prevent infinite flipping
 
   // Handle card click
   const handleCardClick = () => {
@@ -241,7 +244,7 @@ const DailyCardImproved: React.FC<DailyCardImprovedProps> = ({
                       Keywords
                     </h3>
                     <div className="flex flex-wrap gap-2">
-                      {card.keywords.map((keyword, index) => (
+                      {card.keywords.map((keyword: string, index: number) => (
                         <Badge
                           key={index}
                           variant="secondary"

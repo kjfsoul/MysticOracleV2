@@ -62,8 +62,10 @@
 }
 
 .text-gold {
-  color: rgba(212, 175, 55, 0.95) !important;
-  text-shadow: 0 0 5px rgba(212, 175, 55, 0.3) !important;
+  color: rgba(212, 175, 55, 1) !important;
+  text-shadow: 0 0 5px rgba(212, 175, 55, 0.5) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
 }
 
 /* Improved section spacing */

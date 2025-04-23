@@ -15,6 +15,14 @@ export default function AuthPage() {
   // Force the default tab to be "login" if not specified or invalid
   const defaultTab = tabParam === "register" ? "register" : "login";
 
+  // Log the tab parameter for debugging
+  console.log("Tab parameter:", tabParam, "Default tab:", defaultTab);
+
+  // Force the active tab to match the URL parameter immediately
+  if (activeTab !== defaultTab) {
+    setActiveTab(defaultTab);
+  }
+
   // Set the active tab based on the URL parameter
   useEffect(() => {
     setActiveTab(defaultTab);
