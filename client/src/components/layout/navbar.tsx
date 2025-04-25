@@ -46,21 +46,11 @@ export default function Navbar() {
     <header className="bg-background border-b border-accent/20 fixed top-0 w-full z-50 h-16 shadow-md header-improved bg-primary-10">
       <div className="container mx-auto px-4 h-full flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-primary border border-gold flex items-center justify-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-4 h-4 text-gold"
-            >
-              <circle cx="12" cy="12" r="5" />
-              <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
-            </svg>
-          </div>
+          <img
+            src="/images/Mystic%20Arcana%20Logo.png"
+            alt="Mystic Arcana Logo"
+            className="w-8 h-8 object-contain"
+          />
           <h1 className="font-heading text-2xl font-bold text-gold">
             Mystic Arcana
           </h1>

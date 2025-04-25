@@ -157,14 +157,14 @@ export default function DailyCardLocal() {
             className="cursor-pointer transform hover:scale-105 transition-transform duration-300"
             onClick={handleCardClick}
           >
-            <TarotCard
-              cardName={card.name}
-              imageUrl={card.imageUrl}
-              isFlipped={isFlipped}
-              isAnimated={true}
-              size="md"
-              isReversed={card.reversal}
-            />
+          <TarotCard
+            cardName={card.name}
+            imageUrl={card.imageUrl}
+            isFlipped={false}
+            isAnimated={true}
+            size="md"
+            isReversed={card.reversal}
+          />
           </div>
         </div>
 

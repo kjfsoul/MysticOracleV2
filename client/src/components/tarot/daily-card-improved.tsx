@@ -345,7 +345,7 @@ const DailyCardImproved: React.FC<DailyCardImprovedProps> = ({
                   card={card}
                   isReversed={isReversed}
                   size="lg"
-                  autoReveal={isFlipped}
+                  autoReveal={false}
                 />
               </div>
 
