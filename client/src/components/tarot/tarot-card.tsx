@@ -16,6 +16,7 @@ interface TarotCardProps {
   arcana?: string;
   suit?: string;
   number?: string;
+  cardNumber?: string;
 }
 
 export default function TarotCard({
@@ -218,20 +219,14 @@ export default function TarotCard({
       };
 
       // Helper function to get fallback image path
-      function getFallbackImagePath() {
+      const getFallbackImagePath = () => {
         if (cardArcana === "major") {
-          // Try to use a specific placeholder for this card if available
           const cardId = cardName?.toLowerCase().replace(/\s+/g, "-");
           if (cardId) {
             const specificPlaceholder = `/images/tarot/placeholders/${cardId}.svg`;
-            // Check if the specific placeholder exists
-            try {
-              const img = new Image();
-              img.src = specificPlaceholder;
-              return specificPlaceholder;
-            } catch (e) {
-              // Fall back to generic placeholder
-            }
+            const img = new Image();
+            img.src = specificPlaceholder;
+            return specificPlaceholder;
           }
           return "/images/tarot/placeholders/major-placeholder.svg";
         } else if (cardSuit) {
@@ -239,9 +234,14 @@ export default function TarotCard({
         } else {
           return "/images/tarot/card-back.svg";
         }
-      }
+      };
+
+      const fallbackPath = getFallbackImagePath();
+      console.log("Using fallback image:", fallbackPath);
+      setLoadedImage(fallbackPath);
+      setIsImageLoaded(true);
     }
-  }, [cardImageUrl, cardArcana, cardSuit]);
+  }, [cardImageUrl, cardArcana, cardSuit, cardName]);
 
   // Ensure card name and image consistency
   useEffect(() => {

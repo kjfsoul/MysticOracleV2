@@ -9,6 +9,7 @@ import { AuthProvider } from "./hooks/use-auth";
 import { queryClient } from "./lib/queryClient";
 import EclipseLandingPage from "./pages/EclipseLandingPage";
 import TarotInterpretationDemo from "./pages/tarot-interpretation-demo";
+import "./styles/cosmic-background.css";
 import "./styles/gold-text-animation.css";
 import "./styles/improved-layout.css";
 
