@@ -1,4 +1,4 @@
-import react from "@vitejs/plugin-react";
+import react from "@vitejs/plugin-react/dist/index.mjs";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
@@ -23,7 +23,7 @@ export default defineConfig({
     outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true,
     rollupOptions: {
-      external: ["react-helmet"],
+      external: ["react-helmet", "react/jsx-runtime"],
     },
   },
   server: {
