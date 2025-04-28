@@ -1,145 +1,88 @@
-import { TarotCard } from "@client/data/tarot-cards";
+// client/src/utils/tarot-utils.ts
+import { supabaseClient } from "./supabase-client";
 
-/**
- * Configuration for tarot decks
- */
-export interface TarotDeckConfig {
-  id: string;
+export interface TarotCard {
+  id: number;
   name: string;
-  pathTemplate: string;
-  fallbackTemplate: string;
-  cardBackPath: string;
+  arcana: string;
+  suit?: string;
+  number?: number;
+  meaningUpright: string;
+  meaningReversed: string;
+  description: string;
+  element?: string;
+  zodiacSign?: string;
+  keywords: string[];
+  // Add any other fields from your database
 }
 
-/**
- * Available tarot decks
- */
-export const TAROT_DECKS: TarotDeckConfig[] = [
-  {
-    id: 'rider-waite',
-    name: 'Rider-Waite-Smith',
-    pathTemplate: '/images/tarot/decks/rider-waite/major/{id}.svg',
-    fallbackTemplate: '/images/tarot/placeholders/{arcana}-placeholder.svg',
-    cardBackPath: '/images/tarot/card-back.svg'
-  },
-  // Add more decks here as needed
-];
-
-// Default to Rider-Waite deck
-let activeDeckId = 'rider-waite';
-
-/**
- * Get the active tarot deck configuration
- */
-export function getActiveDeck(): TarotDeckConfig {
-  return TAROT_DECKS.find(deck => deck.id === activeDeckId) || TAROT_DECKS[0];
-}
-
-/**
- * Set the active tarot deck
- */
-export function setActiveDeck(deckId: string): void {
-  const deck = TAROT_DECKS.find(d => d.id === deckId);
-  if (deck) {
-    activeDeckId = deckId;
-    // Save preference to localStorage if available
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem('activeTarotDeck', deckId);
-    }
-  }
-}
-
-// Initialize from localStorage if available
-if (typeof localStorage !== 'undefined') {
-  const storedDeck = localStorage.getItem('activeTarotDeck');
-  if (storedDeck && TAROT_DECKS.some(deck => deck.id === storedDeck)) {
-    activeDeckId = storedDeck;
-  }
-}
-
-/**
- * Get the image path for a tarot card
- */
-export function getTarotCardImagePath(card: TarotCard): string {
-  const deck = getActiveDeck();
-
-  // Format the path according to the template
-  let path = deck.pathTemplate
-    .replace("{id}", card.id)
-    .replace("{arcana}", card.arcana);
-
-  // Special handling for problematic cards
-  if (
-    card.id === "07-chariot" ||
-    card.id === "chariot" ||
-    card.id === "13-death" ||
-    card.id === "death" ||
-    card.id === "16-tower" ||
-    card.id === "tower"
-  ) {
-    console.log(
-      `Using fallback for potentially problematic card: ${card.name}`
-    );
-    return getFallbackImagePath(card);
-  }
-
-  return path;
-}
-
-/**
- * Get a fallback image path for a tarot card
- */
-export function getFallbackImagePath(card: TarotCard): string {
-  const deck = getActiveDeck();
-  return deck.fallbackTemplate
-    .replace("{arcana}", card.arcana)
-    .replace("{suit}", card.suit || "major");
-}
-
-/**
- * Get the card back image path
- */
-export function getCardBackPath(): string {
-  return getActiveDeck().cardBackPath;
-}
-
-/**
- * Get a deterministic daily card based on the current date
- */
-export function getDailyCard(cards: TarotCard[]): {
+export interface DailyCardData {
   card: TarotCard;
   isReversed: boolean;
-} {
-  // Get a deterministic "random" card based on today's date
-  const today = new Date();
-  const dateString = `${today.getFullYear()}-${
-    today.getMonth() + 1
-  }-${today.getDate()}`;
+  timestamp: string;
+}
 
-  // Use the date string to create a seed for the random selection
-  let hash = 0;
-  for (let i = 0; i < dateString.length; i++) {
-    hash = (hash << 5) - hash + dateString.charCodeAt(i);
-    hash = hash & hash; // Convert to 32bit integer
+export const fetchDailyCard = async (userId?: string): Promise<DailyCardData> => {
+  try {
+    // Use the Netlify function
+    const response = await fetch("/.netlify/functions/daily-tarot", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user_id: userId }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Error response from daily-tarot function:", errorText);
+      throw new Error(
+        `Failed to fetch daily card: ${response.status} ${response.statusText}`
+      );
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching daily card:", error);
+    throw error;
+  }
+};
+
+export const getTarotCardImagePath = (
+  card: TarotCard,
+  isReversed: boolean = false
+): string => {
+  // Format: /assets/cards/rider-waite/the-fool.jpg
+  const cardName = card.name.toLowerCase().replace(/\s+/g, "-");
+  return `/assets/cards/rider-waite/${cardName}.jpg`;
+};
+
+export const saveFeedback = async (choice: string, userId?: string): Promise<void> => {
+  if (!userId) {
+    console.log("No user ID provided for feedback, storing in local storage");
+    // Store in localStorage for anonymous users
+    localStorage.setItem(
+      "tarot_feedback",
+      JSON.stringify({
+        choice,
+        timestamp: new Date().toISOString(),
+      })
+    );
+    return;
   }
 
-  // Use the hash to select a card
-  const index = Math.abs(hash) % cards.length;
-  const selectedCard = cards[index];
+  try {
+    const { error } = await supabaseClient.from("user_feedback").insert({
+      user_id: userId,
+      feedback_type: "daily_card",
+      choice,
+      created_at: new Date().toISOString(),
+    });
 
-  // Determine if the card is reversed (also based on the date)
-  const isReversed = (hash >> 4) % 2 === 1;
-
-  return { card: selectedCard, isReversed };
-}
-
-/**
- * Handle image loading errors for tarot cards
- */
-export function handleTarotImageError(
-  card: TarotCard,
-  setImagePath: (path: string) => void
-): void {
-  console.warn(`Error loading image for card: ${card.name}`);
-  setImagePath(getFallbackImagePath(card));
-}
+    if (error) throw error;
+  } catch (error) {
+    console.error("Error saving feedback:", error);
+    throw error;
+  }
+};

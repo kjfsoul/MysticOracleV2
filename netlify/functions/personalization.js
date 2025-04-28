@@ -1,9 +1,21 @@
 import { createClient } from '@supabase/supabase-js';
 import OpenAI from 'openai';
 
-// Initialize Supabase client
-const supabaseUrl = process.env.VITE_SUPABASE_URL;
+// Initialize Supabase client - use proper server-side environment variables
+const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+// Log environment variables (without exposing full keys)
+console.log("SUPABASE_URL available:", !!supabaseUrl);
+console.log("SUPABASE_SERVICE_ROLE_KEY available:", !!supabaseKey);
+console.log("OPENAI_API_KEY available:", !!process.env.OPENAI_API_KEY);
+
+// Validate credentials
+if (!supabaseUrl || !supabaseKey) {
+  console.error("Missing required Supabase credentials in personalization.js");
+}
+
+// Create Supabase client
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Initialize OpenAI client
@@ -146,15 +158,15 @@ async function getPersonalizedInterpretation(event, headers) {
 
     // Generate personalized interpretation using OpenAI
     const prompt = `
-You are a highly skilled tarot reader with deep knowledge of astrology and spiritual practices. 
+You are a highly skilled tarot reader with deep knowledge of astrology and spiritual practices.
 You're creating a personalized tarot card interpretation for a specific user.
 
 Card: ${cardName}
-${spread ? `Spread: ${spread}` : ''}
-${position ? `Position in spread: ${position}` : ''}
+${spread ? `Spread: ${spread}` : ""}
+${position ? `Position in spread: ${position}` : ""}
 
-Based on this specific user's profile, provide a deeply personalized interpretation of the ${cardName} card 
-${position ? `in the ${position} position of the ${spread} spread` : ''}.
+Based on this specific user's profile, provide a deeply personalized interpretation of the ${cardName} card
+${position ? `in the ${position} position of the ${spread} spread` : ""}.
 
 Your interpretation should:
 1. Provide specific, actionable guidance

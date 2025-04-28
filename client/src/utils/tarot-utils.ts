@@ -1,20 +1,35 @@
-import { getActiveDeck } from '@client/config/tarot-deck-config';
-import type { TarotCard } from '@client/data/tarot-cards';
+// Utility functions for Tarot features
 
+import { getActiveDeck } from "@client/config/tarot-deck-config";
+
+/**
+ * Generates the correct image path for a given tarot card based on the active deck config.
+ */
 export function getTarotCardImagePath(card: TarotCard): string {
-  // Determine the desired format (prioritize JPG)
-  const imageFormat = "jpg";
+  if (!card) {
+    console.warn(
+      "getTarotCardImagePath called with null card, returning placeholder."
+    );
+    return "/images/tarot/placeholders/card-back.svg";
+  }
 
-  // Get the active deck configuration
-  const deckId = "rider-waite"; // Default deck
-  const arcana = card.arcana.toLowerCase();
+  // Use pre-defined path if available (e.g., for custom decks)
+  if (card.imagePath && card.imagePath.trim() !== "") {
+    return card.imagePath;
+  }
 
-  // Format the card ID to match the file naming convention
-  let formattedId = "";
+  const activeDeck = getActiveDeck();
+  if (!activeDeck) {
+    console.error("No active tarot deck found! Using default placeholder.");
+    return "/images/tarot/placeholders/card-back.svg";
+  }
 
-  if (arcana === "major") {
-    // Major arcana cards have a numeric prefix in the filename
-    // Map the card ID to the correct filename format
+  const arcana = card.arcana?.toLowerCase() || "unknown";
+  const imageFormat = activeDeck.imageFormat || "jpg";
+  let formattedId = card.id || "unknown-id";
+
+  // Specific formatting for Rider-Waite Major Arcana IDs if needed
+  if (activeDeck.id === "rider-waite" && arcana === "major") {
     const majorArcanaMap: Record<string, string> = {
       fool: "00-fool",
       magician: "01-magician",
@@ -39,148 +54,172 @@ export function getTarotCardImagePath(card: TarotCard): string {
       judgement: "20-judgement",
       world: "21-world",
     };
-
     formattedId = majorArcanaMap[card.id] || card.id;
-  } else {
-    // For minor arcana, use the card ID as is
-    formattedId = card.id;
   }
 
-  // Generate the path using the chosen format
   let path = "";
-  let jpgPath = "";
-  let svgPath = "";
-
-  if (arcana === "major") {
-    jpgPath = `/images/tarot/decks/${deckId}/major/${formattedId}.jpg`;
-    svgPath = `/images/tarot/decks/${deckId}/major/${formattedId}.svg`;
-  } else if (card.suit) {
-    jpgPath = `/images/tarot/decks/${deckId}/minor/${card.suit.toLowerCase()}/${formattedId}.jpg`;
-    svgPath = `/images/tarot/decks/${deckId}/minor/${card.suit.toLowerCase()}/${formattedId}.svg`;
+  if (activeDeck.cardPathTemplate) {
+    path = activeDeck.cardPathTemplate
+      .replace("{arcana}", arcana)
+      .replace("{suit}", card.suit?.toLowerCase() || "none")
+      .replace("{id}", formattedId);
+  } else {
+    // Fallback structure if template is missing
+    const suitPath =
+      arcana === "minor" && card.suit ? `/${card.suit.toLowerCase()}` : "";
+    path = `/images/tarot/decks/${activeDeck.id}/${arcana}${suitPath}/${formattedId}.${imageFormat}`;
   }
 
-  // Use JPG if it exists, otherwise use SVG
-  path = jpgPath;
-  if (!path || !path.endsWith('.jpg')) {
-    path = svgPath;
-  }
-
-  // Fallback logic remains the same
-  if (!path) {
-    console.error(
-      `Cannot determine path for card: ${card.name}, using placeholder.`
-    );
-    path = "/images/tarot/placeholders/card-back.jpg";
-  }
-
-  // Special handling for problematic cards (07-chariot, 13-death, 16-tower)
-  // These cards have placeholder JPG files (722 bytes)
-  if (
-    formattedId === "07-chariot" ||
-    formattedId === "13-death" ||
-    formattedId === "16-tower"
-  ) {
-    console.log(`Using placeholder for known problematic card: ${card.name}`);
-    return `/images/tarot/placeholders/major-placeholder.svg`;
-  }
-
-  console.log(`Generated path for ${card.name}: ${path}`);
+  // console.log(`Generated path for ${card.name}: ${path}`);
   return path;
 }
 
+/**
+ * Gets the path for the active deck's card back image.
+ */
 export function getCardBackPath(): string {
-  return getActiveDeck().cardBackImage;
-}
-
-export function getDailyCard(cards: TarotCard[]): {
-  card: TarotCard;
-  isReversed: boolean;
-} {
-  // Get a deterministic "random" card based on today's date
-  const today = new Date();
-  const dateString = `${today.getFullYear()}-${
-    today.getMonth() + 1
-  }-${today.getDate()}`;
-
-  // Use the date string to create a seed for the random selection
-  let hash = 0;
-  for (let i = 0; i < dateString.length; i++) {
-    hash = (hash << 5) - hash + dateString.charCodeAt(i);
-    hash = hash & hash; // Convert to 32bit integer
-  }
-
-  // Use the hash to select a card
-  const index = Math.abs(hash) % cards.length;
-  const selectedCard = cards[index];
-
-  // Determine if the card is reversed (also based on the date)
-  const isReversed = (hash >> 4) % 2 === 1;
-
-  return { card: selectedCard, isReversed };
+  const activeDeck = getActiveDeck();
+  return (
+    activeDeck?.cardBackImage || "/images/tarot/placeholders/card-back.svg"
+  ); // Default fallback
 }
 
 /**
- * Handles image loading errors for tarot cards
- * @param card The tarot card that had an image loading error
- * @param setFallbackImage Function to set a fallback image
+ * Handles image loading errors, setting a fallback placeholder.
  */
-export function getFallbackPlaceholderPath(card: TarotCard): string {
-  if (card.arcana === "major") {
-    return "/images/tarot/placeholders/major-placeholder.svg";
-  } else if (card.arcana === "minor" && card.suit) {
-    return `/images/tarot/placeholders/${card.suit.toLowerCase()}-placeholder.svg`;
-  } else {
-    return "/images/tarot/placeholders/card-back.svg"; // Default placeholder
-  }
-}
-
 export function handleTarotImageError(
-  card: TarotCard,
+  card: TarotCard | null,
   failedPath: string,
   setFallbackImage: (path: string) => void
 ): void {
-  console.warn(`Error loading image for card ${card.name} at path: ${failedPath}`);
+  const cardName = card?.name || "Unknown Card";
+  console.warn(
+    `Error loading image: ${failedPath} for card: ${cardName}. Using placeholder.`
+  );
 
-  // Determine the appropriate next fallback based on what failed
-  let nextAttemptPath = "";
+  let fallbackPath = "/images/tarot/placeholders/card-back.svg"; // Generic fallback
 
-  if (failedPath.endsWith('.jpg')) {
-    // If JPG failed, try the SVG version
-    nextAttemptPath = failedPath.replace('.jpg', '.svg');
-    console.log(`Attempting fallback SVG: ${nextAttemptPath}`);
-  } else if (failedPath.endsWith('.svg') && !failedPath.includes('/placeholders/')) {
-    // If SVG failed (and it wasn't already a placeholder), use the placeholder
-    nextAttemptPath = getFallbackPlaceholderPath(card); // Use helper
-    console.log(`SVG failed, using placeholder: ${nextAttemptPath}`);
-  } else {
-    // If even the placeholder failed, use the absolute card back as last resort
-    nextAttemptPath = "/images/tarot/card-back.svg";
-    console.error(`All fallbacks failed for ${card.name}, using card back.`);
+  if (card) {
+    if (card.arcana === "major") {
+      fallbackPath = "/images/tarot/placeholders/major-placeholder.svg";
+    } else if (card.arcana === "minor" && card.suit) {
+      fallbackPath = `/images/tarot/placeholders/${card.suit.toLowerCase()}-placeholder.svg`;
+    }
   }
 
-  // Preload and set the next fallback
-  const fallbackImg = new Image();
-  fallbackImg.src = nextAttemptPath;
-
-  fallbackImg.onload = () => {
-    console.log(`Successfully loaded fallback: ${nextAttemptPath}`);
-    setFallbackImage(nextAttemptPath);
-  };
-
-  fallbackImg.onerror = () => {
-    console.error(`Fallback image failed to load: ${nextAttemptPath}`);
-    // If this fallback also fails, maybe try the *next* level down (e.g., placeholder -> card back)
-    // Or just give up and show the card back.
-    if (!nextAttemptPath.includes('/placeholders/') && !nextAttemptPath.endsWith('card-back.svg')) {
-       // If the SVG attempt failed, now try the placeholder
-       const placeholderPath = getFallbackPlaceholderPath(card);
-       console.log(`SVG failed, trying placeholder: ${placeholderPath}`);
-       handleTarotImageError(card, nextAttemptPath, setFallbackImage); // Recursive call with placeholder path (careful!)
-       // A safer approach might be needed to avoid infinite loops if placeholders also fail
-    } else if (!nextAttemptPath.endsWith('card-back.svg')) {
-       // If placeholder failed, use card back
-       console.log(`Placeholder failed, using card back.`);
-       setFallbackImage("/images/tarot/card-back.svg");
-    }
-  };
+  setFallbackImage(fallbackPath);
 }
+
+// For Supabase client, we'll use a mock for now
+// In a real implementation, you would use:
+// import { createClient } from "@supabase/supabase-js";
+// const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+// const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+// export const supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
+
+// Mock Supabase client for development
+export const supabaseClient = {
+  from: (table: string) => ({
+    insert: (data: any) => {
+      console.log(`Mock insert into ${table}:`, data);
+      return Promise.resolve({ error: null });
+    },
+  }),
+};
+
+// client/src/utils/tarot-utils.ts
+export interface TarotCard {
+  id: string;
+  card_id: string;
+  name: string;
+  arcana: string;
+  suit?: string;
+  number?: number;
+  keywords: string[];
+  // Original field names
+  element?: string | null;
+  zodiacSign?: string | null;
+  description?: string;
+  meaningUpright?: string;
+  meaningReversed?: string;
+  // New field names from tarot_card_interpretations table
+  elemental_association?: string | null;
+  astrological_association?: string | null;
+  general_meaning?: string;
+  upright_meaning?: string;
+  reversed_meaning?: string;
+  symbols?: string[] | null;
+  colors?: string[] | null;
+  // For image handling
+  imagePath?: string;
+}
+
+export interface DailyCardData {
+  card: TarotCard;
+  isReversed: boolean;
+  timestamp: string;
+}
+
+export const fetchDailyCard = async (userId?: string): Promise<DailyCardData> => {
+  try {
+    // Use the Netlify function
+    const response = await fetch("/.netlify/functions/daily-tarot", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user_id: userId }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Error response from daily-tarot function:", errorText);
+      throw new Error(
+        `Failed to fetch daily card: ${response.status} ${response.statusText}`
+      );
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching daily card:", error);
+    throw error;
+  }
+};
+
+// This function is used specifically for the daily card feature
+// It's simpler than the more complex one above
+export const getSimpleTarotCardImagePath = (card: TarotCard): string => {
+  // Use card_id for the image filename
+  const cardId = card.card_id || card.name.toLowerCase().replace(/\s+/g, "-");
+  return `/assets/cards/rider-waite/${cardId}.jpg`;
+};
+
+export const saveFeedback = async (choice: string, userId?: string): Promise<void> => {
+  if (!userId) {
+    console.log("No user ID provided for feedback, storing in local storage");
+    // Store in localStorage for anonymous users
+    localStorage.setItem(
+      "tarot_feedback",
+      JSON.stringify({
+        choice,
+        timestamp: new Date().toISOString(),
+      })
+    );
+    return;
+  }
+
+  try {
+    const { error } = await supabaseClient.from("user_feedback").insert({
+      user_id: userId,
+      feedback_type: "daily_card",
+      choice,
+      created_at: new Date().toISOString(),
+    });
+
+    if (error) throw error;
+  } catch (error) {
+    console.error("Error saving feedback:", error);
+    throw error;
+  }
+};

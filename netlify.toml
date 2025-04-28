@@ -14,6 +14,19 @@
   to = "/.netlify/functions/:splat"
   status = 200
 
+# Domain redirects - fixed syntax
+[[redirects]]
+  from = "https://www.mysticarcana.com/*"
+  to = "https://mysticarcana.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://mysticarcana.netlify.app/*"
+  to = "https://mysticarcana.com/:splat"
+  status = 301
+  force = true
+
 # Handle SPA routing
 [[redirects]]
   from = "/*"

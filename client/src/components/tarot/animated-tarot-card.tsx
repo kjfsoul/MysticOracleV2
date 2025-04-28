@@ -1,13 +1,11 @@
 import type { TarotCard } from "@client/data/tarot-cards";
+import "@client/styles/card-flip.css";
 import {
+  getCardBackPath,
   getTarotCardImagePath,
   handleTarotImageError,
-  getCardBackPath
 } from "@client/utils/tarot-utils";
 import React, { useEffect, useState } from "react";
-import "@client/styles/card-flip.css";
-import { p } from "framer-motion/dist/types.d-B50aGbjN";
-import style from "styled-jsx/style";
 
 interface AnimatedTarotCardProps {
   card: TarotCard;
@@ -18,6 +16,7 @@ interface AnimatedTarotCardProps {
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
   className?: string;
   showMeaning?: boolean;
+  imagePath?: string; // Custom image path override
 }
 
 const dimensions = {
@@ -26,6 +25,15 @@ const dimensions = {
   lg: { width: 180, height: 300 },
   xl: { width: 220, height: 370 },
 };
+
+// Card reveal animations
+const cardRevealAnimations = [
+  "glow", // Glowing effect
+  "sparkle", // Sparkle effect
+  "jump", // Card jumps out
+  "pulse", // Card pulses
+  "rotate", // Card rotates slightly
+];
 
 const AnimatedTarotCard: React.FC<AnimatedTarotCardProps> = ({
   card,
@@ -36,17 +44,22 @@ const AnimatedTarotCard: React.FC<AnimatedTarotCardProps> = ({
   onClick,
   className = "",
   showMeaning = false,
+  imagePath,
 }) => {
   const [isFlipped, setIsFlipped] = useState(autoReveal);
   const [isLoaded, setIsLoaded] = useState(false);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
+  const [revealAnimation, setRevealAnimation] = useState<string>("");
 
   const { width, height } = dimensions[size];
 
   useEffect(() => {
-    const cardImagePath = getTarotCardImagePath(card);
+    // Use provided imagePath if available, otherwise generate one
+    const cardImagePath = imagePath || getTarotCardImagePath(card);
     console.log(
-      `Loading image for ${card.name} from generated path: ${cardImagePath}`
+      `Loading image for ${card.name} from ${
+        imagePath ? "provided" : "generated"
+      } path: ${cardImagePath}`
     );
 
     const img = new Image();
@@ -59,11 +72,34 @@ const AnimatedTarotCard: React.FC<AnimatedTarotCardProps> = ({
     };
 
     img.onerror = () => {
-      console.error(`Failed to load generated image: ${cardImagePath}`);
-      handleTarotImageError(card, cardImagePath, setImageSrc);
-      setIsLoaded(true);
+      console.error(`Failed to load image: ${cardImagePath}`);
+      // If custom path fails, try the default path as fallback
+      if (imagePath && imagePath !== getTarotCardImagePath(card)) {
+        console.log(`Trying fallback image path for ${card.name}`);
+        const fallbackPath = getTarotCardImagePath(card);
+        const fallbackImg = new Image();
+        fallbackImg.src = fallbackPath;
+        fallbackImg.onload = () => {
+          setImageSrc(fallbackPath);
+          setIsLoaded(true);
+        };
+        fallbackImg.onerror = () => {
+          handleTarotImageError(card, cardImagePath, setImageSrc);
+          setIsLoaded(true);
+        };
+      } else {
+        handleTarotImageError(card, cardImagePath, setImageSrc);
+        setIsLoaded(true);
+      }
     };
-  }, [card]);
+
+    // Select a random animation for this card reveal
+    const randomAnimation =
+      cardRevealAnimations[
+        Math.floor(Math.random() * cardRevealAnimations.length)
+      ];
+    setRevealAnimation(randomAnimation);
+  }, [card, imagePath]);
 
   useEffect(() => {
     let timer: NodeJS.Timeout | null = null;
@@ -83,8 +119,26 @@ const AnimatedTarotCard: React.FC<AnimatedTarotCardProps> = ({
   }, [autoReveal, revealDelay, card.name, isFlipped]);
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    setIsFlipped(current => !current);
+    setIsFlipped((current) => !current);
     if (onClick) onClick(event);
+  };
+
+  // Animation variants based on the selected animation type
+  const getCardFrontAnimationClass = () => {
+    switch (revealAnimation) {
+      case "glow":
+        return "animate-glow";
+      case "sparkle":
+        return "animate-sparkle";
+      case "jump":
+        return "animate-jump";
+      case "pulse":
+        return "animate-pulse-card";
+      case "rotate":
+        return "animate-rotate";
+      default:
+        return "";
+    }
   };
 
   return (
@@ -93,16 +147,17 @@ const AnimatedTarotCard: React.FC<AnimatedTarotCardProps> = ({
       style={{ width, height }}
       onClick={handleClick}
     >
-      <div
+      <motion.div
         className="w-full h-full relative preserve-3d transition-transform duration-700"
-        style={{ transform: `rotateY(${isFlipped ? 180 : 0}deg)` }}
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.7, ease: [0.4, 0.0, 0.2, 1] }}
       >
         <div
           className="absolute w-full h-full backface-hidden rounded-lg shadow-lg border border-gold/30 overflow-hidden"
           style={{
             backgroundImage: `url(${getCardBackPath()})`,
             backgroundSize: "cover",
-            backgroundPosition: "center"
+            backgroundPosition: "center",
           }}
         />
 
@@ -112,10 +167,14 @@ const AnimatedTarotCard: React.FC<AnimatedTarotCardProps> = ({
         >
           {isLoaded ? (
             <div className="relative w-full h-full">
-              <div className="glowing-tarot-card">
+              <div
+                className={`tarot-card-front ${
+                  isFlipped ? getCardFrontAnimationClass() : ""
+                }`}
+              >
                 <img
                   className="w-full h-full object-contain"
-                  src={imageSrc || ''}
+                  src={imageSrc || ""}
                   alt={card.name}
                   style={{
                     transform: isReversed ? "rotate(180deg)" : "rotate(0deg)",
@@ -146,7 +205,7 @@ const AnimatedTarotCard: React.FC<AnimatedTarotCardProps> = ({
             </div>
           )}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

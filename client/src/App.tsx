@@ -38,6 +38,7 @@ const pages = {
   PlainAuthPage: lazy(() => import("./pages/plain-auth")),
   ExactAuthPage: lazy(() => import("./pages/exact-auth")),
   LandingPage: lazy(() => import("./pages/landing-page-improved")),
+  MainPage: lazy(() => import("./pages/main-page")), // New main page with improved layout
   // CrewAIPage removed as requested
   ZodiacSpreadPage: lazy(() => import("./pages/zodiac-spread-page")),
   AgentLearningDemo: lazy(() => import("./pages/agent-learning-demo")),
@@ -59,6 +60,8 @@ function App() {
             <Suspense fallback={<div>Loading...</div>}>
               <Switch>
                 <Route path="/" component={pages.LandingPage} />
+                <Route path="/main" component={pages.MainPage} />{" "}
+                {/* New improved main page */}
                 <Route path="/auth" component={pages.AuthPage} />
                 <Route path="/simple-auth" component={pages.SimpleAuthPage} />
                 <Route path="/basic-auth" component={pages.BasicAuthPage} />

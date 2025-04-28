@@ -1,8 +1,19 @@
 import { createClient } from "@supabase/supabase-js";
 
-// Initialize Supabase client
-const supabaseUrl = process.env.VITE_SUPABASE_URL;
-const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY;
+// Initialize Supabase client - use proper server-side environment variables
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+// Log environment variables (without exposing full keys)
+console.log("SUPABASE_URL available:", !!supabaseUrl);
+console.log("SUPABASE_SERVICE_ROLE_KEY available:", !!supabaseKey);
+
+// Validate credentials
+if (!supabaseUrl || !supabaseKey) {
+  console.error("Missing required Supabase credentials in generate-embedding.js");
+}
+
+// Create Supabase client
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 /**

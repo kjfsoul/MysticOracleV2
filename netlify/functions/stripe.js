@@ -1,18 +1,35 @@
 import { createClient } from '@supabase/supabase-js';
-import Stripe from 'stripe';
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
+import Stripe from "stripe";
 
 // Load environment variables
 dotenv.config();
+
+// Log environment variables (without exposing full keys)
+console.log("STRIPE_SECRET_KEY available:", !!process.env.STRIPE_SECRET_KEY);
+console.log("STRIPE_WEBHOOK_SECRET available:", !!process.env.STRIPE_WEBHOOK_SECRET);
+console.log("SUPABASE_URL available:", !!process.env.SUPABASE_URL);
+console.log("SUPABASE_SERVICE_ROLE_KEY available:", !!process.env.SUPABASE_SERVICE_ROLE_KEY);
 
 // Initialize Stripe with the secret key from environment variables
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
   apiVersion: '2023-10-16',
 });
 
-// Initialize Supabase client
-const supabaseUrl = process.env.VITE_SUPABASE_URL || '';
+// Initialize Supabase client - use proper server-side environment variables
+const supabaseUrl = process.env.SUPABASE_URL || '';
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
+
+// Validate credentials
+if (!supabaseUrl || !supabaseKey) {
+  console.error("Missing required Supabase credentials in stripe.js");
+}
+
+if (!process.env.STRIPE_SECRET_KEY) {
+  console.error("Missing required Stripe secret key in stripe.js");
+}
+
+// Create Supabase client
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 export const handler = async (event, context) => {
@@ -179,10 +196,10 @@ async function handleWebhook(event, headers) {
 
     // Handle different event types
     switch (stripeEvent.type) {
-      case 'checkout.session.completed':
+      case "checkout.session.completed":
         // Payment is successful and the subscription is created
         const checkoutSession = stripeEvent.data.object;
-        
+
         // Update user's subscription status in your database
         if (checkoutSession.customer && checkoutSession.subscription) {
           await updateUserSubscription(
@@ -192,25 +209,25 @@ async function handleWebhook(event, headers) {
           );
         }
         break;
-        
-      case 'customer.subscription.updated':
+
+      case "customer.subscription.updated":
         // Subscription is updated
         const subscription = stripeEvent.data.object;
-        
+
         // Update subscription details in your database
         if (subscription.customer) {
           await updateUserSubscription(
             subscription.customer.toString(),
             subscription.id,
-            subscription.status === 'active'
+            subscription.status === "active"
           );
         }
         break;
-        
-      case 'customer.subscription.deleted':
+
+      case "customer.subscription.deleted":
         // Subscription is canceled or expired
         const canceledSubscription = stripeEvent.data.object;
-        
+
         // Update subscription status in your database
         if (canceledSubscription.customer) {
           await updateUserSubscription(
@@ -220,7 +237,7 @@ async function handleWebhook(event, headers) {
           );
         }
         break;
-        
+
       default:
         console.log(`Unhandled event type: ${stripeEvent.type}`);
     }

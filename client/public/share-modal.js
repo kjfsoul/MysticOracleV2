@@ -7,32 +7,40 @@
     return;
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initShareModal);
-  } else {
-    // DOM is already ready
-    setTimeout(initShareModal, 1000);
-  }
+  // Always use DOMContentLoaded to ensure the DOM is fully loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    // Add a longer delay to ensure all dynamic content is loaded
+    setTimeout(initShareModal, 2000);
+  });
 
   function initShareModal() {
     // Safely check if the element exists without causing errors
     if (typeof document !== "undefined") {
       try {
+        console.log("Initializing share modal functionality");
+
         // Use querySelector instead of getElementById for better compatibility
         const shareButtons = document.querySelectorAll("[data-share-trigger]");
 
         if (shareButtons && shareButtons.length > 0) {
-          shareButtons.forEach((button) => {
+          console.log(`Found ${shareButtons.length} share buttons`);
+
+          shareButtons.forEach((button, index) => {
             if (button) {
               // Check if button exists
+              console.log(`Adding click listener to share button ${index + 1}`);
               button.addEventListener("click", handleShareClick);
             }
           });
-          console.log("Share functionality initialized");
+          console.log("Share functionality initialized successfully");
+        } else {
+          console.log("No share buttons found on the page yet, will retry");
+          // Retry after another delay if no buttons found
+          setTimeout(initShareModal, 3000);
         }
       } catch (e) {
-        // Silently fail - no console errors
-        console.log("Share modal initialization skipped");
+        // Log the error for debugging
+        console.error("Error initializing share modal:", e);
       }
     }
   }
