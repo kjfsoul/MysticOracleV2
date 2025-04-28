@@ -28,7 +28,7 @@ export default defineConfig({
       outDir: path.resolve(__dirname, "dist/public"),
       emptyOutDir: true,
       rollupOptions: {
-        external: ["react-helmet", "@tanstack/react-query"],
+        external: ["react-helmet"], // Only externalize non-browser modules
       },
     },
   server: {
