@@ -1,11 +1,18 @@
 // magic-auth.js
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = "https://pqfsbxcbsxuyfgqrxdob.supabase.co";
-const supabaseAnonKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxZnNieGNic3h1eWZncXJ4ZG9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIzMzAxNzAsImV4cCI6MjA1NzkwNjE3MH0.1bjMIO2hzyCJS1ExpsB1JsCmkH8D2d2M_-Psz2DDJrQ";
+// Use environment variables for Supabase credentials
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY; // Assuming ANON key is needed here, adjust if SERVICE_ROLE is required
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error("FATAL ERROR in magic_auth.js: Missing SUPABASE_URL or SUPABASE_ANON_KEY environment variables.");
+  // Depending on the context, you might throw an error or handle this differently
+  // For now, we'll allow initialization but log the error.
+}
+
+// Initialize client, potentially with null values if env vars are missing
+export const supabase = createClient(supabaseUrl || "", supabaseAnonKey || "");
 
 // Sends a magic link to the user's email
 export const signInWithMagicLink = async (email) => {

@@ -52,10 +52,20 @@ export default function ExactAuthForm() {
 
       // Get the Supabase client
       const { createClient } = supabase;
-      const supabaseClient = createClient(
-        "https://pqfsbxcbsxuyfgqrxdob.supabase.co",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxZnNieGNic3h1eWZncXJ4ZG9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIzMzAxNzAsImV4cCI6MjA1NzkwNjE3MH0.1bjMIO2hzyCJS1ExpsB1JsCmkH8D2d2M_-Psz2DDJrQ"
-      );
+
+      // Get Supabase credentials from Vite environment variables
+      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+      const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+      if (!supabaseUrl || !supabaseAnonKey) {
+        console.error("FATAL ERROR: Missing Supabase environment variables (VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY) in .env file or environment.");
+        setMessage({ type: "error", text: "Client configuration error. Cannot connect to authentication service." });
+        setIsLoading(false); // Stop loading indicator
+        // Optionally return or throw an error here to prevent further execution
+        return; 
+      }
+
+      const supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
 
       // Try to sign up directly
       const { data, error } = await supabaseClient.auth.signUp({

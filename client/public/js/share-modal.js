@@ -1,50 +1,65 @@
 // Share Modal Script
 // This script handles the share functionality for the Mystic Arcana application
 
-// Wait for DOM to be fully loaded
 function initShareModal() {
   // Find the share button and modal elements
   const shareButton = document.querySelector('#share-button');
   const shareModal = document.querySelector('#share-modal');
-  const closeButton = document.querySelector('#share-modal-close');
+  const closeButton = document.querySelector('#share-modal-close'); // May or may not exist depending on modal structure
 
   // Log for debugging
-  console.log('Share modal initialization:', {
+  console.log('Attempting Share modal initialization:', {
     shareButtonExists: !!shareButton,
     shareModalExists: !!shareModal,
     closeButtonExists: !!closeButton
   });
 
-  // Only attach event listeners if the elements exist
+  // --- CORE LOGIC: Only proceed if essential elements are found ---
   if (shareButton && shareModal) {
+    console.log('Share button and modal found. Attaching listeners.');
+
     // Open modal when share button is clicked
     shareButton.addEventListener('click', function(e) {
-      e.preventDefault();
+      e.preventDefault(); // Prevent default link behavior if it's an anchor
+      console.log('Share button clicked');
       shareModal.classList.remove('hidden');
-      shareModal.classList.add('flex');
+      shareModal.classList.add('flex'); // Assuming flex is used for visibility
     });
 
-    // Close modal when close button is clicked
+    // Close modal when close button is clicked (if it exists)
     if (closeButton) {
       closeButton.addEventListener('click', function() {
+        console.log('Share modal close button clicked');
         shareModal.classList.add('hidden');
         shareModal.classList.remove('flex');
       });
+    } else {
+      console.log('Share modal close button (#share-modal-close) not found.');
     }
 
-    // Close modal when clicking outside
+    // Close modal when clicking on the modal background (the overlay)
     shareModal.addEventListener('click', function(e) {
+      // Check if the click is directly on the modal background, not its children
       if (e.target === shareModal) {
+        console.log('Share modal background clicked');
         shareModal.classList.add('hidden');
         shareModal.classList.remove('flex');
       }
     });
 
-    // Handle share buttons
-    const shareLinks = document.querySelectorAll('.share-link');
+    // Handle specific share platform links within the modal
+    const shareLinks = document.querySelectorAll('#share-modal .share-link'); // Be more specific with selector
+    console.log(`Found ${shareLinks.length} share links inside the modal.`);
+
     shareLinks.forEach(link => {
+      // Extra safety check, though querySelectorAll shouldn't return null items
+      if (!link) {
+          console.warn('Encountered a null element in shareLinks NodeList.');
+          return; // Skip this iteration
+      }
+      
       link.addEventListener('click', function(e) {
-        e.preventDefault();
+        e.preventDefault(); // Prevent default link behavior
         const platform = this.getAttribute('data-platform');
         const url = window.location.href;
         const title = document.title;
