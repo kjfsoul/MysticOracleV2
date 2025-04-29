@@ -33,5 +33,14 @@ export default defineConfig({
     },
   server: {
     port: 7777,
+    proxy: {
+      // Proxy API requests to the backend server
+      '/api': {
+        target: 'http://localhost:3000', // Assuming backend runs on port 3000
+        changeOrigin: true, // Recommended for virtual hosted sites
+        secure: false,      // Set to true if backend uses HTTPS with valid cert
+        // rewrite: (path) => path.replace(/^\/api/, ''), // Uncomment if backend doesn't expect /api prefix
+      },
+    },
   },
 });

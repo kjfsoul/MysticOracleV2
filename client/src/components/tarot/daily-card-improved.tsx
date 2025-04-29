@@ -16,8 +16,7 @@ import { useAuth } from "@client/hooks/use-auth"; // Assuming useAuth hook provi
 import { saveFeedback } from "@client/utils/feedback-utils";
 import {
   DailyCardData,
-  fetchDailyCard,
-  getSimpleTarotCardImagePath,
+  getSimpleTarotCardImagePath
 } from "@client/utils/tarot-utils";
 import AnimatedTarotCard from "./animated-tarot-card"; // Assuming this component exists and works
 
@@ -51,9 +50,34 @@ const DailyCardImproved: React.FC<DailyCardImprovedProps> = ({
     isError,
     refetch,
   } = useQuery<DailyCardData, Error>({
-    // Key ensures data is fetched per user per day and only refetched if these change
     queryKey: ["dailyCard", userId, today],
-    queryFn: () => fetchDailyCard(userId),
+    queryFn: async () => {
+      console.log(`Fetching daily card for userId: ${userId}`);
+      const response = await fetch(`/api/tarot-cards/card-of-the-day?userId=${userId || ''}`); // Updated to correct endpoint
+
+      if (!response.ok) {
+        // Handle HTTP errors (e.g., 401 Unauthorized, 404 Not Found, 500 Server Error)
+        const errorText = await response.text(); // Get error details if available
+        console.error(`API Error (${response.status}): ${errorText}`);
+        throw new Error(`Failed to fetch daily card: ${response.statusText} - ${errorText.substring(0, 100)}`); // Include status and snippet
+      }
+
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        const data = await response.json();
+        if (!data || !data.card) { // Validate the structure of the JSON response
+           console.error("Invalid JSON structure received:", data);
+           throw new Error("Received invalid data structure from API.");
+        }
+        console.log("Successfully fetched daily card data:", data);
+        return data as DailyCardData; // Ensure type assertion is correct
+      } else {
+        // Handle cases where the response is not JSON (e.g., HTML login page)
+        const responseText = await response.text();
+        console.error("Received non-JSON response:", responseText.substring(0, 200)); // Log snippet
+        throw new Error("Received unexpected response format from server. Check authentication or API endpoint.");
+      }
+    },
     staleTime: 1000 * 60 * 60 * 12, // Keep data fresh for 12 hours
     gcTime: 1000 * 60 * 60 * 24, // Use gcTime instead of cacheTime in TanStack Query v5
     refetchOnWindowFocus: false,

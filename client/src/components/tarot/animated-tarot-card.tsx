@@ -5,6 +5,7 @@ import {
   getTarotCardImagePath,
   handleTarotImageError,
 } from "@client/utils/tarot-utils";
+import { motion } from "framer-motion"; // Import motion
 import React, { useEffect, useState } from "react";
 
 interface AnimatedTarotCardProps {

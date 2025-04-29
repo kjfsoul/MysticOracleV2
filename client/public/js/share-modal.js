@@ -1,125 +1,80 @@
-// client/public/js/share-modal.js
-// This script handles the share functionality for the Mystic Arcana application
+// Share Modal Script - dynamically injects share UI if missing
+document.addEventListener('DOMContentLoaded', () => {
+  // Helper to create element with attrs
+  function create(tag, attrs = {}, children = []) {
+    const el = document.createElement(tag);
+    Object.entries(attrs).forEach(([k,v]) => el.setAttribute(k, v));
+    children.forEach(child => el.appendChild(child));
+    return el;
+  }
 
-function initShareModal() {
-  // Find the share button and modal elements
-  const shareButton = document.querySelector("#share-button");
-  const shareModal = document.querySelector("#share-modal");
-  const closeButton = document.querySelector("#share-modal-close"); // May or may not exist depending on modal structure
+  // Ensure share button exists
+  let shareButton = document.getElementById('share-button');
+  if (!shareButton) {
+    shareButton = create('button', {
+      id: 'share-button',
+      style: 'position:fixed;bottom:20px;right:20px;padding:10px 15px;background:#FFD700;color:#000;border:none;border-radius:4px;cursor:pointer;z-index:1000;'
+    });
+    shareButton.textContent = 'Connect';
+    document.body.appendChild(shareButton);
+  }
 
-  // Log for debugging
-  console.log("Attempting Share modal initialization:", {
-    shareButtonExists: !!shareButton,
-    shareModalExists: !!shareModal,
-    closeButtonExists: !!closeButton,
+  // Ensure share modal exists
+  let shareModal = document.getElementById('share-modal');
+  if (!shareModal) {
+    // Overlay
+    shareModal = create('div', {
+      id: 'share-modal',
+      class: 'hidden',
+      style: 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;z-index:1000;'
+    });
+    // Modal content
+    const box = create('div', {
+      style: 'background:#fff;padding:20px;border-radius:8px;max-width:90%;text-align:center;'
+    });
+    // Close button
+    const closeBtn = create('button', {
+      id: 'share-modal-close',
+      style: 'position:absolute;top:10px;right:10px;background:none;border:none;font-size:20px;cursor:pointer;'
+    });
+    closeBtn.innerHTML = '&times;';
+    // Title
+    const title = create('h3', {}, []);
+    title.textContent = 'Connect with Mystic Arcana';
+    box.appendChild(title);
+      // Custom action buttons
+      const actions = [
+        { label: 'Sign Up', url: '/signup' },
+        { label: 'Instagram', url: 'https://instagram.com/mysticarcana' },
+        { label: 'Twitter', url: 'https://twitter.com/mysticarcana' },
+        { label: 'LinkedIn', url: 'https://www.linkedin.com/company/mysticarcana' }
+      ];
+      actions.forEach(({ label, url }) => {
+        const btn = create('a', {
+          href: url,
+          target: '_blank',
+          style: 'margin:5px;padding:8px 12px;border:none;border-radius:4px;cursor:pointer;display:inline-block;text-decoration:none;color:#000;'
+        });
+        btn.textContent = label;
+        box.appendChild(btn);
+      });
+    shareModal.appendChild(box);
+    shareModal.appendChild(closeBtn);
+    document.body.appendChild(shareModal);
+  }
+
+  // Show modal
+  shareButton.addEventListener('click', e => {
+    e.preventDefault();
+    shareModal.classList.remove('hidden');
   });
 
-  // --- CORE LOGIC: Only proceed if essential elements are found ---
-  if (shareButton && shareModal) {
-    console.log("Share button and modal found. Attaching listeners.");
+  // Close modal
+  const closeModal = () => shareModal.classList.add('hidden');
+  const closeButton = document.getElementById('share-modal-close');
+  if (closeButton) closeButton.addEventListener('click', closeModal);
+  shareModal.addEventListener('click', e => {
+    if (e.target === shareModal) closeModal();
+  });
 
-    // Open modal when share button is clicked
-    shareButton.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevent default link behavior if it's an anchor
-      console.log("Share button clicked");
-      shareModal.classList.remove("hidden");
-      shareModal.classList.add("flex"); // Assuming flex is used for visibility
-    });
-
-    // Close modal when close button is clicked (if it exists)
-    if (closeButton) {
-      closeButton.addEventListener("click", function () {
-        console.log("Share modal close button clicked");
-        shareModal.classList.add("hidden");
-        shareModal.classList.remove("flex");
-      });
-    } else {
-      console.log("Share modal close button (#share-modal-close) not found.");
-    }
-
-    // Close modal when clicking on the modal background (the overlay)
-    shareModal.addEventListener("click", function (e) {
-      // Check if the click is directly on the modal background, not its children
-      if (e.target === shareModal) {
-        console.log("Share modal background clicked");
-        shareModal.classList.add("hidden");
-        shareModal.classList.remove("flex");
-      }
-    });
-
-    // Handle specific share platform links within the modal
-    const shareLinks = document.querySelectorAll("#share-modal .share-link"); // Be more specific with selector
-    console.log(`Found ${shareLinks.length} share links inside the modal.`);
-
-    shareLinks.forEach((link) => {
-      // Extra safety check, though querySelectorAll shouldn't return null items
-      if (!link) {
-        console.warn("Encountered a null element in shareLinks NodeList.");
-        return; // Skip this iteration
-      }
-
-      link.addEventListener("click", function (e) {
-        e.preventDefault(); // Prevent default link behavior
-        const platform = this.getAttribute("data-platform");
-        const url = window.location.href;
-        const title = document.title;
-        let shareUrl;
-
-        switch (platform) {
-          case "twitter":
-            shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-              url
-            )}&text=${encodeURIComponent(title)}`;
-            break;
-          case "facebook":
-            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-              url
-            )}`;
-            break;
-          case "linkedin":
-            shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-              url
-            )}`;
-            break;
-          case "email":
-            shareUrl = `mailto:?subject=${encodeURIComponent(
-              title
-            )}&body=${encodeURIComponent(url)}`;
-            break;
-          default:
-            // Copy to clipboard
-            navigator.clipboard
-              .writeText(url)
-              .then(() => {
-                alert("Link copied to clipboard!");
-              })
-              .catch((err) => {
-                console.error("Could not copy text: ", err);
-              });
-            return;
-        }
-
-        // Open share URL in new window
-        if (shareUrl) {
-          window.open(shareUrl, "_blank", "width=600,height=400");
-        }
-      });
-    });
-  } else {
-    console.log("Share modal elements not found on this page");
-  }
-}
-
-// Try to initialize immediately if DOM is already loaded
-if (
-  document.readyState === "complete" ||
-  document.readyState === "interactive"
-) {
-  setTimeout(initShareModal, 1);
-} else {
-  // Otherwise wait for DOM to be loaded
-  document.addEventListener("DOMContentLoaded", initShareModal);
-}
-
-// Fallback - try again after a delay to ensure all elements are loaded
-setTimeout(initShareModal, 1000);
+});

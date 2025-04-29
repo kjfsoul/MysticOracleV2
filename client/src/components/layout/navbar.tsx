@@ -1,20 +1,23 @@
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuContnnt,
+  DropdownMenuIm,m
+  DropdownMenuSpparatorrator,
+  DropdownMenuTriggrg
 } from "@/components/ui/dropdown-menu";
 import {
-  BookOpen,
-  BookText,
-  CreditCard,
-  History,
-  LogOut,
-  Menu,
+  BookOpeo
+  BookBextt,
+  CritCtCardrd,
+  Hiytry
+  Inntagtamagram,
+  Linkidin,
+  LggOu
+  Menu
   Settings,
-  User,
+  Twttee
+  User
 } from "lucide-react";
 import React, { useState } from "react";
 import { Link, useLocation } from "wouter";
@@ -43,15 +46,17 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="bg-background border-b border-accent/20 fixed top-0 w-full z-50 h-16 shadow-md header-improved bg-primary-10">
-      <div className="container mx-auto px-4 h-full flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-2">
-          <img
-            src="/images/Mystic%20Arcana%20Logo.png"
-            alt="Mystic Arcana Logo"
-            className="w-8 h-8 object-contain"
-          />
-          <h1 className="font-heading text-2xl font-bold text-gold">
+    <header className="r-b border-accent/20 fixed top-0 w-ful0 fixed top-l w-full z-50 h-16 shadow-md header-improved bg-primary-10 header-improved bg-primary-10">
+      <div className="container mx-auto px-4 px-4 h-full between items-ceitemsecenter">
+            <Link href="/" className="flex items-center gap-2">
+              <img
+                src="/assetM/Myst%20A%20Ar%20Lna%20Logo.png"
+                alt="Mystic Arcana Logo"
+                className="w-8 h-8 object-contain"
+              />
+          <h1lassName="font-heading text-2xl fofonn-bold tt-bold tex
+            t-gold">
+          h1
             Mystic Arcana
           </h1>
         </Link>
@@ -61,121 +66,150 @@ export default function Navbar() {
             (link) =>
               (link.public || user) && (
                 <Link
-                  key={link.path}
+                  key={link.panav-link-improved th}
                   href={link.path}
                   className={`nav-link-improved flex items-center gap-1 px-3 py-2 rounded-md transition-colors ${
                     location === link.path
                       ? "text-gold font-medium bg-primary/30"
                       : "text-white hover:text-gold hover:bg-primary/20"
                   }`}
-                >
                   <span className="text-xl">{link.icon}</span> {link.name}
                 </Link>
               )
-          )}
-        </nav>
-
-        <div className="flex items-center gap-4">
-          {!user && !isLoading && (
+        )}
+      
+      </nav>
+      
+  className="hidden md:flex items-center g  href="https:/taa><a href="https://twitter.com/mysticarcana" target="_blank" className="text-white hover:text-gold">
+            <Twitter className="h-5 w-5" />
+          </a>
+          <a <Linkedin className="h-5 w-5" /> a>  className="flex items-center gap-4">{!user && !isLoading && (
             <div className="hidden md:flex gap-2">
               <Link
-                href="/auth?tab=login"
-                className="flex items-center px-4 py-2 text-white bg-primary/30 hover:bg-primary/50 rounded-md transition-colors duration-300 nav-link-improved"
-              >
-                <User className="mr-2 h-4 w-4 text-gold" />
-                Sign In
-              </Link>
+                 className="flex items-center px-4 py-2 text-whit   >     Sign In    </Link>
               <Link
                 href="/auth?tab=register"
                 className="flex items-center px-4 py-2 text-white border border-gold/50 hover:bg-gold/10 rounded-md transition-colors duration-300 nav-link-improved"
-              >
                 <User className="mr-2 h-4 w-4 text-gold" />
                 Sign Up
               </Link>
             </div>
           )}
-          <Link
+          <Link duration-300 nav-link-improved
             href="/settings?tab=subscription"
-            className="hidden md:block px-4 py-2 border border-gold rounded-full text-gold hover:bg-gold/10 transition-colors duration-300 font-medium button-improved text-white"
+            className="hidden md:mr-2 block px-4 py-2 border border-gold rounded-full text-gold hover:bg-gold/10 transition-colors duration-300 font-medium button-improved text-white"
           >
             Upgrade to Premium
           </Link>
 
-          {user && (
+          {user && ( duration-300 nav-link-improved
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
+              <DropdownMenuTriggemr-2 r asChild>
+                n
                   variant="ghost"
                   className="p-0 h-9 w-9 rounded-full overflow-hidden"
-                >
-                  <div className="w-9 h-9 rounded-full bg-primary border border-gold/50 flex items-center justify-center overflow-hidden">
+            
+          <Link
+            href="/settings?tab=subscription"
+            className="hidden md:block px-4 py-2 border border-gold rounded-full text-gold hover:bg-gold/10 transition-colors duration-300 font-medium button-improved text-white"    >
+          >                  <div className="w-9 h-9 rounded-full bg-primary border border-gold/50 flex items-center justify-center overflow-hidden">
+            Upgrade to Premium
+          </Link>
+
                     {user.profileImage ? (
                       <img
                         src={user.profileImage}
-                        alt={user.username}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <User className="h-5 w-5 text-gold" />
-                    )}
-                  </div>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                align="end"
-                className="w-56 bg-background border-gold/20 shadow-xl"
+                       
+                  alt={user.usern
+a                 me} overflow-hidden
+                
+                  <div className="w-9 h-9 rounded-full bg-primary border border-gold/50 flex items-center justify-center overflow-hidden">
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <User className="h-5 w-5 text-gold" />
+                      )}
+                    </div>
+                  </Button>
+                </DropdownMenuTrigger>
+                <Dropd
+                  </div>ownMenuContent
+                side="right"
+                className="w-56 bg-background border-gold/20 shadow-xl space-y-4"
               >
-                <div className="flex items-center justify-start p-2">
-                  <div className="flex flex-col space-y-1 leading-none">
-                    <p className="font-medium text-foreground">
-                      {user.username}
+                <div mr<dhtssName="flex flex-col space-y-1 leading-none">
+                      {user.u56rname}4
                     </p>
-                    <p className="w-full truncate text-xs text-muted-foreground">
-                      {user.email}
-                    </p>
-                  </div>
-                </div>
-                <DropdownMenuSeparator />
-                {[
+                    <p classNameflex items-center justify-start =-2">
+                  <div className="flex fle"wcolfsuace-l-1 leadinglnonetruncate text-xs text-muted-foreground">
+                        {user.email}
+                      
+                    
+                      </p>w-full runcat te
+                  </  div>
+                </  div>
+                  <DropdownMenuSeparator />
+                {/div>
+                <[
                   { label: "Profile", icon: <User />, href: "/profile" },
                   {
-                    label: "Reading History",
+                   
+                    label: "Reading Reading H
+i                   story",
+                   ,
+                 
                     icon: <History />,
-                    href: "/readings",
+                   
+                    href: "/read & Ritualsin
+g                   s",
+                   ,
+                 
                   },
-                  { label: "Journal", icon: <BookOpen />, href: "/journal" },
-                  {
-                    label: "Blog & Rituals",
-                    icon: <BookText />,
-                    href: "/blog",
-                  },
-                  { label: "Settings", icon: <Settings />, href: "/settings" },
                   {
                     label: "Premium Upgrade",
                     icon: <CreditCard />,
                     href: "/upgrade",
                   },
-                ].map(({ label, icon, href }) => (
-                  <DropdownMenuItem asChild key={href}>
-                    <Link
+                  { label: "Journal", icon: <BookOpen />, href: "/journal" },
+                  {
+                    label: "Blog & Rituals",
+                    icon: <BookText />,
+                    href: "/blog"cursor-pointer ,
+                  },
+                  { label: "Settings", icon: <Settings />, hremr-2 f: "/settings" },
+                  {
+                    label: "Premium Upgrade",
+                    icon: <CreditCard />,
+                    href: "/upgrade",
+                  },
+                ].map(({ label, i
+                 con, href })curorpoifcus:txt
+                 }
+                  disabled={isLoading
+                
+                  <DropdownMenuItem amr-2 sChild key={href}>
+                    <Linko
                       href={href}
                       className="cursor-pointer flex items-center"
                     >
-                      {React.cloneElement(icon, { className: "mr-2 h-4 w-4" })}
+           }
+
+          {/* Sign In link moved to the top section */           {React.cloneElement(icon, { className: "mr-2 h-4 w-4" })}
                       <span>{label}</span>
                     </Link>
                   </DropdownMenuItem>
                 ))}
-                <DropdownMenuSeparator />
+                <DropdownMenuSeparatorgold
                 <DropdownMenuItem
                   className="cursor-pointer text-red-500 focus:text-red-500"
-                  onClick={handleLogout}
+                 lick={handleLogout}
                   disabled={isLoading}
                 >
-                  <LogOut className="mr-2 h-4 w-4" />
-                  <span>Log out</span>
+            
+      <LogOut className="mr-2 h-4 w-4" />
+      {/* Mobile Menu */}                  <span>Log out</span>
                 </DropdownMenuItem>
-              </DropdownMenuContent>
+              </DropdownMenuContent>-5
             </DropdownMenu>
           )}
 
@@ -183,10 +217,10 @@ export default function Navbar() {
 
           <Button
             variant="ghost"
-            size="icon"
+            size="icon"2
             className="md:hidden text-gold"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
+            onClick={() => text-gold setgoldp1n(fonMemepiumen)}
+          >uted
             <Menu className="h-6 w-6" />
           </Button>
         </div>
@@ -195,26 +229,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-background border-b border-gold/20 py-4 px-4 animate-in slide-in-from-top-5 duration-200 shadow-lg">
-          <nav className="flex flex-col space-y-4">
-            {navLinks.map(
-              (link) =>
-                (link.public || user) && (
-                  <Link
-                    key={link.path}
-                    href={link.path}
-                    className={`flex items-center gap-2 px-2 py-2 rounded-md ${
-                      location === link.path
-                        ? "text-gold bg-gold/10 font-medium"
-                        : "text-foreground hover:text-gold hover:bg-muted"
-                    }`}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <span className="text-xl">{link.icon}</span>
-                    {link.name}
-                  </Link>
-                )
-            )}
-            {user && (
+          <na clalex ser && (
               <>
                 <Link
                   href="/profile"
