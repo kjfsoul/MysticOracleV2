@@ -2,7 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 
 // Use environment variables for Supabase credentials
 const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY; // Assuming ANON key is needed here
+const supabaseAnonKey = process.env.SUPABASE_KEY; // Assuming ANON key is needed here
 
 if (!supabaseUrl || !supabaseAnonKey) {
   console.error("FATAL ERROR in supindex.js: Missing SUPABASE_URL or SUPABASE_ANON_KEY environment variables.");
