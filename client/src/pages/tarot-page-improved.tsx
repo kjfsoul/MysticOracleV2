@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'wouter';
+import DailyCardImproved from '@/components/tarot/daily-card-improved';
+import TarotSpread from '@/components/tarot/tarot-spread';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Badge } from '@/components/ui/badge';
-import { useToast } from '@/hooks/use-toast';
-import { Sparkles, BookOpen, HelpCircle, ArrowRight, Calendar } from 'lucide-react';
-import DailyCardImproved from '@/components/tarot/daily-card-improved';
-import TarotSpread from '@/components/tarot/tarot-spread';
 import { TarotCard, allTarotCards } from '@/data/tarot-cards';
-import { getDailyCard } from '@/utils/tarot-utils';
+import { useToast } from '@/hooks/use-toast';
+import { AnimatePresence, motion } from 'framer-motion';
+import { BookOpen, Calendar, Sparkles } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { Link } from 'wouter';
 
 // Define spread types
 type SpreadType = 'daily' | 'three-card' | 'celtic-cross' | 'horseshoe';
@@ -91,7 +90,7 @@ export default function TarotPageImproved() {
         const card = availableCards.splice(randomIndex, 1)[0];
         
         // Determine if card is reversed (25% chance)
-        const isReversed = Math.random() < 0.25;
+        const isReversed = false;
         
         // Add to selected cards
         selectedCards.push({
@@ -379,12 +378,12 @@ export default function TarotPageImproved() {
                         )}
                       </CardHeader>
                       <CardContent>
-                        <TarotSpread
-                          cards={spreadCards}
-                          spreadType={selectedSpread === 'three-card' ? 'three-card' : selectedSpread === 'celtic-cross' ? 'celtic-cross' : 'horseshoe'}
-                          title={getSpreadInfo(selectedSpread).title}
-                          description={userQuestion ? `Based on your question: "${userQuestion}"` : 'Tap on any card to view its detailed meaning'}
-                        />
+<TarotSpread
+  cards={spreadCards}
+  spreadType={selectedSpread === 'three-card' ? 'three-card' : selectedSpread === 'celtic-cross' ? 'celtic-cross' : 'horseshoe'}
+  title={getSpreadInfo(selectedSpread).title}
+  description={userQuestion ? `Based on your question: "${userQuestion}"` : 'Click on any card to flip and view its detailed meaning'}
+/>
                       </CardContent>
                       <CardFooter className="flex flex-col sm:flex-row gap-4">
                         <Button

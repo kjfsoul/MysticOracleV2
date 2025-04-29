@@ -10,7 +10,7 @@ export function getTarotCardImagePath(card: TarotCard): string {
     console.warn(
       "getTarotCardImagePath called with null card, returning placeholder."
     );
-    return "/images/tarot/placeholders/card-back.svg";
+    return "";
   }
 
   // Use pre-defined path if available (e.g., for custom decks)
@@ -93,9 +93,7 @@ export function handleTarotImageError(
   setFallbackImage: (path: string) => void
 ): void {
   const cardName = card?.name || "Unknown Card";
-  console.warn(
-    `Error loading image: ${failedPath} for card: ${cardName}. Using placeholder.`
-  );
+console.warn("getTarotCardImagePath called with null card, returning null.");
 
   let fallbackPath = "/images/tarot/placeholders/card-back.svg"; // Generic fallback
 
@@ -190,17 +188,18 @@ export const fetchDailyCard = async (userId?: string): Promise<DailyCardData> =>
 // This function is used specifically for the daily card feature
 // It's simpler than the more complex one above
 export const getSimpleTarotCardImagePath = (card: TarotCard): string => {
-  // Use card_id or generate slug for filename, stripping "-of-" for minor arcana filenames
   const rawId = card.card_id || card.name.toLowerCase().replace(/\s+/g, "-");
   const cardId = rawId.replace(/-of-/g, "-");
-  // Determine if minor or major arcana based on suit presence
+  const arcana = card.arcana?.toLowerCase();
   const suit = card.suit ? card.suit.toLowerCase() : null;
-  if (suit) {
-    // Path for minor arcana
+
+  if (arcana === "major") {
+    return `/images/tarot/decks/rider-waite/major/${cardId}.jpg`;
+  } else if (arcana === "minor" && suit) {
     return `/images/tarot/decks/rider-waite/minor/${suit}/${cardId}.jpg`;
+  } else {
+    return `/images/tarot/decks/rider-waite/card-back.jpg`;
   }
-  // Path for major arcana (note: ensure cardId matches naming like "00-the-fool")
-  return `/images/tarot/decks/rider-waite/major/${cardId}.jpg`;
 };
 
 export const saveFeedback = async (choice: string, userId?: string): Promise<void> => {
