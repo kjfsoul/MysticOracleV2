@@ -2,15 +2,18 @@
 import { createClient } from "@supabase/supabase-js";
 
 // Use environment variables for client-side
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabase_Url = import.meta.env.VITE_SUPABASE_URL;
+const supabase_Anon_Key = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 // Validate environment variables
-if (!supabaseUrl || !supabaseAnonKey) {
+if (!supabase_Url || !supabase_Anon_Key) {
   console.error("Missing Supabase environment variables");
+} else {
+  console.log("Supabase URL:", supabase_Url);
+  console.log("Supabase Anon Key:", supabase_Anon_Key);
 }
 
 export const supabaseClient = createClient(
-  supabaseUrl as string,
-  supabaseAnonKey as string
+  supabase_Url as string,
+  supabase_Anon_Key as string
 );
