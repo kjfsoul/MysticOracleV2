@@ -28,7 +28,7 @@ export default defineConfig({
       outDir: path.resolve(__dirname, "dist/public"),
       emptyOutDir: true,
       rollupOptions: {
-        external: ["react-helmet", "react/jsx-runtime"], // Add react/jsx-runtime to external modules
+        external: ["react-helmet"], // Remove react/jsx-runtime from external modules
       },
     },
   server: {
