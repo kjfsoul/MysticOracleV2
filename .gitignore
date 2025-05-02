@@ -40,3 +40,10 @@ coverage
 # Misc
 *.tar.gz
 vite.config.ts.*
+.netlify/
+dist/
+crewai/venv/
+.netlify/
+dist/
+crewai/venv/
+.netlify/plugins/
