@@ -12,6 +12,7 @@ server/public
 .env
 .env.*
 !.env.example
+.env.local
 
 # IDE and OS files
 .DS_Store
