@@ -71,10 +71,14 @@ const scriptsWithReferences = [];
 
 scriptFiles.forEach(scriptFile => {
   const content = fs.readFileSync(scriptFile, 'utf8');
-  if (content.includes('../client/client/src/') || content.includes('./client/client/src/') || content.includes('/client/src/')) {
+  if (
+    content.includes("../src/") ||
+    content.includes("./src/") ||
+    content.includes("/src/")
+  ) {
     scriptsWithReferences.push({
       file: scriptFile,
-      content
+      content,
     });
   }
 });
