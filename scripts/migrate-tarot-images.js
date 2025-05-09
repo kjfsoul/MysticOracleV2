@@ -1,6 +1,6 @@
 const fs = require('fs-extra');
 const sharp = require('sharp');
-const { allTarotCards } = require('../client/src/data/tarot-cards');
+const { allTarotCards } = require('../client/client/src/data/tarot-cards');
 
 async function convertImage(sourcePath, targetPath) {
   try {

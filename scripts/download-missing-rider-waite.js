@@ -16,7 +16,7 @@ const existsAsync = promisify(fs.exists);
 const readFileAsync = promisify(fs.readFile);
 
 // Configuration
-const TAROT_CARDS_PATH = path.join(__dirname, '../client/src/data/tarot-cards.ts');
+const TAROT_CARDS_PATH = path.join(__dirname, '../client/client/src/data/tarot-cards.ts');
 const PUBLIC_IMAGES_PATH = path.join(__dirname, '../public/images');
 const RIDER_WAITE_DIR = path.join(PUBLIC_IMAGES_PATH, 'tarot', 'decks', 'rider-waite', 'major');
 const PLACEHOLDERS_DIR = path.join(PUBLIC_IMAGES_PATH, 'tarot', 'placeholders');

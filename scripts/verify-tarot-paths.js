@@ -15,7 +15,7 @@ const writeFileAsync = promisify(fs.writeFile);
 const existsAsync = promisify(fs.exists);
 
 // Paths
-const TAROT_CARDS_PATH = path.join(__dirname, '../src/data/tarot-cards.ts');
+const TAROT_CARDS_PATH = path.join(__dirname, '../client/client/src/data/tarot-cards.ts');
 const PUBLIC_IMAGES_PATH = path.join(__dirname, '../public/images');
 const REPORT_PATH = path.join(__dirname, '../tarot-image-report.json');
 
