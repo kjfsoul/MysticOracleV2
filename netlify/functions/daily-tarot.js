@@ -117,6 +117,7 @@ exports.handler = async (event, context) => {
         meaningReversed: cardData.reversed_meaning || "", // Expects 'reversed_meaning'
         symbols: cardData.symbols || [], // Expects 'symbols' (text[] or jsonb)
         colors: cardData.colors || [], // Expects 'colors' (text[] or jsonb)
+        deckId: "rider-waite", // Default to Rider-Waite for daily cards
         // imagePath: getTarotCardImagePath(cardData) // Generate path server-side if needed
       };
       console.log("MAPPING: Data mapping complete.");

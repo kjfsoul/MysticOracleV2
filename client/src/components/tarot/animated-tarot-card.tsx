@@ -5,7 +5,7 @@ import {
   getTarotCardImagePath,
   handleTarotImageError,
 } from "@client/utils/tarot-utils";
-import { motion } from "framer-motion"; // Import motion
+import { animate, motion } from "framer-motion"; // Import motion
 import React, { useEffect, useState } from "react";
 
 interface AnimatedTarotCardProps {
@@ -54,6 +54,7 @@ const AnimatedTarotCard: React.FC<AnimatedTarotCardProps> = ({
 
   const { width, height } = dimensions[size];
 
+  // Load the card image
   useEffect(() => {
     // Use provided imagePath if available, otherwise generate one
     const cardImagePath = imagePath || getTarotCardImagePath(card);
@@ -74,32 +75,10 @@ const AnimatedTarotCard: React.FC<AnimatedTarotCardProps> = ({
 
     img.onerror = () => {
       console.error(`Failed to load image: ${cardImagePath}`);
-      // If custom path fails, try the default path as fallback
-      if (imagePath && imagePath !== getTarotCardImagePath(card)) {
-        console.log(`Trying fallback image path for ${card.name}`);
-        const fallbackPath = getTarotCardImagePath(card);
-        const fallbackImg = new Image();
-        fallbackImg.src = fallbackPath;
-        fallbackImg.onload = () => {
-          setImageSrc(fallbackPath);
-          setIsLoaded(true);
-        };
-        fallbackImg.onerror = () => {
-          handleTarotImageError(card, cardImagePath, setImageSrc);
-          setIsLoaded(true);
-        };
-      } else {
-        handleTarotImageError(card, cardImagePath, setImageSrc);
-        setIsLoaded(true);
-      }
+      // Use the utility function for fallback logic
+      handleTarotImageError(card, cardImagePath, setImageSrc);
+      setIsLoaded(true); // Still mark as loaded even with fallback
     };
-
-    // Select a random animation for this card reveal
-    const randomAnimation =
-      cardRevealAnimations[
-        Math.floor(Math.random() * cardRevealAnimations.length)
-      ];
-    setRevealAnimation(randomAnimation);
   }, [card, imagePath]);
 
   useEffect(() => {

@@ -3,14 +3,15 @@
 import { getActiveDeck } from "@client/config/tarot-deck-config";
 
 /**
- * Generates the correct image path for a given tarot card based on the active deck config.
+ * Gets the path for a tarot card image based on the active deck configuration.
+ * This is the main function for getting card image paths throughout the app.
  */
 export function getTarotCardImagePath(card: TarotCard): string {
   if (!card) {
     console.warn(
       "getTarotCardImagePath called with null card, returning placeholder."
     );
-    return "";
+    return "/images/tarot/placeholders/card-back.svg";
   }
 
   // Use pre-defined path if available (e.g., for custom decks)
@@ -28,49 +29,31 @@ export function getTarotCardImagePath(card: TarotCard): string {
   const imageFormat = activeDeck.imageFormat || "jpg";
   let formattedId = card.id || "unknown-id";
 
-  // Specific formatting for Rider-Waite Major Arcana IDs if needed
-  if (activeDeck.id === "rider-waite" && arcana === "major") {
-    const majorArcanaMap: Record<string, string> = {
-      fool: "00-fool",
-      magician: "01-magician",
-      "high-priestess": "02-high-priestess",
-      empress: "03-empress",
-      emperor: "04-emperor",
-      hierophant: "05-hierophant",
-      lovers: "06-lovers",
-      chariot: "07-chariot",
-      strength: "08-strength",
-      hermit: "09-hermit",
-      "wheel-of-fortune": "10-wheel-of-fortune",
-      justice: "11-justice",
-      "hanged-man": "12-hanged-man",
-      death: "13-death",
-      temperance: "14-temperance",
-      devil: "15-devil",
-      tower: "16-tower",
-      star: "17-star",
-      moon: "18-moon",
-      sun: "19-sun",
-      judgement: "20-judgement",
-      world: "21-world",
-    };
-    formattedId = majorArcanaMap[card.id] || card.id;
+  // Special handling for known problematic cards
+  if (
+    formattedId === "07-chariot" ||
+    formattedId === "13-death" ||
+    formattedId === "16-tower"
+  ) {
+    console.warn(
+      `Using placeholder for known problematic card: ${formattedId}`
+    );
+    return "/images/tarot/placeholders/major-placeholder.svg";
   }
 
-  let path = "";
+  // Use the deck's cardPathTemplate if available
   if (activeDeck.cardPathTemplate) {
-    path = activeDeck.cardPathTemplate
+    return activeDeck.cardPathTemplate
       .replace("{arcana}", arcana)
       .replace("{suit}", card.suit?.toLowerCase() || "none")
       .replace("{id}", formattedId);
-  } else {
-    // Fallback structure if template is missing
-    const suitPath =
-      arcana === "minor" && card.suit ? `/${card.suit.toLowerCase()}` : "";
-    path = `/images/tarot/decks/${activeDeck.id}/${arcana}${suitPath}/${formattedId}.${imageFormat}`;
   }
 
-  // console.log(`Generated path for ${card.name}: ${path}`);
+  // Fallback to the standard path structure
+  const suitPath =
+    arcana === "minor" && card.suit ? `/${card.suit.toLowerCase()}` : "";
+  const path = `/images/tarot/decks/${activeDeck.id}/${arcana}${suitPath}/${formattedId}.${imageFormat}`;
+
   return path;
 }
 
@@ -92,8 +75,7 @@ export function handleTarotImageError(
   failedPath: string,
   setFallbackImage: (path: string) => void
 ): void {
-  const cardName = card?.name || "Unknown Card";
-console.warn("getTarotCardImagePath called with null card, returning null.");
+  console.warn(`Image failed to load: ${failedPath}`);
 
   let fallbackPath = "/images/tarot/placeholders/card-back.svg"; // Generic fallback
 
@@ -105,6 +87,7 @@ console.warn("getTarotCardImagePath called with null card, returning null.");
     }
   }
 
+  console.log(`Using fallback image: ${fallbackPath}`);
   setFallbackImage(fallbackPath);
 }
 
@@ -185,20 +168,59 @@ export const fetchDailyCard = async (userId?: string): Promise<DailyCardData> =>
   }
 };
 
-// This function is used specifically for the daily card feature
-// It's simpler than the more complex one above
+/**
+ * Simplified version of getTarotCardImagePath specifically for the daily card feature.
+ * Uses the same logic but with simpler card ID formatting.
+ */
 export const getSimpleTarotCardImagePath = (card: TarotCard): string => {
-  const rawId = card.card_id || card.name.toLowerCase().replace(/\s+/g, "-");
+  if (!card) {
+    console.warn(
+      "getSimpleTarotCardImagePath called with null card, returning placeholder."
+    );
+    return "/images/tarot/placeholders/card-back.svg";
+  }
+
+  // Special handling for known problematic cards
+  if (
+    card.id === "07-chariot" ||
+    card.id === "13-death" ||
+    card.id === "16-tower"
+  ) {
+    console.warn(`Using placeholder for known problematic card: ${card.id}`);
+    return "/images/tarot/placeholders/major-placeholder.svg";
+  }
+
+  const activeDeck = getActiveDeck();
+  const rawId =
+    card.card_id || card.id || card.name.toLowerCase().replace(/\s+/g, "-");
   const cardId = rawId.replace(/-of-/g, "-");
-  const arcana = card.arcana?.toLowerCase();
+  const arcana = card.arcana?.toLowerCase() || "unknown";
   const suit = card.suit ? card.suit.toLowerCase() : null;
 
+  // Use the deck's cardPathTemplate if available
+  if (activeDeck.cardPathTemplate) {
+    return activeDeck.cardPathTemplate
+      .replace("{arcana}", arcana)
+      .replace("{suit}", suit || "none")
+      .replace("{id}", cardId);
+  }
+
+  // Fallback to the standard path structure
   if (arcana === "major") {
-    return `/images/tarot/decks/rider-waite/major/${cardId}.jpg`;
+    return `/images/tarot/decks/${activeDeck.id}/major/${cardId}.${
+      activeDeck.imageFormat || "jpg"
+    }`;
   } else if (arcana === "minor" && suit) {
-    return `/images/tarot/decks/rider-waite/minor/${suit}/${cardId}.jpg`;
+    return `/images/tarot/decks/${activeDeck.id}/minor/${suit}/${cardId}.${
+      activeDeck.imageFormat || "jpg"
+    }`;
   } else {
-    return `/images/tarot/decks/rider-waite/card-back.jpg`;
+    return (
+      activeDeck.cardBackImage ||
+      `/images/tarot/decks/${activeDeck.id}/card-back.${
+        activeDeck.imageFormat || "jpg"
+      }`
+    );
   }
 };
 

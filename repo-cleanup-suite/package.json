@@ -1,0 +1,8 @@
+{
+  "name": "repo-cleanup-suite",
+  "version": "1.0.0",
+  "dependencies": {
+    "madge": "^5.0.0",
+    "eslint": "^8.0.0"
+  }
+}
