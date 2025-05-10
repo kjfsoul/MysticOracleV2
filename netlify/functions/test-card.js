@@ -1,12 +1,12 @@
 // netlify/functions/test-card.js
-exports.handler = async (event, context) => {
+export const handler = async (event, context) => {
   console.log("Test card function invoked");
-  
+
   // CORS headers for all responses
   const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Content-Type",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
   };
 
   // Handle preflight OPTIONS request
@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ message: "CORS preflight successful" })
+      body: JSON.stringify({ message: "CORS preflight successful" }),
     };
   }
 
@@ -34,20 +34,21 @@ exports.handler = async (event, context) => {
           keywords: ["new beginnings", "emotional awakening", "love"],
           element: "water",
           zodiacSign: null,
-          description: "The Ace of Cups represents the beginning of emotional experiences.",
+          description:
+            "The Ace of Cups represents the beginning of emotional experiences.",
           meaningUpright: "New emotional beginnings, intuition, love",
-          meaningReversed: "Emotional blockages, repressed feelings"
+          meaningReversed: "Emotional blockages, repressed feelings",
         },
         isReversed: false,
-        timestamp: new Date().toISOString()
-      })
+        timestamp: new Date().toISOString(),
+      }),
     };
   } catch (error) {
     console.error("Error in test-card function:", error);
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ error: error.message })
+      body: JSON.stringify({ error: error.message }),
     };
   }
 };

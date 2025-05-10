@@ -8,6 +8,11 @@
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
 
+# Function bundle settings
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["@supabase/supabase-js"]
+
 # API routes for serverless functions
 [[redirects]]
   from = "/api/*"
@@ -37,11 +42,6 @@
   command = "npm run dev"
   port = 5000
   targetPort = 5000
-
-# Function bundle settings
-[functions]
-  node_bundler = "esbuild"
-  external_node_modules = ["@supabase/supabase-js"]
 
 # Edge function settings
 

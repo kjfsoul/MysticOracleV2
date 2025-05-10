@@ -1,7 +1,7 @@
 // netlify/functions/daily-tarot.js
-const { createClient } = require("@supabase/supabase-js");
+import { createClient } from "@supabase/supabase-js";
 
-exports.handler = async (event, context) => {
+export const handler = async (event, context) => {
   console.log("--- Function Invocation Start: daily-tarot ---");
   const startTime = Date.now();
 
@@ -13,32 +13,58 @@ exports.handler = async (event, context) => {
 
   if (event.httpMethod === "OPTIONS") {
     console.log("Handling OPTIONS preflight request");
-    return { statusCode: 200, headers, body: JSON.stringify({ message: "CORS preflight successful" }) };
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({ message: "CORS preflight successful" }),
+    };
   }
 
-  // --- Environment Variable Check --- 
+  // --- Environment Variable Check ---
   const supabaseUrl = process.env.SUPABASE_URL;
   const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   console.log(`ENV CHECK: SUPABASE_URL available: ${!!supabaseUrl}`);
-  console.log(`ENV CHECK: SUPABASE_SERVICE_ROLE_KEY available: ${!!supabaseKey}`);
+  console.log(
+    `ENV CHECK: SUPABASE_SERVICE_ROLE_KEY available: ${!!supabaseKey}`
+  );
 
   if (!supabaseUrl || !supabaseKey) {
-    console.error("FATAL ERROR: Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY");
-    return { statusCode: 500, headers, body: JSON.stringify({ error: "Server configuration error.", details: "Missing database credentials" }) };
+    console.error(
+      "FATAL ERROR: Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY"
+    );
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({
+        error: "Server configuration error.",
+        details: "Missing database credentials",
+      }),
+    };
   }
 
-  // --- Supabase Client Initialization --- 
+  // --- Supabase Client Initialization ---
   let supabase;
   try {
-    console.log(`INIT: Initializing Supabase client for URL: ${supabaseUrl ? supabaseUrl.substring(0, 15) + '...' : 'N/A'}`);
+    console.log(
+      `INIT: Initializing Supabase client for URL: ${
+        supabaseUrl ? supabaseUrl.substring(0, 15) + "..." : "N/A"
+      }`
+    );
     supabase = createClient(supabaseUrl, supabaseKey);
     console.log("INIT: Supabase client initialized successfully.");
   } catch (initError) {
     console.error("FATAL ERROR initializing Supabase client:", initError);
-    return { statusCode: 500, headers, body: JSON.stringify({ error: "Failed to initialize database connection.", details: initError.message }) };
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({
+        error: "Failed to initialize database connection.",
+        details: initError.message,
+      }),
+    };
   }
 
-  // --- Main Logic --- 
+  // --- Main Logic ---
   try {
     let userId = null;
     if (event.body) {
@@ -47,13 +73,18 @@ exports.handler = async (event, context) => {
         userId = body.user_id;
         console.log(`PARAM: Parsed user_id from body: ${userId}`);
       } catch (parseError) {
-        console.warn("PARAM: Could not parse request body:", parseError.message);
+        console.warn(
+          "PARAM: Could not parse request body:",
+          parseError.message
+        );
       }
     }
 
-    // --- Seed Generation --- 
+    // --- Seed Generation ---
     const today = new Date();
-    const dateString = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+    const dateString = `${today.getFullYear()}-${
+      today.getMonth() + 1
+    }-${today.getDate()}`;
     let seed = userId ? `${dateString}-${userId}` : dateString;
     console.log(`SEED: Using seed for card selection: ${seed}`);
 
@@ -64,40 +95,65 @@ exports.handler = async (event, context) => {
     }
     console.log(`SEED: Generated hash: ${hash}`);
 
-    // --- Database Query --- 
+    // --- Database Query ---
     // !! CONFIRM THIS TABLE NAME IS CORRECT IN YOUR SUPABASE PROJECT !!
     const targetTable = "tarot_card_interpretations";
-    console.log(`DB QUERY: Attempting to fetch cards from table: ${targetTable}...`);
-    const { data: cards, error: cardsError, status: queryStatus } = await supabase
-      .from(targetTable)
-      .select("*"); // Select all columns for now
+    console.log(
+      `DB QUERY: Attempting to fetch cards from table: ${targetTable}...`
+    );
+    const {
+      data: cards,
+      error: cardsError,
+      status: queryStatus,
+    } = await supabase.from(targetTable).select("*"); // Select all columns for now
 
     if (cardsError) {
-      console.error(`DB QUERY ERROR: Supabase error fetching from ${targetTable}. Status: ${queryStatus}`, cardsError);
-      throw new Error(`Database query error: ${cardsError.message} (Hint: Check table name '${targetTable}', RLS policies, and service key permissions)`);
+      console.error(
+        `DB QUERY ERROR: Supabase error fetching from ${targetTable}. Status: ${queryStatus}`,
+        cardsError
+      );
+      throw new Error(
+        `Database query error: ${cardsError.message} (Hint: Check table name '${targetTable}', RLS policies, and service key permissions)`
+      );
     }
-    console.log(`DB QUERY SUCCESS: Successfully fetched from ${targetTable}. Number of cards: ${cards ? cards.length : 'null'}`);
+    console.log(
+      `DB QUERY SUCCESS: Successfully fetched from ${targetTable}. Number of cards: ${
+        cards ? cards.length : "null"
+      }`
+    );
 
     if (!cards || cards.length === 0) {
       console.error(`DB QUERY RESULT: No cards found in table ${targetTable}.`);
-      throw new Error(`No cards found in table: ${targetTable}. Ensure the table has data.`);
+      throw new Error(
+        `No cards found in table: ${targetTable}. Ensure the table has data.`
+      );
     }
 
-    // --- Card Selection & Reversal --- 
+    // --- Card Selection & Reversal ---
     const index = Math.abs(hash) % cards.length;
     const cardData = cards[index];
-    console.log(`SELECTION: Selected card index: ${index}, Card Name: ${cardData ? cardData.name : 'N/A'}`);
+    console.log(
+      `SELECTION: Selected card index: ${index}, Card Name: ${
+        cardData ? cardData.name : "N/A"
+      }`
+    );
 
     if (!cardData) {
-        console.error(`SELECTION ERROR: Card data at index ${index} is null or undefined. Hash: ${hash}, Length: ${cards.length}`);
-        throw new Error(`Failed to retrieve valid card data at calculated index ${index}.`);
+      console.error(
+        `SELECTION ERROR: Card data at index ${index} is null or undefined. Hash: ${hash}, Length: ${cards.length}`
+      );
+      throw new Error(
+        `Failed to retrieve valid card data at calculated index ${index}.`
+      );
     }
 
     const reversalValue = Math.abs((hash >> 4) % 100);
     const isReversed = reversalValue < 30;
-    console.log(`SELECTION: Card reversal status: ${isReversed} (value: ${reversalValue})`);
+    console.log(
+      `SELECTION: Card reversal status: ${isReversed} (value: ${reversalValue})`
+    );
 
-    // --- Data Mapping --- 
+    // --- Data Mapping ---
     // !! CONFIRM ALL cardData.COLUMN_NAME MATCH YOUR TABLE SCHEMA EXACTLY !!
     console.log("MAPPING: Mapping database fields to client format...");
     let card = {};
@@ -123,33 +179,45 @@ exports.handler = async (event, context) => {
       console.log("MAPPING: Data mapping complete.");
     } catch (mappingError) {
       console.error("MAPPING ERROR: Error during data mapping:", mappingError);
-      console.error("MAPPING ERROR: Failing cardData:", JSON.stringify(cardData)); // Log the problematic data
-      throw new Error(`Data mapping error: ${mappingError.message}. Check column names.`);
+      console.error(
+        "MAPPING ERROR: Failing cardData:",
+        JSON.stringify(cardData)
+      ); // Log the problematic data
+      throw new Error(
+        `Data mapping error: ${mappingError.message}. Check column names.`
+      );
     }
 
-    // --- Optional: Log Reading --- 
+    // --- Optional: Log Reading ---
     if (userId) {
       try {
         console.log(`LOGGING: Attempting to log reading for user: ${userId}`);
         // !! CONFIRM 'user_readings' table name and schema !!
-        const { error: logError } = await supabase.from("user_readings").insert({
-          user_id: userId,
-          card_id: card.id, // Use the primary key from the interpretations table
-          is_reversed: isReversed,
-          reading_type: "daily",
-          created_at: new Date().toISOString(),
-        });
+        const { error: logError } = await supabase
+          .from("user_readings")
+          .insert({
+            user_id: userId,
+            card_id: card.id, // Use the primary key from the interpretations table
+            is_reversed: isReversed,
+            reading_type: "daily",
+            created_at: new Date().toISOString(),
+          });
         if (logError) throw logError;
         console.log("LOGGING: Reading logged successfully.");
       } catch (logError) {
-        console.warn("LOGGING WARNING: Failed to log user reading:", logError.message);
+        console.warn(
+          "LOGGING WARNING: Failed to log user reading:",
+          logError.message
+        );
         // Non-fatal, continue
       }
     }
 
-    // --- Success Response --- 
+    // --- Success Response ---
     const duration = Date.now() - startTime;
-    console.log(`--- Function execution successful. Duration: ${duration}ms. Returning card data. ---`);
+    console.log(
+      `--- Function execution successful. Duration: ${duration}ms. Returning card data. ---`
+    );
     return {
       statusCode: 200,
       headers,
@@ -159,18 +227,23 @@ exports.handler = async (event, context) => {
         timestamp: new Date().toISOString(),
       }),
     };
-
   } catch (error) {
-    // --- Catch-All Error Handler --- 
+    // --- Catch-All Error Handler ---
     const duration = Date.now() - startTime;
-    console.error(`--- FATAL ERROR during function execution after ${duration}ms: ---`, error);
+    console.error(
+      `--- FATAL ERROR during function execution after ${duration}ms: ---`,
+      error
+    );
     return {
       statusCode: 500,
       headers,
       body: JSON.stringify({
         error: `Function execution failed: ${error.message}`,
         // Only include stack in dev environments for security
-        stack: process.env.NODE_ENV === 'development' ? error.stack : 'Stack trace hidden in production',
+        stack:
+          process.env.NODE_ENV === "development"
+            ? error.stack
+            : "Stack trace hidden in production",
       }),
     };
   }
