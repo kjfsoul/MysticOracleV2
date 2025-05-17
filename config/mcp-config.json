@@ -1,32 +1,139 @@
 {
   "mcpServers": {
+    "Puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "env": {},
+      "fromGalleryId": "modelcontextprotocol.servers_puppeteer"
+    },
+    "GitHub": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "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"
+      },
+      "fromGalleryId": "modelcontextprotocol.servers_github"
+    },
+    "@magicuidesign/mcp": {
+      "command": "npx",
+      "args": ["-y", "@magicuidesign/mcp@latest"],
+      "autoApprove": [
+        "getUIComponents",
+        "getComponents",
+        "getDeviceMocks",
+        "getSpecialEffects",
+        "getAnimations",
+        "getTextAnimations",
+        "getButtons",
+        "getBackgrounds"
+      ]
+    },
+    "github.com/upstash/context7-mcp": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "autoApprove": ["resolve-library-id", "get-library-docs"]
+    },
+    "github.com/modelcontextprotocol/servers/tree/main/src/brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "BSA7N3mbuH1WLUgTE-C7wvOS5SR7Srl"
+      },
+      "autoApprove": ["brave_web_search", "brave_local_search"]
+    },
+    "github.com/executeautomation/mcp-playwright": {
+      "command": "npx",
+      "args": ["-y", "@executeautomation/playwright-mcp-server"],
+      "autoApprove": [
+        "playwright_navigate",
+        "start_codegen_session",
+        "end_codegen_session",
+        "get_codegen_session",
+        "clear_codegen_session",
+        "playwright_screenshot",
+        "playwright_click",
+        "playwright_iframe_click",
+        "playwright_fill",
+        "playwright_select",
+        "playwright_hover",
+        "playwright_evaluate",
+        "playwright_console_logs",
+        "playwright_close",
+        "playwright_get",
+        "playwright_post",
+        "playwright_put",
+        "playwright_patch",
+        "playwright_delete",
+        "playwright_expect_response",
+        "playwright_assert_response",
+        "playwright_custom_user_agent",
+        "playwright_get_visible_text",
+        "playwright_get_visible_html",
+        "playwright_go_back",
+        "playwright_go_forward",
+        "playwright_drag",
+        "playwright_press_key",
+        "playwright_save_as_pdf"
+      ]
+    },
+    "github.com/alexander-zuev/supabase-mcp-server": {
+      "command": "supabase-mcp-server",
+      "env": {
+        "QUERY_API_KEY": "qry_v1_1auPfsxLqFbFdBG0F0F1aQENGepk7WUt4EXxx3k7Gd4",
+        "SUPABASE_PROJECT_REF": "pqfsbxcbsxuyfgqrxdob",
+        "SUPABASE_DB_PASSWORD": "Amarcade#2025",
+        "SUPABASE_REGION": "us-east-1"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "get_schemas",
+        "get_tables",
+        "get_table_schema",
+        "execute_postgresql",
+        "retrieve_migrations",
+        "send_management_api_request",
+        "get_management_api_spec",
+        "get_auth_admin_methods_spec",
+        "call_auth_admin_method",
+        "live_dangerously",
+        "confirm_destructive_operation",
+        "retrieve_logs"
+      ]
+    },
+    "@21st-dev/magic": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@21st-dev/magic@latest",
+        "API_KEY=\"c4437adf873bae7b5f6ff0641fb7bcccf25b4d8b20ceb00f6eb87c131ee51a05\""
+      ]
+    },
+    "github.com/exa-labs/exa-mcp-server": {
+      "command": "node",
+      "args": [
+        "/Users/kfitz/Documents/Cline/MCP/exa-mcp-server/build/index.js"
+      ],
+      "env": {
+        "EXA_API_KEY": "9047a0dc-d722-4f29-a9c6-b4ae7b297e5b"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
     "ai-function-pack": {
       "features": ["imageGeneration", "promptEngineering", "tarotAnalysis"],
       "models": {
         "primary": "openai/dall-e-3",
         "fallback": "stability-ai/stable-diffusion"
       },
-      "plugins": [
-        "lora-adapter",
-        "textual-inversion",
-        "image-tagging"
-      ]
+      "plugins": ["lora-adapter", "textual-inversion", "image-tagging"]
     },
     "design-system": {
       "features": ["imagePreview", "cardLayout", "animations"],
-      "plugins": [
-        "responsive-images",
-        "lazy-loading",
-        "zoom-viewer"
-      ]
+      "plugins": ["responsive-images", "lazy-loading", "zoom-viewer"]
     },
     "cms-headless": {
       "features": ["assetManagement", "metadataStorage", "tarotLibrary"],
-      "plugins": [
-        "image-metadata",
-        "symbolism-tagger",
-        "dataset-builder"
-      ]
+      "plugins": ["image-metadata", "symbolism-tagger", "dataset-builder"]
     }
   },
   "webSearch": {

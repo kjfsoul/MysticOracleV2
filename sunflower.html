@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunflower Sheer Studio | Boho Chic Hairstyling</title>
+  <!-- Favicon - using data URI to avoid 404 error -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌻</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --color-primary: #E3B448; /* Sunflower Yellow */
+      --color-secondary: #CBD18F; /* Sage Green */
+      --color-accent: #E28743; /* Terracotta */
+      --color-dark: #3A3042; /* Deep Purple */
+      --color-light: #FBF7F0; /* Cream */
+      --color-white: #FFFFFF;
+      --color-black: #1A1A1A;
+      --font-primary: 'Playfair Display', serif;
+      --font-secondary: 'Poppins', sans-serif;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: var(--font-secondary);
+      color: var(--color-dark);
+      line-height: 1.6;
+      background-color: var(--color-light);
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header */
+    header {
+      background-color: var(--color-white);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      color: var(--color-dark);
+      font-size: 20px;
+    }
+    
+    .logo-text {
+      font-family: var(--font-primary);
+      font-weight: 700;
+    }
+    
+    .logo-text span {
+      display: block;
+      font-size: 12px;
+      font-family: var(--font-secondary);
+      font-weight: 400;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: var(--color-dark);
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
+    
+    nav a:hover {
+      color: var(--color-accent);
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--color-primary);
+      transition: width 0.3s;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    .cta-button {
+      background-color: var(--color-primary);
+      color: var(--color-dark);
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: inline-block;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background: linear-gradient(135deg, var(--color-light) 0%, var(--color-secondary) 100%);
+      overflow: hidden;
+      margin-top: 70px; /* account for fixed header */
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%23E3B448" opacity="0.1"/></svg>');
+      background-size: 300px;
+      opacity: 0.3;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      padding: 20px;
+    }
+    
+    .hero h1 {
+      font-family: var(--font-primary);
+      font-size: 4rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      color: var(--color-dark);
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: var(--color-dark);
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .btn-secondary {
+      background-color: transparent;
+      border: 2px solid var(--color-primary);
+      color: var(--color-dark);
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    
+    .btn-secondary:hover {
+      background-color: var(--color-primary);
+      color: var(--color-dark);
+    }
+    
+    .hero-image {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50%;
+      height: 80%;
+      background: linear-gradient(45deg, var(--color-accent) 0%, var(--color-primary) 100%);
+      border-radius: 20px 0 0 20px;
+      box-shadow: -10px 10px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .sunflower-icon {
+      font-size: 15rem;
+      color: rgba(255,255,255,0.2);
+      transform: rotate(15deg);
+    }
+    
+    /* Services Section */
+    .services {
+      padding: 100px 0;
+      background-color: var(--color-white);
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .section-header h2 {
+      font-family: var(--font-primary);
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--color-primary);
+    }
+    
+    .section-header p {
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+    
+    .service-card {
+      background-color: var(--color-light);
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      background-color: var(--color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 30px;
+      color: var(--color-dark);
+    }
+    
+    .service-card h3 {
+      font-family: var(--font-primary);
+      margin-bottom: 15px;
+    }
+    
+    .service-card p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+    
+    .service-link {
+      color: var(--color-accent);
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+    }
+    
+    .service-link i {
+      margin-left: 5px;
+      transition: transform 0.3s;
+    }
+    
+    .service-link:hover i {
+      transform: translateX(5px);
+    }
+    
+    /* About Preview */
+    .about-preview {
+      padding: 100px 0;
+      background-color: var(--color-light);
+    }
+    
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      padding: 0 20px;
+    }
+    
+    .about-image {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 400px;
+      background: linear-gradient(45deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .about-image-icon {
+      font-size: 8rem;
+      color: rgba(255,255,255,0.2);
+    }
+    
+    .about-text h2 {
+      font-family: var(--font-primary);
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .about-text p {
+      margin-bottom: 20px;
+      color: #444;
+    }
+    
+    .signature {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      margin-top: 30px;
+      color: var(--color-accent);
+    }
+    
+    /* Gallery Preview */
+    .gallery-preview {
+      padding: 100px 0;
+      background-color: var(--color-white);
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      padding: 0 20px;
+    }
+    
+    .gallery-item {
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      background: linear-gradient(to bottom right, var(--color-primary), var(--color-accent));
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .gallery-item-icon {
+      font-size: 2rem;
+      color: rgba(255,255,255,0.3);
+    }
+    
+    .gallery-cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      padding: 80px 0;
+      background-color: var(--color-primary);
+      text-align: center;
+    }
+    
+    .cta-content {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .cta-content h2 {
+      font-family: var(--font-primary);
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--color-dark);
+    }
+    
+    .cta-content p {
+      margin-bottom: 30px;
+      color: var(--color-dark);
+      font-size: 1.2rem;
+    }
+    
+    .btn-lg {
+      padding: 15px 30px;
+      font-size: 1.1rem;
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: var(--color-dark);
+      color: var(--color-white);
+      padding: 80px 0 30px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+      padding: 0 20px;
+    }
+    
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .footer-logo-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      color: var(--color-dark);
+      font-size: 20px;
+    }
+    
+    .footer-logo-text {
+      font-family: var(--font-primary);
+      font-weight: 700;
+      color: var(--color-white);
+    }
+    
+    .footer h3 {
+      font-family: var(--font-primary);
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--color-primary);
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--color-primary);
+    }
+    
+    .footer-contact p {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+    
+    .footer-contact i {
+      margin-right: 10px;
+      color: var(--color-primary);
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      transition: background-color 0.3s;
+    }
+    
+    .footer-social a:hover {
+      background-color: var(--color-primary);
+      color: var(--color-dark);
+    }
+    
+    .footer-hours li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      color: #ccc;
+    }
+    
+    .footer-hours span {
+      font-weight: 500;
+      color: var(--color-white);
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      color: #999;
+      font-size: 0.9rem;
+      padding: 0 20px;
+    }
+    
+    .footer-bottom a {
+      color: #ccc;
+      text-decoration: none;
+    }
+    
+    .footer-bottom a:hover {
+      color: var(--color-primary);
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+      
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-image {
+        order: -1;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+      
+      .hero-image {
+        display: none;
+      }
+      
+      .hero-content {
+        max-width: 100%;
+        text-align: center;
+      }
+      
+      .hero-buttons {
+        justify-content: center;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-inner container">
+      <div class="logo">
+        <div class="logo-icon">🌻</div>
+        <div class="logo-text">
+          Sunflower Sheer Studio
+          <span>Boho Chic Hairstyling</span>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="cta-button">Book Now</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content container">
+      <h1>Embrace Your Boho Chic Style</h1>
+      <p>Discover the art of effortless beauty with our signature hairstyling that celebrates individuality and style.</p>
+      <div class="hero-buttons">
+        <a href="#services" class="cta-button">Our Services</a>
+        <a href="#about" class="btn-secondary">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="sunflower-icon">🌻</div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Services</h2>
+        <p>We offer an array of hair styling and beauty treatments, all delivered with a boho spirit.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-cut"></i></div>
+          <h3>Haircut & Style</h3>
+          <p>Custom cuts and styling tailored for your personal flair.</p>
+          <a href="#contact" class="service-link">Book Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+          <h3>Color & Highlights</h3>
+          <p>Add a pop of color or go for a full transformation.</p>
+          <a href="#contact" class="service-link">Book Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-spa"></i></div>
+          <h3>Hair Treatments</h3>
+          <p>Nourish and revitalize your hair with our exclusive treatments.</p>
+          <a href="#contact" class="service-link">Book Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Preview -->
+  <section class="about-preview" id="about">
+    <div class="container about-content">
+      <div class="about-text">
+        <h2>About Us</h2>
+        <p>At Sunflower Sheer Studio, our philosophy is rooted in embracing the beauty of natural, free-spirited style. Our team is dedicated to enhancing your unique charm with every cut and color.</p>
+        <p class="signature">— The Sunflower Team</p>
+      </div>
+      <div class="about-image">
+        <div class="about-image-icon">🌻</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Preview -->
+  <section class="gallery-preview" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <h2>Gallery</h2>
+        <p>Browse through our work and get inspired by our latest transformations.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <div class="gallery-item-icon"><i class="fas fa-camera-retro"></i></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-icon"><i class="fas fa-camera-retro"></i></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-icon"><i class="fas fa-camera-retro"></i></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-icon"><i class="fas fa-camera-retro"></i></div>
+        </div>
+      </div>
+      <div class="gallery-cta">
+        <a href="#contact" class="cta-button">View Full Gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="contact">
+    <div class="container cta-content">
+      <h2>Ready to Transform Your Look?</h2>
+      <p>Book your appointment today and let us bring your boho chic style to life.</p>
+      <a href="mailto:bookings@sunflowersheerstudio.com" class="cta-button btn-lg">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-logo-icon">🌻</div>
+          <div class="footer-logo-text">Sunflower Sheer Studio</div>
+        </div>
+        <p>Your ultimate destination for boho chic hairstyling and beauty.</p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Boho Street, Style City</p>
+        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+        <p><i class="fas fa-envelope"></i> info@sunflowersheerstudio.com</p>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Sunflower Sheer Studio. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a></p>
+    </div>
+  </footer>
+</body>
+</html>
