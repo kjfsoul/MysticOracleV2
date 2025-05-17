@@ -10,7 +10,7 @@
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-github"],
       "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "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"
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PAT}"
       },
       "fromGalleryId": "modelcontextprotocol.servers_github"
     },
@@ -37,7 +37,7 @@
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-brave-search"],
       "env": {
-        "BRAVE_API_KEY": "BSA7N3mbuH1WLUgTE-C7wvOS5SR7Srl"
+        "BRAVE_API_KEY": "${BRAVE_API_KEY}"
       },
       "autoApprove": ["brave_web_search", "brave_local_search"]
     },
@@ -79,10 +79,10 @@
     "github.com/alexander-zuev/supabase-mcp-server": {
       "command": "supabase-mcp-server",
       "env": {
-        "QUERY_API_KEY": "qry_v1_1auPfsxLqFbFdBG0F0F1aQENGepk7WUt4EXxx3k7Gd4",
-        "SUPABASE_PROJECT_REF": "pqfsbxcbsxuyfgqrxdob",
-        "SUPABASE_DB_PASSWORD": "Amarcade#2025",
-        "SUPABASE_REGION": "us-east-1"
+        "QUERY_API_KEY": "${QUERY_API_KEY}",
+        "SUPABASE_PROJECT_REF": "${SUPABASE_PROJECT_REF}",
+        "SUPABASE_DB_PASSWORD": "${SUPABASE_DB_PASSWORD}",
+        "SUPABASE_REGION": "${SUPABASE_REGION}"
       },
       "disabled": false,
       "autoApprove": [
