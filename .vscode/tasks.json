@@ -1,0 +1,102 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start All Agents",
+      "type": "shell",
+      "command": "node ${workspaceFolder}/node_modules/autonomous-agent-system/src/start-all-agents.js",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "icon": {
+        "id": "play",
+        "color": "terminal.ansiGreen"
+      }
+    },
+    {
+      "label": "Agent Status Report",
+      "type": "shell",
+      "command": "node ${workspaceFolder}/node_modules/autonomous-agent-system/src/status-report.js",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      },
+      "icon": {
+        "id": "dashboard",
+        "color": "terminal.ansiBlue"
+      }
+    },
+    {
+      "label": "Enable Away Mode",
+      "type": "shell",
+      "command": "node ${workspaceFolder}/node_modules/autonomous-agent-system/scripts/enable-away-mode.js",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      },
+      "icon": {
+        "id": "rocket",
+        "color": "terminal.ansiGreen"
+      }
+    },
+    {
+      "label": "Disable Away Mode",
+      "type": "shell",
+      "command": "node ${workspaceFolder}/node_modules/autonomous-agent-system/scripts/disable-away-mode.js",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      },
+      "icon": {
+        "id": "stop",
+        "color": "terminal.ansiYellow"
+      }
+    },
+    {
+      "label": "Configure Agents",
+      "type": "shell",
+      "command": "node ${workspaceFolder}/node_modules/autonomous-agent-system/src/configure-agent-env.js",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      },
+      "icon": {
+        "id": "gear",
+        "color": "terminal.ansiMagenta"
+      }
+    },
+    {
+      "label": "View Agent Logs",
+      "type": "shell",
+      "command": "code ${workspaceFolder}/.mcp/logs",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      },
+      "icon": {
+        "id": "book",
+        "color": "terminal.ansiCyan"
+      }
+    }
+  ]
+}

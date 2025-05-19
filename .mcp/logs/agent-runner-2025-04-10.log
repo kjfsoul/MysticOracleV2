@@ -1,0 +1,1442 @@
+[2025-04-10T05:12:24.362Z] [INFO] Starting agent runner...
+[2025-04-10T05:12:24.362Z] [INFO] Scheduling tasks for agent: deployment
+[2025-04-10T05:12:24.362Z] [INFO] Scheduling task: deployment/deploy (0 */4 * * *)
+[2025-04-10T05:12:24.364Z] [INFO] Scheduling tasks for agent: status
+[2025-04-10T05:12:24.364Z] [INFO] Scheduling task: status/status-report (0 */2 * * *)
+[2025-04-10T05:12:24.365Z] [INFO] Scheduling tasks for agent: code
+[2025-04-10T05:12:24.365Z] [INFO] Scheduling task: code/lint (30 */4 * * *)
+[2025-04-10T05:12:24.365Z] [INFO] Scheduling task: code/test (45 */4 * * *)
+[2025-04-10T05:12:24.365Z] [INFO] Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+[2025-04-10T05:12:24.365Z] [INFO] Scheduling status report every 30 minutes
+[2025-04-10T05:12:24.366Z] [SUCCESS] Agent runner started successfully
+[2025-04-10T05:13:35.982Z] [INFO] Starting agent runner...
+[2025-04-10T05:13:35.984Z] [INFO] Scheduling tasks for agent: deployment
+[2025-04-10T05:13:35.984Z] [INFO] Scheduling task: deployment/deploy (0 */4 * * *)
+[2025-04-10T05:13:35.986Z] [INFO] Scheduling tasks for agent: status
+[2025-04-10T05:13:35.986Z] [INFO] Scheduling task: status/status-report (0 */2 * * *)
+[2025-04-10T05:13:35.986Z] [INFO] Scheduling tasks for agent: code
+[2025-04-10T05:13:35.986Z] [INFO] Scheduling task: code/lint (30 */4 * * *)
+[2025-04-10T05:13:35.987Z] [INFO] Scheduling task: code/test (45 */4 * * *)
+[2025-04-10T05:13:35.987Z] [INFO] Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+[2025-04-10T05:13:35.987Z] [INFO] Scheduling status report every 30 minutes
+[2025-04-10T05:13:35.988Z] [SUCCESS] Agent runner started successfully
+[2025-04-10T05:13:56.221Z] [INFO] Received SIGINT signal. Shutting down...
+[2025-04-10T05:14:25.223Z] [INFO] Starting agent runner...
+[2025-04-10T05:14:25.225Z] [INFO] Scheduling tasks for agent: deployment
+[2025-04-10T05:14:25.225Z] [INFO] Scheduling task: deployment/deploy (0 */4 * * *)
+[2025-04-10T05:14:25.227Z] [INFO] Scheduling tasks for agent: status
+[2025-04-10T05:14:25.227Z] [INFO] Scheduling task: status/status-report (0 */2 * * *)
+[2025-04-10T05:14:25.228Z] [INFO] Scheduling tasks for agent: code
+[2025-04-10T05:14:25.228Z] [INFO] Scheduling task: code/lint (30 */4 * * *)
+[2025-04-10T05:14:25.228Z] [INFO] Scheduling task: code/test (45 */4 * * *)
+[2025-04-10T05:14:25.228Z] [INFO] Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+[2025-04-10T05:14:25.229Z] [INFO] Scheduling status report every 30 minutes
+[2025-04-10T05:14:25.230Z] [SUCCESS] Agent runner started successfully
+[2025-04-10T05:15:58.950Z] [INFO] Starting agent runner...
+[2025-04-10T05:15:58.950Z] [INFO] Scheduling tasks for agent: deployment
+[2025-04-10T05:15:58.951Z] [INFO] Scheduling task: deployment/deploy (0 */4 * * *)
+[2025-04-10T05:15:58.954Z] [INFO] Scheduling tasks for agent: status
+[2025-04-10T05:15:58.954Z] [INFO] Scheduling task: status/status-report (0 */2 * * *)
+[2025-04-10T05:15:58.955Z] [INFO] Scheduling tasks for agent: code
+[2025-04-10T05:15:58.955Z] [INFO] Scheduling task: code/lint (30 */4 * * *)
+[2025-04-10T05:15:58.955Z] [INFO] Scheduling task: code/test (45 */4 * * *)
+[2025-04-10T05:15:58.956Z] [INFO] Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+[2025-04-10T05:15:58.956Z] [INFO] Scheduling status report every 30 minutes
+[2025-04-10T05:15:58.957Z] [SUCCESS] Agent runner started successfully
+[2025-04-10T05:16:28.859Z] [INFO] Starting agent runner...
+[2025-04-10T05:16:28.860Z] [INFO] Scheduling tasks for agent: deployment
+[2025-04-10T05:16:28.860Z] [INFO] Scheduling task: deployment/deploy (0 */4 * * *)
+[2025-04-10T05:16:28.862Z] [INFO] Scheduling tasks for agent: status
+[2025-04-10T05:16:28.862Z] [INFO] Scheduling task: status/status-report (0 */2 * * *)
+[2025-04-10T05:16:28.862Z] [INFO] Scheduling tasks for agent: code
+[2025-04-10T05:16:28.862Z] [INFO] Scheduling task: code/lint (30 */4 * * *)
+[2025-04-10T05:16:28.862Z] [INFO] Scheduling task: code/test (45 */4 * * *)
+[2025-04-10T05:16:28.863Z] [INFO] Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+[2025-04-10T05:16:28.863Z] [INFO] Scheduling status report every 30 minutes
+[2025-04-10T05:16:28.864Z] [SUCCESS] Agent runner started successfully
+[2025-04-10T05:30:00.055Z] [INFO] Status report scheduled
+[2025-04-10T05:30:00.481Z] [INFO] Status report scheduled
+[2025-04-10T05:30:00.919Z] [INFO] Status report scheduled
+[2025-04-10T06:00:00.451Z] [INFO] Executing task: status/status-report
+[2025-04-10T06:00:00.465Z] [INFO] Status report scheduled
+[2025-04-10T06:00:00.828Z] [ERROR] Error executing task status/status-report: Script exited with code 1: (node:12649) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:96
+        const startTime = new Date(Date.now() - (parts[9] * 1000)).toISOString();
+                                                                   ^
+
+RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:96:68
+    at Array.map (<anonymous>)
+    at file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:91:28
+    at ChildProcess.exithandler (node:child_process:407:7)
+    at ChildProcess.emit (node:events:507:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Socket.<anonymous> (node:internal/child_process:457:11)
+    at Socket.emit (node:events:507:28)
+    at Pipe.<anonymous> (node:net:350:12)
+
+Node.js v23.1.0
+
+[2025-04-10T06:00:00.829Z] [ERROR] Task status/status-report failed: Script exited with code 1: (node:12649) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:96
+        const startTime = new Date(Date.now() - (parts[9] * 1000)).toISOString();
+                                                                   ^
+
+RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:96:68
+    at Array.map (<anonymous>)
+    at file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:91:28
+    at ChildProcess.exithandler (node:child_process:407:7)
+    at ChildProcess.emit (node:events:507:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Socket.<anonymous> (node:internal/child_process:457:11)
+    at Socket.emit (node:events:507:28)
+    at Pipe.<anonymous> (node:net:350:12)
+
+Node.js v23.1.0
+
+[2025-04-10T06:00:00.957Z] [INFO] Executing task: status/status-report
+[2025-04-10T06:00:00.960Z] [INFO] Status report scheduled
+[2025-04-10T06:00:01.125Z] [ERROR] Error executing task status/status-report: Script exited with code 1: (node:12735) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:96
+        const startTime = new Date(Date.now() - (parts[9] * 1000)).toISOString();
+                                                                   ^
+
+RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:96:68
+    at Array.map (<anonymous>)
+    at file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:91:28
+    at ChildProcess.exithandler (node:child_process:407:7)
+    at ChildProcess.emit (node:events:507:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Socket.<anonymous> (node:internal/child_process:457:11)
+    at Socket.emit (node:events:507:28)
+    at Pipe.<anonymous> (node:net:350:12)
+
+Node.js v23.1.0
+
+[2025-04-10T06:00:01.125Z] [ERROR] Task status/status-report failed: Script exited with code 1: (node:12735) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:96
+        const startTime = new Date(Date.now() - (parts[9] * 1000)).toISOString();
+                                                                   ^
+
+RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:96:68
+    at Array.map (<anonymous>)
+    at file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:91:28
+    at ChildProcess.exithandler (node:child_process:407:7)
+    at ChildProcess.emit (node:events:507:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Socket.<anonymous> (node:internal/child_process:457:11)
+    at Socket.emit (node:events:507:28)
+    at Pipe.<anonymous> (node:net:350:12)
+
+Node.js v23.1.0
+
+[2025-04-10T06:03:56.184Z] [INFO] Starting agent runner...
+[2025-04-10T06:03:56.185Z] [INFO] Scheduling tasks for agent: deployment
+[2025-04-10T06:03:56.185Z] [INFO] Scheduling task: deployment/deploy (0 */4 * * *)
+[2025-04-10T06:03:56.187Z] [INFO] Scheduling tasks for agent: status
+[2025-04-10T06:03:56.188Z] [INFO] Scheduling task: status/status-report (0 */2 * * *)
+[2025-04-10T06:03:56.188Z] [INFO] Scheduling tasks for agent: code
+[2025-04-10T06:03:56.188Z] [INFO] Scheduling task: code/lint (30 */4 * * *)
+[2025-04-10T06:03:56.188Z] [INFO] Scheduling task: code/test (45 */4 * * *)
+[2025-04-10T06:03:56.188Z] [INFO] Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+[2025-04-10T06:03:56.189Z] [INFO] Scheduling status report every 30 minutes
+[2025-04-10T06:03:56.189Z] [SUCCESS] Agent runner started successfully
+[2025-04-10T06:07:22.288Z] [INFO] Starting agent runner...
+[2025-04-10T06:07:22.289Z] [INFO] Scheduling tasks for agent: deployment
+[2025-04-10T06:07:22.289Z] [INFO] Scheduling task: deployment/deploy (0 */4 * * *)
+[2025-04-10T06:07:22.291Z] [INFO] Scheduling tasks for agent: status
+[2025-04-10T06:07:22.291Z] [INFO] Scheduling task: status/status-report (0 */2 * * *)
+[2025-04-10T06:07:22.291Z] [INFO] Scheduling tasks for agent: code
+[2025-04-10T06:07:22.291Z] [INFO] Scheduling task: code/lint (30 */4 * * *)
+[2025-04-10T06:07:22.291Z] [INFO] Scheduling task: code/test (45 */4 * * *)
+[2025-04-10T06:07:22.292Z] [INFO] Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+[2025-04-10T06:07:22.292Z] [INFO] Scheduling status report every 30 minutes
+[2025-04-10T06:07:22.292Z] [SUCCESS] Agent runner started successfully
+[2025-04-10T06:30:00.468Z] [INFO] Status report scheduled
+[2025-04-10T06:30:00.481Z] [INFO] Status report scheduled
+[2025-04-10T06:30:00.732Z] [INFO] Status report scheduled
+[2025-04-10T06:30:00.834Z] [INFO] Status report scheduled
+[2025-04-10T06:30:00.824Z] [INFO] Status report scheduled
+[2025-04-10T07:00:00.105Z] [INFO] Status report scheduled
+[2025-04-10T07:00:00.148Z] [INFO] Status report scheduled
+[2025-04-10T07:00:00.566Z] [INFO] Status report scheduled
+[2025-04-10T07:00:00.683Z] [INFO] Status report scheduled
+[2025-04-10T07:00:00.706Z] [INFO] Status report scheduled
+[2025-04-10T07:30:00.180Z] [INFO] Status report scheduled
+[2025-04-10T07:30:00.258Z] [INFO] Status report scheduled
+[2025-04-10T07:30:00.577Z] [INFO] Status report scheduled
+[2025-04-10T07:30:00.578Z] [INFO] Status report scheduled
+[2025-04-10T07:30:00.581Z] [INFO] Status report scheduled
+[2025-04-10T08:00:00.006Z] [INFO] Status report scheduled
+[2025-04-10T08:00:00.007Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T08:00:00.012Z] [INFO] Executing task: status/status-report
+[2025-04-10T08:00:00.395Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T08:00:00.395Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T08:00:00.556Z] [INFO] Status report scheduled
+[2025-04-10T08:00:00.556Z] [INFO] Status report scheduled
+[2025-04-10T08:00:00.557Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T08:00:00.558Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T08:00:00.566Z] [INFO] Executing task: status/status-report
+[2025-04-10T08:00:00.578Z] [INFO] Executing task: status/status-report
+[2025-04-10T08:00:00.579Z] [ERROR] Error updating task status: Unexpected end of JSON input
+[2025-04-10T08:00:00.613Z] [INFO] Executing task: status/status-report
+[2025-04-10T08:00:00.885Z] [INFO] Status report scheduled
+[2025-04-10T08:00:00.886Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T08:00:02.218Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T08:00:02.218Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T08:00:02.258Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T08:00:02.259Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T08:00:02.325Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T08:00:02.325Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T08:00:15.224Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+  dist/index.js  93.0kb
+
+⚡ Done in 9ms
+npm warn config production Use `--omit=dev` instead.
+(node:46707) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:46735) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ›   Error: unknown option '--yes'
+ ›   See more help with --help
+
+[2025-04-10T08:00:15.227Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+  dist/index.js  93.0kb
+
+⚡ Done in 9ms
+npm warn config production Use `--omit=dev` instead.
+(node:46707) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:46735) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ›   Error: unknown option '--yes'
+ ›   See more help with --help
+
+[2025-04-10T08:00:15.746Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 10.59s
+error during build:
+EACCES, Directory not empty: /Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images'
+    at Object.rmSync (node:fs:1253:18)
+    at emptyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Pj_jxEzN.js:9983:19)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Pj_jxEzN.js:51532:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Pj_jxEzN.js:51496:7)
+    at async Object.defaultBuildApp [as buildApp] (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Pj_jxEzN.js:51957:5)
+    at async CAC.<anonymous> (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/cli.js:860:7)
+
+[2025-04-10T08:00:15.749Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 10.59s
+error during build:
+EACCES, Directory not empty: /Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images'
+    at Object.rmSync (node:fs:1253:18)
+    at emptyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Pj_jxEzN.js:9983:19)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Pj_jxEzN.js:51532:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Pj_jxEzN.js:51496:7)
+    at async Object.defaultBuildApp [as buildApp] (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Pj_jxEzN.js:51957:5)
+    at async CAC.<anonymous> (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/cli.js:860:7)
+
+[2025-04-10T08:00:46.145Z] [SUCCESS] Task deployment/deploy executed successfully: Command executed successfully
+[2025-04-10T08:00:46.145Z] [SUCCESS] Task deployment/deploy completed successfully
+[2025-04-10T08:00:46.327Z] [SUCCESS] Task deployment/deploy executed successfully: Command executed successfully
+[2025-04-10T08:00:46.327Z] [SUCCESS] Task deployment/deploy completed successfully
+[2025-04-10T08:30:00.043Z] [INFO] Status report scheduled
+[2025-04-10T08:30:00.052Z] [INFO] Executing task: code/lint
+[2025-04-10T08:30:00.069Z] [INFO] Status report scheduled
+[2025-04-10T08:30:00.075Z] [INFO] Executing task: code/lint
+[2025-04-10T08:30:00.139Z] [INFO] Executing task: code/lint
+[2025-04-10T08:30:00.321Z] [INFO] Status report scheduled
+[2025-04-10T08:30:00.394Z] [INFO] Status report scheduled
+[2025-04-10T08:30:00.395Z] [INFO] Executing task: code/lint
+[2025-04-10T08:30:01.383Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T08:30:01.383Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-10T08:30:01.512Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T08:30:01.513Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-10T08:30:01.515Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T08:30:01.515Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-10T08:30:02.046Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T08:30:02.046Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-10T08:45:00.022Z] [INFO] Executing task: code/test
+[2025-04-10T08:45:00.107Z] [INFO] Executing task: code/test
+[2025-04-10T08:45:00.289Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T08:45:00.289Z] [SUCCESS] Task code/test completed successfully
+[2025-04-10T08:45:00.299Z] [INFO] Executing task: code/test
+[2025-04-10T08:45:00.312Z] [INFO] Executing task: code/test
+[2025-04-10T08:45:00.727Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T08:45:00.727Z] [SUCCESS] Task code/test completed successfully
+[2025-04-10T08:45:01.026Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T08:45:01.026Z] [SUCCESS] Task code/test completed successfully
+[2025-04-10T08:45:01.095Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T08:45:01.096Z] [SUCCESS] Task code/test completed successfully
+[2025-04-10T09:00:00.068Z] [INFO] Status report scheduled
+[2025-04-10T09:00:00.068Z] [INFO] Status report scheduled
+[2025-04-10T09:00:00.328Z] [INFO] Status report scheduled
+[2025-04-10T09:00:00.430Z] [INFO] Status report scheduled
+[2025-04-10T09:30:00.029Z] [INFO] Status report scheduled
+[2025-04-10T09:30:00.336Z] [INFO] Status report scheduled
+[2025-04-10T09:30:00.828Z] [INFO] Status report scheduled
+[2025-04-10T09:30:00.904Z] [INFO] Status report scheduled
+[2025-04-10T10:00:00.032Z] [INFO] Executing task: status/status-report
+[2025-04-10T10:00:00.037Z] [INFO] Status report scheduled
+[2025-04-10T10:00:00.038Z] [INFO] Executing task: status/status-report
+[2025-04-10T10:00:00.107Z] [INFO] Status report scheduled
+[2025-04-10T10:00:00.108Z] [INFO] Executing task: status/status-report
+[2025-04-10T10:00:00.245Z] [INFO] Status report scheduled
+[2025-04-10T10:00:00.478Z] [INFO] Status report scheduled
+[2025-04-10T10:00:00.480Z] [INFO] Executing task: status/status-report
+[2025-04-10T10:00:00.605Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T10:00:00.605Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T10:00:00.838Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T10:00:00.838Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T10:00:00.894Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T10:00:00.895Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T10:00:01.182Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T10:00:01.182Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T10:30:00.337Z] [INFO] Status report scheduled
+[2025-04-10T10:30:00.584Z] [INFO] Status report scheduled
+[2025-04-10T10:30:00.597Z] [INFO] Status report scheduled
+[2025-04-10T10:30:00.709Z] [INFO] Status report scheduled
+[2025-04-10T11:00:00.091Z] [INFO] Status report scheduled
+[2025-04-10T11:00:00.108Z] [INFO] Status report scheduled
+[2025-04-10T11:00:00.108Z] [INFO] Status report scheduled
+[2025-04-10T11:00:00.773Z] [INFO] Status report scheduled
+[2025-04-10T11:30:00.542Z] [INFO] Status report scheduled
+[2025-04-10T11:30:00.608Z] [INFO] Status report scheduled
+[2025-04-10T11:30:00.610Z] [INFO] Status report scheduled
+[2025-04-10T11:30:00.734Z] [INFO] Status report scheduled
+[2025-04-10T12:00:00.053Z] [INFO] Status report scheduled
+[2025-04-10T12:00:00.067Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T12:00:00.119Z] [INFO] Status report scheduled
+[2025-04-10T12:00:00.121Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T12:00:00.122Z] [INFO] Status report scheduled
+[2025-04-10T12:00:00.124Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T12:00:00.129Z] [INFO] Executing task: status/status-report
+[2025-04-10T12:00:00.152Z] [INFO] Executing task: status/status-report
+[2025-04-10T12:00:00.153Z] [INFO] Executing task: status/status-report
+[2025-04-10T12:00:00.821Z] [INFO] Executing task: status/status-report
+[2025-04-10T12:00:00.962Z] [INFO] Status report scheduled
+[2025-04-10T12:00:00.962Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T12:00:01.605Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T12:00:01.607Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T12:00:01.608Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T12:00:01.609Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T12:00:01.619Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T12:00:01.619Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T12:00:02.341Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T12:00:02.341Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T12:00:32.291Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 22.68s
+error during build:
+ENOENT: no such file or directory, copyfile '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/public/images/tarot/decks/rider-waite/minor/swords/two-swords.jpg' -> '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images/tarot/decks/rider-waite/minor/swords/two-swords.jpg'
+    at Object.copyFileSync (node:fs:3013:11)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9999:19)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51562:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51508:7)
+
+[2025-04-10T12:00:32.314Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 22.70s
+error during build:
+ENOENT: no such file or directory, copyfile '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/public/images/tarot/decks/rider-waite/minor/swords/two-swords.jpg' -> '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images/tarot/decks/rider-waite/minor/swords/two-swords.jpg'
+    at Object.copyFileSync (node:fs:3013:11)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9999:19)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51562:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51508:7)
+
+[2025-04-10T12:00:32.342Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 22.68s
+error during build:
+ENOENT: no such file or directory, copyfile '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/public/images/tarot/decks/rider-waite/minor/swords/two-swords.jpg' -> '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images/tarot/decks/rider-waite/minor/swords/two-swords.jpg'
+    at Object.copyFileSync (node:fs:3013:11)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9999:19)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51562:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51508:7)
+
+[2025-04-10T12:00:32.355Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 22.70s
+error during build:
+ENOENT: no such file or directory, copyfile '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/public/images/tarot/decks/rider-waite/minor/swords/two-swords.jpg' -> '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images/tarot/decks/rider-waite/minor/swords/two-swords.jpg'
+    at Object.copyFileSync (node:fs:3013:11)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9999:19)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51562:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51508:7)
+
+[2025-04-10T12:00:32.360Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 22.80s
+error during build:
+ENOENT: no such file or directory, copyfile '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/public/images/tarot/decks/rider-waite/minor/cups/nine-cups.jpg' -> '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images/tarot/decks/rider-waite/minor/cups/nine-cups.jpg'
+    at Object.copyFileSync (node:fs:3013:11)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9999:19)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51562:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51508:7)
+
+[2025-04-10T12:00:32.368Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 22.80s
+error during build:
+ENOENT: no such file or directory, copyfile '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/public/images/tarot/decks/rider-waite/minor/cups/nine-cups.jpg' -> '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images/tarot/decks/rider-waite/minor/cups/nine-cups.jpg'
+    at Object.copyFileSync (node:fs:3013:11)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9999:19)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51562:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51508:7)
+
+[2025-04-10T12:00:36.438Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+  dist/index.js  93.0kb
+
+⚡ Done in 11ms
+npm warn config production Use `--omit=dev` instead.
+(node:97583) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:97624) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ›   Error: unknown option '--yes'
+ ›   See more help with --help
+
+[2025-04-10T12:00:36.442Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+  dist/index.js  93.0kb
+
+⚡ Done in 11ms
+npm warn config production Use `--omit=dev` instead.
+(node:97583) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:97624) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ›   Error: unknown option '--yes'
+ ›   See more help with --help
+
+[2025-04-10T12:30:00.483Z] [INFO] Executing task: code/lint
+[2025-04-10T12:30:00.549Z] [INFO] Status report scheduled
+[2025-04-10T12:30:00.570Z] [INFO] Status report scheduled
+[2025-04-10T12:30:00.571Z] [INFO] Executing task: code/lint
+[2025-04-10T12:30:00.647Z] [INFO] Executing task: code/lint
+[2025-04-10T12:30:00.652Z] [INFO] Status report scheduled
+[2025-04-10T12:30:00.936Z] [INFO] Status report scheduled
+[2025-04-10T12:30:00.937Z] [INFO] Executing task: code/lint
+[2025-04-10T12:30:00.982Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T12:30:00.982Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-10T12:30:02.156Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T12:30:02.156Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-10T12:30:02.386Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T12:30:02.387Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-10T12:30:02.701Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T12:30:02.701Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-10T12:45:00.169Z] [INFO] Executing task: code/test
+[2025-04-10T12:45:00.238Z] [INFO] Executing task: code/test
+[2025-04-10T12:45:00.373Z] [INFO] Executing task: code/test
+[2025-04-10T12:45:00.677Z] [INFO] Executing task: code/test
+[2025-04-10T12:45:00.874Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T12:45:00.874Z] [SUCCESS] Task code/test completed successfully
+[2025-04-10T12:45:01.006Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T12:45:01.007Z] [SUCCESS] Task code/test completed successfully
+[2025-04-10T12:45:01.055Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T12:45:01.055Z] [SUCCESS] Task code/test completed successfully
+[2025-04-10T12:45:01.947Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T12:45:01.947Z] [SUCCESS] Task code/test completed successfully
+[2025-04-10T13:00:00.099Z] [INFO] Executing workflow: deploy-and-notify
+[2025-04-10T13:00:00.106Z] [INFO] Executing workflow step 1: code/lint
+[2025-04-10T13:00:00.107Z] [INFO] Executing task: code/lint
+[2025-04-10T13:00:00.123Z] [INFO] Status report scheduled
+[2025-04-10T13:00:00.230Z] [INFO] Executing workflow: deploy-and-notify
+[2025-04-10T13:00:00.236Z] [INFO] Executing workflow step 1: code/lint
+[2025-04-10T13:00:00.237Z] [INFO] Executing task: code/lint
+[2025-04-10T13:00:00.456Z] [INFO] Status report scheduled
+[2025-04-10T13:00:00.710Z] [INFO] Status report scheduled
+[2025-04-10T13:00:00.717Z] [INFO] Executing workflow: deploy-and-notify
+[2025-04-10T13:00:00.717Z] [INFO] Executing workflow: deploy-and-notify
+[2025-04-10T13:00:00.781Z] [INFO] Executing workflow step 1: code/lint
+[2025-04-10T13:00:00.781Z] [INFO] Executing task: code/lint
+[2025-04-10T13:00:00.788Z] [INFO] Executing workflow step 1: code/lint
+[2025-04-10T13:00:00.788Z] [INFO] Executing task: code/lint
+[2025-04-10T13:00:00.941Z] [INFO] Status report scheduled
+[2025-04-10T13:00:04.348Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T13:00:04.354Z] [INFO] Executing workflow step 2: code/test
+[2025-04-10T13:00:04.354Z] [INFO] Executing task: code/test
+[2025-04-10T13:00:04.634Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T13:00:04.635Z] [INFO] Executing workflow step 2: code/test
+[2025-04-10T13:00:04.635Z] [INFO] Executing task: code/test
+[2025-04-10T13:00:04.651Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T13:00:04.652Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T13:00:04.652Z] [INFO] Executing workflow step 2: code/test
+[2025-04-10T13:00:04.652Z] [INFO] Executing task: code/test
+[2025-04-10T13:00:04.654Z] [INFO] Executing workflow step 2: code/test
+[2025-04-10T13:00:04.658Z] [INFO] Executing task: code/test
+[2025-04-10T13:00:04.935Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T13:00:04.935Z] [INFO] Executing workflow step 3: deployment/deploy
+[2025-04-10T13:00:04.935Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T13:00:06.491Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T13:00:06.491Z] [INFO] Executing workflow step 3: deployment/deploy
+[2025-04-10T13:00:06.491Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T13:00:06.527Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T13:00:06.528Z] [INFO] Executing workflow step 3: deployment/deploy
+[2025-04-10T13:00:06.528Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T13:00:06.560Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T13:00:06.562Z] [INFO] Executing workflow step 3: deployment/deploy
+[2025-04-10T13:00:06.562Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T13:00:29.967Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 20.33s
+error during build:
+ENOENT: no such file or directory, copyfile '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/public/images/tarot/decks/rider-waite/major/21-world.jpg' -> '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images/tarot/decks/rider-waite/major/21-world.jpg'
+    at Object.copyFileSync (node:fs:3013:11)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9999:19)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51562:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51508:7)
+    at async Object.defaultBuildApp [as buildApp] (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51969:5)
+
+[2025-04-10T13:00:30.005Z] [ERROR] Workflow deploy-and-notify failed at step 3: deployment/deploy
+[2025-04-10T13:00:30.392Z] [ERROR] Workflow deploy-and-notify failed: undefined
+[2025-04-10T13:00:30.815Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 21.65s
+error during build:
+ENOENT: no such file or directory, copyfile '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/public/images/tarot/decks/rider-waite/minor/wands/eight-wands.jpg' -> '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images/tarot/decks/rider-waite/minor/wands/eight-wands.jpg'
+    at Object.copyFileSync (node:fs:3013:11)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9999:19)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51562:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51508:7)
+
+[2025-04-10T13:00:30.832Z] [ERROR] Workflow deploy-and-notify failed at step 3: deployment/deploy
+[2025-04-10T13:00:30.838Z] [ERROR] Workflow deploy-and-notify failed: undefined
+[2025-04-10T13:00:30.924Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 21.32s
+error during build:
+EACCES, Directory not empty: /Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images'
+    at Object.rmSync (node:fs:1253:18)
+    at emptyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9983:19)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51544:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51508:7)
+    at async Object.defaultBuildApp [as buildApp] (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51969:5)
+    at async CAC.<anonymous> (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/cli.js:860:7)
+
+[2025-04-10T13:00:30.933Z] [ERROR] Workflow deploy-and-notify failed at step 3: deployment/deploy
+[2025-04-10T13:00:30.937Z] [ERROR] Workflow deploy-and-notify failed: undefined
+[2025-04-10T13:00:34.087Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+  dist/index.js  93.0kb
+
+⚡ Done in 5ms
+npm warn config production Use `--omit=dev` instead.
+(node:2537) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2565) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ›   Error: unknown option '--yes'
+ ›   See more help with --help
+
+[2025-04-10T13:00:34.090Z] [ERROR] Workflow deploy-and-notify failed at step 3: deployment/deploy
+[2025-04-10T13:00:34.091Z] [ERROR] Workflow deploy-and-notify failed: undefined
+[2025-04-10T13:30:00.030Z] [INFO] Status report scheduled
+[2025-04-10T13:30:00.314Z] [INFO] Status report scheduled
+[2025-04-10T13:30:00.815Z] [INFO] Status report scheduled
+[2025-04-10T13:30:00.953Z] [INFO] Status report scheduled
+[2025-04-10T14:00:00.306Z] [INFO] Status report scheduled
+[2025-04-10T14:00:00.308Z] [INFO] Executing task: status/status-report
+[2025-04-10T14:00:00.619Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T14:00:00.619Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T14:00:00.739Z] [INFO] Executing task: status/status-report
+[2025-04-10T14:00:00.768Z] [INFO] Status report scheduled
+[2025-04-10T14:00:00.768Z] [INFO] Executing task: status/status-report
+[2025-04-10T14:00:00.946Z] [INFO] Status report scheduled
+[2025-04-10T14:00:00.947Z] [INFO] Executing task: status/status-report
+[2025-04-10T14:00:00.990Z] [INFO] Status report scheduled
+[2025-04-10T14:00:01.369Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T14:00:01.370Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T14:00:01.521Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T14:00:01.524Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T14:00:01.893Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T14:00:01.893Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T14:30:00.033Z] [INFO] Status report scheduled
+[2025-04-10T14:30:00.224Z] [INFO] Status report scheduled
+[2025-04-10T14:30:00.322Z] [INFO] Status report scheduled
+[2025-04-10T14:30:00.641Z] [INFO] Status report scheduled
+[2025-04-10T15:00:00.200Z] [INFO] Status report scheduled
+[2025-04-10T15:00:00.363Z] [INFO] Status report scheduled
+[2025-04-10T15:00:00.592Z] [INFO] Status report scheduled
+[2025-04-10T15:00:00.847Z] [INFO] Status report scheduled
+[2025-04-10T15:30:00.045Z] [INFO] Status report scheduled
+[2025-04-10T15:30:00.206Z] [INFO] Status report scheduled
+[2025-04-10T15:30:00.684Z] [INFO] Status report scheduled
+[2025-04-10T15:30:00.771Z] [INFO] Status report scheduled
+[2025-04-10T16:00:00.029Z] [INFO] Status report scheduled
+[2025-04-10T16:00:00.035Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T16:00:00.050Z] [INFO] Executing task: status/status-report
+[2025-04-10T16:00:00.109Z] [INFO] Status report scheduled
+[2025-04-10T16:00:00.110Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T16:00:00.114Z] [INFO] Executing task: status/status-report
+[2025-04-10T16:00:00.413Z] [INFO] Status report scheduled
+[2025-04-10T16:00:00.414Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T16:00:00.457Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T16:00:00.457Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T16:00:00.573Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T16:00:00.573Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T16:00:00.583Z] [INFO] Status report scheduled
+[2025-04-10T16:00:00.583Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T16:00:00.590Z] [INFO] Executing task: status/status-report
+[2025-04-10T16:00:00.833Z] [INFO] Executing task: status/status-report
+[2025-04-10T16:00:02.120Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T16:00:02.120Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T16:00:02.671Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T16:00:02.671Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T16:00:12.211Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.57s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T16:00:12.216Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.57s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T16:00:12.265Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.62s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T16:00:12.271Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.62s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T16:00:12.298Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.65s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T16:00:12.301Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.65s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T16:00:12.306Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.67s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T16:00:12.310Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.67s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T16:30:00.108Z] [INFO] Executing task: code/lint
+[2025-04-10T16:30:00.254Z] [INFO] Executing task: code/lint
+[2025-04-10T16:30:00.263Z] [INFO] Status report scheduled
+[2025-04-10T16:30:00.407Z] [INFO] Executing task: code/lint
+[2025-04-10T16:30:00.418Z] [INFO] Status report scheduled
+[2025-04-10T16:30:00.654Z] [INFO] Status report scheduled
+[2025-04-10T16:30:00.687Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T16:30:00.688Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-10T16:30:00.720Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T16:30:00.720Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-10T16:30:00.931Z] [INFO] Status report scheduled
+[2025-04-10T16:30:00.933Z] [INFO] Executing task: code/lint
+[2025-04-10T16:30:01.046Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T16:30:01.046Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-10T16:30:01.828Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T16:30:01.828Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-10T16:45:00.054Z] [INFO] Executing task: code/test
+[2025-04-10T16:45:00.448Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T16:45:00.448Z] [SUCCESS] Task code/test completed successfully
+[2025-04-10T16:45:00.546Z] [INFO] Executing task: code/test
+[2025-04-10T16:45:00.782Z] [INFO] Executing task: code/test
+[2025-04-10T16:45:00.833Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T16:45:00.833Z] [SUCCESS] Task code/test completed successfully
+[2025-04-10T16:45:00.930Z] [INFO] Executing task: code/test
+[2025-04-10T16:45:01.005Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T16:45:01.005Z] [SUCCESS] Task code/test completed successfully
+[2025-04-10T16:45:01.200Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T16:45:01.200Z] [SUCCESS] Task code/test completed successfully
+[2025-04-10T17:00:00.154Z] [INFO] Status report scheduled
+[2025-04-10T17:00:00.157Z] [INFO] Executing workflow: deploy-and-notify
+[2025-04-10T17:00:00.170Z] [INFO] Executing workflow step 1: code/lint
+[2025-04-10T17:00:00.170Z] [INFO] Executing task: code/lint
+[2025-04-10T17:00:00.564Z] [INFO] Executing workflow: deploy-and-notify
+[2025-04-10T17:00:00.568Z] [INFO] Executing workflow step 1: code/lint
+[2025-04-10T17:00:00.568Z] [INFO] Executing task: code/lint
+[2025-04-10T17:00:00.577Z] [INFO] Status report scheduled
+[2025-04-10T17:00:00.636Z] [INFO] Executing workflow: deploy-and-notify
+[2025-04-10T17:00:00.639Z] [INFO] Executing workflow step 1: code/lint
+[2025-04-10T17:00:00.639Z] [INFO] Executing task: code/lint
+[2025-04-10T17:00:00.649Z] [INFO] Status report scheduled
+[2025-04-10T17:00:00.830Z] [INFO] Executing workflow: deploy-and-notify
+[2025-04-10T17:00:00.834Z] [INFO] Executing workflow step 1: code/lint
+[2025-04-10T17:00:00.834Z] [INFO] Executing task: code/lint
+[2025-04-10T17:00:00.843Z] [INFO] Status report scheduled
+[2025-04-10T17:00:00.889Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T17:00:00.890Z] [INFO] Executing workflow step 2: code/test
+[2025-04-10T17:00:00.890Z] [INFO] Executing task: code/test
+[2025-04-10T17:00:01.269Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T17:00:01.269Z] [INFO] Executing workflow step 2: code/test
+[2025-04-10T17:00:01.269Z] [INFO] Executing task: code/test
+[2025-04-10T17:00:01.362Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T17:00:01.362Z] [INFO] Executing workflow step 2: code/test
+[2025-04-10T17:00:01.362Z] [INFO] Executing task: code/test
+[2025-04-10T17:00:01.742Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T17:00:01.742Z] [INFO] Executing workflow step 2: code/test
+[2025-04-10T17:00:01.743Z] [INFO] Executing task: code/test
+[2025-04-10T17:00:02.057Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T17:00:02.057Z] [INFO] Executing workflow step 3: deployment/deploy
+[2025-04-10T17:00:02.057Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T17:00:02.502Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T17:00:02.502Z] [INFO] Executing workflow step 3: deployment/deploy
+[2025-04-10T17:00:02.502Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T17:00:02.578Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T17:00:02.579Z] [INFO] Executing workflow step 3: deployment/deploy
+[2025-04-10T17:00:02.579Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T17:00:03.014Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T17:00:03.014Z] [INFO] Executing workflow step 3: deployment/deploy
+[2025-04-10T17:00:03.014Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T17:00:11.755Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.45s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T17:00:11.761Z] [ERROR] Workflow deploy-and-notify failed at step 3: deployment/deploy
+[2025-04-10T17:00:11.766Z] [ERROR] Workflow deploy-and-notify failed: undefined
+[2025-04-10T17:00:12.273Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.52s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T17:00:12.277Z] [ERROR] Workflow deploy-and-notify failed at step 3: deployment/deploy
+[2025-04-10T17:00:12.280Z] [ERROR] Workflow deploy-and-notify failed: undefined
+[2025-04-10T17:00:12.292Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.43s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T17:00:12.297Z] [ERROR] Workflow deploy-and-notify failed at step 3: deployment/deploy
+[2025-04-10T17:00:12.300Z] [ERROR] Workflow deploy-and-notify failed: undefined
+[2025-04-10T17:00:12.610Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.63s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T17:00:12.613Z] [ERROR] Workflow deploy-and-notify failed at step 3: deployment/deploy
+[2025-04-10T17:00:12.615Z] [ERROR] Workflow deploy-and-notify failed: undefined
+[2025-04-10T17:30:00.075Z] [INFO] Status report scheduled
+[2025-04-10T17:30:00.458Z] [INFO] Status report scheduled
+[2025-04-10T17:30:00.860Z] [INFO] Status report scheduled
+[2025-04-10T17:30:00.918Z] [INFO] Status report scheduled
+[2025-04-10T18:00:00.210Z] [INFO] Executing task: status/status-report
+[2025-04-10T18:00:00.272Z] [INFO] Status report scheduled
+[2025-04-10T18:00:00.275Z] [INFO] Executing task: status/status-report
+[2025-04-10T18:00:00.310Z] [INFO] Status report scheduled
+[2025-04-10T18:00:00.310Z] [INFO] Executing task: status/status-report
+[2025-04-10T18:00:00.416Z] [INFO] Status report scheduled
+[2025-04-10T18:00:00.475Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T18:00:00.475Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T18:00:00.569Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T18:00:00.569Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T18:00:00.717Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T18:00:00.717Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T18:00:00.791Z] [INFO] Status report scheduled
+[2025-04-10T18:00:00.791Z] [INFO] Executing task: status/status-report
+[2025-04-10T18:00:01.837Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T18:00:01.837Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T18:30:00.166Z] [INFO] Status report scheduled
+[2025-04-10T18:30:00.665Z] [INFO] Status report scheduled
+[2025-04-10T18:30:00.694Z] [INFO] Status report scheduled
+[2025-04-10T18:30:00.825Z] [INFO] Status report scheduled
+[2025-04-10T19:00:00.048Z] [INFO] Status report scheduled
+[2025-04-10T19:00:00.048Z] [INFO] Status report scheduled
+[2025-04-10T19:00:00.229Z] [INFO] Status report scheduled
+[2025-04-10T19:00:00.582Z] [INFO] Status report scheduled
+[2025-04-10T19:30:00.014Z] [INFO] Status report scheduled
+[2025-04-10T19:30:00.375Z] [INFO] Status report scheduled
+[2025-04-10T19:30:00.505Z] [INFO] Status report scheduled
+[2025-04-10T19:30:00.655Z] [INFO] Status report scheduled
+[2025-04-10T20:00:00.331Z] [INFO] Status report scheduled
+[2025-04-10T20:00:00.334Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T20:00:00.341Z] [INFO] Executing task: status/status-report
+[2025-04-10T20:00:00.550Z] [INFO] Executing task: status/status-report
+[2025-04-10T20:00:00.553Z] [INFO] Status report scheduled
+[2025-04-10T20:00:00.555Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T20:00:00.560Z] [INFO] Executing task: status/status-report
+[2025-04-10T20:00:00.859Z] [INFO] Status report scheduled
+[2025-04-10T20:00:00.859Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T20:00:00.870Z] [INFO] Executing task: status/status-report
+[2025-04-10T20:00:00.895Z] [INFO] Status report scheduled
+[2025-04-10T20:00:00.896Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T20:00:01.135Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T20:00:01.136Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T20:00:01.445Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T20:00:01.445Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T20:00:01.566Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T20:00:01.566Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T20:00:02.378Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T20:00:02.378Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T20:00:10.580Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.43s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T20:00:10.587Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.43s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T20:00:10.804Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.22s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T20:00:10.812Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.22s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T20:00:11.454Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 6.72s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T20:00:11.457Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 6.72s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T20:00:11.477Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 6.44s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T20:00:11.480Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 6.44s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T20:30:00.354Z] [INFO] Status report scheduled
+[2025-04-10T20:30:00.355Z] [INFO] Executing task: code/lint
+[2025-04-10T20:30:00.511Z] [INFO] Executing task: code/lint
+[2025-04-10T20:30:00.528Z] [INFO] Executing task: code/lint
+[2025-04-10T20:30:00.538Z] [INFO] Status report scheduled
+[2025-04-10T20:30:00.830Z] [INFO] Executing task: code/lint
+[2025-04-10T20:30:00.831Z] [INFO] Status report scheduled
+[2025-04-10T20:30:00.857Z] [INFO] Status report scheduled
+[2025-04-10T20:30:01.101Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T20:30:01.101Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-10T20:30:01.228Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T20:30:01.228Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-10T20:30:01.232Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T20:30:01.232Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-10T20:30:01.924Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T20:30:01.924Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-10T20:45:00.024Z] [INFO] Executing task: code/test
+[2025-04-10T20:45:00.162Z] [INFO] Executing task: code/test
+[2025-04-10T20:45:00.175Z] [INFO] Executing task: code/test
+[2025-04-10T20:45:00.415Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T20:45:00.415Z] [SUCCESS] Task code/test completed successfully
+[2025-04-10T20:45:00.481Z] [INFO] Executing task: code/test
+[2025-04-10T20:45:00.520Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T20:45:00.520Z] [SUCCESS] Task code/test completed successfully
+[2025-04-10T20:45:00.524Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T20:45:00.524Z] [SUCCESS] Task code/test completed successfully
+[2025-04-10T20:45:00.749Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T20:45:00.749Z] [SUCCESS] Task code/test completed successfully
+[2025-04-10T21:00:00.081Z] [INFO] Executing workflow: deploy-and-notify
+[2025-04-10T21:00:00.094Z] [INFO] Executing workflow step 1: code/lint
+[2025-04-10T21:00:00.095Z] [INFO] Executing task: code/lint
+[2025-04-10T21:00:00.109Z] [INFO] Status report scheduled
+[2025-04-10T21:00:00.142Z] [INFO] Executing workflow: deploy-and-notify
+[2025-04-10T21:00:00.148Z] [INFO] Executing workflow step 1: code/lint
+[2025-04-10T21:00:00.148Z] [INFO] Executing task: code/lint
+[2025-04-10T21:00:00.156Z] [INFO] Status report scheduled
+[2025-04-10T21:00:00.677Z] [INFO] Status report scheduled
+[2025-04-10T21:00:00.678Z] [INFO] Executing workflow: deploy-and-notify
+[2025-04-10T21:00:00.681Z] [INFO] Executing workflow step 1: code/lint
+[2025-04-10T21:00:00.681Z] [INFO] Executing task: code/lint
+[2025-04-10T21:00:00.711Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T21:00:00.711Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T21:00:00.711Z] [INFO] Executing workflow step 2: code/test
+[2025-04-10T21:00:00.711Z] [INFO] Executing task: code/test
+[2025-04-10T21:00:00.711Z] [INFO] Executing workflow step 2: code/test
+[2025-04-10T21:00:00.711Z] [INFO] Executing task: code/test
+[2025-04-10T21:00:00.839Z] [INFO] Executing workflow: deploy-and-notify
+[2025-04-10T21:00:00.842Z] [INFO] Executing workflow step 1: code/lint
+[2025-04-10T21:00:00.842Z] [INFO] Executing task: code/lint
+[2025-04-10T21:00:00.848Z] [INFO] Status report scheduled
+[2025-04-10T21:00:01.355Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T21:00:01.355Z] [INFO] Executing workflow step 2: code/test
+[2025-04-10T21:00:01.355Z] [INFO] Executing task: code/test
+[2025-04-10T21:00:01.506Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T21:00:01.506Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T21:00:01.506Z] [INFO] Executing workflow step 3: deployment/deploy
+[2025-04-10T21:00:01.506Z] [INFO] Executing workflow step 3: deployment/deploy
+[2025-04-10T21:00:01.506Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T21:00:01.506Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T21:00:01.786Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-10T21:00:01.786Z] [INFO] Executing workflow step 2: code/test
+[2025-04-10T21:00:01.786Z] [INFO] Executing task: code/test
+[2025-04-10T21:00:02.527Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T21:00:02.528Z] [INFO] Executing workflow step 3: deployment/deploy
+[2025-04-10T21:00:02.528Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T21:00:03.046Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-10T21:00:03.046Z] [INFO] Executing workflow step 3: deployment/deploy
+[2025-04-10T21:00:03.047Z] [INFO] Executing task: deployment/deploy
+[2025-04-10T21:00:11.756Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.78s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T21:00:11.763Z] [ERROR] Workflow deploy-and-notify failed at step 3: deployment/deploy
+[2025-04-10T21:00:11.768Z] [ERROR] Workflow deploy-and-notify failed: undefined
+[2025-04-10T21:00:11.846Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.88s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T21:00:11.851Z] [ERROR] Workflow deploy-and-notify failed at step 3: deployment/deploy
+[2025-04-10T21:00:11.855Z] [ERROR] Workflow deploy-and-notify failed: undefined
+[2025-04-10T21:00:11.949Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.43s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T21:00:11.952Z] [ERROR] Workflow deploy-and-notify failed at step 3: deployment/deploy
+[2025-04-10T21:00:11.955Z] [ERROR] Workflow deploy-and-notify failed: undefined
+[2025-04-10T21:00:12.212Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 6.61s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-10T21:00:12.215Z] [ERROR] Workflow deploy-and-notify failed at step 3: deployment/deploy
+[2025-04-10T21:00:12.217Z] [ERROR] Workflow deploy-and-notify failed: undefined
+[2025-04-10T21:30:00.215Z] [INFO] Status report scheduled
+[2025-04-10T21:30:00.291Z] [INFO] Status report scheduled
+[2025-04-10T21:30:00.560Z] [INFO] Status report scheduled
+[2025-04-10T21:30:00.595Z] [INFO] Status report scheduled
+[2025-04-10T22:00:00.513Z] [INFO] Executing task: status/status-report
+[2025-04-10T22:00:00.555Z] [INFO] Status report scheduled
+[2025-04-10T22:00:00.555Z] [INFO] Executing task: status/status-report
+[2025-04-10T22:00:00.620Z] [INFO] Status report scheduled
+[2025-04-10T22:00:00.620Z] [INFO] Executing task: status/status-report
+[2025-04-10T22:00:00.835Z] [INFO] Status report scheduled
+[2025-04-10T22:00:00.836Z] [INFO] Executing task: status/status-report
+[2025-04-10T22:00:00.998Z] [INFO] Status report scheduled
+[2025-04-10T22:00:01.130Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T22:00:01.130Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T22:00:01.541Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T22:00:01.541Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T22:00:01.630Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T22:00:01.630Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T22:00:01.698Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-10T22:00:01.698Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-10T22:30:00.209Z] [INFO] Status report scheduled
+[2025-04-10T22:30:00.316Z] [INFO] Status report scheduled
+[2025-04-10T22:30:00.783Z] [INFO] Status report scheduled
+[2025-04-10T22:30:00.954Z] [INFO] Status report scheduled
+[2025-04-10T23:00:00.160Z] [INFO] Status report scheduled
+[2025-04-10T23:00:00.338Z] [INFO] Status report scheduled
+[2025-04-10T23:00:00.569Z] [INFO] Status report scheduled
+[2025-04-10T23:00:00.693Z] [INFO] Status report scheduled
+[2025-04-10T23:30:00.387Z] [INFO] Status report scheduled
+[2025-04-10T23:30:00.560Z] [INFO] Status report scheduled
+[2025-04-10T23:30:00.778Z] [INFO] Status report scheduled
+[2025-04-10T23:30:00.972Z] [INFO] Status report scheduled
+[2025-04-11T00:00:00.041Z] [INFO] Status report scheduled
+[2025-04-11T00:00:00.043Z] [INFO] Executing task: deployment/deploy
+[2025-04-11T00:00:00.060Z] [INFO] Executing task: status/status-report
+[2025-04-11T00:00:00.192Z] [INFO] Status report scheduled
+[2025-04-11T00:00:00.192Z] [INFO] Executing task: deployment/deploy
+[2025-04-11T00:00:00.362Z] [INFO] Executing task: status/status-report
+[2025-04-11T00:00:00.380Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-11T00:00:00.380Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-11T00:00:00.569Z] [INFO] Status report scheduled
+[2025-04-11T00:00:00.570Z] [INFO] Executing task: deployment/deploy
+[2025-04-11T00:00:00.578Z] [INFO] Executing task: status/status-report
+[2025-04-11T00:00:00.793Z] [INFO] Status report scheduled
+[2025-04-11T00:00:00.793Z] [INFO] Executing task: deployment/deploy
+[2025-04-11T00:00:00.797Z] [INFO] Executing task: status/status-report
+[2025-04-11T00:00:01.604Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-11T00:00:01.605Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-11T00:00:02.433Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-11T00:00:02.433Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-11T00:00:02.974Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-11T00:00:02.974Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-11T00:00:09.772Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.85s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-11T00:00:09.776Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.85s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-11T00:00:10.470Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.01s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-11T00:00:10.477Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.01s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-11T00:00:11.446Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 6.35s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-11T00:00:11.451Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 6.35s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-11T00:00:11.758Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.12s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-11T00:00:11.762Z] [ERROR] Task deployment/deploy failed: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.12s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-11T00:30:00.106Z] [INFO] Executing task: code/lint
+[2025-04-11T00:30:00.105Z] [INFO] Executing task: code/lint
+[2025-04-11T00:30:00.131Z] [INFO] Status report scheduled
+[2025-04-11T00:30:00.361Z] [INFO] Status report scheduled
+[2025-04-11T00:30:00.365Z] [INFO] Status report scheduled
+[2025-04-11T00:30:00.729Z] [INFO] Executing task: code/lint
+[2025-04-11T00:30:00.863Z] [INFO] Status report scheduled
+[2025-04-11T00:30:00.943Z] [INFO] Executing task: code/lint
+[2025-04-11T00:30:01.052Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-11T00:30:01.052Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-11T00:30:01.052Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-11T00:30:01.052Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-11T00:30:01.785Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-11T00:30:01.785Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-11T00:30:02.104Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-11T00:30:02.104Z] [SUCCESS] Task code/lint completed successfully
+[2025-04-11T00:45:00.410Z] [INFO] Executing task: code/test
+[2025-04-11T00:45:00.692Z] [INFO] Executing task: code/test
+[2025-04-11T00:45:00.750Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-11T00:45:00.750Z] [SUCCESS] Task code/test completed successfully
+[2025-04-11T00:45:00.797Z] [INFO] Executing task: code/test
+[2025-04-11T00:45:00.810Z] [INFO] Executing task: code/test
+[2025-04-11T00:45:01.045Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-11T00:45:01.045Z] [SUCCESS] Task code/test completed successfully
+[2025-04-11T00:45:01.122Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-11T00:45:01.122Z] [SUCCESS] Task code/test completed successfully
+[2025-04-11T00:45:01.200Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-11T00:45:01.200Z] [SUCCESS] Task code/test completed successfully
+[2025-04-11T01:00:00.334Z] [INFO] Status report scheduled
+[2025-04-11T01:00:00.405Z] [INFO] Executing workflow: deploy-and-notify
+[2025-04-11T01:00:00.410Z] [INFO] Executing workflow step 1: code/lint
+[2025-04-11T01:00:00.410Z] [INFO] Executing task: code/lint
+[2025-04-11T01:00:00.503Z] [INFO] Executing workflow: deploy-and-notify
+[2025-04-11T01:00:00.509Z] [INFO] Executing workflow step 1: code/lint
+[2025-04-11T01:00:00.509Z] [INFO] Executing task: code/lint
+[2025-04-11T01:00:00.525Z] [INFO] Status report scheduled
+[2025-04-11T01:00:00.549Z] [INFO] Executing workflow: deploy-and-notify
+[2025-04-11T01:00:00.553Z] [INFO] Executing workflow step 1: code/lint
+[2025-04-11T01:00:00.553Z] [INFO] Executing task: code/lint
+[2025-04-11T01:00:00.734Z] [INFO] Executing workflow: deploy-and-notify
+[2025-04-11T01:00:00.738Z] [INFO] Executing workflow step 1: code/lint
+[2025-04-11T01:00:00.738Z] [INFO] Executing task: code/lint
+[2025-04-11T01:00:00.746Z] [INFO] Status report scheduled
+[2025-04-11T01:00:00.747Z] [INFO] Status report scheduled
+[2025-04-11T01:00:01.040Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-11T01:00:01.040Z] [INFO] Executing workflow step 2: code/test
+[2025-04-11T01:00:01.040Z] [INFO] Executing task: code/test
+[2025-04-11T01:00:01.324Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-11T01:00:01.324Z] [INFO] Executing workflow step 2: code/test
+[2025-04-11T01:00:01.324Z] [INFO] Executing task: code/test
+[2025-04-11T01:00:01.403Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-11T01:00:01.403Z] [INFO] Executing workflow step 2: code/test
+[2025-04-11T01:00:01.403Z] [INFO] Executing task: code/test
+[2025-04-11T01:00:01.651Z] [SUCCESS] Task code/lint executed successfully: Command executed successfully
+[2025-04-11T01:00:01.651Z] [INFO] Executing workflow step 2: code/test
+[2025-04-11T01:00:01.651Z] [INFO] Executing task: code/test
+[2025-04-11T01:00:02.300Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-11T01:00:02.300Z] [INFO] Executing workflow step 3: deployment/deploy
+[2025-04-11T01:00:02.300Z] [INFO] Executing task: deployment/deploy
+[2025-04-11T01:00:02.446Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-11T01:00:02.446Z] [INFO] Executing workflow step 3: deployment/deploy
+[2025-04-11T01:00:02.446Z] [INFO] Executing task: deployment/deploy
+[2025-04-11T01:00:02.523Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-11T01:00:02.523Z] [INFO] Executing workflow step 3: deployment/deploy
+[2025-04-11T01:00:02.523Z] [INFO] Executing task: deployment/deploy
+[2025-04-11T01:00:02.809Z] [SUCCESS] Task code/test executed successfully: Command executed successfully
+[2025-04-11T01:00:02.809Z] [INFO] Executing workflow step 3: deployment/deploy
+[2025-04-11T01:00:02.809Z] [INFO] Executing task: deployment/deploy
+[2025-04-11T01:00:12.504Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.73s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-11T01:00:12.509Z] [ERROR] Workflow deploy-and-notify failed at step 3: deployment/deploy
+[2025-04-11T01:00:12.512Z] [ERROR] Workflow deploy-and-notify failed: undefined
+[2025-04-11T01:00:12.573Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.72s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-11T01:00:12.577Z] [ERROR] Workflow deploy-and-notify failed at step 3: deployment/deploy
+[2025-04-11T01:00:12.581Z] [ERROR] Workflow deploy-and-notify failed: undefined
+[2025-04-11T01:00:12.663Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.69s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-11T01:00:12.669Z] [ERROR] Workflow deploy-and-notify failed at step 3: deployment/deploy
+[2025-04-11T01:00:12.673Z] [ERROR] Workflow deploy-and-notify failed: undefined
+[2025-04-11T01:00:12.855Z] [ERROR] Error executing task deployment/deploy: Command exited with code 1: npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.74s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+
+[2025-04-11T01:00:12.859Z] [ERROR] Workflow deploy-and-notify failed at step 3: deployment/deploy
+[2025-04-11T01:00:12.863Z] [ERROR] Workflow deploy-and-notify failed: undefined
+[2025-04-11T01:30:00.322Z] [INFO] Status report scheduled
+[2025-04-11T01:30:00.553Z] [INFO] Status report scheduled
+[2025-04-11T01:30:00.642Z] [INFO] Status report scheduled
+[2025-04-11T01:30:00.670Z] [INFO] Status report scheduled
+[2025-04-11T02:00:00.395Z] [INFO] Executing task: status/status-report
+[2025-04-11T02:00:00.609Z] [INFO] Status report scheduled
+[2025-04-11T02:00:00.738Z] [INFO] Executing task: status/status-report
+[2025-04-11T02:00:00.857Z] [INFO] Status report scheduled
+[2025-04-11T02:00:00.857Z] [INFO] Executing task: status/status-report
+[2025-04-11T02:00:00.866Z] [INFO] Status report scheduled
+[2025-04-11T02:00:00.977Z] [INFO] Status report scheduled
+[2025-04-11T02:00:00.977Z] [INFO] Executing task: status/status-report
+[2025-04-11T02:00:01.063Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-11T02:00:01.063Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-11T02:00:01.290Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-11T02:00:01.290Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-11T02:00:01.536Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-11T02:00:01.536Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-11T02:00:01.795Z] [SUCCESS] Task status/status-report executed successfully: Script executed successfully
+[2025-04-11T02:00:01.795Z] [SUCCESS] Task status/status-report completed successfully
+[2025-04-11T02:30:00.057Z] [INFO] Status report scheduled
+[2025-04-11T02:30:00.296Z] [INFO] Status report scheduled
+[2025-04-11T02:30:00.312Z] [INFO] Status report scheduled
+[2025-04-11T02:30:00.386Z] [INFO] Status report scheduled
+[2025-04-11T03:00:00.048Z] [INFO] Status report scheduled
+[2025-04-11T03:00:00.270Z] [INFO] Status report scheduled
+[2025-04-11T03:00:00.330Z] [INFO] Status report scheduled
+[2025-04-11T03:00:00.374Z] [INFO] Status report scheduled
+[2025-04-11T03:30:00.146Z] [INFO] Status report scheduled
+[2025-04-11T03:30:00.430Z] [INFO] Status report scheduled
+[2025-04-11T03:30:00.465Z] [INFO] Status report scheduled
+[2025-04-11T03:30:00.519Z] [INFO] Status report scheduled
+[2025-04-11T03:53:54.106Z] [INFO] Received SIGTERM signal. Shutting down...
+[2025-04-11T03:53:54.103Z] [INFO] Received SIGTERM signal. Shutting down...
+[2025-04-11T03:53:54.103Z] [INFO] Received SIGTERM signal. Shutting down...
+[2025-04-11T03:53:54.109Z] [INFO] Received SIGTERM signal. Shutting down...

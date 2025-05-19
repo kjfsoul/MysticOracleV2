@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debug Vite Environment Variables</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      overflow: auto;
+      max-height: 300px;
+    }
+    .panel {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Debug Vite Environment Variables</h1>
+  
+  <div class="panel">
+    <h2>Environment Variables</h2>
+    <p>This page will help you debug environment variables in your Vite application.</p>
+    <p>Note: Environment variables are only available in the Vite application, not in static HTML files.</p>
+    <p>Check the browser console for the output of the debug-env.ts script.</p>
+  </div>
+  
+  <div class="panel">
+    <h2>Manual Test</h2>
+    <p>You can also manually test your Supabase connection:</p>
+    <div>
+      <label for="supabase-url">Supabase URL:</label>
+      <input type="text" id="supabase-url" value="https://pqfsbxcbsxuyfgqrxdob.supabase.co" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+    </div>
+    <div>
+      <label for="supabase-key">Supabase Anon Key:</label>
+      <input type="text" id="supabase-key" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxZnNieGNic3h1eWZncXJ4ZG9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIzMzAxNzAsImV4cCI6MjA1NzkwNjE3MH0.1bjMIO2hzyCJS1ExpsB1JsCmkH8D2d2M_-Psz2DDJrQ" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+    </div>
+    <button id="test-connection">Test Connection</button>
+    <pre id="result">Results will appear here...</pre>
+  </div>
+  
+  <script type="module">
+    // This script will only work if loaded as a module
+    // It won't have access to import.meta.env in a static HTML file
+    
+    console.log('Script loaded as module');
+    
+    try {
+      // This will fail in a static HTML file
+      console.log('Trying to access import.meta.env...');
+      console.log(import.meta.env);
+    } catch (error) {
+      console.error('Error accessing import.meta.env:', error);
+    }
+  </script>
+  
+  <script>
+    // Test connection with manually entered values
+    document.getElementById('test-connection').addEventListener('click', async () => {
+      const supabaseUrl = document.getElementById('supabase-url').value;
+      const supabaseKey = document.getElementById('supabase-key').value;
+      const resultEl = document.getElementById('result');
+      
+      resultEl.textContent = `Testing connection to ${supabaseUrl}...`;
+      
+      try {
+        // Make a direct fetch request to the Supabase API
+        const response = await fetch(`${supabaseUrl}/rest/v1/users?select=count`, {
+          method: 'GET',
+          headers: {
+            'apikey': supabaseKey,
+            'Authorization': `Bearer ${supabaseKey}`
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        resultEl.textContent = `Connection successful!\nResponse: ${JSON.stringify(data, null, 2)}`;
+      } catch (error) {
+        resultEl.textContent = `Connection error: ${error.message}`;
+        console.error('Connection error:', error);
+      }
+    });
+  </script>
+</body>
+</html>

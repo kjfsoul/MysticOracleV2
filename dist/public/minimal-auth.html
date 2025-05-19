@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimal Auth</title>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body style="font-family: Arial, sans-serif; padding: 20px;">
+  <h1>Minimal Auth Form</h1>
+
+  <form id="auth-form">
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" value="kjfsoul@gmail.com" required>
+    </div>
+    <div style="margin-top: 10px;">
+      <label for="password">Password:</label>
+      <input type="password" id="password" value="password123" required>
+    </div>
+    <div style="margin-top: 20px;">
+      <button type="button" id="login-btn">Login</button>
+      <button type="button" id="signup-btn">Register</button>
+    </div>
+  </form>
+
+  <div id="result" style="margin-top: 20px;"></div>
+
+  <script>
+    // Initialize Supabase client
+    const supabaseUrl = 'https://pqfsbxcbsxuyfgqrxdob.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxZnNieGNic3h1eWZncXJ4ZG9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIzMzAxNzAsImV4cCI6MjA1NzkwNjE3MH0.1bjMIO2hzyCJS1ExpsB1JsCmkH8D2d2M_-Psz2DDJrQ';
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    // Login function
+    document.getElementById('login-btn').addEventListener('click', async () => {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email,
+          password
+        });
+
+        if (error) throw error;
+
+        document.getElementById('result').innerHTML = `
+          <div style="color: green;">
+            Login successful!<br>
+            User: ${data.user.email}
+          </div>
+        `;
+      } catch (error) {
+        document.getElementById('result').innerHTML = `
+          <div style="color: red;">
+            Error: ${error.message}
+          </div>
+        `;
+      }
+    });
+
+    // Signup function
+    document.getElementById('signup-btn').addEventListener('click', async () => {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password
+        });
+
+        if (error) throw error;
+
+        document.getElementById('result').innerHTML = `
+          <div style="color: green;">
+            Registration successful!<br>
+            Please check your email for confirmation.
+          </div>
+        `;
+      } catch (error) {
+        document.getElementById('result').innerHTML = `
+          <div style="color: red;">
+            Error: ${error.message}
+          </div>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>

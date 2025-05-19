@@ -1,0 +1,426 @@
+{
+  "agents": {
+    "CodeAgent": {
+      "description": "Handles code implementation and refactoring using MCP servers",
+      "capabilities": [
+        "component-implementation",
+        "code-refactoring",
+        "bug-fixing",
+        "test-writing"
+      ],
+      "schedule": "0 */4 * * *",
+      "mcpServers": [
+        "filesystem",
+        "github"
+      ],
+      "tasks": [
+        {
+          "name": "tarot-component-mcp",
+          "description": "Implement and improve tarot card components using MCP",
+          "schedule": "0 2 * * *",
+          "command": "node scripts/mcp-agent.js CodeAgent",
+          "mcpTools": [
+            {
+              "server": "filesystem",
+              "tool": "str-replace-editor",
+              "params": {
+                "path": "components/TarotCard.tsx"
+              }
+            },
+            {
+              "server": "github",
+              "tool": "create_pull_request_npx",
+              "params": {
+                "title": "Implement Tarot Card Component"
+              }
+            }
+          ]
+        },
+        {
+          "name": "auth-ui-mcp",
+          "description": "Implement authentication UI components using MCP",
+          "schedule": "0 4 * * *",
+          "command": "node scripts/mcp-agent.js CodeAgent",
+          "mcpTools": [
+            {
+              "server": "filesystem",
+              "tool": "str-replace-editor",
+              "params": {
+                "path": "components/Auth"
+              }
+            }
+          ]
+        },
+        {
+          "name": "ecommerce-store-mcp",
+          "description": "Implement e-commerce store for mystical products",
+          "schedule": "* * * * *",
+          "command": "node scripts/mcp-agent.js CodeAgent",
+          "mcpTools": [
+            {
+              "server": "filesystem",
+              "tool": "str-replace-editor",
+              "params": {
+                "path": "components/Store"
+              }
+            },
+            {
+              "server": "sequential-thinking",
+              "tool": "sequentialthinking_npx",
+              "params": {
+                "thought": "Implementing e-commerce store for tarot decks, crystals, and ritual kits"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "DesignAgent": {
+      "description": "Handles UI design and animations using MCP servers",
+      "capabilities": [
+        "ui-design",
+        "animation",
+        "responsive-layout",
+        "accessibility"
+      ],
+      "schedule": "0 */6 * * *",
+      "mcpServers": [
+        "everything",
+        "puppeteer"
+      ],
+      "tasks": [
+        {
+          "name": "card-animations-mcp",
+          "description": "Implement card flip and spread animations using MCP",
+          "schedule": "0 3 * * *",
+          "command": "node scripts/mcp-agent.js DesignAgent",
+          "mcpTools": [
+            {
+              "server": "everything",
+              "tool": "sequentialthinking_npx",
+              "params": {
+                "thought": "Designing card flip animation"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "APIAgent": {
+      "description": "Handles API implementation and serverless functions using MCP servers",
+      "capabilities": [
+        "api-implementation",
+        "serverless-function",
+        "database-query",
+        "authentication"
+      ],
+      "schedule": "0 */8 * * *",
+      "mcpServers": [
+        "brave-search",
+        "sequential-thinking"
+      ],
+      "tasks": [
+        {
+          "name": "daily-tarot-api-mcp",
+          "description": "Implement daily tarot card API using MCP",
+          "schedule": "0 1 * * *",
+          "command": "node scripts/mcp-agent.js APIAgent",
+          "mcpTools": [
+            {
+              "server": "brave-search",
+              "tool": "web-search",
+              "params": {
+                "query": "serverless function daily content"
+              }
+            }
+          ]
+        },
+        {
+          "name": "auth-api-mcp",
+          "description": "Implement authentication API endpoints using MCP",
+          "schedule": "0 5 * * *",
+          "command": "node scripts/mcp-agent.js APIAgent",
+          "mcpTools": [
+            {
+              "server": "sequential-thinking",
+              "tool": "sequentialthinking_npx",
+              "params": {
+                "thought": "Implementing authentication API"
+              }
+            }
+          ]
+        },
+        {
+          "name": "stripe-integration-mcp",
+          "description": "Implement Stripe payment integration",
+          "schedule": "* * * * *",
+          "command": "node scripts/mcp-agent.js APIAgent",
+          "mcpTools": [
+            {
+              "server": "sequential-thinking",
+              "tool": "sequentialthinking_npx",
+              "params": {
+                "thought": "Implementing Stripe payment integration"
+              }
+            },
+            {
+              "server": "filesystem",
+              "tool": "str-replace-editor",
+              "params": {
+                "path": "server/api/stripe.ts"
+              }
+            }
+          ]
+        },
+        {
+          "name": "personalization-engine-mcp",
+          "description": "Implement the Deep Personalization & Continuous Learning Engine",
+          "schedule": "* * * * *",
+          "command": "node scripts/mcp-agent.js APIAgent",
+          "mcpTools": [
+            {
+              "server": "sequential-thinking",
+              "tool": "sequentialthinking_npx",
+              "params": {
+                "thought": "Implementing personalization engine with vector embeddings"
+              }
+            },
+            {
+              "server": "filesystem",
+              "tool": "str-replace-editor",
+              "params": {
+                "path": "server/api/personalization.ts"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "ContentAgent": {
+      "description": "Handles content generation using MCP servers",
+      "capabilities": [
+        "content-generation",
+        "tarot-description",
+        "astrology-interpretation",
+        "blog-outline"
+      ],
+      "schedule": "0 */12 * * *",
+      "mcpServers": [
+        "memory",
+        "brave-search"
+      ],
+      "tasks": [
+        {
+          "name": "tarot-descriptions-mcp",
+          "description": "Generate tarot card descriptions using MCP",
+          "schedule": "0 0 * * *",
+          "command": "node scripts/mcp-agent.js ContentAgent",
+          "mcpTools": [
+            {
+              "server": "memory",
+              "tool": "create_entities_npx",
+              "params": {
+                "entities": [
+                  {
+                    "name": "TarotCards",
+                    "entityType": "Content",
+                    "observations": [
+                      "Major Arcana",
+                      "Minor Arcana"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "daily-content-automation-mcp",
+          "description": "Implement the Daily Content Automation System",
+          "schedule": "* * * * *",
+          "command": "node scripts/mcp-agent.js ContentAgent",
+          "mcpTools": [
+            {
+              "server": "sequential-thinking",
+              "tool": "sequentialthinking_npx",
+              "params": {
+                "thought": "Implementing daily content automation system for social media"
+              }
+            },
+            {
+              "server": "filesystem",
+              "tool": "str-replace-editor",
+              "params": {
+                "path": "server/api/content-automation.ts"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "TestAgent": {
+      "description": "Handles testing and quality assurance using MCP servers",
+      "capabilities": [
+        "unit-test",
+        "integration-test",
+        "test-suite",
+        "test-coverage"
+      ],
+      "schedule": "0 */12 * * *",
+      "mcpServers": [
+        "puppeteer",
+        "sequential-thinking"
+      ],
+      "tasks": [
+        {
+          "name": "component-tests-mcp",
+          "description": "Write and run tests for components using MCP",
+          "schedule": "0 6 * * *",
+          "command": "node scripts/mcp-agent.js TestAgent",
+          "mcpTools": [
+            {
+              "server": "puppeteer",
+              "tool": "launch-process",
+              "params": {
+                "command": "npm test",
+                "wait": true,
+                "max_wait_seconds": 300
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "DevOpsAgent": {
+      "description": "Handles deployment and infrastructure using MCP servers",
+      "capabilities": [
+        "deployment",
+        "infrastructure",
+        "monitoring",
+        "ci-cd"
+      ],
+      "schedule": "0 */24 * * *",
+      "mcpServers": [
+        "filesystem",
+        "github"
+      ],
+      "tasks": [
+        {
+          "name": "deploy-netlify-mcp",
+          "description": "Deploy to Netlify using MCP",
+          "schedule": "* * * * *",
+          "command": "node scripts/mcp-agent.js DevOpsAgent",
+          "mcpTools": [
+            {
+              "server": "filesystem",
+              "tool": "launch-process",
+              "params": {
+                "command": "npm run build",
+                "wait": true,
+                "max_wait_seconds": 600
+              }
+            },
+            {
+              "server": "filesystem",
+              "tool": "launch-process",
+              "params": {
+                "command": "npx netlify deploy --prod",
+                "wait": true,
+                "max_wait_seconds": 600
+              }
+            }
+          ]
+        },
+        {
+          "name": "setup-env-variables-mcp",
+          "description": "Set up environment variables for Netlify and Stripe",
+          "schedule": "* * * * *",
+          "command": "node scripts/mcp-agent.js DevOpsAgent",
+          "mcpTools": [
+            {
+              "server": "filesystem",
+              "tool": "str-replace-editor",
+              "params": {
+                "path": ".env"
+              }
+            },
+            {
+              "server": "filesystem",
+              "tool": "launch-process",
+              "params": {
+                "command": "npx netlify env:set OPENAI_API_KEY $OPENAI_API_KEY",
+                "wait": true,
+                "max_wait_seconds": 60
+              }
+            },
+            {
+              "server": "filesystem",
+              "tool": "launch-process",
+              "params": {
+                "command": "npx netlify env:set STRIPE_SECRET_KEY $STRIPE_SECRET_KEY",
+                "wait": true,
+                "max_wait_seconds": 60
+              }
+            }
+          ]
+        },
+        {
+          "name": "business-plan-implementation-mcp",
+          "description": "Implement the Comprehensive Business Plan",
+          "schedule": "* * * * *",
+          "command": "node scripts/mcp-agent.js DevOpsAgent",
+          "mcpTools": [
+            {
+              "server": "sequential-thinking",
+              "tool": "sequentialthinking_npx",
+              "params": {
+                "thought": "Implementing comprehensive business plan for Mystic Arcana"
+              }
+            },
+            {
+              "server": "filesystem",
+              "tool": "str-replace-editor",
+              "params": {
+                "path": "business/implementation-plan.md"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "workflows": {
+    "daily-build-mcp": {
+      "description": "Daily build and test workflow using MCP",
+      "schedule": "0 0 * * *",
+      "tasks": [
+        "tarot-component-mcp",
+        "card-animations-mcp",
+        "component-tests-mcp"
+      ]
+    },
+    "netlify-deploy-mcp": {
+      "description": "Deploy to Netlify using MCP",
+      "schedule": "0 12 * * 5",
+      "tasks": [
+        "component-tests-mcp",
+        "deploy-netlify-mcp"
+      ]
+    },
+    "priority-deployment": {
+      "description": "Priority deployment with user signup, Stripe integration, personalization, and business plan implementation",
+      "schedule": "* * * * *",
+      "tasks": [
+        "setup-env-variables-mcp",
+        "auth-ui-mcp",
+        "auth-api-mcp",
+        "stripe-integration-mcp",
+        "personalization-engine-mcp",
+        "daily-content-automation-mcp",
+        "ecommerce-store-mcp",
+        "business-plan-implementation-mcp",
+        "deploy-netlify-mcp"
+      ]
+    }
+  }
+}

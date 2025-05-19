@@ -1,0 +1,319 @@
+[2025-04-07T23:20:33.173Z] [TestAgent] [AGENT] Starting agent
+[2025-04-07T23:20:33.181Z] [TestAgent] [task-010] Starting task: Write Unit Tests for Tarot Components
+[2025-04-07T23:20:33.182Z] [TestAgent] [task-010] Created prompt file: /Users/kfitz/MysticOracleV2/MysticOracleV2/cline_docs/agent-prompts/task-010-TestAgent.md
+[2025-04-07T23:20:33.182Z] [TestAgent] [task-010] Task completed successfully
+[2025-04-07T23:20:33.183Z] [TestAgent] [AGENT] Agent completed with success
+[2025-04-07T23:20:38.538Z] [TestAgent] [AGENT] Starting agent
+[2025-04-07T23:20:38.548Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-07T23:20:43.624Z] [TestAgent] [AGENT] Starting agent
+[2025-04-07T23:20:43.631Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:29:35.660Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:29:35.664Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:29:40.824Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:29:40.828Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:29:45.937Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:29:45.941Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:29:51.078Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:29:51.082Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:29:56.173Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:29:56.177Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:30:01.308Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:30:01.312Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:30:06.450Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:30:06.454Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:30:11.655Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:30:11.659Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:30:16.784Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:30:16.787Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:30:21.923Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:30:21.927Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:30:27.062Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:30:27.065Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:30:32.204Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:30:32.207Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:30:37.350Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:30:37.353Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:30:42.489Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:30:42.492Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:30:47.635Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:30:47.638Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:30:52.759Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:30:52.763Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:30:57.873Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:30:57.877Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:31:02.985Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:31:02.989Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:31:08.130Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:31:08.134Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:31:13.219Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:31:13.223Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:31:18.379Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:31:18.383Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:31:23.473Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:31:23.477Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:31:29.239Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:31:29.292Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:31:34.428Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:31:34.437Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:31:39.664Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:31:39.675Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:31:44.802Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:31:44.808Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:31:49.950Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:31:49.957Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:31:55.068Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:31:55.075Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:32:00.234Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:32:00.238Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:32:05.350Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:32:05.354Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:32:10.458Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:32:10.464Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:32:15.667Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:32:15.672Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:32:20.822Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:32:20.827Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:32:25.934Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:32:25.941Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:32:31.113Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:32:31.117Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:32:36.239Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:32:36.246Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:32:41.330Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:32:41.334Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:32:46.465Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:32:46.469Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:32:51.603Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:32:51.607Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:32:56.745Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:32:56.748Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:33:01.885Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:33:01.889Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:33:07.016Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:33:07.020Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:33:12.133Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:33:12.137Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:33:17.258Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:33:17.261Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:33:22.376Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:33:22.379Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:33:27.483Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:33:27.487Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:33:32.585Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:33:32.589Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:33:37.689Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:33:37.693Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:33:42.778Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:33:42.782Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:33:47.852Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:33:47.855Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:33:52.936Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:33:52.939Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:33:58.022Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:33:58.026Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:34:03.162Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:34:03.166Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:34:08.307Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:34:08.310Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:34:13.447Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:34:13.451Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:34:18.587Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:34:18.590Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:34:23.719Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:34:23.723Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:34:28.863Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:34:28.867Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:34:34.006Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:34:34.010Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:34:39.213Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:34:39.219Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:34:44.288Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:34:44.291Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:34:49.416Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:34:49.420Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:34:54.588Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:34:54.592Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:34:59.689Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:34:59.693Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:35:04.917Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:35:04.924Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:35:09.991Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:35:09.995Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:35:15.122Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:35:15.126Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:35:20.238Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:35:20.241Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:35:25.358Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:35:25.362Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:35:30.562Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:35:30.567Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:35:35.689Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:35:35.693Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:35:40.847Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:35:40.851Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:35:45.958Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:35:45.961Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:35:51.098Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:35:51.101Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:35:56.187Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:35:56.192Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:36:01.317Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:36:01.321Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:36:06.453Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:36:06.456Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:36:11.590Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:36:11.594Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:36:16.731Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:36:16.735Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:36:21.833Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:36:21.837Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:36:26.968Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:36:26.972Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:36:32.108Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:36:32.111Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:36:37.255Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:36:37.259Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:36:42.393Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:36:42.396Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:36:47.528Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:36:47.532Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:36:52.670Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:36:52.673Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:36:57.812Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:36:57.816Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:37:02.995Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:37:03.000Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:37:08.069Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:37:08.073Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:37:13.163Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:37:13.167Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:37:18.290Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:37:18.293Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:37:23.444Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:37:23.447Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:37:28.691Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:37:28.699Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:37:33.769Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:37:33.773Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:37:38.892Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:37:38.897Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:37:44.023Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:37:44.027Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:37:49.132Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:37:49.137Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:37:54.352Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:37:54.357Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:37:59.483Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:37:59.489Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:38:04.580Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:38:04.584Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:38:09.704Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:38:09.708Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:38:14.800Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:38:14.804Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:38:19.887Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:38:19.891Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:38:25.036Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:38:25.047Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:38:30.141Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:38:30.146Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:38:35.275Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:38:35.279Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:38:40.403Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:38:40.408Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:38:45.548Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:38:45.552Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:38:50.629Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:38:50.632Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:38:55.760Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:38:55.764Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:39:00.891Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:39:00.895Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:39:06.027Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:39:06.031Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:39:11.159Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:39:11.162Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:39:16.289Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:39:16.293Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:39:21.420Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:39:21.424Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:39:26.630Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:39:26.634Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:39:31.702Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:39:31.706Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:39:36.820Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:39:36.824Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:39:41.954Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:39:41.957Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:39:47.083Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:39:47.087Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:39:52.292Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:39:52.296Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:39:57.378Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:39:57.382Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:40:02.484Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:40:02.488Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:40:07.618Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:40:07.622Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:40:12.747Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:40:12.751Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:40:17.906Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:40:17.910Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:40:23.026Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:40:23.029Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:40:28.147Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:40:28.150Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:40:33.244Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:40:33.248Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:40:38.375Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:40:38.378Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:40:43.461Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:40:43.465Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:40:48.599Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:40:48.603Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:40:53.741Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:40:53.745Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:40:58.887Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:40:58.891Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:41:04.024Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:41:04.028Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:41:09.100Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:41:09.104Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:41:14.232Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:41:14.235Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:41:19.369Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:41:19.372Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:41:24.513Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:41:24.517Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:41:29.706Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:41:29.710Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:41:34.836Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:41:34.840Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:41:39.975Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:41:39.979Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:41:45.122Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:41:45.125Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:41:50.265Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:41:50.269Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:41:55.391Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:41:55.394Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:42:00.531Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:42:00.535Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:42:05.676Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:42:05.679Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:42:10.819Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:42:10.823Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:42:16.000Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:42:16.004Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:42:21.142Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:42:21.146Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:42:26.295Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:42:26.300Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:42:31.410Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:42:31.414Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:42:36.565Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:42:36.569Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:42:41.762Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:42:41.767Z] [TestAgent] [AGENT] No tasks found for agent
+[2025-04-21T22:42:46.863Z] [TestAgent] [AGENT] Starting agent
+[2025-04-21T22:42:46.867Z] [TestAgent] [AGENT] No tasks found for agent

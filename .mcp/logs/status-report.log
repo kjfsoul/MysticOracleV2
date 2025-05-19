@@ -1,0 +1,106 @@
+Generating agent status report...
+
+                                                                                
+                      AUTONOMOUS AGENT SYSTEM STATUS REPORT                     
+                                                                                
+
+Generated: 4/10/2025, 2:20:09 AM
+Project: MysticOracleV2
+Phase: Development
+Away Mode: ACTIVE
+
+=== System Information ===
+CPU: 8 cores
+Memory: 15.75 GB / 16 GB (98.44%)
+Uptime: 1d 3h 16m 36s
+
+=== Agent Status ===
+Total Agents: 15
+
+Running Agents:
+┌────────┬──────────────┬────────────┬────────────┬────────────────────────┐
+│ PID     │ Type          │ CPU Usage  │ Mem Usage  │ Start Time              │
+├────────┼──────────────┼────────────┼────────────┼────────────────────────┤
+│ 24819   │ Agent        │ 6.8      % │ 0.3      % │ 4/10/2025, 2:20:09 AM  │
+│ 18683   │ Agent        │ 0.0      % │ 0.2      % │ 4/10/2025, 2:20:09 AM  │
+│ 18665   │ Agent        │ 0.0      % │ 0.2      % │ 4/10/2025, 2:20:09 AM  │
+│ 16726   │ Agent        │ 0.0      % │ 0.2      % │ 4/10/2025, 2:20:09 AM  │
+│ 16678   │ Agent        │ 0.0      % │ 0.2      % │ 4/10/2025, 2:20:09 AM  │
+│ 13353   │ Agent        │ 0.0      % │ 0.2      % │ 4/10/2025, 2:20:09 AM  │
+│ 9027    │ Agent        │ 0.0      % │ 0.2      % │ 4/10/2025, 2:20:09 AM  │
+│ 9011    │ Agent        │ 0.0      % │ 0.2      % │ 4/10/2025, 2:20:09 AM  │
+│ 8725    │ Agent        │ 0.0      % │ 0.2      % │ 4/10/2025, 2:20:09 AM  │
+│ 8710    │ Agent        │ 0.0      % │ 0.2      % │ 4/10/2025, 2:20:09 AM  │
+│ 7242    │ Agent        │ 0.0      % │ 0.2      % │ 4/10/2025, 2:20:09 AM  │
+│ 7051    │ Agent        │ 0.0      % │ 0.2      % │ 4/10/2025, 2:20:09 AM  │
+│ 6870    │ Agent        │ 0.0      % │ 0.2      % │ 4/10/2025, 2:20:09 AM  │
+│ 96946   │ Agent        │ 0.0      % │ 0.2      % │ 4/10/2025, 2:20:09 AM  │
+│ 3288    │ Agent        │ 0.0      % │ 0.1      % │ 4/10/2025, 2:20:09 AM  │
+└────────┴──────────────┴────────────┴────────────┴────────────────────────┘
+
+=== Task Status ===
+Total Tasks: 5
+
+Configured Tasks:
+┌──────────────┬──────────────┬────────────────────────────────┬────────────┬────────────────────────┐
+│ Agent         │ Task          │ Description                   │ Priority    │ Next Run               │
+├──────────────┼──────────────┼────────────────────────────────┼────────────┼────────────────────────┤
+│ deployment   │ deploy       │ Deploy the project               │ normal     │ 4/10/2025, 7:12:29 PM  │
+│ status       │ status-report │ Generate status report           │ normal     │ 4/10/2025, 3:41:36 AM  │
+│ code         │ lint         │ Lint the code                    │ normal     │ 4/10/2025, 2:52:42 PM  │
+│ code         │ test         │ Run tests                        │ normal     │ 4/10/2025, 4:55:23 AM  │
+│ Workflow     │ deploy-and-notify │ Deploy the project and send notification │ normal     │ 4/10/2025, 3:33:32 PM  │
+└──────────────┴──────────────┴────────────────────────────────┴────────────┴────────────────────────┘
+
+=== Project Status ===
+Current Phase: Development
+Next Milestone: Initial Deployment
+
+Progress:
+overall: ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 0%
+
+Active Tasks:
+┌────────────┬────────────────────────────────┬────────────┬────────────┐
+│ Assigned To  │ Task                          │ Status      │ Progress    │
+├────────────┼────────────────────────────────┼────────────┼────────────┤
+│            │ status-report                    │ failed     │ ░░░░░░░░░░ 0% │
+└────────────┴────────────────────────────────┴────────────┴────────────┘
+
+=== Recent Logs ===
+
+Agent Runner:
+Scheduling task: deployment/deploy (0 */4 * * *)
+Scheduling tasks for agent: status
+Scheduling task: status/status-report (0 */2 * * *)
+Scheduling tasks for agent: code
+Scheduling task: code/lint (30 */4 * * *)
+Scheduling task: code/test (45 */4 * * *)
+Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+Scheduling status report every 30 minutes
+[32mAgent runner started successfully[0m
+
+
+Agent Status:
+logsDir is not defined
+ReferenceError: logsDir is not defined
+    at generateStatusReport (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:398:32)
+    at async main (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:611:5)
+[2025-04-10T06:04:05.957Z] ERROR: Unhandled error in main function
+logsDir is not defined
+ReferenceError: logsDir is not defined
+    at generateStatusReport (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:398:32)
+    at async main (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:611:5)
+
+
+Agent Stdout:
+Generating agent status report...
+Generating agent status report...
+
+
+Agent Stderr:
+(node:5622) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/agent-runner.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+

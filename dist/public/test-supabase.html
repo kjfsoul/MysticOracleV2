@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Supabase</title>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    button {
+      padding: 10px;
+      margin: 5px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      overflow: auto;
+      max-height: 300px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Supabase Test</h1>
+
+  <div>
+    <button id="test-connection">Test Connection</button>
+    <button id="check-tables">Check Tables</button>
+    <button id="check-auth">Check Auth</button>
+    <button id="check-trigger">Check Trigger</button>
+  </div>
+
+  <pre id="result">Results will appear here...</pre>
+
+  <script>
+    // Initialize Supabase client
+    const supabaseUrl = 'https://pqfsbxcbsxuyfgqrxdob.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxZnNieGNic3h1eWZncXJ4ZG9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIzMzAxNzAsImV4cCI6MjA1NzkwNjE3MH0.1bjMIO2hzyCJS1ExpsB1JsCmkH8D2d2M_-Psz2DDJrQ';
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    const resultEl = document.getElementById('result');
+
+    // Test Connection
+    document.getElementById('test-connection').addEventListener('click', async () => {
+      resultEl.textContent = 'Testing connection...';
+
+      try {
+        const { data, error } = await supabase.from('users').select('count()', { count: 'exact' });
+
+        if (error) throw error;
+
+        resultEl.textContent = `Connection successful! Found ${data[0].count} users.`;
+      } catch (error) {
+        resultEl.textContent = `Connection error: ${JSON.stringify(error, null, 2)}`;
+      }
+    });
+
+    // Check Tables
+    document.getElementById('check-tables').addEventListener('click', async () => {
+      resultEl.textContent = 'Checking tables...';
+
+      try {
+        // Check users table
+        const { data: usersData, error: usersError } = await supabase
+          .from('users')
+          .select('*')
+          .limit(1);
+
+        // Check user_profiles table
+        const { data: profilesData, error: profilesError } = await supabase
+          .from('user_profiles')
+          .select('*')
+          .limit(1);
+
+        // Check spiritual_profiles table
+        const { data: spiritualData, error: spiritualError } = await supabase
+          .from('spiritual_profiles')
+          .select('*')
+          .limit(1);
+
+        resultEl.textContent = `Tables check:
+- users: ${usersError ? 'ERROR: ' + usersError.message : 'OK'}
+- user_profiles: ${profilesError ? 'ERROR: ' + profilesError.message : 'OK'}
+- spiritual_profiles: ${spiritualError ? 'ERROR: ' + spiritualError.message : 'OK'}`;
+      } catch (error) {
+        resultEl.textContent = `Tables check error: ${JSON.stringify(error, null, 2)}`;
+      }
+    });
+
+    // Check Auth
+    document.getElementById('check-auth').addEventListener('click', async () => {
+      resultEl.textContent = 'Checking auth...';
+
+      try {
+        // Try to sign up a test user
+        const testEmail = `test${Date.now()}@example.com`;
+        const { data, error } = await supabase.auth.signUp({
+          email: testEmail,
+          password: 'password123',
+          options: {
+            data: {
+              username: 'testuser',
+            },
+          },
+        });
+
+        if (error) throw error;
+
+        resultEl.textContent = `Auth check: OK
+- Created test user: ${testEmail}
+- User ID: ${data.user.id}`;
+      } catch (error) {
+        resultEl.textContent = `Auth check error: ${JSON.stringify(error, null, 2)}`;
+      }
+    });
+
+    // Check Trigger
+    document.getElementById('check-trigger').addEventListener('click', async () => {
+      resultEl.textContent = 'Checking trigger...';
+
+      try {
+        // Sign up a test user
+        const testEmail = `test${Date.now()}@example.com`;
+        const { data: authData, error: authError } = await supabase.auth.signUp({
+          email: testEmail,
+          password: 'password123',
+          options: {
+            data: {
+              username: 'testuser',
+            },
+          },
+        });
+
+        if (authError) throw authError;
+
+        // Wait a moment for the trigger to execute
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
+        // Check if user record was created
+        const { data: userData, error: userError } = await supabase
+          .from('users')
+          .select('*')
+          .eq('id', authData.user.id)
+          .single();
+
+        // Check if profile record was created
+        const { data: profileData, error: profileError } = await supabase
+          .from('user_profiles')
+          .select('*')
+          .eq('id', authData.user.id)
+          .single();
+
+        // Check if spiritual profile was created
+        const { data: spiritualData, error: spiritualError } = await supabase
+          .from('spiritual_profiles')
+          .select('*')
+          .eq('user_id', authData.user.id)
+          .single();
+
+        resultEl.textContent = `Trigger check:
+- Auth user created: ${authData.user.id}
+- Users record: ${userError ? 'ERROR: ' + userError.message : (userData ? 'OK' : 'Not found')}
+- Profile record: ${profileError ? 'ERROR: ' + profileError.message : (profileData ? 'OK' : 'Not found')}
+- Spiritual profile: ${spiritualError ? 'ERROR: ' + spiritualError.message : (spiritualData ? 'OK' : 'Not found')}`;
+      } catch (error) {
+        resultEl.textContent = `Trigger check error: ${JSON.stringify(error, null, 2)}`;
+      }
+    });
+  </script>
+</body>
+</html>
