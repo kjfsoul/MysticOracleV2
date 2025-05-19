@@ -6,3 +6,5 @@ seeds
 pods/service-connections
 dependencies/localhost/Mystic_Arcana
 /Users/kfitz/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json
+.env
+.env.local
