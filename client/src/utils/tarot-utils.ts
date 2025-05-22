@@ -281,8 +281,23 @@ export const getSimpleTarotCardImagePath = (card: TarotCard): string => {
   const cardId = rawId.replace(/-of-/g, "-"); // Remove "of" from IDs like "ace-of-cups" -> "ace-cups"
   const arcana = card.arcana?.toLowerCase() || "unknown";
   const suit = card.suit ? card.suit.toLowerCase() : null;
+  const imageFormat = activeDeck.imageFormat || "jpg"; // Ensure imageFormat is defined
 
-  // Use the deck's cardPathTemplate if available
+  // Rider-Waite specific logic
+  if (activeDeck.id === "rider-waite") {
+    if (arcana === "minor" && suit) {
+      // Path: /images/tarot/decks/rider-waite/minor/suit/name-suit.jpg
+      // cardId should be like "queen-wands"
+      return `/images/tarot/decks/rider-waite/minor/${suit}/${cardId}.${imageFormat}`;
+    }
+    // For Major Arcana, the cardPathTemplate should work if cardId is correct (e.g. 00-fool)
+    // The existing cardPathTemplate for rider-waite is /images/tarot/decks/rider-waite/{arcana}/{id}.jpg
+    // which becomes /images/tarot/decks/rider-waite/major/{id}.jpg
+    // This seems to align with the requirement: /images/tarot/decks/rider-waite/major/XXX-name.jpg
+    // No specific change needed here for major arcana if cardId format is okay.
+  }
+
+  // Use the deck's cardPathTemplate if available (applies to non-Rider-Waite or Rider-Waite Major)
   if (activeDeck.cardPathTemplate) {
     return activeDeck.cardPathTemplate
       .replace("{arcana}", arcana)
@@ -290,21 +305,15 @@ export const getSimpleTarotCardImagePath = (card: TarotCard): string => {
       .replace("{id}", cardId);
   }
 
-  // Fallback to the standard path structure
+  // Fallback to the standard path structure (for decks without cardPathTemplate)
   if (arcana === "major") {
-    return `/images/tarot/decks/${activeDeck.id}/major/${cardId}.${
-      activeDeck.imageFormat || "jpg"
-    }`;
+    return `/images/tarot/decks/${activeDeck.id}/major/${cardId}.${imageFormat}`;
   } else if (arcana === "minor" && suit) {
-    return `/images/tarot/decks/${activeDeck.id}/minor/${suit}/${cardId}.${
-      activeDeck.imageFormat || "jpg"
-    }`;
+    return `/images/tarot/decks/${activeDeck.id}/minor/${suit}/${cardId}.${imageFormat}`;
   } else {
     return (
       activeDeck.cardBackImage ||
-      `/images/tarot/decks/${activeDeck.id}/card-back.${
-        activeDeck.imageFormat || "jpg"
-      }`
+      `/images/tarot/decks/${activeDeck.id}/card-back.${imageFormat}`
     );
   }
 };
