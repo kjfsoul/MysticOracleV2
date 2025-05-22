@@ -1,157 +1,178 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { TarotCard } from '@/data/tarot-cards';
-import { getCardBackPath } from '@/utils/tarot-utils';
+import type { TarotCard } from "@client/data/tarot-cards";
+import "@client/styles/card-flip.css";
+import {
+  getCardBackPath,
+  getTarotCardImagePath,
+  handleTarotImageError,
+} from "@client/utils/tarot-utils";
+import { animate, motion } from "framer-motion"; // Import motion
+import React, { useEffect, useState } from "react";
 
 interface AnimatedTarotCardProps {
   card: TarotCard;
   isReversed?: boolean;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: "sm" | "md" | "lg" | "xl";
   autoReveal?: boolean;
   revealDelay?: number;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
   className?: string;
   showMeaning?: boolean;
+  imagePath?: string; // Custom image path override
 }
 
-/**
- * AnimatedTarotCard Component
- * 
- * A tarot card component with flip animation and customizable appearance.
- */
+const dimensions = {
+  sm: { width: 100, height: 170 },
+  md: { width: 140, height: 240 },
+  lg: { width: 180, height: 300 },
+  xl: { width: 220, height: 370 },
+};
+
+// Card reveal animations
+const cardRevealAnimations = [
+  "glow", // Glowing effect
+  "sparkle", // Sparkle effect
+  "jump", // Card jumps out
+  "pulse", // Card pulses
+  "rotate", // Card rotates slightly
+];
+
 const AnimatedTarotCard: React.FC<AnimatedTarotCardProps> = ({
   card,
   isReversed = false,
-  size = 'md',
+  size = "md",
   autoReveal = false,
   revealDelay = 1500,
   onClick,
-  className = '',
+  className = "",
   showMeaning = false,
+  imagePath,
 }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(autoReveal);
   const [isLoaded, setIsLoaded] = useState(false);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
-  
-  // Card dimensions based on size
-  const dimensions = {
-    sm: { width: 100, height: 170 },
-    md: { width: 140, height: 240 },
-    lg: { width: 180, height: 300 },
-    xl: { width: 220, height: 370 },
-  };
-  
+  const [revealAnimation, setRevealAnimation] = useState<string>("");
+
   const { width, height } = dimensions[size];
-  
+
   // Load the card image
   useEffect(() => {
-    // Get the image path from the card
-    const cardImagePath = card.imagePath;
-    
-    // Create a new image to preload
+    // Use provided imagePath if available, otherwise generate one
+    const cardImagePath = imagePath || getTarotCardImagePath(card);
+    console.log(
+      `Loading image for ${card.name} from ${
+        imagePath ? "provided" : "generated"
+      } path: ${cardImagePath}`
+    );
+
     const img = new Image();
     img.src = cardImagePath;
-    
-    // Handle successful load
+
     img.onload = () => {
+      console.log(`Successfully loaded image: ${cardImagePath}`);
       setImageSrc(cardImagePath);
       setIsLoaded(true);
     };
-    
-    // Handle load error
+
     img.onerror = () => {
       console.error(`Failed to load image: ${cardImagePath}`);
-      
-      // Try to load a fallback image based on card type
-      let fallbackPath = '';
-      if (card.arcana === 'major') {
-        fallbackPath = `/images/tarot/placeholders/major-placeholder.svg`;
-      } else if (card.suit) {
-        fallbackPath = `/images/tarot/placeholders/${card.suit}-placeholder.svg`;
-      } else {
-        fallbackPath = `/images/tarot/placeholders/minor-placeholder.svg`;
-      }
-      
-      setImageSrc(fallbackPath);
-      setIsLoaded(true);
+      // Use the utility function for fallback logic
+      handleTarotImageError(card, cardImagePath, setImageSrc);
+      setIsLoaded(true); // Still mark as loaded even with fallback
     };
-  }, [card]);
-  
-  // Auto-reveal the card after delay if enabled
+  }, [card, imagePath]);
+
   useEffect(() => {
+    let timer: NodeJS.Timeout | null = null;
     if (autoReveal && !isFlipped) {
-      const timer = setTimeout(() => {
+      console.log(`Setting up auto-reveal timer for card: ${card.name}`);
+      timer = setTimeout(() => {
+        console.log(`Auto-revealing card via timer: ${card.name}`);
         setIsFlipped(true);
       }, revealDelay);
-      
-      return () => clearTimeout(timer);
     }
-  }, [autoReveal, isFlipped, revealDelay]);
-  
-  // Handle card click
-  const handleClick = () => {
-    setIsFlipped(!isFlipped);
-    if (onClick) onClick();
+    return () => {
+      if (timer) {
+        console.log(`Clearing auto-reveal timer for card: ${card.name}`);
+        clearTimeout(timer);
+      }
+    };
+  }, [autoReveal, revealDelay, card.name, isFlipped]);
+
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    setIsFlipped((current) => !current);
+    if (onClick) onClick(event);
   };
-  
-  // Get the card meaning based on orientation
-  const cardMeaning = isReversed ? card.meaningReversed : card.meaningUpright;
-  
+
+  // Animation variants based on the selected animation type
+  const getCardFrontAnimationClass = () => {
+    switch (revealAnimation) {
+      case "glow":
+        return "animate-glow";
+      case "sparkle":
+        return "animate-sparkle";
+      case "jump":
+        return "animate-jump";
+      case "pulse":
+        return "animate-pulse-card";
+      case "rotate":
+        return "animate-rotate";
+      default:
+        return "";
+    }
+  };
+
   return (
-    <div 
+    <div
       className={`relative perspective-1000 cursor-pointer ${className}`}
       style={{ width, height }}
       onClick={handleClick}
     >
       <motion.div
-        className="w-full h-full relative preserve-3d"
-        initial={false}
+        className="w-full h-full relative preserve-3d transition-transform duration-700"
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
+        transition={{ duration: 0.7, ease: [0.4, 0.0, 0.2, 1] }}
       >
-        {/* Card Back */}
-        <div 
-          className="absolute w-full h-full backface-hidden rounded-lg shadow-lg border border-gold/30"
-          style={{ 
+        <div
+          className="absolute w-full h-full backface-hidden rounded-lg shadow-lg border border-gold/30 overflow-hidden"
+          style={{
             backgroundImage: `url(${getCardBackPath()})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            zIndex: isFlipped ? -1 : 1,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         />
-        
-        {/* Card Front */}
-        <div 
-          className="absolute w-full h-full backface-hidden rounded-lg shadow-lg border border-gold/30 overflow-hidden rotate-y-180"
-          style={{ zIndex: isFlipped ? 1 : -1 }}
+
+        <div
+          className="absolute w-full h-full backface-hidden rounded-lg shadow-lg border border-gold/30 overflow-hidden"
+          style={{ transform: `rotateY(180deg)` }}
         >
           {isLoaded ? (
             <div className="relative w-full h-full">
-              {/* Card Image */}
-              <div 
-                className="w-full h-full bg-primary-10"
-                style={{
-                  backgroundImage: `url(${imageSrc})`,
-                  backgroundSize: 'contain',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                  transform: isReversed ? 'rotate(180deg)' : 'rotate(0deg)',
-                }}
-              />
-              
-              {/* Card Name Overlay */}
+              <div
+                className={`tarot-card-front ${
+                  isFlipped ? getCardFrontAnimationClass() : ""
+                }`}
+              >
+                <img
+                  className="w-full h-full object-contain"
+                  src={imageSrc || ""}
+                  alt={card.name}
+                  style={{
+                    transform: isReversed ? "rotate(180deg)" : "rotate(0deg)",
+                  }}
+                />
+              </div>
+
               <div className="absolute bottom-0 left-0 right-0 bg-dark/80 backdrop-blur-sm p-2 text-center">
                 <h3 className="text-gold font-heading text-sm md:text-base truncate">
                   {card.name}
                 </h3>
                 {showMeaning && (
                   <p className="text-light/80 text-xs mt-1 line-clamp-2">
-                    {cardMeaning}
+                    {isReversed ? card.meaningReversed : card.meaningUpright}
                   </p>
                 )}
               </div>
-              
-              {/* Reversed Indicator */}
+
               {isReversed && (
                 <div className="absolute top-2 right-2 bg-warning/80 text-dark text-xs px-1.5 py-0.5 rounded-sm font-medium">
                   Reversed

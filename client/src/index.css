@@ -366,3 +366,14 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Sparkle Animation for Feedback */
+@keyframes sparkleFade {
+  0% { opacity: 0.7; transform: scale(0.8); filter: blur(4px); }
+  50% { opacity: 1; transform: scale(1.2); filter: blur(2px); }
+  100% { opacity: 0; transform: scale(1.5); filter: blur(6px); }
+}
+
+.animate-sparkle {
+  animation: sparkleFade 1.5s ease-out forwards;
+}

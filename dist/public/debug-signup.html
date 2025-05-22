@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debug Signup</title>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .panel {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    input {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      overflow: auto;
+      max-height: 300px;
+      white-space: pre-wrap;
+    }
+    .log {
+      margin-top: 20px;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+    .log-entry {
+      margin-bottom: 10px;
+      padding: 5px;
+      border-radius: 3px;
+    }
+    .log-entry.info {
+      background-color: #e2f3fd;
+    }
+    .log-entry.success {
+      background-color: #d4edda;
+    }
+    .log-entry.error {
+      background-color: #f8d7da;
+    }
+    .step {
+      margin-bottom: 5px;
+      padding: 5px;
+      border-left: 3px solid #ccc;
+    }
+    .step.success {
+      border-left-color: #4CAF50;
+    }
+    .step.error {
+      border-left-color: #f44336;
+    }
+    .step.pending {
+      border-left-color: #2196F3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Debug Signup Process</h1>
+  
+  <div class="panel">
+    <h2>Supabase Configuration</h2>
+    <div>
+      <label for="supabase-url">Supabase URL:</label>
+      <input type="text" id="supabase-url" value="https://pqfsbxcbsxuyfgqrxdob.supabase.co">
+    </div>
+    <div>
+      <label for="supabase-key">Supabase Anon Key:</label>
+      <input type="text" id="supabase-key" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxZnNieGNic3h1eWZncXJ4ZG9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIzMzAxNzAsImV4cCI6MjA1NzkwNjE3MH0.1bjMIO2hzyCJS1ExpsB1JsCmkH8D2d2M_-Psz2DDJrQ">
+    </div>
+    <button id="test-connection">Test Connection</button>
+  </div>
+  
+  <div class="panel">
+    <h2>Signup Form</h2>
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" value="testuser">
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" value="test@example.com">
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" value="password123">
+    </div>
+    <button id="signup-btn">Sign Up</button>
+    <button id="step-by-step-btn">Step-by-Step Signup</button>
+  </div>
+  
+  <div class="panel">
+    <h2>Database Checks</h2>
+    <button id="check-auth-users">Check Auth Users</button>
+    <button id="check-public-users">Check Public Users</button>
+    <button id="check-trigger">Check Trigger</button>
+    <pre id="db-result">Results will appear here...</pre>
+  </div>
+  
+  <div class="log">
+    <h2>Debug Log</h2>
+    <div id="log-container"></div>
+  </div>
+  
+  <div id="step-by-step-container" style="display: none;">
+    <h2>Step-by-Step Signup</h2>
+    <div id="steps-container">
+      <div class="step pending" id="step-1">1. Initialize Supabase Client</div>
+      <div class="step pending" id="step-2">2. Create Auth User</div>
+      <div class="step pending" id="step-3">3. Check if Trigger Created Public User</div>
+      <div class="step pending" id="step-4">4. Manually Create Public User if Needed</div>
+      <div class="step pending" id="step-5">5. Verify User Creation</div>
+    </div>
+    <button id="next-step-btn">Start Process</button>
+  </div>
+  
+  <script>
+    // Logging function
+    function log(message, type = 'info') {
+      const logContainer = document.getElementById('log-container');
+      const logEntry = document.createElement('div');
+      logEntry.className = `log-entry ${type}`;
+      logEntry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+      logContainer.prepend(logEntry);
+    }
+    
+    // Update step status
+    function updateStep(stepNumber, status, message = '') {
+      const step = document.getElementById(`step-${stepNumber}`);
+      step.className = `step ${status}`;
+      if (message) {
+        step.textContent = `${stepNumber}. ${message}`;
+      }
+    }
+    
+    // Initialize variables
+    let supabase;
+    let stepByStepData = {
+      currentStep: 0,
+      userId: null,
+      email: '',
+      username: '',
+      password: ''
+    };
+    
+    // Test Connection
+    document.getElementById('test-connection').addEventListener('click', async () => {
+      const supabaseUrl = document.getElementById('supabase-url').value;
+      const supabaseKey = document.getElementById('supabase-key').value;
+      
+      log(`Testing connection to ${supabaseUrl}...`);
+      
+      try {
+        supabase = supabase.createClient(supabaseUrl, supabaseKey);
+        
+        // Try a simple query
+        const { data, error } = await supabase.from('users').select('count()', { count: 'exact' });
+        
+        if (error) throw error;
+        
+        log(`Connection successful! Found ${data[0].count} users.`, 'success');
+      } catch (error) {
+        log(`Connection error: ${error.message}`, 'error');
+        console.error('Connection error:', error);
+      }
+    });
+    
+    // Sign Up
+    document.getElementById('signup-btn').addEventListener('click', async () => {
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      if (!supabase) {
+        const supabaseUrl = document.getElementById('supabase-url').value;
+        const supabaseKey = document.getElementById('supabase-key').value;
+        supabase = supabase.createClient(supabaseUrl, supabaseKey);
+      }
+      
+      log(`Attempting to sign up user: ${email}`);
+      
+      try {
+        // Sign up with Supabase Auth
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {
+              username,
+            },
+          },
+        });
+        
+        if (error) throw error;
+        
+        log(`Auth signup successful! User ID: ${data.user.id}`, 'success');
+        
+        // Wait a moment for the trigger to execute
+        log('Waiting for trigger to execute...');
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        // Check if user record was created
+        const { data: userData, error: userError } = await supabase
+          .from('users')
+          .select('*')
+          .eq('id', data.user.id)
+          .single();
+        
+        if (userError) {
+          log(`Error checking user record: ${userError.message}`, 'error');
+          
+          // Try to manually create the user record
+          log('Attempting to manually create user record...');
+          const { data: manualData, error: manualError } = await supabase
+            .from('users')
+            .insert([
+              {
+                id: data.user.id,
+                username,
+                email,
+                subscription_level: 'basic',
+                created_at: new Date().toISOString(),
+                updated_at: new Date().toISOString()
+              }
+            ])
+            .select();
+          
+          if (manualError) {
+            log(`Error manually creating user record: ${manualError.message}`, 'error');
+          } else {
+            log('User record manually created successfully!', 'success');
+          }
+        } else {
+          log('User record created by trigger successfully!', 'success');
+        }
+      } catch (error) {
+        log(`Signup error: ${error.message}`, 'error');
+        console.error('Signup error:', error);
+      }
+    });
+    
+    // Check Auth Users
+    document.getElementById('check-auth-users').addEventListener('click', async () => {
+      if (!supabase) {
+        const supabaseUrl = document.getElementById('supabase-url').value;
+        const supabaseKey = document.getElementById('supabase-key').value;
+        supabase = supabase.createClient(supabaseUrl, supabaseKey);
+      }
+      
+      const dbResult = document.getElementById('db-result');
+      dbResult.textContent = 'Checking auth.users table...';
+      
+      try {
+        // This is a special query that requires admin privileges
+        // It might not work with the anon key
+        const { data, error } = await supabase.rpc('get_auth_users');
+        
+        if (error) throw error;
+        
+        dbResult.textContent = JSON.stringify(data, null, 2);
+        log(`Found ${data.length} users in auth.users table`, 'info');
+      } catch (error) {
+        dbResult.textContent = `Error: ${error.message}\n\nNote: Checking auth.users directly requires admin privileges.`;
+        log('Error checking auth.users table. This likely requires admin privileges.', 'error');
+        
+        // Try an alternative approach
+        try {
+          const { data, error } = await supabase.auth.getUser();
+          if (!error && data.user) {
+            dbResult.textContent = `Current authenticated user:\n${JSON.stringify(data.user, null, 2)}`;
+            log('Retrieved current authenticated user', 'success');
+          }
+        } catch (e) {
+          console.error('Alternative approach failed:', e);
+        }
+      }
+    });
+    
+    // Check Public Users
+    document.getElementById('check-public-users').addEventListener('click', async () => {
+      if (!supabase) {
+        const supabaseUrl = document.getElementById('supabase-url').value;
+        const supabaseKey = document.getElementById('supabase-key').value;
+        supabase = supabase.createClient(supabaseUrl, supabaseKey);
+      }
+      
+      const dbResult = document.getElementById('db-result');
+      dbResult.textContent = 'Checking public.users table...';
+      
+      try {
+        const { data, error } = await supabase
+          .from('users')
+          .select('*')
+          .limit(10);
+        
+        if (error) throw error;
+        
+        dbResult.textContent = JSON.stringify(data, null, 2);
+        log(`Found ${data.length} users in public.users table`, 'info');
+      } catch (error) {
+        dbResult.textContent = `Error: ${error.message}`;
+        log(`Error checking public.users table: ${error.message}`, 'error');
+      }
+    });
+    
+    // Check Trigger
+    document.getElementById('check-trigger').addEventListener('click', async () => {
+      if (!supabase) {
+        const supabaseUrl = document.getElementById('supabase-url').value;
+        const supabaseKey = document.getElementById('supabase-key').value;
+        supabase = supabase.createClient(supabaseUrl, supabaseKey);
+      }
+      
+      const dbResult = document.getElementById('db-result');
+      dbResult.textContent = 'Checking trigger...';
+      
+      try {
+        // This is a special query that requires admin privileges
+        const { data, error } = await supabase.rpc('check_trigger_exists', {
+          trigger_name: 'on_auth_user_created'
+        });
+        
+        if (error) throw error;
+        
+        dbResult.textContent = JSON.stringify(data, null, 2);
+        log(`Trigger check result: ${data ? 'Exists' : 'Does not exist'}`, data ? 'success' : 'error');
+      } catch (error) {
+        dbResult.textContent = `Error: ${error.message}\n\nNote: Checking triggers directly requires admin privileges.`;
+        log('Error checking trigger. This likely requires admin privileges.', 'error');
+        
+        // Try an alternative approach - create a test user and see if the trigger works
+        try {
+          log('Testing trigger by creating a test user...', 'info');
+          const testEmail = `test${Date.now()}@example.com`;
+          const { data, error } = await supabase.auth.signUp({
+            email: testEmail,
+            password: 'password123',
+            options: {
+              data: {
+                username: 'triggertest',
+              },
+            },
+          });
+          
+          if (error) throw error;
+          
+          log(`Created test user with ID: ${data.user.id}`, 'success');
+          
+          // Wait for trigger
+          await new Promise(resolve => setTimeout(resolve, 2000));
+          
+          // Check if user was created in public.users
+          const { data: userData, error: userError } = await supabase
+            .from('users')
+            .select('*')
+            .eq('id', data.user.id)
+            .single();
+          
+          if (userError) {
+            log('Trigger test failed: No user record created', 'error');
+            dbResult.textContent = `Trigger test failed: ${userError.message}`;
+          } else {
+            log('Trigger test successful: User record created!', 'success');
+            dbResult.textContent = `Trigger test successful! Created user:\n${JSON.stringify(userData, null, 2)}`;
+          }
+        } catch (e) {
+          log(`Alternative trigger test failed: ${e.message}`, 'error');
+          dbResult.textContent += `\n\nAlternative test failed: ${e.message}`;
+        }
+      }
+    });
+    
+    // Step-by-Step Signup
+    document.getElementById('step-by-step-btn').addEventListener('click', () => {
+      document.getElementById('step-by-step-container').style.display = 'block';
+      stepByStepData.currentStep = 0;
+      stepByStepData.email = document.getElementById('email').value;
+      stepByStepData.username = document.getElementById('username').value;
+      stepByStepData.password = document.getElementById('password').value;
+      
+      // Reset steps
+      for (let i = 1; i <= 5; i++) {
+        updateStep(i, 'pending');
+      }
+      
+      document.getElementById('next-step-btn').textContent = 'Start Process';
+    });
+    
+    // Next Step Button
+    document.getElementById('next-step-btn').addEventListener('click', async () => {
+      const nextStepBtn = document.getElementById('next-step-btn');
+      
+      if (stepByStepData.currentStep === 0) {
+        // Starting the process
+        stepByStepData.currentStep = 1;
+        nextStepBtn.textContent = 'Next Step';
+        executeStep(1);
+      } else if (stepByStepData.currentStep < 5) {
+        // Move to next step
+        stepByStepData.currentStep++;
+        executeStep(stepByStepData.currentStep);
+        
+        if (stepByStepData.currentStep === 5) {
+          nextStepBtn.textContent = 'Finish';
+        }
+      } else {
+        // Finish
+        document.getElementById('step-by-step-container').style.display = 'none';
+        log('Step-by-step process completed', 'success');
+      }
+    });
+    
+    // Execute step
+    async function executeStep(stepNumber) {
+      updateStep(stepNumber, 'pending', `Executing step ${stepNumber}...`);
+      
+      try {
+        switch (stepNumber) {
+          case 1:
+            // Initialize Supabase Client
+            const supabaseUrl = document.getElementById('supabase-url').value;
+            const supabaseKey = document.getElementById('supabase-key').value;
+            supabase = supabase.createClient(supabaseUrl, supabaseKey);
+            log('Initialized Supabase client', 'info');
+            updateStep(1, 'success', '1. Supabase Client Initialized');
+            break;
+            
+          case 2:
+            // Create Auth User
+            const { data, error } = await supabase.auth.signUp({
+              email: stepByStepData.email,
+              password: stepByStepData.password,
+              options: {
+                data: {
+                  username: stepByStepData.username,
+                },
+              },
+            });
+            
+            if (error) throw error;
+            
+            stepByStepData.userId = data.user.id;
+            log(`Created auth user with ID: ${data.user.id}`, 'success');
+            updateStep(2, 'success', '2. Auth User Created');
+            break;
+            
+          case 3:
+            // Check if Trigger Created Public User
+            // Wait a moment for the trigger to execute
+            log('Waiting for trigger to execute...', 'info');
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            const { data: userData, error: userError } = await supabase
+              .from('users')
+              .select('*')
+              .eq('id', stepByStepData.userId)
+              .single();
+            
+            if (userError) {
+              log('Trigger did not create public user record', 'error');
+              updateStep(3, 'error', '3. Trigger Did Not Create Public User');
+            } else {
+              log('Trigger successfully created public user record', 'success');
+              updateStep(3, 'success', '3. Trigger Created Public User');
+            }
+            break;
+            
+          case 4:
+            // Manually Create Public User if Needed
+            const { data: existingUser, error: checkError } = await supabase
+              .from('users')
+              .select('*')
+              .eq('id', stepByStepData.userId)
+              .single();
+            
+            if (checkError) {
+              // User doesn't exist, create it
+              log('Manually creating public user record...', 'info');
+              const { data: insertData, error: insertError } = await supabase
+                .from('users')
+                .insert([
+                  {
+                    id: stepByStepData.userId,
+                    username: stepByStepData.username,
+                    email: stepByStepData.email,
+                    subscription_level: 'basic',
+                    created_at: new Date().toISOString(),
+                    updated_at: new Date().toISOString()
+                  }
+                ])
+                .select();
+              
+              if (insertError) {
+                log(`Error manually creating user: ${insertError.message}`, 'error');
+                updateStep(4, 'error', '4. Manual User Creation Failed');
+              } else {
+                log('User manually created successfully', 'success');
+                updateStep(4, 'success', '4. User Manually Created');
+              }
+            } else {
+              log('User already exists, skipping manual creation', 'info');
+              updateStep(4, 'success', '4. Manual Creation Not Needed');
+            }
+            break;
+            
+          case 5:
+            // Verify User Creation
+            const { data: finalUser, error: finalError } = await supabase
+              .from('users')
+              .select('*')
+              .eq('id', stepByStepData.userId)
+              .single();
+            
+            if (finalError) {
+              log(`Error verifying user: ${finalError.message}`, 'error');
+              updateStep(5, 'error', '5. User Verification Failed');
+            } else {
+              log('User verified successfully', 'success');
+              updateStep(5, 'success', '5. User Verified Successfully');
+            }
+            break;
+        }
+      } catch (error) {
+        log(`Error in step ${stepNumber}: ${error.message}`, 'error');
+        updateStep(stepNumber, 'error', `${stepNumber}. Error: ${error.message}`);
+      }
+    }
+  </script>
+</body>
+</html>

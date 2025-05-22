@@ -14,10 +14,10 @@ const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Import the Ace of Cups interpretation
-const { aceOfCupsInterpretation } = require('../client/src/data/tarot-interpretations/ace-of-cups');
+const { aceOfCupsInterpretation } = require('../client/client/src/data/tarot-interpretations/ace-of-cups');
 
 // Add more card imports as they are created
-// const { twoOfCupsInterpretation } = require('../client/src/data/tarot-interpretations/two-of-cups');
+// const { twoOfCupsInterpretation } = require('../client/client/src/data/tarot-interpretations/two-of-cups');
 // ... and so on
 
 /**

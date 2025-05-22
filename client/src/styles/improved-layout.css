@@ -62,8 +62,10 @@
 }
 
 .text-gold {
-  color: rgba(212, 175, 55, 0.95) !important;
-  text-shadow: 0 0 5px rgba(212, 175, 55, 0.3) !important;
+  color: rgba(212, 175, 55, 1) !important;
+  text-shadow: 0 0 5px rgba(212, 175, 55, 0.5) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
 }
 
 /* Improved section spacing */
@@ -129,6 +131,9 @@
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(128, 90, 213, 0.2);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  height: 4rem; /* Ensure consistent height */
+  display: flex;
+  align-items: center;
 }
 
 /* Improved navigation */

@@ -1,0 +1,1262 @@
+(node:12649) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:96
+        const startTime = new Date(Date.now() - (parts[9] * 1000)).toISOString();
+                                                                   ^
+
+RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:96:68
+    at Array.map (<anonymous>)
+    at file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:91:28
+    at ChildProcess.exithandler (node:child_process:407:7)
+    at ChildProcess.emit (node:events:507:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Socket.<anonymous> (node:internal/child_process:457:11)
+    at Socket.emit (node:events:507:28)
+    at Pipe.<anonymous> (node:net:350:12)
+
+Node.js v23.1.0
+(node:12735) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:96
+        const startTime = new Date(Date.now() - (parts[9] * 1000)).toISOString();
+                                                                   ^
+
+RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:96:68
+    at Array.map (<anonymous>)
+    at file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:91:28
+    at ChildProcess.exithandler (node:child_process:407:7)
+    at ChildProcess.emit (node:events:507:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Socket.<anonymous> (node:internal/child_process:457:11)
+    at Socket.emit (node:events:507:28)
+    at Pipe.<anonymous> (node:net:350:12)
+
+Node.js v23.1.0
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+  dist/index.js  93.0kb
+
+⚡ Done in 9ms
+npm warn config production Use `--omit=dev` instead.
+(node:46707) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:46735) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ›   Error: unknown option '--yes'
+ ›   See more help with --help
+✗ Build failed in 10.59s
+error during build:
+EACCES, Directory not empty: /Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images'
+    at Object.rmSync (node:fs:1253:18)
+    at emptyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Pj_jxEzN.js:9983:19)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Pj_jxEzN.js:51532:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Pj_jxEzN.js:51496:7)
+    at async Object.defaultBuildApp [as buildApp] (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Pj_jxEzN.js:51957:5)
+    at async CAC.<anonymous> (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/cli.js:860:7)
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+  dist/index.js  93.0kb
+
+⚡ Done in 6ms
+npm warn config production Use `--omit=dev` instead.
+(node:46945) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+  dist/index.js  93.0kb
+
+⚡ Done in 6ms
+npm warn config production Use `--omit=dev` instead.
+(node:46981) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:46979) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:47009) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+​
+Warning: some redirects have syntax errors:
+​
+Could not parse redirect line 3:
+  <https://www.mysticarcana.com/>* <https://mysticarcana.com/:s> 301!
+The destination path/URL must start with "/", "http:" or "https:"
+​
+Could not parse redirect line 4:
+  <https://mysticarcana.netlify.app/>* <https://mysticarcana.com/:s> 301!
+The destination path/URL must start with "/", "http:" or "https:"
+​
+Could not parse redirect number 1:
+  {"from":"<http://www.mysticarcana.com/>*<https://mysticarcana.com/:s>","query":{},"status":301,"force":true,"conditions":{}}
+Missing "to" field
+​
+Warning: some redirects have syntax errors:
+​
+Could not parse redirect line 3:
+  <https://www.mysticarcana.com/>* <https://mysticarcana.com/:s> 301!
+The destination path/URL must start with "/", "http:" or "https:"
+​
+Could not parse redirect line 4:
+  <https://mysticarcana.netlify.app/>* <https://mysticarcana.com/:s> 301!
+The destination path/URL must start with "/", "http:" or "https:"
+​
+Could not parse redirect number 1:
+  {"from":"<http://www.mysticarcana.com/>*<https://mysticarcana.com/:s>","query":{},"status":301,"force":true,"conditions":{}}
+Missing "to" field
+⠋ Uploading blobs to deploy store...
+
+⠙ Finished uploading blobs to deploy store
+⠋ Uploading blobs to deploy store...
+
+⠋ Hashing files...
+⠋ Looking for a functions cache...
+⠙ No cached functions were found
+⠙ Finished uploading blobs to deploy store
+⠋ Hashing files...
+⠋ Looking for a functions cache...
+⠙ No cached functions were found
+⠙ Finished hashing 175 files and 12 functions
+⠋ CDN diffing files...
+⠙ Finished hashing 175 files and 12 functions
+⠋ CDN diffing files...
+⠙ CDN requesting 51 files and 12 functions
+⠋ Uploading 63 files
+⠙ CDN requesting 51 files and 12 functions
+⠋ Uploading 63 files
+⠙ Finished uploading 63 assets
+⠋ Waiting for deploy to go live...
+⠙ Finished uploading 63 assets
+⠋ Waiting for deploy to go live...
+⠙ Deploy is live!
+⠙ Deploy is live!
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+(node:48314) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T08_30_01_015Z-debug-0.log
+(node:48368) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+(node:48366) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T08_30_01_271Z-debug-0.log
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T08_30_01_269Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+(node:48549) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T08_30_01_897Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T08_45_00_236Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T08_45_00_589Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T08_45_00_947Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T08_45_01_051Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 22.68s
+✗ Build failed in 22.70s
+error during build:
+ENOENT: no such file or directory, copyfile '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/public/images/tarot/decks/rider-waite/minor/swords/two-swords.jpg' -> '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images/tarot/decks/rider-waite/minor/swords/two-swords.jpg'
+    at Object.copyFileSync (node:fs:3013:11)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9999:19)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51562:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51508:7)
+error during build:
+ENOENT: no such file or directory, copyfile '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/public/images/tarot/decks/rider-waite/minor/swords/two-swords.jpg' -> '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images/tarot/decks/rider-waite/minor/swords/two-swords.jpg'
+    at Object.copyFileSync (node:fs:3013:11)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9999:19)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51562:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51508:7)
+✗ Build failed in 22.80s
+error during build:
+ENOENT: no such file or directory, copyfile '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/public/images/tarot/decks/rider-waite/minor/cups/nine-cups.jpg' -> '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images/tarot/decks/rider-waite/minor/cups/nine-cups.jpg'
+    at Object.copyFileSync (node:fs:3013:11)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9999:19)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51562:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51508:7)
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+  dist/index.js  93.0kb
+
+⚡ Done in 11ms
+npm warn config production Use `--omit=dev` instead.
+(node:97583) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:97624) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ›   Error: unknown option '--yes'
+ ›   See more help with --help
+npm warn config production Use `--omit=dev` instead.
+(node:98667) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T12_30_00_764Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+(node:98791) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T12_30_01_686Z-debug-0.log
+(node:98824) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T12_30_01_830Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+(node:98919) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T12_30_02_278Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T12_45_00_721Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T12_45_00_942Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T12_45_00_986Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T12_45_01_648Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+(node:444) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T13_00_02_211Z-debug-0.log
+(node:667) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T13_00_03_516Z-debug-0.log
+(node:699) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T13_00_03_427Z-debug-0.log
+(node:840) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T13_00_03_787Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T13_00_04_748Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T13_00_06_335Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T13_00_06_261Z-debug-0.log
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T13_00_06_316Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 20.33s
+error during build:
+ENOENT: no such file or directory, copyfile '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/public/images/tarot/decks/rider-waite/major/21-world.jpg' -> '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images/tarot/decks/rider-waite/major/21-world.jpg'
+    at Object.copyFileSync (node:fs:3013:11)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9999:19)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51562:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51508:7)
+    at async Object.defaultBuildApp [as buildApp] (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51969:5)
+✗ Build failed in 21.65s
+error during build:
+ENOENT: no such file or directory, copyfile '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/public/images/tarot/decks/rider-waite/minor/wands/eight-wands.jpg' -> '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images/tarot/decks/rider-waite/minor/wands/eight-wands.jpg'
+    at Object.copyFileSync (node:fs:3013:11)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9999:19)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at copyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9997:7)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51562:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51508:7)
+✗ Build failed in 21.32s
+error during build:
+EACCES, Directory not empty: /Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images '/Users/kfitz/MysticOracleV2/MysticOracleV2/dist/public/images'
+    at Object.rmSync (node:fs:1253:18)
+    at emptyDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:9983:19)
+    at prepareOutDir (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51544:7)
+    at buildEnvironment (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51508:7)
+    at async Object.defaultBuildApp [as buildApp] (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51969:5)
+    at async CAC.<anonymous> (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/cli.js:860:7)
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+  dist/index.js  93.0kb
+
+⚡ Done in 5ms
+npm warn config production Use `--omit=dev` instead.
+(node:2537) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2565) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ›   Error: unknown option '--yes'
+ ›   See more help with --help
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.57s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 7.62s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 7.65s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 7.67s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+(node:39414) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T16_30_00_367Z-debug-0.log
+(node:39481) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T16_30_00_584Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+(node:39564) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T16_30_00_898Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+(node:39833) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T16_30_01_712Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T16_45_00_386Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T16_45_00_787Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T16_45_00_960Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T16_45_01_154Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+(node:41354) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T17_00_00_541Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+(node:41519) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T17_00_01_115Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+(node:41552) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T17_00_01_246Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+(node:41660) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T17_00_01_629Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T17_00_02_013Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T17_00_02_460Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T17_00_02_539Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T17_00_02_974Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.45s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 7.52s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 7.43s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 7.63s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.43s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 7.22s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 6.72s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 6.44s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+npm warn config production Use `--omit=dev` instead.
+(node:54141) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T20_30_00_905Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+(node:54163) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T20_30_01_096Z-debug-0.log
+(node:54197) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T20_30_01_106Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+(node:54404) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T20_30_01_799Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T20_45_00_353Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T20_45_00_474Z-debug-0.log
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T20_45_00_477Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T20_45_00_709Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+(node:55832) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:55795) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T21_00_00_482Z-debug-0.log
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T21_00_00_388Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+(node:56024) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T21_00_01_223Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T21_00_01_461Z-debug-0.log
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T21_00_01_461Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+(node:56186) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T21_00_01_670Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T21_00_02_486Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-10T21_00_03_005Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.78s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 7.88s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 7.43s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 6.61s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.85s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 7.01s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 6.35s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 7.12s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+(node:68151) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:68150) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T00_30_00_623Z-debug-0.log
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T00_30_00_623Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+(node:68463) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T00_30_01_673Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+(node:68580) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T00_30_01_990Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T00_45_00_706Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T00_45_01_000Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T00_45_01_080Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T00_45_01_158Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+(node:70124) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T01_00_00_916Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+(node:70211) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T01_00_01_206Z-debug-0.log
+(node:70233) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T01_00_01_288Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+(node:70317) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T01_00_01_520Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T01_00_02_258Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T01_00_02_404Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T01_00_02_481Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T01_00_02_762Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+npm warn config production Use `--omit=dev` instead.
+✗ Build failed in 7.73s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 7.72s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 7.69s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+✗ Build failed in 7.74s
+error during build:
+[vite:load-fallback] Could not load /Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast (imported by client/src/components/crewai/crewai-connector.tsx): ENOENT: no such file or directory, open '/Users/kfitz/MysticOracleV2/MysticOracleV2/client/src/components/ui/use-toast'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1239:14)
+    at async Object.load (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51144:25)
+    at async PluginDriver.hookFirstAndGetPlugin (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21878:28)
+    at async file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:21001:33
+    at async Queue.work (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/node_modules/rollup/dist/es/shared/node-entry.js:22088:32)
+npm warn config production Use `--omit=dev` instead.
+(node:16140) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T04_30_00_414Z-debug-0.log
+npm warn config production Use `--omit=dev` instead.
+npm error Missing script: "test"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /Users/kfitz/.npm/_logs/2025-04-11T04_45_00_928Z-debug-0.log
+Failed to generate status report: logger is not defined
+ReferenceError: logger is not defined
+    at generateStatusReport (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:291:5)
+    at main (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:614:11)
+    at file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:623:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+Failed to generate status report: logger is not defined
+ReferenceError: logger is not defined
+    at generateStatusReport (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:291:5)
+    at main (file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:614:11)
+    at file:///Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/status-report.js:623:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+npm warn config production Use `--omit=dev` instead.
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+  dist/index.js  93.0kb
+
+⚡ Done in 7ms
+npm warn config production Use `--omit=dev` instead.
+(node:36423) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:36576) ExperimentalWarning: CommonJS module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/debug/src/node.js is loading ES Module /Users/kfitz/.nvm/versions/node/v23.1.0/lib/node_modules/netlify-cli/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+​
+Warning: some redirects have syntax errors:
+​
+Could not parse redirect line 3:
+  <https://www.mysticarcana.com/>* <https://mysticarcana.com/:s> 301!
+The destination path/URL must start with "/", "http:" or "https:"
+​
+Could not parse redirect line 4:
+  <https://mysticarcana.netlify.app/>* <https://mysticarcana.com/:s> 301!
+The destination path/URL must start with "/", "http:" or "https:"
+​
+Could not parse redirect number 1:
+  {"from":"<http://www.mysticarcana.com/>*<https://mysticarcana.com/:s>","query":{},"status":301,"force":true,"conditions":{}}
+Missing "to" field
+⠋ Uploading blobs to deploy store...
+
+⠙ Finished uploading blobs to deploy store
+⠋ Hashing files...
+⠋ Looking for a functions cache...
+⠙ No cached functions were found
+⠙ Finished hashing 176 files and 12 functions
+⠋ CDN diffing files...
+⠙ CDN requesting 0 files and 0 functions
+⠋ Uploading 0 files
+⠙ Finished uploading 0 assets
+⠋ Waiting for deploy to go live...
+⠙ Deploy is live!
+npm warn config production Use `--omit=dev` instead.
+
+Oops! Something went wrong! :(
+
+ESLint: 8.57.1
+
+ESLint couldn't find the plugin "@typescript-eslint/eslint-plugin".
+
+(The package "@typescript-eslint/eslint-plugin" was not found when loaded as a Node module from the directory "/Users/kfitz/MysticOracleV2/MysticOracleV2".)
+
+It's likely that the plugin isn't installed correctly. Try reinstalling by running the following:
+
+    npm install @typescript-eslint/eslint-plugin@latest --save-dev
+
+The plugin "@typescript-eslint/eslint-plugin" was referenced from the config file in ".eslintrc.json".
+
+If you still can't figure out the problem, please stop by https://eslint.org/chat/help to chat with the team.
+
+npm warn config production Use `--omit=dev` instead.

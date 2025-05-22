@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../hooks/useAuth';
-import StripeCheckout from '../components/StripeCheckout';
+import StripeCheckout from "../src/pages/StripeCheckout";
 
 const Subscription: React.FC = () => {
   const { user } = useAuth();

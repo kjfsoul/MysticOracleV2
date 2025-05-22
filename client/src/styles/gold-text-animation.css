@@ -1,0 +1,40 @@
+/**
+ * Gold Text Animation Styles
+ * 
+ * This file contains styles for animated gold text effects
+ */
+
+/* Sparkling gold text effect */
+.gold-sparkle {
+  position: relative;
+  color: #D4AF37 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 0 5px rgba(212, 175, 55, 0.5) !important;
+  animation: goldSparkle 3s infinite;
+}
+
+@keyframes goldSparkle {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  }
+}
+
+/* Gold gradient text */
+.gold-gradient {
+  background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  font-weight: 600 !important;
+}
+
+/* Add this to your main CSS file */
+.arcane-text {
+  color: #D4AF37 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.6) !important;
+  letter-spacing: 0.03em !important;
+}

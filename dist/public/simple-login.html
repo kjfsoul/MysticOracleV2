@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Login</title>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #2a1a4a;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      width: 100%;
+      max-width: 400px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #2a1a4a;
+      margin-top: 0;
+    }
+    p {
+      text-align: center;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .tab.active {
+      border-bottom: 2px solid #6b46c1;
+      font-weight: bold;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    input {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button {
+      padding: 10px;
+      background-color: #6b46c1;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .message {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    .info {
+      background-color: #e2f3fd;
+      color: #0c5460;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Mystic Arcana</h1>
+    <p>Discover your cosmic destiny</p>
+    
+    <div class="tabs">
+      <div class="tab" id="signin-tab">Sign In</div>
+      <div class="tab active" id="signup-tab">Sign Up</div>
+    </div>
+    
+    <form id="auth-form">
+      <input type="text" id="name" placeholder="Full Name" value="Test User">
+      <input type="email" id="email" placeholder="Email" value="test@example.com">
+      <input type="password" id="password" placeholder="Password" value="Password123!">
+      <input type="password" id="confirm-password" placeholder="Confirm Password" value="Password123!">
+      <button type="submit">Register</button>
+    </form>
+    
+    <div id="message" class="message info" style="display: none;"></div>
+  </div>
+  
+  <script>
+    // Get the Supabase library from the global scope
+    const { createClient } = supabase;
+    
+    // Hardcoded Supabase credentials
+    const supabaseUrl = 'https://pqfsbxcbsxuyfgqrxdob.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxZnNieGNic3h1eWZncXJ4ZG9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIzMzAxNzAsImV4cCI6MjA1NzkwNjE3MH0.1bjMIO2hzyCJS1ExpsB1JsCmkH8D2d2M_-Psz2DDJrQ';
+    
+    // Create Supabase client
+    const supabaseClient = createClient(supabaseUrl, supabaseKey);
+    
+    // DOM elements
+    const signinTab = document.getElementById('signin-tab');
+    const signupTab = document.getElementById('signup-tab');
+    const authForm = document.getElementById('auth-form');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirm-password');
+    const messageEl = document.getElementById('message');
+    
+    // Show message function
+    function showMessage(text, type) {
+      messageEl.textContent = text;
+      messageEl.className = `message ${type}`;
+      messageEl.style.display = 'block';
+    }
+    
+    // Tab switching
+    signinTab.addEventListener('click', () => {
+      signinTab.classList.add('active');
+      signupTab.classList.remove('active');
+      nameInput.style.display = 'none';
+      confirmPasswordInput.style.display = 'none';
+      authForm.querySelector('button').textContent = 'Login';
+    });
+    
+    signupTab.addEventListener('click', () => {
+      signupTab.classList.add('active');
+      signinTab.classList.remove('active');
+      nameInput.style.display = 'block';
+      confirmPasswordInput.style.display = 'block';
+      authForm.querySelector('button').textContent = 'Register';
+    });
+    
+    // Form submission
+    authForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const isSignup = signupTab.classList.contains('active');
+      const name = nameInput.value;
+      const email = emailInput.value;
+      const password = passwordInput.value;
+      const confirmPassword = confirmPasswordInput.value;
+      
+      // Validate form
+      if (isSignup) {
+        if (password !== confirmPassword) {
+          showMessage('Passwords do not match', 'error');
+          return;
+        }
+      }
+      
+      showMessage(isSignup ? 'Creating account...' : 'Logging in...', 'info');
+      
+      try {
+        if (isSignup) {
+          // Sign up
+          const { data, error } = await supabaseClient.auth.signUp({
+            email,
+            password,
+            options: {
+              data: {
+                full_name: name
+              }
+            }
+          });
+          
+          if (error) throw error;
+          
+          if (data.user) {
+            showMessage(`Account created successfully! User ID: ${data.user.id}`, 'success');
+            
+            // Try to create a user record
+            try {
+              const { error: insertError } = await supabaseClient.from('users').insert([
+                {
+                  id: data.user.id,
+                  email,
+                  created_at: new Date().toISOString()
+                }
+              ]);
+              
+              if (insertError) {
+                console.error('Error creating user record:', insertError);
+              }
+            } catch (insertError) {
+              console.error('Error creating user record:', insertError);
+            }
+          } else {
+            showMessage('Account created! Check your email for confirmation.', 'success');
+          }
+        } else {
+          // Sign in
+          const { data, error } = await supabaseClient.auth.signInWithPassword({
+            email,
+            password
+          });
+          
+          if (error) throw error;
+          
+          showMessage(`Logged in successfully! User ID: ${data.user.id}`, 'success');
+        }
+      } catch (error) {
+        showMessage(`Error: ${error.message}`, 'error');
+        console.error('Auth error:', error);
+      }
+    });
+  </script>
+</body>
+</html>

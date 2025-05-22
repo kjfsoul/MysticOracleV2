@@ -1,0 +1,148 @@
+[2025-04-07T23:38:23.716Z] Created default MCP agent configuration at /Users/kfitz/MysticOracleV2/MysticOracleV2/.vscode/mcp-agents.json
+
+[2025-04-07T23:38:23.718Z] MCP agent runner started
+
+[2025-04-07T23:38:23.718Z] Scheduling MCP tasks...
+
+[2025-04-07T23:38:23.718Z] Scheduling tasks for MCP agent: CodeAgent
+
+[2025-04-07T23:38:23.718Z] Scheduled MCP task: tarot-component-mcp to run at 2025-04-08T06:00:00.718Z (in 382 minutes)
+
+[2025-04-07T23:38:23.718Z] Scheduled MCP task: auth-ui-mcp to run at 2025-04-08T08:00:00.718Z (in 502 minutes)
+
+[2025-04-07T23:38:23.718Z] Scheduling tasks for MCP agent: DesignAgent
+
+[2025-04-07T23:38:23.718Z] Scheduled MCP task: card-animations-mcp to run at 2025-04-08T07:00:00.718Z (in 442 minutes)
+
+[2025-04-07T23:38:23.718Z] Scheduling tasks for MCP agent: APIAgent
+
+[2025-04-07T23:38:23.719Z] Scheduled MCP task: daily-tarot-api-mcp to run at 2025-04-08T05:00:00.719Z (in 322 minutes)
+
+[2025-04-07T23:38:23.719Z] Scheduled MCP task: auth-api-mcp to run at 2025-04-08T09:00:00.719Z (in 562 minutes)
+
+[2025-04-07T23:38:23.719Z] Scheduling tasks for MCP agent: ContentAgent
+
+[2025-04-07T23:38:23.719Z] Scheduled MCP task: tarot-descriptions-mcp to run at 2025-04-08T04:00:00.719Z (in 262 minutes)
+
+[2025-04-07T23:38:23.719Z] Scheduling tasks for MCP agent: TestAgent
+
+[2025-04-07T23:38:23.719Z] Scheduled MCP task: component-tests-mcp to run at 2025-04-08T10:00:00.719Z (in 622 minutes)
+
+[2025-04-07T23:38:23.719Z] Scheduling tasks for MCP agent: DevOpsAgent
+
+[2025-04-07T23:38:23.719Z] Scheduled MCP task: deploy-netlify-mcp to run at 2025-04-08T16:00:00.719Z (in 982 minutes)
+
+[2025-04-07T23:38:23.719Z] Scheduling MCP workflow: daily-build-mcp
+
+[2025-04-07T23:38:23.720Z] Scheduled MCP workflow: daily-build-mcp to run at 2025-04-08T04:00:00.720Z (in 262 minutes)
+
+[2025-04-07T23:38:23.720Z] Scheduling MCP workflow: netlify-deploy-mcp
+
+[2025-04-07T23:38:23.720Z] Scheduled MCP workflow: netlify-deploy-mcp to run at 2025-04-08T16:00:00.720Z (in 982 minutes)
+
+[2025-04-07T23:38:23.720Z] Scheduling MCP workflow: priority-deployment
+
+[2025-04-07T23:38:23.720Z] Scheduled MCP workflow: priority-deployment to run at 2025-04-08T00:00:00.720Z (in 22 minutes)
+
+[2025-04-07T23:40:55.945Z] MCP agent runner started
+
+[2025-04-07T23:40:55.946Z] Scheduling MCP tasks...
+
+[2025-04-07T23:40:55.947Z] Scheduling tasks for MCP agent: CodeAgent
+
+[2025-04-07T23:40:55.947Z] Scheduled MCP task: tarot-component-mcp to run at 2025-04-08T06:00:00.947Z (in 379 minutes)
+
+[2025-04-07T23:40:55.947Z] Scheduled MCP task: auth-ui-mcp to run at 2025-04-08T08:00:00.947Z (in 499 minutes)
+
+[2025-04-07T23:40:55.947Z] Scheduling tasks for MCP agent: DesignAgent
+
+[2025-04-07T23:40:55.947Z] Scheduled MCP task: card-animations-mcp to run at 2025-04-08T07:00:00.947Z (in 439 minutes)
+
+[2025-04-07T23:40:55.947Z] Scheduling tasks for MCP agent: APIAgent
+
+[2025-04-07T23:40:55.947Z] Scheduled MCP task: daily-tarot-api-mcp to run at 2025-04-08T05:00:00.947Z (in 319 minutes)
+
+[2025-04-07T23:40:55.947Z] Scheduled MCP task: auth-api-mcp to run at 2025-04-08T09:00:00.947Z (in 559 minutes)
+
+[2025-04-07T23:40:55.948Z] Scheduling tasks for MCP agent: ContentAgent
+
+[2025-04-07T23:40:55.948Z] Scheduled MCP task: tarot-descriptions-mcp to run at 2025-04-08T04:00:00.948Z (in 259 minutes)
+
+[2025-04-07T23:40:55.948Z] Scheduling tasks for MCP agent: TestAgent
+
+[2025-04-07T23:40:55.948Z] Scheduled MCP task: component-tests-mcp to run at 2025-04-08T10:00:00.948Z (in 619 minutes)
+
+[2025-04-07T23:40:55.948Z] Scheduling tasks for MCP agent: DevOpsAgent
+
+[2025-04-07T23:40:55.948Z] Scheduled MCP task: deploy-netlify-mcp to run at 2025-04-08T16:00:00.948Z (in 979 minutes)
+
+[2025-04-07T23:40:55.948Z] Scheduling MCP workflow: daily-build-mcp
+
+[2025-04-07T23:40:55.948Z] Scheduled MCP workflow: daily-build-mcp to run at 2025-04-08T04:00:00.948Z (in 259 minutes)
+
+[2025-04-07T23:40:55.948Z] Scheduling MCP workflow: netlify-deploy-mcp
+
+[2025-04-07T23:40:55.948Z] Scheduled MCP workflow: netlify-deploy-mcp to run at 2025-04-08T16:00:00.948Z (in 979 minutes)
+
+[2025-04-07T23:40:55.948Z] Scheduling MCP workflow: priority-deployment
+
+[2025-04-07T23:40:55.948Z] Scheduled MCP workflow: priority-deployment to run at 2025-04-08T00:00:00.948Z (in 19 minutes)
+
+[2025-04-08T00:00:00.946Z] Running MCP workflow: priority-deployment (Priority deployment with user signup and Stripe integration)
+
+[2025-04-08T00:00:00.947Z] Running task: auth-ui-mcp (Implement authentication UI components using MCP) for agent: CodeAgent
+
+[2025-04-08T00:00:00.950Z] Running task: auth-api-mcp (Implement authentication API endpoints using MCP) for agent: APIAgent
+
+[2025-04-08T00:00:00.951Z] Running task: deploy-netlify-mcp (Deploy to Netlify using MCP) for agent: DevOpsAgent
+
+[2025-04-08T00:00:00.954Z] Scheduling MCP tasks...
+
+[2025-04-08T00:00:00.954Z] Scheduling tasks for MCP agent: CodeAgent
+
+[2025-04-08T00:00:00.954Z] Scheduled MCP task: tarot-component-mcp to run at 2025-04-08T06:00:00.954Z (in 360 minutes)
+
+[2025-04-08T00:00:00.954Z] Scheduled MCP task: auth-ui-mcp to run at 2025-04-08T08:00:00.954Z (in 480 minutes)
+
+[2025-04-08T00:00:00.955Z] Scheduling tasks for MCP agent: DesignAgent
+
+[2025-04-08T00:00:00.955Z] Scheduled MCP task: card-animations-mcp to run at 2025-04-08T07:00:00.955Z (in 420 minutes)
+
+[2025-04-08T00:00:00.955Z] Scheduling tasks for MCP agent: APIAgent
+
+[2025-04-08T00:00:00.955Z] Scheduled MCP task: daily-tarot-api-mcp to run at 2025-04-08T05:00:00.955Z (in 300 minutes)
+
+[2025-04-08T00:00:00.955Z] Scheduled MCP task: auth-api-mcp to run at 2025-04-08T09:00:00.955Z (in 540 minutes)
+
+[2025-04-08T00:00:00.955Z] Scheduling tasks for MCP agent: ContentAgent
+
+[2025-04-08T00:00:00.955Z] Scheduled MCP task: tarot-descriptions-mcp to run at 2025-04-08T04:00:00.955Z (in 240 minutes)
+
+[2025-04-08T00:00:00.956Z] Scheduling tasks for MCP agent: TestAgent
+
+[2025-04-08T00:00:00.956Z] Scheduled MCP task: component-tests-mcp to run at 2025-04-08T10:00:00.956Z (in 600 minutes)
+
+[2025-04-08T00:00:00.956Z] Scheduling tasks for MCP agent: DevOpsAgent
+
+[2025-04-08T00:00:00.956Z] Scheduled MCP task: deploy-netlify-mcp to run at 2025-04-08T16:00:00.956Z (in 960 minutes)
+
+[2025-04-08T00:00:00.956Z] Scheduling MCP workflow: daily-build-mcp
+
+[2025-04-08T00:00:00.956Z] Scheduled MCP workflow: daily-build-mcp to run at 2025-04-08T04:00:00.956Z (in 240 minutes)
+
+[2025-04-08T00:00:00.956Z] Scheduling MCP workflow: netlify-deploy-mcp
+
+[2025-04-08T00:00:00.956Z] Scheduled MCP workflow: netlify-deploy-mcp to run at 2025-04-08T16:00:00.956Z (in 960 minutes)
+
+[2025-04-08T00:00:00.956Z] Scheduling MCP workflow: priority-deployment
+
+[2025-04-08T00:00:00.956Z] Scheduled MCP workflow: priority-deployment to run at 2025-04-08T02:00:00.956Z (in 120 minutes)
+
+[2025-04-08T00:00:01.023Z] Task deploy-netlify-mcp completed with code: 1
+
+[2025-04-08T00:00:01.024Z] Task auth-ui-mcp completed with code: 1
+
+[2025-04-08T00:00:01.024Z] Task auth-api-mcp completed with code: 1
+
+[2025-04-08T00:40:56.001Z] MCP agent runner is still running
+

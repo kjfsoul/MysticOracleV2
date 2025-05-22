@@ -8,11 +8,29 @@
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
 
+# Function bundle settings
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["@supabase/supabase-js"]
+
 # API routes for serverless functions
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
+
+# Domain redirects - fixed syntax
+[[redirects]]
+  from = "https://www.mysticarcana.com/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://mysticarcana.netlify.app/*"
+  to = "/"
+  status = 301
+  force = true
 
 # Handle SPA routing
 [[redirects]]
@@ -24,11 +42,6 @@
   command = "npm run dev"
   port = 5000
   targetPort = 5000
-
-# Function bundle settings
-[functions]
-  node_bundler = "esbuild"
-  external_node_modules = ["@supabase/supabase-js"]
 
 # Edge function settings
 

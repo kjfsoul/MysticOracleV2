@@ -1,29 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'wouter';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useAuth } from '@/hooks/use-auth';
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from "@/components/ui/dropdown-menu";
+import { useAuth } from "@/hooks/use-auth";
+import { AnimatePresence, motion } from "framer-motion";
 import {
-  User,
-  LogOut,
-  Menu,
-  X,
-  ChevronDown,
-  Settings,
-  History,
   BookOpen,
   BookText,
+  ChevronDown,
   CreditCard,
+  History,
+  LogOut,
+  Menu,
+  Settings,
   Sparkles,
-} from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+  User,
+  X,
+} from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "wouter";
 
 export default function NavbarImproved() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,17 +36,17 @@ export default function NavbarImproved() {
       setIsScrolled(window.scrollY > 10);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Handle logout
   const handleLogout = async () => {
     try {
       await logout();
-      window.location.href = '/';
+      window.location.href = "/";
     } catch (error) {
-      console.error('Logout failed:', error);
+      console.error("Logout failed:", error);
     }
   };
 
@@ -58,22 +57,22 @@ export default function NavbarImproved() {
     { name: "Astrology", path: "/astrology", icon: "✨" },
     { name: "Journal", path: "/journal", icon: "📓", requiresAuth: true },
     { name: "Blog", path: "/blog", icon: "📚" },
-    { name: "CrewAI", path: "/crewai", icon: "🤖" },
+    // CrewAI link removed as requested
   ];
 
   // Dropdown menus
   const tarotDropdown = [
-    { name: 'Daily Card', path: '/tarot' },
-    { name: 'Card Library', path: '/tarot-cards' },
-    { name: 'Spreads', path: '/tarot?tab=readings' },
-    { name: 'Reading History', path: '/readings', requiresAuth: true },
+    { name: "Daily Card", path: "/tarot" },
+    { name: "Card Library", path: "/tarot-cards" },
+    { name: "Spreads", path: "/tarot?tab=readings" },
+    { name: "Reading History", path: "/readings", requiresAuth: true },
   ];
 
   const astrologyDropdown = [
-    { name: 'Birth Chart', path: '/astrology' },
-    { name: 'Compatibility', path: '/astrology/compatibility' },
-    { name: 'Daily Horoscope', path: '/astrology/horoscope' },
-    { name: 'Zodiac Signs', path: '/astrology/signs' },
+    { name: "Birth Chart", path: "/astrology" },
+    { name: "Compatibility", path: "/astrology/compatibility" },
+    { name: "Daily Horoscope", path: "/astrology/horoscope" },
+    { name: "Zodiac Signs", path: "/astrology/signs" },
   ];
 
   return (
@@ -87,7 +86,7 @@ export default function NavbarImproved() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-primary/30 border border-gold/50 flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-gold" />
             </div>
@@ -97,7 +96,7 @@ export default function NavbarImproved() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-3">
             {mainNavLinks.map((link) => {
               // Skip auth-required links if user not logged in
               if (link.requiresAuth && !user) return null;

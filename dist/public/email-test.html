@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Test</title>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    button {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      overflow: auto;
+      max-height: 300px;
+      white-space: pre-wrap;
+    }
+    .success {
+      color: green;
+    }
+    .error {
+      color: red;
+    }
+    input {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .panel {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .email-option {
+      margin-bottom: 10px;
+      padding: 5px;
+      border: 1px solid #eee;
+      cursor: pointer;
+    }
+    .email-option:hover {
+      background-color: #f5f5f5;
+    }
+  </style>
+</head>
+<body>
+  <h1>Email Format Test</h1>
+  <p>This page tests different email formats with Supabase signup.</p>
+  
+  <div class="panel">
+    <h2>Email Options</h2>
+    <p>Click on an email to use it for testing:</p>
+    <div class="email-option" data-email="real.person@gmail.com">real.person@gmail.com</div>
+    <div class="email-option" data-email="test@example.com">test@example.com</div>
+    <div class="email-option" data-email="user@yourdomain.com">user@yourdomain.com</div>
+    <div class="email-option" data-email="info@company.co.uk">info@company.co.uk</div>
+    <div class="email-option" data-email="admin@mysticarcana.com">admin@mysticarcana.com</div>
+    <div class="email-option" data-email="kjfsoul+test@gmail.com">kjfsoul+test@gmail.com</div>
+  </div>
+  
+  <div class="panel">
+    <h2>Custom Email</h2>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" value="test@gmail.com">
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" value="Password123!">
+    </div>
+    <button id="test-signup">Test Signup</button>
+    <pre id="signup-result">Results will appear here...</pre>
+  </div>
+  
+  <div class="panel">
+    <h2>Debug Information</h2>
+    <button id="check-auth-config">Check Auth Configuration</button>
+    <pre id="debug-result">Results will appear here...</pre>
+  </div>
+  
+  <script>
+    // Get the Supabase library from the global scope
+    const { createClient } = supabase;
+    
+    // Hardcoded Supabase credentials
+    const supabaseUrl = 'https://pqfsbxcbsxuyfgqrxdob.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxZnNieGNic3h1eWZncXJ4ZG9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIzMzAxNzAsImV4cCI6MjA1NzkwNjE3MH0.1bjMIO2hzyCJS1ExpsB1JsCmkH8D2d2M_-Psz2DDJrQ';
+    
+    // Create Supabase client
+    const supabaseClient = createClient(supabaseUrl, supabaseKey);
+    
+    // Email options
+    document.querySelectorAll('.email-option').forEach(option => {
+      option.addEventListener('click', () => {
+        document.getElementById('email').value = option.dataset.email;
+      });
+    });
+    
+    // Test Signup
+    document.getElementById('test-signup').addEventListener('click', async () => {
+      const resultEl = document.getElementById('signup-result');
+      resultEl.innerHTML = 'Testing signup...\n';
+      
+      try {
+        // Get email and password from input fields
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        
+        resultEl.innerHTML += `Signing up with email: ${email}\n`;
+        
+        // Try to sign up with more detailed options
+        const { data, error } = await supabaseClient.auth.signUp({
+          email,
+          password,
+          options: {
+            emailRedirectTo: window.location.origin,
+            data: {
+              full_name: email.split('@')[0],
+              username: email.split('@')[0]
+            }
+          }
+        });
+        
+        if (error) throw error;
+        
+        if (data.user) {
+          resultEl.innerHTML += `<span class="success">✅ Signup successful!</span>\nUser ID: ${data.user.id}\n`;
+          resultEl.innerHTML += `User data: ${JSON.stringify(data.user, null, 2)}\n`;
+          
+          // Try to create a user record
+          try {
+            const { error: insertError } = await supabaseClient.from('users').insert([
+              {
+                id: data.user.id,
+                email,
+                created_at: new Date().toISOString()
+              }
+            ]);
+            
+            if (insertError) {
+              resultEl.innerHTML += `<span class="error">❌ Error creating user record:</span>\n${insertError.message}\n`;
+            } else {
+              resultEl.innerHTML += `<span class="success">✅ User record created successfully!</span>\n`;
+            }
+          } catch (insertError) {
+            resultEl.innerHTML += `<span class="error">❌ Error creating user record:</span>\n${insertError.message}\n`;
+          }
+        } else {
+          resultEl.innerHTML += `<span class="success">✅ Signup initiated!</span>\nCheck your email for confirmation.\n`;
+          resultEl.innerHTML += `Response data: ${JSON.stringify(data, null, 2)}\n`;
+        }
+      } catch (error) {
+        resultEl.innerHTML += `<span class="error">❌ Signup error:</span>\n${error.message}\n`;
+        console.error('Signup error:', error);
+      }
+    });
+    
+    // Check Auth Configuration
+    document.getElementById('check-auth-config').addEventListener('click', async () => {
+      const resultEl = document.getElementById('debug-result');
+      resultEl.innerHTML = 'Checking auth configuration...\n';
+      
+      try {
+        // Try to get settings
+        const { data, error } = await supabaseClient.auth.getSession();
+        
+        if (error) throw error;
+        
+        resultEl.innerHTML += `Session data: ${JSON.stringify(data, null, 2)}\n`;
+        
+        // Try to get user if logged in
+        if (data.session) {
+          const { data: userData, error: userError } = await supabaseClient.auth.getUser();
+          
+          if (userError) {
+            resultEl.innerHTML += `<span class="error">❌ Error getting user:</span>\n${userError.message}\n`;
+          } else {
+            resultEl.innerHTML += `User data: ${JSON.stringify(userData, null, 2)}\n`;
+          }
+        }
+      } catch (error) {
+        resultEl.innerHTML += `<span class="error">❌ Error checking auth configuration:</span>\n${error.message}\n`;
+        console.error('Auth configuration error:', error);
+      }
+    });
+  </script>
+</body>
+</html>

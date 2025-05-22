@@ -1,0 +1,259 @@
+[2.6K]  .
+├── [9.6K]  MYSTIC_ORACLE_V2_PROJECT_OVERVIEW.md
+├── [3.5K]  MYS_CREWAI_README.md
+├── [8.0K]  MYS_DEVELOPER_HANDOFF.md
+├── [2.4K]  MYS_PROJECT_ROADMAP.md
+├── [6.6K]  MYS_implementation-plan.md
+├── [  96]  MysticOracleV2
+│   └── [  96]  src
+├── [ 26K]  MysticOracleV2_Integration_Plan.md
+├── [ 30K]  MysticOracleV2_Integration_Plan_Corrected.md
+├── [5.6K]  MysticOracleV2_Progress_Summary.md
+├── [5.4K]  SETUP.md
+├── [  96]  agentscripts
+│   └── [  96]  templates
+├── [ 352]  ai-core
+│   ├── [ 192]  __tests__
+│   ├── [ 128]  agents
+│   ├── [  96]  config
+│   ├── [1.3K]  index.ts
+│   ├── [  64]  logs
+│   ├── [  96]  models
+│   ├── [  96]  scripts
+│   ├── [  96]  services
+│   └── [  96]  utils
+├── [ 864]  attached_assets
+│   ├── [556K]  2025-04-12_12-30-03_ChatGPT_Save the summary to markdown....md
+│   ├── [156K]  2025-04-12_12-30-58_ChatGPT_\374731 Mystic Arcana – Updated Strategic Knowledge Addendum....md
+│   ├── [156K]  2025-04-12_12-33-22_ChatGPT_\374731 Mystic Arcana – Updated Strategic Knowledge Addendum....md
+│   ├── [10.0K]  Enhanced Audit_ Mystic Arcana's Alignment with Company Goals.md
+│   ├── [1.2M]  Mystic Arcana Logo.png
+│   ├── [7.8K]  Pasted--Optimized-Replit-Core-Prompt-for-Mystic-Arcana-Full-Feature-Completion-Purpo-1741327781335.txt
+│   ├── [4.9K]  Pasted--Public-endpoint-to-generate-a-tarot-reading-no-authentication-required-app-post-api-publi-1741657978671.txt
+│   ├── [3.1K]  Pasted-Failed-to-load-resource-the-server-responded-with-a-status-of-503-Service-Unavailable-Understand-t-1742045286587.txt
+│   ├── [3.1K]  Pasted-Failed-to-load-resource-the-server-responded-with-a-status-of-503-Service-Unavailable-Understand-t-1742045384547.txt
+│   ├── [5.1K]  Pasted-Making-query-to-api-tarot-readings-0e52bd9c-2cda-48f6-9489-6bd4794fe0e5-00-1p8pn5o1bzwyi-kirk-repli-1741487607535.txt
+│   ├── [3.3K]  Pasted-Uncaught-TypeError-Cannot-convert-undefined-or-null-to-object-at-Object-entries-anonymous--1742093927072.txt
+│   ├── [3.1K]  Pasted-Uncaught-TypeError-Cannot-convert-undefined-or-null-to-object-at-Object-entries-anonymous--1742094172396.txt
+│   ├── [3.1K]  Pasted-Warning-validateDOMNesting-div-cannot-appear-as-a-descendant-of-lt-p-gt-at-div-a-1741336162627.txt
+│   ├── [2.2K]  Pasted-ncaught-Error-TabsContent-must-be-used-within-Tabs-at-useContext2-chunk-AXI2CWM2-js-v-f9de-1741858320773.txt
+│   ├── [3.2K]  Pasted-ncaught-TypeError-Cannot-read-properties-of-undefined-reading-toLowerCase-at-getPlanetPosit-1742044705613.txt
+│   ├── [4.4K]  Pasted-ncaught-TypeError-Cannot-read-properties-of-undefined-reading-toLowerCase-at-getSignSymbol--1742092351421.txt
+│   ├── [2.3K]  Pasted-ownload-the-React-DevTools-for-a-better-development-experience-https-reactjs-org-link-react-devto-1741489951301.txt
+│   ├── [5.7K]  content-1741657713101.md
+│   ├── [ 57K]  image_1741338683973.png
+│   ├── [ 54K]  image_1742096239042.png
+│   ├── [ 34K]  interactive_astrology_wheel.docx
+│   ├── [4.6K]  mystic.repli
+│   ├── [ 69K]  png.png
+│   ├── [ 42K]  screenshot-1741657712499.png
+│   └── [ 89K]  ss1.png
+├── [  96]  business
+├── [1.1K]  changes-summary.md
+├── [ 820]  check-fixed-files.cjs
+├── [ 416]  client
+│   ├── [ 128]  __tests__
+│   ├── [ 192]  components
+│   ├── [  96]  hooks
+│   ├── [1.6K]  index.html
+│   ├── [ 128]  marketing
+│   ├── [ 160]  pages
+│   ├── [ 832]  public
+│   ├── [ 608]  src
+│   └── [  96]  styles
+├── [1.0K]  cline_docs
+│   ├── [4.8K]  AGENT-COMMANDS.md
+│   ├── [1.4K]  DOCUMENTATION.md
+│   ├── [1007]  activeContext.md
+│   ├── [ 960]  agent-config.json
+│   ├── [ 11K]  agent-ecosystem-documentation.md
+│   ├── [ 608]  agent-logs
+│   ├── [ 544]  agent-prompts
+│   ├── [2.0K]  agent-readme.md
+│   ├── [6.7K]  augment-auto-mcp.md
+│   ├── [6.8K]  augment-mcp-integration.md
+│   ├── [3.6K]  augment-prompts.md
+│   ├── [6.6K]  autonomous-agents-config.md
+│   ├── [ 20K]  business-specific-mcp-agent-templates.md
+│   ├── [  17]  completed-tasks.json
+│   ├── [2.5K]  design-improvements.md
+│   ├── [ 12K]  design-system-implementation-plan.md
+│   ├── [2.6K]  developmentWorkflow.md
+│   ├── [ 23K]  mcp-agent-prompt-template.md
+│   ├── [7.0K]  mcp-server-prompt-templates.md
+│   ├── [ 13K]  mcp-server-usage-guide.md
+│   ├── [7.4K]  mcp.json
+│   ├── [ 15K]  mystic-arcana-prompts.md
+│   ├── [1.7K]  productContext.md
+│   ├── [  96]  refactoring
+│   ├── [2.4K]  systemPatterns.md
+│   ├── [4.7K]  tarot-deck-system.md
+│   ├── [ 15K]  tarot-specific-prompts.md
+│   ├── [8.9K]  task-chunking-agent.md
+│   ├── [6.0K]  task-management-report.md
+│   ├── [1.3K]  task-queue.json
+│   └── [7.4K]  ux-design-system-gap-analysis.md
+├── [  96]  components
+│   └── [ 256]  Store
+├── [ 450]  components.json
+├── [  96]  config
+│   └── [ 954]  mcp-config.json
+├── [ 271]  cookies.txt
+├── [ 192]  coverage
+│   ├── [ 396]  clover.xml
+│   ├── [   3]  coverage-final.json
+│   ├── [ 320]  lcov-report
+│   └── [   0]  lcov.info
+├── [ 352]  crewai
+│   ├── [ 192]  agents
+│   ├── [ 788]  config.py
+│   ├── [7.3K]  integration.py
+│   ├── [5.0K]  main.py
+│   ├── [ 128]  tasks
+│   ├── [ 128]  tools
+│   └── [ 224]  venv
+├── [ 128]  data
+│   ├── [  86]  knowledge-base.json
+│   └── [ 39K]  landing.png
+├── [ 160]  dist
+│   ├── [2.3K]  index.js
+│   └── [ 864]  public
+├── [ 544]  docs
+│   ├── [667K]  Augment Mystic Arcana 4.md
+│   ├── [4.2M]  Mystic Arcana Web Strategy.pdf
+│   ├── [129K]  cline_task_apr-22-2025_7-54-49-pm.md
+│   ├── [288K]  cline_task_apr-23-2025_10-51-59-am.md
+│   ├── [ 55K]  mys1.png
+│   ├── [ 78K]  mys10.png
+│   ├── [ 51K]  mys11.png
+│   ├── [156K]  mys12.png
+│   ├── [154K]  mys2.png
+│   ├── [ 70K]  mys3.png
+│   ├── [228K]  mys4.png
+│   ├── [ 59K]  mys5.png
+│   ├── [ 49K]  mys7.png
+│   ├── [152K]  mys8.png
+│   └── [ 89K]  mys9.png
+├── [ 325]  drizzle.config.ts
+├── [5.5K]  file_structure.md
+├── [330K]  generated-icon.png
+├── [ 540]  jest.config.js
+├── [ 177]  jest.polyfills.js
+├── [  38]  jest.setup.js
+├── [ 522]  jest.setup.ts
+├── [ 823]  magic_auth.js
+├── [ 54K]  modified_files.md
+├── [ 532]  my-tasks.json
+├── [ 128]  netlify
+│   ├── [  96]  edge-functions
+│   └── [ 480]  functions
+├── [ 272]  netlify.sh
+├── [ 791]  netlify.toml
+├── [508K]  package-lock.json
+├── [5.4K]  package.json
+├── [ 154]  postcss.config.js
+├── [   0]  repo_tree.txt
+├── [  64]  reports
+├── [2.0K]  scripts
+│   ├── [1.2K]  add-task.js
+│   ├── [1.3K]  agent-manager.js
+│   ├── [ 24K]  agent-runner.js
+│   ├── [ 224]  agents
+│   ├── [9.7K]  agents.js
+│   ├── [9.2K]  augment-agent.js
+│   ├── [2.2K]  auto-start-agents.js
+│   ├── [9.9K]  autonomous-agent.js
+│   ├── [5.8K]  consolidate-ai-system.ts
+│   ├── [2.2K]  copy-card-placeholders.js
+│   ├── [3.5K]  create-tarot-placeholders.js
+│   ├── [ 618]  deploy.js
+│   ├── [4.4K]  disable-away-mode.js
+│   ├── [1.7K]  download-key-cards.js
+│   ├── [7.9K]  download-missing-rider-waite.js
+│   ├── [9.0K]  download-rider-waite-alternative.js
+│   ├── [1.9K]  download-rider-waite-deck.cjs
+│   ├── [9.8K]  download-rider-waite-simple.js
+│   ├── [ 13K]  download-rider-waite-wiki.js
+│   ├── [ 13K]  download-rider-waite-wikimedia.js
+│   ├── [5.2K]  download-rider-waite.js
+│   ├── [4.4K]  enable-away-mode.js
+│   ├── [ 239]  fix-dependencies.sh
+│   ├── [2.8K]  fix-tarot-images.js
+│   ├── [7.0K]  fix-tarot-paths.js
+│   ├── [4.0K]  import-tarot-interpretations.js
+│   ├── [1.2K]  init-tasks.js
+│   ├── [1.3K]  install-mcp-plugins.sh
+│   ├── [3.7K]  install-mcp-servers.sh
+│   ├── [9.0K]  interactive-sme-agent.js
+│   ├── [1.7K]  match_interpretations.py
+│   ├── [ 15K]  mcp-agent.js
+│   ├── [ 23K]  migrate-agent-ecosystem.js
+│   ├── [2.7K]  migrate-ai-system.ts
+│   ├── [1.7K]  migrate-tarot-images.js
+│   ├── [3.2K]  monitor-agents.js
+│   ├── [  96]  mystic-arcana-agent
+│   ├── [ 171]  package.json
+│   ├── [2.7K]  progress-agents.js
+│   ├── [ 557]  run-agent-system.js
+│   ├── [1.1K]  run-all-agents.js
+│   ├── [1.1K]  run-all-augment-agents.js
+│   ├── [1.1K]  run-all-mcp-agents.js
+│   ├── [  61]  run-web-crawler.sh -> /Users/kfitz/Projects/agentscripts/scripts/run-web-crawler.sh
+│   ├── [1.3K]  setup-agent-cron.js
+│   ├── [2.6K]  setup-tarot-system.js
+│   ├── [1.3K]  start-agents.js
+│   ├── [8.9K]  start-all-agents.js
+│   ├── [1.4K]  start-mcp-agents.js
+│   ├── [3.4K]  status-agents.js
+│   ├── [1.2K]  status-mcp-agents.js
+│   ├── [ 26K]  status-report.js
+│   ├── [ 26K]  status-report.js.bak
+│   ├── [ 950]  stop-agents.js
+│   ├── [1018]  stop-mcp-agents.js
+│   ├── [7.0K]  task-chunker.js
+│   ├── [3.4K]  task-executor.js
+│   ├── [5.9K]  verify-tarot-images.js
+│   ├── [3.6K]  verify-tarot-paths.js
+│   ├── [5.5K]  web-crawler-agent.js
+│   └── [4.5K]  web-crawler-module.js
+├── [ 576]  server
+│   ├── [ 192]  api
+│   ├── [9.3K]  astronomy.ts
+│   ├── [6.3K]  auth.ts
+│   ├── [8.7K]  geocoding.ts
+│   ├── [2.7K]  index.ts
+│   ├── [ 40K]  openai.ts
+│   ├── [ 35K]  routes 2.ts
+│   ├── [ 35K]  routes.ts
+│   ├── [4.3K]  scheduler.ts
+│   ├── [4.5K]  storage.ts
+│   ├── [ 739]  stripe-mock.ts
+│   ├── [5.8K]  stripe.ts
+│   ├── [3.9K]  supabase-mock.ts
+│   ├── [4.7K]  supabase-types.ts
+│   ├── [5.3K]  supabase.ts
+│   └── [2.8K]  vite.ts
+├── [ 128]  shared
+│   ├── [2.8K]  schema.ts
+│   └── [  96]  types
+├── [ 256]  src
+│   ├── [  96]  client
+│   ├── [ 192]  components
+│   ├── [  96]  hooks
+│   ├── [  96]  lib
+│   ├── [ 128]  styles
+│   └── [ 128]  utils
+├── [ 593]  start-crewai.sh
+├── [ 118]  status-report.json
+├── [  96]  supabase
+│   └── [ 352]  migrations
+├── [ 556]  supindex.js
+├── [5.1K]  tailwind.config.ts
+├── [ 26K]  tarot_card_flipping_analysis.md
+├── [ 234]  test-server.js
+├── [2.9K]  test-zodiac-spread.ts
+├── [ 104]  theme.json
+├── [ 670]  tsconfig.json
+└── [ 877]  vite.config.ts
+
+63 directories, 194 files

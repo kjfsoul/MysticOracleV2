@@ -1,0 +1,298 @@
+[2025-04-07T23:38:10.324Z] Created default agent configuration at /Users/kfitz/MysticOracleV2/MysticOracleV2/.mcp/agents.json
+
+[2025-04-07T23:38:10.325Z] Agent runner started
+
+[2025-04-07T23:38:10.325Z] Scheduling tasks...
+
+[2025-04-07T23:38:10.325Z] Scheduling tasks for agent: CodeAgent
+
+[2025-04-07T23:38:10.325Z] Scheduled task: tarot-component to run at 2025-04-08T06:00:00.325Z (in 382 minutes)
+
+[2025-04-07T23:38:10.325Z] Scheduled task: auth-ui to run at 2025-04-08T08:00:00.325Z (in 502 minutes)
+
+[2025-04-07T23:38:10.325Z] Scheduling tasks for agent: DesignAgent
+
+[2025-04-07T23:38:10.325Z] Scheduled task: card-animations to run at 2025-04-08T07:00:00.325Z (in 442 minutes)
+
+[2025-04-07T23:38:10.325Z] Scheduling tasks for agent: APIAgent
+
+[2025-04-07T23:38:10.326Z] Scheduled task: daily-tarot-api to run at 2025-04-08T05:00:00.326Z (in 322 minutes)
+
+[2025-04-07T23:38:10.326Z] Scheduled task: auth-api to run at 2025-04-08T09:00:00.326Z (in 562 minutes)
+
+[2025-04-07T23:38:10.326Z] Scheduling tasks for agent: ContentAgent
+
+[2025-04-07T23:38:10.326Z] Scheduled task: tarot-descriptions to run at 2025-04-08T04:00:00.326Z (in 262 minutes)
+
+[2025-04-07T23:38:10.326Z] Scheduling tasks for agent: TestAgent
+
+[2025-04-07T23:38:10.326Z] Scheduled task: component-tests to run at 2025-04-08T10:00:00.326Z (in 622 minutes)
+
+[2025-04-07T23:38:10.326Z] Scheduling workflow: daily-build
+
+[2025-04-07T23:38:10.326Z] Scheduled workflow: daily-build to run at 2025-04-08T04:00:00.326Z (in 262 minutes)
+
+[2025-04-07T23:38:10.326Z] Scheduling workflow: netlify-deploy
+
+[2025-04-07T23:38:10.326Z] Scheduled workflow: netlify-deploy to run at 2025-04-08T16:00:00.326Z (in 982 minutes)
+
+[2025-04-07T23:40:55.683Z] Agent runner started
+
+[2025-04-07T23:40:55.685Z] Scheduling tasks...
+
+[2025-04-07T23:40:55.685Z] Scheduling tasks for agent: CodeAgent
+
+[2025-04-07T23:40:55.685Z] Scheduled task: tarot-component to run at 2025-04-08T06:00:00.685Z (in 379 minutes)
+
+[2025-04-07T23:40:55.686Z] Scheduled task: auth-ui to run at 2025-04-08T08:00:00.686Z (in 499 minutes)
+
+[2025-04-07T23:40:55.686Z] Scheduling tasks for agent: DesignAgent
+
+[2025-04-07T23:40:55.686Z] Scheduled task: card-animations to run at 2025-04-08T07:00:00.686Z (in 439 minutes)
+
+[2025-04-07T23:40:55.687Z] Scheduling tasks for agent: APIAgent
+
+[2025-04-07T23:40:55.687Z] Scheduled task: daily-tarot-api to run at 2025-04-08T05:00:00.687Z (in 319 minutes)
+
+[2025-04-07T23:40:55.687Z] Scheduled task: auth-api to run at 2025-04-08T09:00:00.687Z (in 559 minutes)
+
+[2025-04-07T23:40:55.687Z] Scheduling tasks for agent: ContentAgent
+
+[2025-04-07T23:40:55.687Z] Scheduled task: tarot-descriptions to run at 2025-04-08T04:00:00.687Z (in 259 minutes)
+
+[2025-04-07T23:40:55.687Z] Scheduling tasks for agent: TestAgent
+
+[2025-04-07T23:40:55.688Z] Scheduled task: component-tests to run at 2025-04-08T10:00:00.688Z (in 619 minutes)
+
+[2025-04-07T23:40:55.688Z] Scheduling workflow: daily-build
+
+[2025-04-07T23:40:55.688Z] Scheduled workflow: daily-build to run at 2025-04-08T04:00:00.688Z (in 259 minutes)
+
+[2025-04-07T23:40:55.688Z] Scheduling workflow: netlify-deploy
+
+[2025-04-07T23:40:55.688Z] Scheduled workflow: netlify-deploy to run at 2025-04-08T16:00:00.688Z (in 979 minutes)
+
+[2025-04-08T00:40:55.753Z] Agent runner is still running
+
+Starting agent runner...
+Scheduling tasks for agent: deployment
+Scheduling task: deployment/deploy (0 */4 * * *)
+Scheduling tasks for agent: status
+Scheduling task: status/status-report (0 */2 * * *)
+Scheduling tasks for agent: code
+Scheduling task: code/lint (30 */4 * * *)
+Scheduling task: code/test (45 */4 * * *)
+Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+Scheduling status report every 30 minutes
+[32mAgent runner started successfully[0m
+Received SIGTERM signal. Shutting down...
+Starting agent runner...
+Scheduling tasks for agent: deployment
+Scheduling task: deployment/deploy (0 */4 * * *)
+Scheduling tasks for agent: status
+Scheduling task: status/status-report (0 */2 * * *)
+Scheduling tasks for agent: code
+Scheduling task: code/lint (30 */4 * * *)
+Scheduling task: code/test (45 */4 * * *)
+Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+Scheduling status report every 30 minutes
+[32mAgent runner started successfully[0m
+Received SIGTERM signal. Shutting down...
+Starting agent runner...
+Scheduling tasks for agent: deployment
+Scheduling task: deployment/deploy (0 */4 * * *)
+Scheduling tasks for agent: status
+Scheduling task: status/status-report (0 */2 * * *)
+Scheduling tasks for agent: code
+Scheduling task: code/lint (30 */4 * * *)
+Scheduling task: code/test (45 */4 * * *)
+Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+Scheduling status report every 30 minutes
+[32mAgent runner started successfully[0m
+Executing task: code/lint
+Status report scheduled
+[32mTask code/lint executed successfully: Command executed successfully[0m
+[32mTask code/lint completed successfully[0m
+Received SIGTERM signal. Shutting down...
+Starting agent runner...
+Scheduling tasks for agent: deployment
+Scheduling task: deployment/deploy (0 */4 * * *)
+Scheduling tasks for agent: status
+Scheduling task: status/status-report (0 */2 * * *)
+Scheduling tasks for agent: code
+Scheduling task: code/lint (30 */4 * * *)
+Scheduling task: code/test (45 */4 * * *)
+Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+Scheduling status report every 30 minutes
+[32mAgent runner started successfully[0m
+Received SIGTERM signal. Shutting down...
+Starting agent runner...
+Scheduling tasks for agent: deployment
+Scheduling task: deployment/deploy (0 */4 * * *)
+Scheduling tasks for agent: status
+Scheduling task: status/status-report (0 */2 * * *)
+Scheduling tasks for agent: code
+Scheduling task: code/lint (30 */4 * * *)
+Scheduling task: code/test (45 */4 * * *)
+Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+Scheduling status report every 30 minutes
+[32mAgent runner started successfully[0m
+Received SIGTERM signal. Shutting down...
+Starting agent runner...
+Scheduling tasks for agent: deployment
+Scheduling task: deployment/deploy (0 */4 * * *)
+Scheduling tasks for agent: status
+Scheduling task: status/status-report (0 */2 * * *)
+Scheduling tasks for agent: code
+Scheduling task: code/lint (30 */4 * * *)
+Scheduling task: code/test (45 */4 * * *)
+Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+Scheduling status report every 30 minutes
+[32mAgent runner started successfully[0m
+Received SIGTERM signal. Shutting down...
+Starting agent runner...
+Scheduling tasks for agent: deployment
+Scheduling task: deployment/deploy (0 */4 * * *)
+Scheduling tasks for agent: status
+Scheduling task: status/status-report (0 */2 * * *)
+Scheduling tasks for agent: code
+Scheduling task: code/lint (30 */4 * * *)
+Scheduling task: code/test (45 */4 * * *)
+Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+Scheduling status report every 30 minutes
+[32mAgent runner started successfully[0m
+Executing task: code/test
+[32mTask code/test executed successfully: Command executed successfully[0m
+[32mTask code/test completed successfully[0m
+Starting agent runner...
+Scheduling tasks for agent: deployment
+Scheduling task: deployment/deploy (0 */4 * * *)
+Scheduling tasks for agent: status
+Scheduling task: status/status-report (0 */2 * * *)
+Scheduling tasks for agent: code
+Scheduling task: code/lint (30 */4 * * *)
+Scheduling task: code/test (45 */4 * * *)
+Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+Scheduling status report every 30 minutes
+[32mAgent runner started successfully[0m
+Starting agent runner...
+Scheduling tasks for agent: deployment
+Scheduling task: deployment/deploy (0 */4 * * *)
+Scheduling tasks for agent: status
+Scheduling task: status/status-report (0 */2 * * *)
+Scheduling tasks for agent: code
+Scheduling task: code/lint (30 */4 * * *)
+Scheduling task: code/test (45 */4 * * *)
+Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+Scheduling status report every 30 minutes
+[32mAgent runner started successfully[0m
+Received SIGTERM signal. Shutting down...
+Received SIGTERM signal. Shutting down...
+Received SIGTERM signal. Shutting down...
+Starting agent runner...
+Scheduling tasks for agent: deployment
+Scheduling task: deployment/deploy (0 */4 * * *)
+Scheduling tasks for agent: status
+Scheduling task: status/status-report (0 */2 * * *)
+Scheduling tasks for agent: code
+Scheduling task: code/lint (30 */4 * * *)
+Scheduling task: code/test (45 */4 * * *)
+Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+Scheduling status report every 30 minutes
+[32mAgent runner started successfully[0m
+Received SIGTERM signal. Shutting down...
+Starting agent runner...
+Scheduling tasks for agent: deployment
+Scheduling task: deployment/deploy (0 */4 * * *)
+Scheduling tasks for agent: status
+Scheduling task: status/status-report (0 */2 * * *)
+Scheduling tasks for agent: code
+Scheduling task: code/lint (30 */4 * * *)
+Scheduling task: code/test (45 */4 * * *)
+Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+Scheduling status report every 30 minutes
+[32mAgent runner started successfully[0m
+Received SIGTERM signal. Shutting down...
+Starting agent runner...
+Scheduling tasks for agent: deployment
+Scheduling task: deployment/deploy (0 */4 * * *)
+Scheduling tasks for agent: status
+Scheduling task: status/status-report (0 */2 * * *)
+Scheduling tasks for agent: code
+Scheduling task: code/lint (30 */4 * * *)
+Scheduling task: code/test (45 */4 * * *)
+Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+Scheduling status report every 30 minutes
+[32mAgent runner started successfully[0m
+Received SIGTERM signal. Shutting down...
+Starting agent runner...
+Scheduling tasks for agent: deployment
+Scheduling task: deployment/deploy (0 */4 * * *)
+Scheduling tasks for agent: status
+Scheduling task: status/status-report (0 */2 * * *)
+Scheduling tasks for agent: code
+Scheduling task: code/lint (30 */4 * * *)
+Scheduling task: code/test (45 */4 * * *)
+Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+Scheduling status report every 30 minutes
+[32mAgent runner started successfully[0m
+Received SIGTERM signal. Shutting down...
+Starting agent runner...
+Scheduling tasks for agent: deployment
+Scheduling task: deployment/deploy (0 */4 * * *)
+Scheduling tasks for agent: status
+Scheduling task: status/status-report (0 */2 * * *)
+Scheduling tasks for agent: code
+Scheduling task: code/lint (30 */4 * * *)
+Scheduling task: code/test (45 */4 * * *)
+Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+Scheduling status report every 30 minutes
+[32mAgent runner started successfully[0m
+Received SIGTERM signal. Shutting down...
+Starting agent runner...
+Scheduling tasks for agent: deployment
+Scheduling task: deployment/deploy (0 */4 * * *)
+Scheduling tasks for agent: status
+Scheduling task: status/status-report (0 */2 * * *)
+Scheduling tasks for agent: code
+Scheduling task: code/lint (30 */4 * * *)
+Scheduling task: code/test (45 */4 * * *)
+Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+Scheduling status report every 30 minutes
+[32mAgent runner started successfully[0m
+Received SIGTERM signal. Shutting down...
+Starting agent runner...
+Scheduling tasks for agent: deployment
+Scheduling task: deployment/deploy (0 */4 * * *)
+Scheduling tasks for agent: status
+Scheduling task: status/status-report (0 */2 * * *)
+Scheduling tasks for agent: code
+Scheduling task: code/lint (30 */4 * * *)
+Scheduling task: code/test (45 */4 * * *)
+Scheduling workflow: deploy-and-notify (0 9,13,17,21 * * *)
+Scheduling status report every 30 minutes
+[32mAgent runner started successfully[0m
+Status report scheduled
+Status report scheduled
+Executing task: status/status-report
+Status report scheduled
+[32mTask status/status-report executed successfully: Script executed successfully[0m
+[32mTask status/status-report completed successfully[0m
+Status report scheduled
+Status report scheduled
+Status report scheduled
+Executing task: deployment/deploy
+Executing task: status/status-report
+Status report scheduled
+[32mTask status/status-report executed successfully: Script executed successfully[0m
+[32mTask status/status-report completed successfully[0m
+[32mTask deployment/deploy executed successfully: Command executed successfully[0m
+[32mTask deployment/deploy completed successfully[0m
+Executing task: code/lint
+Status report scheduled
+[32mTask code/lint executed successfully: Command executed successfully[0m
+[32mTask code/lint completed successfully[0m
+Executing task: code/test
+[32mTask code/test executed successfully: Command executed successfully[0m
+[32mTask code/test completed successfully[0m
+Received SIGTERM signal. Shutting down...

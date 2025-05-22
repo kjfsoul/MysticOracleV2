@@ -34,31 +34,7 @@ export default function DailyCardLocal() {
               let imagePath = getTarotCardImagePath(dailyCard);
               console.log("Daily card image path:", imagePath);
 
-              // Additional safety check for problematic images
-              if (
-                dailyCard.id === "07-chariot" ||
-                dailyCard.id === "13-death" ||
-                dailyCard.id === "16-tower"
-              ) {
-                console.warn("Using placeholder for known problematic card");
-                imagePath = "/images/tarot/placeholders/major-placeholder.svg";
-              }
-
-              // Fallback to placeholder if needed
-              if (!imagePath || imagePath.trim() === "") {
-                if (dailyCard.arcana === "major") {
-                  const cardId = dailyCard.name
-                    .toLowerCase()
-                    .replace(/\s+/g, "-");
-                  imagePath = `/images/tarot/placeholders/${cardId}.svg`;
-                } else if (dailyCard.suit) {
-                  imagePath = `/images/tarot/placeholders/${dailyCard.suit}-placeholder.svg`;
-                } else {
-                  imagePath =
-                    "/images/tarot/placeholders/major-placeholder.svg";
-                }
-                console.log("Using fallback image path:", imagePath);
-              }
+              // No need for additional safety checks here as they're now in getTarotCardImagePath
 
               setCard({
                 name: dailyCard.name,
@@ -157,14 +133,14 @@ export default function DailyCardLocal() {
             className="cursor-pointer transform hover:scale-105 transition-transform duration-300"
             onClick={handleCardClick}
           >
-            <TarotCard
-              cardName={card.name}
-              imageUrl={card.imageUrl}
-              isFlipped={isFlipped}
-              isAnimated={true}
-              size="md"
-              isReversed={card.reversal}
-            />
+          <TarotCard
+            cardName={card.name}
+            imageUrl={card.imageUrl}
+            isFlipped={false}
+            isAnimated={true}
+            size="md"
+            isReversed={card.reversal}
+          />
           </div>
         </div>
 

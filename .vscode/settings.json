@@ -1,0 +1,51 @@
+{
+  "augment.advanced": {
+    "mcpServers": [
+      {
+        "name": "nextjs",
+        "command": "npx",
+        "args": ["-y", "--prefix", "/Users/kfitz/MysticOracleV2/.mcp", "@modelcontextprotocol/server-filesystem"]
+      },
+      {
+        "name": "react-ui",
+        "command": "npx",
+        "args": ["-y", "--prefix", "/Users/kfitz/MysticOracleV2/.mcp", "@modelcontextprotocol/server-github"]
+      },
+      {
+        "name": "netlify",
+        "command": "npx",
+        "args": ["-y", "--prefix", "/Users/kfitz/MysticOracleV2/.mcp", "@modelcontextprotocol/server-puppeteer"]
+      },
+      {
+        "name": "fullstack",
+        "command": "npx",
+        "args": ["-y", "--prefix", "/Users/kfitz/MysticOracleV2/.mcp", "@modelcontextprotocol/server-brave-search"]
+      },
+      {
+        "name": "ai-functions",
+        "command": "npx",
+        "args": ["-y", "--prefix", "/Users/kfitz/MysticOracleV2/.mcp", "@modelcontextprotocol/server-sequential-thinking"]
+      },
+      {
+        "name": "cms",
+        "command": "npx",
+        "args": ["-y", "--prefix", "/Users/kfitz/MysticOracleV2/.mcp", "@modelcontextprotocol/server-memory"]
+      },
+      {
+        "name": "stripe",
+        "command": "npx",
+        "args": ["-y", "--prefix", "/Users/kfitz/MysticOracleV2/.mcp", "@modelcontextprotocol/server-google-maps"]
+      },
+      {
+        "name": "tailwind",
+        "command": "npx",
+        "args": ["-y", "--prefix", "/Users/kfitz/MysticOracleV2/.mcp", "@modelcontextprotocol/server-everything"]
+      },
+      {
+        "name": "web-search",
+        "command": "npx",
+        "args": ["-y", "--prefix", "/Users/kfitz/MysticOracleV2/.mcp", "@modelcontextprotocol/server-brave-search"]
+      }
+    ]
+  }
+}

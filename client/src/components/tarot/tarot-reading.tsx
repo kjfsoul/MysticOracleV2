@@ -56,7 +56,9 @@ export default function TarotReading({
   });
 
   const handleSaveReading = () => {
-    saveReadingMutation.mutate(!isSaved);
+    if (reading && reading.id) {
+      saveReadingMutation.mutate(reading.id);
+    }
   };
 
   const handleShareReading = () => {
@@ -191,7 +193,7 @@ export default function TarotReading({
 
         {/* Display all cards in appropriate layout */}
         <div className={getContainerClass()}>
-          {cards.map((card, index) => (
+          {cards.map((card: any, index: number) => (
             <motion.div
               key={index}
               style={getCardPosition(index)}
@@ -232,7 +234,7 @@ export default function TarotReading({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="max-w-3xl mx-auto bg-dark/60 backdrop-blur-sm rounded-xl border border-light/10 p-6 md:p-8 mb-12"
+        className="max-w-3xl mx-auto bg-background/60 backdrop-blur-sm rounded-xl border border-light/10 p-6 md:p-8 mb-12"
       >
         <Tabs defaultValue="interpretation" className="w-full">
           <TabsList className="grid w-full grid-cols-2 mb-6">
@@ -330,7 +332,7 @@ export default function TarotReading({
                       {reading.interpretation
                         .split("\n\n")
                         .slice(0, 2)
-                        .map((paragraph, index) => (
+                        .map((paragraph: string, index: number) => (
                           <p key={index} className="mb-4">
                             {paragraph}
                           </p>
@@ -362,7 +364,7 @@ export default function TarotReading({
                       {reading.aiInsight
                         .split("\n\n")
                         .slice(0, 1)
-                        .map((paragraph, index) => (
+                        .map((paragraph: string, index: number) => (
                           <p key={index} className="text-light/90 text-sm">
                             {paragraph}
                           </p>
@@ -397,11 +399,13 @@ export default function TarotReading({
                 insights, consider upgrading to premium.
               </p>
 
-              {reading.interpretation.split("\n\n").map((paragraph, index) => (
-                <p key={index} className="mb-4">
-                  {paragraph}
-                </p>
-              ))}
+              {reading.interpretation
+                .split("\n\n")
+                .map((paragraph: string, index: number) => (
+                  <p key={index} className="mb-4">
+                    {paragraph}
+                  </p>
+                ))}
 
               {reading.aiInsight && (
                 <div className="mt-6 pt-6 border-t border-light/10">
@@ -409,11 +413,13 @@ export default function TarotReading({
                     AI Enhanced Insights
                   </h5>
                   <div className="bg-primary/10 p-4 rounded-lg border border-primary/20">
-                    {reading.aiInsight.split("\n\n").map((paragraph, index) => (
-                      <p key={index} className="mb-4">
-                        {paragraph}
-                      </p>
-                    ))}
+                    {reading.aiInsight
+                      .split("\n\n")
+                      .map((paragraph: string, index: number) => (
+                        <p key={index} className="mb-4">
+                          {paragraph}
+                        </p>
+                      ))}
                   </div>
                 </div>
               )}
